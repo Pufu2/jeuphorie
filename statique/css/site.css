@@ -871,6 +871,7 @@ mark.a-completer {
 .carte-jeu:hover { border-color: var(--encre); border-left-color: var(--plein-air); text-decoration: none; }
 .carte-jeu__nom { font-family: var(--f-titre); font-weight: 800; font-size: 1.15rem; line-height: 1.2; padding-right: 3.5rem; }
 .carte-jeu__meta { color: var(--encre-douce); font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+.carte-jeu__astuce { margin-top: 0.35rem; font-size: 0.95rem; color: var(--encre); }
 .carte-jeu__offert {
   position: absolute; top: 0.7rem; right: 0.7rem;
   font-family: var(--f-titre); font-weight: 700; font-size: 0.75rem;
