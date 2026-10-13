@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block tete %}
+{% set j = page.jeu %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@type": "HowTo", "name": j.nom, "description": j.but, "totalTime": "PT" ~ j.duree ~ "M", "supply": j.materiel, "inLanguage": "fr-FR"} | tojson }}
+</script>
+{% endblock %}
+{% block contenu %}
+{% set j = page.jeu %}
+<article class="cadre jeu">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/jeux/') }}">Tous les jeux</a> <span aria-hidden="true">/</span> <span>{{ j.nom }}</span></nav>
+  <h1 class="titre-page">{{ j.nom }}</h1>
+  <div class="jeu__grille">
+    <div class="jeu__texte">
+      <div class="conseil conseil--but">
+        <p class="conseil__signature">Le but du jeu</p>
+        <p>{{ j.but }}</p>
+      </div>
+      <dl class="jeu__meta">
+        <div><dt>Âge</dt><dd>Dès {{ j.age_min }} ans</dd></div>
+        <div><dt>Joueurs</dt><dd>{{ j.joueurs[0] }} à {{ j.joueurs[1] }}</dd></div>
+        <div><dt>Durée</dt><dd>{{ j.duree }} min</dd></div>
+      </dl>
+      <div class="texte">
+        <h2>Matériel</h2>
+        <ul>{% for x in j.materiel %}<li>{{ x }}</li>{% endfor %}</ul>
+        <h2>Mise en place</h2>
+        <p>{{ j.organisation }}</p>
+        {% if j.offert %}
+        <h2>Règles</h2>
+        <ul>{% for r in j.regles %}<li>{{ r }}</li>{% endfor %}</ul>
+        {% if j.points %}<h2>Pour gagner</h2><ul>{% for r in j.points %}<li>{{ r }}</li>{% endfor %}</ul>{% endif %}
+        {% if j.variantes %}<h2>Variantes</h2><ul>{% for r in j.variantes %}<li>{{ r }}</li>{% endfor %}</ul>{% endif %}
+        {% endif %}
+      </div>
+    </div>
+    <aside class="jeu__cote">
+      {% set svg = schema(j.id) %}
+      {% if svg %}
+      <figure class="jeu__schema">
+        {{ svg | safe }}
+        <figcaption>Le terrain, tel qu'il figure sur la fiche.</figcaption>
+      </figure>
+      {% endif %}
+      {% if j.offert %}
+      <div class="encart encart--info encart--colonne">
+        <p><strong>Ce jeu est offert.</strong> Recevez sa fiche à imprimer, avec deux autres grands jeux.</p>
+        <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Recevoir les 3 jeux</a>
+      </div>
+      {% else %}
+      <div class="encart encart--colonne">
+        <p><strong>La fiche à imprimer</strong> contient {{ j.nb_regles }} règles{% if j.nb_variantes %}, {{ j.nb_variantes }} variante{{ 's' if j.nb_variantes > 1 }}{% endif %} et le schéma du terrain, sur une ou deux pages A4.</p>
+        <p>Elle se trouve dans :</p>
+        <ul class="coches">
+          {% for p in j.packs %}<li><a href="{{ lien('/boutique/#kit-pack-' ~ p) }}">le pack {{ p }} ans</a></li>{% endfor %}
+          <li><a href="{{ lien('/boutique/#kit-grand-fichier') }}">le grand fichier des 34 jeux</a></li>
+          <li><a href="{{ lien('/pro/') }}">Jeuphorie Pro annuel</a></li>
+        </ul>
+      </div>
+      {% endif %}
+    </aside>
+  </div>
+  {% set voisins = jeux | selectattr('packs', 'contient', j.packs[0]) | rejectattr('id', 'equalto', j.id) | list %}
+  <section class="section section--serree">
+    <h2 class="section__titre">D'autres jeux pour le même âge</h2>
+    <div class="grille-jeux">{% for x in voisins[:6] %}{{ m.carte_jeu(x) }}{% endfor %}</div>
+  </section>
+</article>
+{% endblock %}

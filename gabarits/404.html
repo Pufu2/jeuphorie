@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block contenu %}
+<div class="cadre cadre--texte page-404">
+  <h1 class="titre-page">Cette page s'est cachée trop bien</h1>
+  <p class="chapo">Elle a peut-être changé d'adresse. Reprenez depuis l'accueil ou la boutique.</p>
+  <div class="actions">
+    <a class="bouton" href="{{ lien('/') }}">Retour à l'accueil</a>
+    <a class="bouton bouton--contour" href="{{ lien('/boutique/') }}">Voir la boutique</a>
+  </div>
+</div>
+{% endblock %}

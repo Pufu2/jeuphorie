@@ -1,0 +1,75 @@
+# Les formules de Jeuphorie Pro.
+# payhip : code du produit « membership » sur Payhip (payhip.com/b/CODE), à remplir à l'ouverture.
+# Les boutons ne s'activent que si config.yml > boutique > ventes_actives vaut true.
+
+formules:
+  - id: decouverte
+    nom: Découverte
+    pour: Pour essayer
+    prix: "0 €"
+    periode: ""
+    detail: Sans carte bancaire
+    payhip: ""
+    lien_interne: /jeux-gratuits/
+    bouton: Recevoir les 3 jeux
+    inclus:
+      - 3 grands jeux complets à imprimer
+      - Le carnet d'idées, un nouvel article chaque semaine
+      - Les nouveautés par mail, si vous le souhaitez
+
+  - id: animateur-mensuel
+    nom: Pro Animateur
+    pour: Pour un animateur, un enseignant, un parent qui anime souvent
+    prix: "4,90 €"
+    periode: par mois
+    detail: Sans engagement, résiliable en ligne
+    payhip: ""
+    bouton: S'abonner au mois
+    inclus:
+      - L'espace Pro et ses nouvelles fiches chaque mois
+      - 30 % de réduction sur toute la boutique
+      - Les packs et le grand fichier à prix réduit
+
+  - id: animateur-annuel
+    nom: Pro Animateur annuel
+    pour: Le meilleur choix si vous animez toute l'année
+    prix: "39 €"
+    periode: par an
+    detail: Soit 3,25 € par mois
+    mis_en_avant: true
+    payhip: ""
+    bouton: S'abonner à l'année
+    inclus:
+      - Toute la bibliothèque dès le premier jour (34 grands jeux)
+      - Les nouvelles fiches chaque mois
+      - 30 % de réduction sur toute la boutique
+
+  - id: structure
+    nom: Pro Structure
+    pour: Pour un accueil de loisirs, une association, une école, un club ou un CSE
+    prix: "119 €"
+    periode: par an
+    detail: Facture au nom de la structure, virement possible
+    payhip: ""
+    bouton: Abonner ma structure
+    inclus:
+      - Tout Pro Animateur annuel, pour toute l'équipe (jusqu'à 15 personnes, un même lieu)
+      - Le droit d'utiliser les fiches pour toutes les animations de la structure
+      - 40 % de réduction sur les kits, dont la kermesse et les outils du directeur
+      - Plusieurs lieux ou un réseau : tarif sur devis
+
+questions:
+  - q: Mensuel ou annuel ?
+    r: >-
+      Le mensuel vous laisse essayer sans engagement : vous recevez les nouveautés et la réduction sur la boutique.
+      L'annuel coûte un tiers de moins et ouvre toute la bibliothèque dès le premier jour.
+  - q: Comment résilier ?
+    r: >-
+      Depuis votre espace client Payhip, à tout moment, en quelques clics. Pour l'abonnement annuel, vous pouvez aussi
+      nous écrire : nous arrêtons le renouvellement et vous gardez l'accès jusqu'à la fin de votre année.
+  - q: Ma structure peut-elle payer par virement ou bon de commande ?
+    r: >-
+      Oui. Écrivez-nous avec le nom de la structure et le nombre de personnes : nous envoyons un devis, puis la facture.
+  - q: Que se passe-t-il pour les fiches déjà imprimées si j'arrête ?
+    r: >-
+      Vous les gardez. Vous perdez seulement l'accès à l'espace Pro, aux nouveautés et à la réduction.

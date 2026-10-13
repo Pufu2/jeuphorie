@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/grands-jeux/') }}">Grands jeux</a> <span aria-hidden="true">/</span> <span>Tous les jeux</span></nav>
+  <h1 class="titre-page">Tous les grands jeux</h1>
+  <p class="chapo">{{ jeux | length }} jeux collectifs testés en accueil de loisirs, de 6 à 17 ans. Chaque page présente le but du jeu, le matériel et la mise en place ; la fiche à imprimer ajoute les règles complètes, les variantes et le schéma du terrain.</p>
+  <ul class="pastilles pastilles--filtres" aria-label="Aller à une tranche d'âge">
+    <li><a class="pastille" href="#age-6-9">6-9 ans</a></li>
+    <li><a class="pastille" href="#age-10-13">10-13 ans</a></li>
+    <li><a class="pastille" href="#age-14-17">14-17 ans</a></li>
+  </ul>
+  {% for pack, titre, produit in [('6-9', 'Pour les 6-9 ans', 'pack-6-9'), ('10-13', 'Pour les 10-13 ans', 'pack-10-13'), ('14-17', 'Pour les 14-17 ans', 'pack-14-17')] %}
+  {% set liste = jeux | selectattr('packs', 'contient', pack) | list %}
+  <section class="section section--serree" id="age-{{ pack }}" aria-labelledby="t-{{ pack }}">
+    <div class="tete-liste">
+      <h2 id="t-{{ pack }}" class="section__titre section__titre--plein-air">{{ titre }}</h2>
+      <p class="tete-liste__lien">Les {{ liste | length }} fiches dans <a href="{{ lien('/boutique/#kit-' ~ produit) }}">le pack {{ pack }} ans</a></p>
+    </div>
+    <div class="grille-jeux">
+      {% for j in liste %}{{ m.carte_jeu(j) }}{% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+  <div class="encart encart--pro">
+    <h2 class="encart__titre">Tous les jeux, et les suivants</h2>
+    <p>Le grand fichier réunit les {{ jeux | length }} fiches. Avec Jeuphorie Pro annuel, vous avez toute la bibliothèque et les nouvelles fiches de chaque mois.</p>
+    <div class="actions" style="margin-top:1rem">
+      <a class="bouton" href="{{ lien('/boutique/#kit-grand-fichier') }}">Voir le grand fichier</a>
+      <a class="bouton bouton--contour" href="{{ lien('/pro/') }}">Découvrir Jeuphorie Pro</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block contenu %}
+<div class="cadre cadre--texte">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>Contact</span></nav>
+  <h1 class="titre-page">Contact</h1>
+  <p class="chapo">Une question sur un kit, un fichier qui ne s'ouvre pas, une commande pour une association ou un centre de loisirs : écrivez-nous, nous répondons sous 48 heures ouvrées.</p>
+  <div class="adresse-mail">
+    <p class="adresse-mail__etiquette">Adresse mail</p>
+    <p class="adresse-mail__valeur"><a id="adresse" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    <button type="button" class="bouton bouton--petit bouton--contour" id="copier" data-adresse="{{ site.email }}">Copier l'adresse</button>
+    <p class="petit" id="copie-etat" role="status"></p>
+  </div>
+  <div class="texte">
+    <h2>Pour une réponse plus rapide</h2>
+    <ul>
+      <li>Pour un achat, indiquez l'adresse mail utilisée sur Payhip et le nom du kit.</li>
+      <li>Pour une association ou une structure, précisez son nom et le nombre d'enfants concernés.</li>
+      <li>Pour un fichier qui ne s'imprime pas bien, dites-nous quel appareil et quel logiciel vous utilisez.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  var bouton = document.getElementById('copier');
+  var etat = document.getElementById('copie-etat');
+  if (!bouton) return;
+  bouton.addEventListener('click', function () {
+    var adresse = bouton.getAttribute('data-adresse');
+    function selectionner() {
+      var r = document.createRange();
+      r.selectNodeContents(document.getElementById('adresse'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      etat.textContent = "L'adresse est sélectionnée : copiez-la avec Ctrl+C (ou Cmd+C).";
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(adresse).then(function () {
+        etat.textContent = 'Adresse copiée.';
+      }, selectionner);
+    } else { selectionner(); }
+  });
+})();
+</script>
+{% endblock %}

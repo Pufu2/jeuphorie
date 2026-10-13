@@ -1,0 +1,84 @@
+# Pages « idées par âge » et « idées par fête ».
+# Les kits et les articles s'y rangent tout seuls grâce à leurs étiquettes
+# (ages: [...] et fetes: [...]).
+
+ages:
+  - slug: 3-5-ans
+    nom: 3-5 ans
+    titre_page: Jeux pour les 3-5 ans
+    description: Idées de jeux et d'animations pour les 3-5 ans, à la maison ou en fête d'école.
+    intro: >-
+      À cet âge, les enfants jouent mieux ensemble qu'en équipes rivales.
+      Préférez des épreuves courtes, de 5 à 8 minutes, une histoire simple,
+      et un adulte pour 4 ou 5 enfants. Tout le monde gagne quelque chose à la fin.
+  - slug: 6-8-ans
+    pack: 6-9
+    nom: 6-8 ans
+    titre_page: Jeux pour les 6-8 ans
+    description: Idées de jeux d'anniversaire et de grands jeux pour les 6-8 ans.
+    intro: >-
+      Les 6-8 ans adorent les règles, les équipes et les médailles. Ils
+      tiennent une épreuve de 10 minutes et un grand jeu d'une heure, à
+      condition de changer souvent d'activité et de garder les règles en
+      une phrase.
+  - slug: 9-12-ans
+    pack: 10-13
+    nom: 9-12 ans
+    titre_page: Jeux pour les 9-12 ans
+    description: "Idées de jeux pour les 9-12 ans : enquêtes, défis par équipes, Olympiades."
+    intro: >-
+      Les 9-12 ans veulent du vrai défi : de la stratégie, des énigmes, du
+      chronomètre. Donnez-leur des rôles (capitaine, gardien du score) et
+      laissez-les choisir le nom de leur équipe.
+  - slug: 13-17-ans
+    pack: 14-17
+    nom: 13-17 ans
+    titre_page: Jeux collectifs pour ados de 13 à 17 ans
+    description: "Jeux collectifs et sports adaptés pour les ados : ultimate, thèque, balle au capitaine, épervier gradé, rugby au toucher."
+    intro: >-
+      Les ados jouent volontiers, à condition que le jeu soit vraiment
+      sportif ou vraiment rusé. Proposez des sports adaptés avec des règles
+      simplifiées, des jeux de stratégie comme l'épervier gradé, et laissez
+      les joueurs arbitrer à tour de rôle.
+
+fetes:
+  - slug: halloween
+    nom: Halloween
+    titre_page: Jeux d'Halloween pour enfants
+    description: Idées de jeux d'Halloween pour enfants, qui font frissonner sans faire peur.
+    intro: >-
+      Pour Halloween, le bon dosage est un frisson sans vraie peur, surtout
+      avant 7 ans. Misez sur les potions, les énigmes de sorcière et les
+      chasses aux bonbons plutôt que sur le noir complet.
+  - slug: noel
+    nom: Noël
+    titre_page: Jeux de Noël en famille
+    description: Grands jeux et défis de Noël à jouer en famille, des petits aux grands-parents.
+    intro: >-
+      À Noël, le jeu réunit des joueurs de 4 à 80 ans. Formez des équipes
+      mélangées, gardez des épreuves où chacun a son rôle, et prévoyez le
+      jeu entre le plat et le dessert, quand les enfants ne tiennent plus en place.
+  - slug: carnaval
+    nom: Carnaval
+    titre_page: Jeux de carnaval pour enfants
+    description: Idées de jeux et de défilés pour le carnaval, à la maison ou à l'école.
+    intro: >-
+      Le carnaval, c'est le déguisement et le défilé. Les jeux qui marchent
+      le mieux font bouger les costumes : concours de pose, défilé en
+      musique, relais costumés.
+  - slug: paques
+    nom: Pâques
+    titre_page: Chasses aux œufs et jeux de Pâques
+    description: Idées de chasses aux œufs et de jeux de Pâques pour enfants, au jardin ou à la maison.
+    intro: >-
+      Une chasse aux œufs réussie évite que les plus grands ramassent tout.
+      Donnez une couleur d'œuf par enfant ou par tranche d'âge, et ajoutez
+      des énigmes pour les plus de 8 ans.
+  - slug: fete-de-fin-d-annee
+    nom: Fête de fin d'année
+    titre_page: Kermesse et fête de fin d'année
+    description: Idées de stands et de jeux pour la kermesse et la fête de fin d'année de l'école.
+    intro: >-
+      La fête de fin d'année se joue sur l'organisation : des stands simples
+      à tenir, des bénévoles qui savent quoi faire, et des tickets pour
+      fluidifier la file d'attente.

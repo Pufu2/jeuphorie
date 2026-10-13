@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+{% set offerts = jeux | selectattr('offert') | list %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>Jeux offerts</span></nav>
+  <h1 class="titre-page">3 grands jeux offerts</h1>
+  <div class="cadeau">
+    <div class="cadeau__texte">
+      <p class="chapo">Trois jeux collectifs qui marchent à chaque fois : une chasse en équipes, un jeu de poursuite à trois camps et un jeu de stratégie avec des cartes. Le fichier de 6 pages contient les règles complètes, les variantes et le schéma du terrain.</p>
+      <ul class="coches">
+        <li>De 6 à 39 joueurs, dès 6 ans</li>
+        <li>Avec le matériel d'une cour : plots, cerceaux, chasubles, un jeu de cartes</li>
+        <li>Prêt à imprimer en A4, en couleur ou en noir et blanc</li>
+      </ul>
+      {% if site.boutique.jeu_gratuit_payhip %}
+      <a class="bouton" href="https://payhip.com/b/{{ site.boutique.jeu_gratuit_payhip }}">Recevoir les 3 jeux</a>
+      <p class="petit">Indiquez votre adresse mail sur la page suivante : le fichier arrive aussitôt dans votre boîte.</p>
+      {% else %}
+      <div class="encart encart--info">
+        <p><strong>Le fichier sera disponible ici très bientôt.</strong> En attendant, les règles des trois jeux sont en accès libre ci-dessous.</p>
+      </div>
+      {% endif %}
+    </div>
+    <div class="fiche fiche--soleil fiche--cadeau" aria-hidden="true">
+      <div class="fiche__bandeau"><span class="fiche__univers">Offert</span></div>
+      <p class="fiche__titre">3 grands jeux</p>
+      <ol class="liste-epreuves">
+        {% for j in offerts %}<li>{{ j.nom }}</li>{% endfor %}
+      </ol>
+    </div>
+  </div>
+
+  <section class="section section--serree">
+    <h2 class="section__titre">Les règles, en accès libre</h2>
+    <div class="grille-jeux">{% for j in offerts %}{{ m.carte_jeu(j) }}{% endfor %}</div>
+  </section>
+
+  <section class="section section--serree cadre--texte">
+    <h2 class="section__titre">Votre adresse mail</h2>
+    <p>Elle sert à vous envoyer le fichier. Si vous cochez la case prévue, vous recevrez aussi nos nouveaux jeux, au plus une fois par mois. Chaque message contient un lien pour vous désinscrire. Nous ne transmettons jamais votre adresse. Le détail est dans la page <a href="{{ lien('/confidentialite/') }}">confidentialité</a>.</p>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,731 @@
+# Partie publique des jeux, exportée depuis le dossier des produits (exporter_site.py).
+# Ne pas y ajouter les règles des jeux payants.
+jeux:
+- id: balle-bouclier
+  nom: La balle bouclier
+  age_min: 6
+  packs:
+  - 6-9
+  - 10-13
+  - 14-17
+  joueurs:
+  - 8
+  - 20
+  duree: 30
+  but: Être la première équipe à toucher tous les joueurs adverses, ou à ramener le drapeau adverse dans
+    son camp.
+  materiel:
+  - Un bouclier par joueur
+  - Une balle par joueur (balle de tennis ou balle en mousse)
+  - Deux drapeaux
+  - Des chasubles de deux couleurs
+  organisation: 'Chaque joueur commence dans son camp avec une balle et un bouclier. Un drapeau est placé
+    au fond de chaque camp. L''arbitre peut faire revenir en jeu les joueurs touchés quand il le souhaite,
+    toujours de manière équitable entre les deux équipes. Au bout d''un certain temps, l''arbitre annonce
+    « la charge » : la frontière du milieu disparaît, les joueurs vont partout sur le terrain et le drapeau
+    adverse peut être capturé.'
+  nb_regles: 6
+  nb_variantes: 3
+- id: ballon-chasseur
+  nom: Le ballon chasseur
+  age_min: 6
+  packs:
+  - 6-9
+  joueurs:
+  - 8
+  - 20
+  duree: 20
+  but: 'Pour les chasseurs : toucher les autres joueurs, qui deviennent chasseurs à leur tour. Pour les
+    autres : rester libre le plus longtemps possible.'
+  materiel:
+  - Un ballon en mousse
+  - Des chasubles pour reconnaître les chasseurs
+  organisation: Tous les joueurs sont sur le terrain. Au départ, deux chasseurs ont le ballon et cherchent
+    à toucher les autres joueurs.
+  nb_regles: 5
+  nb_variantes: 0
+- id: ballon-prisonnier
+  nom: Le ballon prisonnier
+  age_min: 6
+  packs:
+  - 6-9
+  - 10-13
+  joueurs:
+  - 8
+  - 20
+  duree: 30
+  but: Être la première équipe à toucher tous les joueurs adverses.
+  materiel:
+  - Un ou deux ballons selon le nombre de joueurs
+  - Des chasubles de deux couleurs
+  organisation: Chaque équipe est dans son camp. L'animateur choisit l'équipe qui commence avec le ballon,
+    par tirage au sort ou par un petit défi entre les deux équipes. La prison de chaque équipe se trouve
+    derrière le camp adverse.
+  nb_regles: 6
+  nb_variantes: 0
+- id: beret
+  nom: Le jeu du béret
+  age_min: 6
+  packs:
+  - 6-9
+  joueurs:
+  - 6
+  - 10
+  duree: 20
+  but: Ramener le béret dans son camp sans se faire toucher, ou toucher l'adversaire qui essaie de le
+    ramener.
+  materiel:
+  - Un objet qui sert de béret (plot, chasuble ou foulard)
+  - Des chasubles de deux couleurs
+  organisation: 'Les deux camps se font face, à au moins 10 mètres l''un de l''autre. Le béret est posé
+    au milieu. Dans chaque équipe, chaque joueur reçoit un numéro différent. L''animateur annonce un numéro
+    : les deux joueurs qui portent ce numéro courent chercher le béret.'
+  nb_regles: 4
+  nb_variantes: 1
+- id: relais-des-epis
+  nom: Le relais des épis
+  age_min: 6
+  packs:
+  - 6-9
+  joueurs:
+  - 8
+  - 20
+  duree: 10
+  but: Être la première équipe à ramasser tous ses épis de maïs dans sa boîte.
+  materiel:
+  - '10 plots ou bâtons par équipe : ce sont les épis de maïs'
+  - Une boîte par équipe
+  organisation: Chaque équipe se place derrière sa boîte. Le premier épi est posé entre 5 et 10 mètres,
+    les suivants tous les 2 mètres. Au signal, le premier joueur court chercher l'épi de son choix et
+    le pose dans la boîte. Dès que l'épi est dans la boîte, le joueur suivant part, et ainsi de suite
+    jusqu'au dernier épi.
+  nb_regles: 3
+  nb_variantes: 2
+- id: ballon-anglais
+  nom: Le ballon anglais
+  age_min: 6
+  packs:
+  - 6-9
+  joueurs:
+  - 8
+  - 20
+  duree: 10
+  but: Faire passer le ballon de main en main dans toute son équipe, plus vite que l'équipe adverse.
+  materiel:
+  - Des ballons variés (rugby, handball, football)
+  - Des chasubles de deux couleurs
+  organisation: Chaque équipe occupe sa moitié de terrain. Au signal, le lanceur de chaque équipe envoie
+    son ballon le plus loin possible dans le camp adverse. Chaque équipe court alors bloquer le ballon
+    reçu, se met en file indienne derrière le joueur qui l'a récupéré, puis se passe le ballon de main
+    en main, par-dessus la tête ou entre les jambes, jusqu'au dernier joueur. La manche s'arrête quand
+    le ballon arrive au dernier joueur. La partie s'arrête quand tout le monde a été lanceur, ou après
+    le nombre de manches fixé par l'arbitre.
+  nb_regles: 5
+  nb_variantes: 3
+- id: gendarmes-voleurs
+  nom: Gendarmes et voleurs
+  age_min: 6
+  packs:
+  - 6-9
+  joueurs:
+  - 6
+  - 30
+  duree: 15
+  but: Quand son équipe joue les voleurs, faire passer le plus de trésors possible de la banque jusqu'au
+    camp des voleurs.
+  materiel:
+  - 'Des plots : ce sont les trésors'
+  - '5 cerceaux ou plus : ce sont les cachettes'
+  - Des chasubles de deux couleurs
+  organisation: Les trésors sont dans la banque. Plus loin se trouve le camp des voleurs. Pour l'atteindre,
+    les voleurs traversent la zone des gendarmes, où des cachettes leur permettent de se mettre à l'abri.
+    Une manche dure 2 à 3 minutes. À la fin, les voleurs comptent les trésors arrivés dans leur camp,
+    puis les rôles sont inversés.
+  offert: true
+  nb_regles: 6
+  nb_variantes: 0
+  regles:
+  - L'équipe qui a rapporté le plus de trésors pendant sa manche de voleurs gagne la partie.
+  - Un voleur ne prend qu'un trésor à la fois.
+  - Un voleur ne peut être touché que dans la zone des gendarmes, et jamais dans une cachette.
+  - Un voleur ne peut être touché que s'il porte un trésor.
+  - 'Le trésor reste visible : interdit de le cacher.'
+  - Un voleur touché retourne à la banque avec son trésor.
+- id: six-planetes
+  nom: Les six planètes
+  age_min: 6
+  packs:
+  - 6-9
+  joueurs:
+  - 8
+  - 30
+  duree: 30
+  but: Détruire les planètes adverses avant que l'autre équipe ne détruise les siennes.
+  materiel:
+  - '6 plots : ce sont les planètes'
+  - 2 ballons ou plus
+  - Des chasubles de deux couleurs
+  organisation: Chaque équipe défend trois planètes placées dans son camp. Avec les ballons, les joueurs
+    essaient de faire tomber les planètes adverses. Une planète détruite ne peut pas être reconstruite.
+  nb_regles: 4
+  nb_variantes: 2
+- id: passe-a-5
+  nom: La passe à 5
+  age_min: 6
+  packs:
+  - 6-9
+  joueurs:
+  - 6
+  - 24
+  duree: 30
+  but: Réussir 5 passes de suite, en recevant chaque fois le ballon dans un cerceau.
+  materiel:
+  - 1 ballon par match
+  - Une trentaine de cerceaux (les planètes) répartis sur tout le terrain
+  - Des chasubles pour distinguer les équipes
+  organisation: Plusieurs matchs se jouent en même temps sur le même terrain, couvert de cerceaux. Dans
+    chaque match, une équipe a le ballon et cherche à se faire des passes en le recevant dans un cerceau.
+    Quand elle réussit 5 passes sans que l'adversaire récupère le ballon, elle marque un point.
+  nb_regles: 6
+  nb_variantes: 5
+- id: poules-renards-viperes
+  nom: Poules, renards, vipères
+  age_min: 6
+  packs:
+  - 6-9
+  joueurs:
+  - 12
+  - 39
+  duree: 20
+  but: Les poules attrapent les vipères et fuient les renards. Les renards attrapent les poules et fuient
+    les vipères. Les vipères attrapent les renards et fuient les poules.
+  materiel:
+  - Des plots de trois couleurs pour délimiter les camps
+  - Des chasubles de trois couleurs
+  organisation: Les trois camps forment un triangle, à une vingtaine de mètres les uns des autres. Chaque
+    équipe a son camp. Un joueur qui attrape un adversaire l'emmène dans son camp. Les prisonniers d'une
+    même équipe forment une chaîne en se tenant la main ; le premier garde un pied dans le camp où il
+    est prisonnier. La chaîne est délivrée quand un coéquipier libre la touche. La partie s'arrête quand
+    une équipe est entièrement prisonnière, ou à la fin du temps fixé.
+  offert: true
+  nb_regles: 7
+  nb_variantes: 0
+  regles:
+  - Chaque équipe ne peut attraper qu'une seule autre équipe, celle qu'elle chasse.
+  - Un joueur est attrapé dès que l'adversaire qui le chasse le touche.
+  - Dans son propre camp, un joueur ne peut pas être attrapé.
+  - Un joueur qui emmène un prisonnier ne peut pas être attrapé pendant le trajet.
+  - Quand un joueur touche la chaîne de prisonniers de son équipe, tous sont délivrés.
+  points:
+  - L'équipe qui attrape tous les adversaires qu'elle chasse gagne.
+  - À la fin du temps, l'équipe qui a le plus de prisonniers dans son camp gagne.
+- id: beret-4-equipes
+  nom: Le béret à 4 équipes
+  age_min: 8
+  packs:
+  - 6-9
+  - 10-13
+  joueurs:
+  - 12
+  - 20
+  duree: 20
+  but: Ramener un béret dans son camp sans se faire toucher, ou toucher l'adversaire qui en porte un.
+  materiel:
+  - Trois objets qui servent de bérets (plots, chasubles)
+  - Des chasubles de quatre couleurs
+  organisation: 'Les quatre équipes se placent chacune sur un côté d''un grand carré, à au moins 10 mètres
+    du centre, où sont posés les bérets. Dans chaque équipe, chaque joueur reçoit un numéro différent.
+    L''animateur annonce un numéro : les quatre joueurs qui le portent courent chercher les bérets.'
+  nb_regles: 4
+  nb_variantes: 0
+- id: rapetou
+  nom: Le rapetou
+  age_min: 8
+  packs:
+  - 6-9
+  - 10-13
+  - 14-17
+  joueurs:
+  - 12
+  - 18
+  duree: 20
+  but: Ramener dans son camp l'un des deux plots du camp adverse, plus vite que l'autre équipe.
+  materiel:
+  - 4 plots, 2 par équipe
+  - Des chasubles de deux couleurs
+  organisation: 'Deux équipes se font face, le terrain étant coupé en deux par une ligne médiane. Chaque
+    équipe a des défenseurs et des attaquants. Au coup de sifflet, un défenseur et deux attaquants sortent
+    de chaque équipe : les attaquants foncent vers le camp adverse pour ramener un plot, pendant que les
+    défenseurs essaient de les toucher. L''équipe qui ramène un plot la première marque un point. Si tous
+    les attaquants sont touchés, personne ne marque. La partie se joue en 7 points.'
+  nb_regles: 5
+  nb_variantes: 0
+- id: foot-quilles
+  nom: Le foot quilles
+  age_min: 8
+  packs:
+  - 6-9
+  - 10-13
+  - 14-17
+  joueurs:
+  - 8
+  - 30
+  duree: 30
+  but: Faire tomber les trois quilles adverses avant que l'autre équipe ne fasse tomber les siennes.
+  materiel:
+  - '6 plots : ce sont les quilles'
+  - 2 ballons de football ou plus
+  - Des cerceaux, ou un tracé, autour de chaque quille
+  - Des chasubles de deux couleurs
+  organisation: 'Le terrain est coupé en deux : chaque équipe défend sa moitié et attaque dans l''autre.
+    Chaque équipe se divise en deux groupes, ce qui fait quatre groupes, mais on joue toujours une équipe
+    contre l''autre. Chaque ballon n''est disputé que par deux groupes : par exemple, rouge 1 contre bleu
+    1. Les autres ne touchent pas ce ballon, sauf pour défendre.'
+  nb_regles: 4
+  nb_variantes: 0
+- id: six-quilles
+  nom: Les six quilles
+  age_min: 8
+  packs:
+  - 6-9
+  - 10-13
+  joueurs:
+  - 8
+  - 30
+  duree: 30
+  but: Ramener dans son camp 2 de ses 3 quilles, placées chez l'adversaire, avant l'autre équipe.
+  materiel:
+  - '6 plots : ce sont les quilles'
+  - Un petit objet par joueur, qui compte comme une vie (bout de bois, kapla, domino)
+  - Des chasubles de deux couleurs
+  organisation: Le terrain est coupé en deux. Les trois quilles de chaque équipe sont posées au fond du
+    camp adverse. Chaque équipe a sa zone de défense, qui est la zone d'attaque de l'autre équipe. Dans
+    sa zone de défense, un joueur peut toucher les adversaires.
+  nb_regles: 5
+  nb_variantes: 2
+- id: barre
+  nom: La barre
+  age_min: 10
+  packs:
+  - 10-13
+  - 14-17
+  joueurs:
+  - 8
+  - 20
+  duree: 30
+  but: Faire prisonniers le plus d'adversaires possible.
+  materiel:
+  - Des chasubles de deux couleurs
+  - Des plots pour délimiter les camps et les prisons
+  organisation: 'Chaque équipe se place dans son camp. Un joueur va défier un adversaire en criant son
+    prénom, à environ un mètre du camp adverse, puis s''enfuit vers son propre camp, sans pouvoir y entrer,
+    poursuivi par le joueur défié. Celui-ci a « barre » sur lui : il a le droit de le toucher. Les coéquipiers
+    peuvent sortir pour aider. Chaque nouveau joueur qui sort a barre sur tous ceux qui sont sortis avant
+    lui.'
+  nb_regles: 7
+  nb_variantes: 2
+- id: duel-au-panier
+  nom: Le duel au panier
+  age_min: 10
+  packs:
+  - 10-13
+  - 14-17
+  joueurs:
+  - 3
+  - 12
+  duree: 20
+  but: Marquer avant le joueur qui est devant soi pour l'éliminer, et ne pas se faire éliminer par celui
+    qui est derrière.
+  materiel:
+  - Un panier de basket
+  - Deux ballons de basket
+  organisation: 'Tous les joueurs sont en colonne derrière la ligne des lancers francs ; les deux premiers
+    ont un ballon. Au signal, le premier tire, puis le second tire dès que le premier a lancé. Quand un
+    joueur marque, il donne le ballon au premier de la file et va se placer à la fin. Si un joueur marque
+    avant celui qui le précède, ce dernier est éliminé : les ballons s''arrêtent et le jeu reprend avec
+    les suivants, comme au départ. Quand il ne reste que deux joueurs, celui qui marque revient à la ligne
+    des lancers francs, jusqu''à ce qu''un joueur marque deux fois avant l''autre.'
+  nb_regles: 3
+  nb_variantes: 0
+- id: duel-au-panier-geant
+  nom: Le duel au panier géant
+  age_min: 10
+  packs:
+  - 10-13
+  - 14-17
+  joueurs:
+  - 15
+  - 50
+  duree: 30
+  but: Monter jusqu'au premier panier et y rester, en marquant avant le joueur qui est devant soi.
+  materiel:
+  - Au moins 3 paniers de basket, chacun avec une ligne de lancers francs (en ajouter si les joueurs sont
+    nombreux)
+  - 2 ballons de basket par panier
+  organisation: 'Les paniers sont numérotés, le panier 1 étant le plus haut. Les joueurs sont répartis
+    au hasard entre les paniers, et on joue au duel au panier sur chacun d''eux. Quand un joueur en élimine
+    un autre, il monte d''un panier (du panier 3 au panier 2) ; le joueur éliminé descend d''un panier
+    (du panier 3 au panier 4). Au bout du temps fixé, l''animateur siffle et chaque joueur marque des
+    points selon son panier : panier 1 = 5 points, panier 2 = 4 points, et ainsi de suite.'
+  nb_regles: 2
+  nb_variantes: 0
+- id: balle-au-capitaine
+  nom: La balle au capitaine
+  age_min: 10
+  packs:
+  - 10-13
+  - 14-17
+  joueurs:
+  - 8
+  - 20
+  duree: 30
+  but: Faire une passe à son capitaine pour marquer un point.
+  materiel:
+  - Une petite balle de rugby
+  - 'Deux cerceaux : les zones des capitaines'
+  - Des chasubles de deux couleurs
+  organisation: 'Deux équipes s''affrontent sur le même terrain. Le capitaine de chaque équipe se tient
+    dans sa zone, au bout du terrain, et ne peut pas en sortir. Pour la mise en jeu, la balle est lancée
+    au milieu : l''équipe qui la récupère essaie de faire une passe à son capitaine. Après chaque point,
+    l''équipe qui l''a encaissé remet en jeu depuis la zone de son capitaine.'
+  nb_regles: 7
+  nb_variantes: 1
+- id: drapeau-double
+  nom: Le drapeau double
+  age_min: 10
+  packs:
+  - 10-13
+  joueurs:
+  - 8
+  - 20
+  duree: 30
+  but: Aller chercher son drapeau et le ramener dans son camp avant que l'autre équipe ne fasse de même.
+  materiel:
+  - Deux drapeaux
+  - Des chasubles de deux couleurs
+  - Des plots pour délimiter les camps et la mer
+  organisation: 'Les deux équipes se placent chacune sur un côté du terrain. Au coup de sifflet, un joueur
+    attaque en courant vers le drapeau, pendant que tous les joueurs adverses essaient de le toucher.
+    Un attaquant touché est pris et s''immobilise sur place. L''arbitre annonce ensuite que les rôles
+    s''inversent : l''autre équipe attaque et la première défend. Les attaquants suivants peuvent délivrer
+    leurs coéquipiers pris, qui délivrent à leur tour ou rentrent au camp. Un attaquant qui entre dans
+    la mer, la zone interdite tracée sur le terrain, est pris.'
+  nb_regles: 7
+  nb_variantes: 0
+- id: drapeau-double-ruse
+  nom: Le drapeau double rusé
+  age_min: 12
+  packs:
+  - 10-13
+  joueurs:
+  - 8
+  - 20
+  duree: 30
+  but: Aller chercher son drapeau et le ramener dans son camp avant que l'autre équipe ne fasse de même,
+    en trompant les défenseurs.
+  materiel:
+  - Deux drapeaux
+  - Des chasubles de deux couleurs
+  - Des plots pour délimiter les camps et la mer
+  organisation: 'Les deux équipes se placent chacune sur un côté du terrain. Au coup de sifflet, l''équipe
+    qui attaque a 30 secondes pour faire sortir un joueur de sa base vers le drapeau, pendant que tous
+    les adversaires défendent. Un défenseur sorti avant l''attaquant ne peut pas le toucher : il doit
+    retourner dans sa base avant de revenir dans la partie. Si personne ne sort, ou si plusieurs joueurs
+    sortent en même temps, l''attaque est annulée et c''est aussitôt à l''autre équipe d''attaquer. Les
+    attaquants suivants peuvent délivrer leurs coéquipiers pris, qui délivrent à leur tour ou rentrent
+    au camp. Un attaquant qui entre dans la mer, la zone interdite tracée sur le terrain, est pris.'
+  nb_regles: 7
+  nb_variantes: 0
+- id: epervier-grade
+  nom: L'épervier gradé
+  age_min: 10
+  packs:
+  - 10-13
+  - 14-17
+  joueurs:
+  - 8
+  - 20
+  duree: 30
+  but: Éliminer les joueurs adverses pour être la dernière équipe en jeu.
+  materiel:
+  - Un jeu de 52 cartes
+  - Des chasubles de deux couleurs
+  organisation: Les deux équipes se font face, chacune à un bout du terrain. Chaque joueur reçoit une
+    carte, qu'il garde secrète. Au coup de sifflet, les équipes traversent le terrain en se croisant,
+    comme à l'épervier. Quand un joueur touche un adversaire, ils vont tous les deux voir l'arbitre et
+    lui montrent discrètement leur carte. Le joueur qui a la plus forte carte retourne jouer ; l'autre
+    est éliminé. Après chaque traversée, chaque équipe se concerte pour deviner les cartes adverses et
+    préparer la traversée suivante.
+  offert: true
+  nb_regles: 6
+  nb_variantes: 0
+  regles:
+  - Un joueur éliminé ne communique plus avec son équipe, d'aucune manière, sinon son équipe perd.
+  - 'Les cartes suivent l''ordre de la bataille : 2, 3, 4, 5, 6, 7, 8, 9, 10, valet, dame, roi, as.'
+  - L'as bat toutes les cartes, sauf le 2.
+  - Deux joueurs qui ont la même carte font match nul et retournent dans leur camp. S'ils se touchent
+    de nouveau, ils sont éliminés tous les deux.
+  - Après 2 traversées sans prise, l'arbitre déclare l'égalité.
+  - 'Interdit d''échanger les cartes : chacun garde la sienne toute la partie.'
+- id: theque
+  nom: La thèque
+  age_min: 10
+  packs:
+  - 10-13
+  - 14-17
+  joueurs:
+  - 20
+  - 60
+  duree: 30
+  but: Faire le plus de tours de terrain possible quand son équipe attaque.
+  materiel:
+  - 1 raquette de tennis et 1 balle (ou un autre matériel de frappe)
+  - '1 cerceau, ou un tracé : la zone du « chien »'
+  - Des plots, ou un tracé, pour la zone de frappe, la zone d'attente et les bases
+  organisation: 'Deux équipes s''affrontent : l''une attaque, l''autre défend. Un attaquant se prépare
+    à frapper la balle, qu''un coéquipier lui lance ; les autres attaquants attendent dans leur zone.
+    Un défenseur, le « chien », se place dans le cerceau ; les autres défenseurs se répartissent sur le
+    terrain. L''attaquant frappe la balle, puis court pour faire le tour du terrain en passant par les
+    bases. Pour l''arrêter, les défenseurs peuvent se passer la balle pour toucher un attaquant qui court
+    hors d''une base ; renvoyer la balle au chien le plus vite possible, ce qui arrête le jeu ; ou attraper
+    la balle de volée. Dans ce dernier cas, le défenseur pose la balle au sol, les défenseurs courent
+    vers le camp, et les attaquants sortent pour prendre la balle et toucher ceux qui n''y sont pas encore
+    arrivés.'
+  nb_regles: 8
+  nb_variantes: 1
+- id: basket
+  nom: Le basket
+  age_min: 12
+  packs:
+  - 10-13
+  - 14-17
+  joueurs:
+  - 6
+  - 20
+  duree: 30
+  but: Marquer plus de points que l'équipe adverse en mettant le ballon dans le panier.
+  materiel:
+  - 1 ballon de basket
+  - 2 paniers
+  - Des chasubles de deux couleurs
+  organisation: Deux équipes s'affrontent sur un terrain avec un panier à chaque bout. Les joueurs avancent
+    vers le panier adverse en se faisant des passes ou en dribblant, et défendent leur propre panier.
+  nb_regles: 7
+  nb_variantes: 0
+- id: rugby-au-toucher
+  nom: Le rugby au toucher
+  age_min: 12
+  packs:
+  - 10-13
+  - 14-17
+  joueurs:
+  - 8
+  - 20
+  duree: 30
+  but: Porter le ballon derrière la ligne d'en-but adverse, en se le passant à la main.
+  materiel:
+  - Un ballon de rugby
+  - Des chasubles de deux couleurs
+  organisation: 'Les deux équipes se font face. Le jeu se fait au toucher : dès qu''un joueur est touché
+    par un adversaire, il ne peut plus avancer et doit passer le ballon à un partenaire. Après un arrêt,
+    le jeu reprend à l''endroit où le joueur a été touché, ou à l''endroit du litige, au signal de l''arbitre.
+    Le ballon change d''équipe en cas d''« en-avant » : une passe vers l''avant, ou un ballon envoyé vers
+    l''avant par une partie du corps.'
+  nb_regles: 5
+  nb_variantes: 0
+- id: tennis-ballon
+  nom: Le tennis ballon
+  age_min: 14
+  packs:
+  - 14-17
+  joueurs:
+  - 4
+  - 24
+  duree: 30
+  but: Marquer des points en renvoyant le ballon dans le camp adverse sans que l'autre équipe puisse le
+    renvoyer.
+  materiel:
+  - 1 ballon (football, volley ou ballon léger)
+  - 1 filet
+  organisation: Deux équipes de 2 à 6 joueurs s'affrontent sur un terrain de tennis, ou sur un terrain
+    tracé avec un filet au milieu. Le service se fait derrière la ligne de fond. Chaque équipe renvoie
+    le ballon dans le camp adverse en respectant le nombre de rebonds autorisés. Une partie se joue en
+    7 points, ou selon le temps fixé par l'animateur.
+  nb_regles: 7
+  nb_variantes: 4
+- id: volley
+  nom: Le volley
+  age_min: 14
+  packs:
+  - 14-17
+  joueurs:
+  - 4
+  - 24
+  duree: 30
+  but: Faire tomber le ballon dans le camp adverse, ou provoquer une faute, pour marquer des points.
+  materiel:
+  - 1 ballon de volley
+  - 1 filet
+  organisation: Deux équipes s'affrontent de chaque côté d'un filet. Les joueurs envoient le ballon dans
+    le camp adverse en le frappant avec les mains. Chaque équipe a droit à 3 touches au plus avant de
+    le renvoyer.
+  nb_regles: 8
+  nb_variantes: 0
+- id: balle-brulee
+  nom: La balle brûlée
+  age_min: 14
+  packs:
+  - 14-17
+  joueurs:
+  - 10
+  - 20
+  duree: 30
+  but: Faire le plus de tours de terrain possible quand son équipe attaque.
+  materiel:
+  - 1 raquette de tennis et 1 balle (ou un autre matériel de frappe)
+  - '1 cerceau, ou un tracé : la zone du « chien »'
+  - Des plots, ou un tracé, pour la zone de frappe, la zone d'attente et les bases
+  organisation: 'Deux équipes s''affrontent : l''une attaque, l''autre défend. Un attaquant frappe la
+    balle qu''un coéquipier lui lance, puis court pour faire le tour du terrain en passant par les bases
+    ; les autres attaquants attendent dans leur zone. Un défenseur, le « chien », se tient dans le cerceau
+    ; les autres se répartissent sur le terrain. Un attaquant est « brûlé », c''est-à-dire éliminé, s''il
+    est touché par la balle hors d''une base, s''il est hors d''une base quand la balle revient au chien,
+    ou s''il est hors d''une base quand un défenseur attrape la balle de volée.'
+  nb_regles: 6
+  nb_variantes: 1
+- id: drapeau-simple
+  nom: Le drapeau simple
+  age_min: 14
+  packs:
+  - 14-17
+  joueurs:
+  - 8
+  - 30
+  duree: 30
+  but: 'Pour les attaquants : prendre le drapeau et le ramener dans leur camp. Pour les défenseurs : toucher
+    tous les attaquants, ou celui qui porte le drapeau.'
+  materiel:
+  - Un grand plot pour tenir le drapeau
+  - 'Un foulard ou une chasuble : le drapeau'
+  - Des chasubles de deux couleurs
+  - Une chasuble d'une autre couleur pour le chevalier
+  organisation: Un joueur de l'équipe qui attaque est désigné chevalier. Les défenseurs touchent les attaquants
+    pour les éliminer ; le chevalier, lui, peut éliminer les défenseurs en les touchant. Toutes les trois
+    manches, les équipes échangent leurs rôles.
+  nb_regles: 8
+  nb_variantes: 0
+- id: handball
+  nom: Le handball
+  age_min: 14
+  packs:
+  - 14-17
+  joueurs:
+  - 8
+  - 14
+  duree: 30
+  but: Marquer plus de buts que l'équipe adverse en envoyant le ballon dans le petit but.
+  materiel:
+  - 1 ballon de handball
+  - 2 petits buts
+  - Des chasubles de deux couleurs
+  organisation: Deux équipes s'affrontent sur un terrain avec un petit but à chaque bout. Les joueurs
+    avancent vers le but adverse par des passes, tout en défendant leur propre but. Le jeu commence par
+    un engagement au centre.
+  nb_regles: 6
+  nb_variantes: 3
+- id: hockey
+  nom: Le hockey
+  age_min: 14
+  packs:
+  - 14-17
+  joueurs:
+  - 10
+  - 30
+  duree: 30
+  but: Marquer plus de buts que l'équipe adverse en envoyant la balle dans le petit but.
+  materiel:
+  - Une crosse de hockey par joueur
+  - 2 ou 3 balles de tennis
+  - 2 petits buts
+  - Des chasubles de deux couleurs
+  organisation: Deux équipes s'affrontent sur un terrain dur, avec un petit but à chaque bout. Chacune
+    attaque le but adverse et défend le sien avec les crosses. Plusieurs balles peuvent être en jeu en
+    même temps pour accélérer la partie. Une zone tracée devant chaque but protège le but.
+  nb_regles: 7
+  nb_variantes: 3
+- id: ultimate
+  nom: L'ultimate
+  age_min: 14
+  packs:
+  - 14-17
+  joueurs:
+  - 8
+  - 20
+  duree: 30
+  but: Faire une passe à un coéquipier placé dans la zone d'en-but adverse pour marquer un point.
+  materiel:
+  - Un frisbee
+  - Des chasubles de deux couleurs
+  - Des plots pour tracer les deux zones d'en-but
+  organisation: Les matchs se jouent en 2 mi-temps de 10 minutes, ou en 7 points par manche. L'équipe
+    tirée au sort engage au milieu du terrain. Après chaque point, l'équipe qui l'a encaissé engage depuis
+    sa zone d'en-but.
+  nb_regles: 7
+  nb_variantes: 0
+- id: balle-americaine
+  nom: La balle américaine
+  age_min: 8
+  packs:
+  - 6-9
+  - 10-13
+  joueurs:
+  - 6
+  - 20
+  duree: 20
+  but: Être le dernier joueur encore sur le terrain.
+  materiel:
+  - 1 ou 2 ballons en mousse selon le nombre de joueurs
+  organisation: Tous les joueurs sont sur le terrain, et chacun joue seul contre tous.
+  nb_regles: 6
+  nb_variantes: 1
+- id: balle-assise
+  nom: La balle assise
+  age_min: 8
+  packs:
+  - 6-9
+  - 10-13
+  joueurs:
+  - 8
+  - 20
+  duree: 20
+  but: Toucher les autres joueurs avec la balle pour les faire asseoir.
+  materiel:
+  - Deux balles en mousse
+  organisation: Tous les joueurs sont sur le terrain. L'animateur fixe la durée de la partie, par exemple
+    5 minutes, puis lance les balles en l'air pour donner le départ. À la fin du temps, les joueurs encore
+    debout ont gagné. S'il ne reste qu'un joueur debout avant la fin, il a gagné.
+  offert: false
+  nb_regles: 10
+  nb_variantes: 0
+- id: carre-touche
+  nom: Le carré touché
+  age_min: 8
+  packs:
+  - 6-9
+  - 10-13
+  joueurs:
+  - 12
+  - 30
+  duree: 20
+  but: 'Pour les chasseurs : toucher le plus de joueurs possible en restant chacun dans son carré.'
+  materiel:
+  - Des chasubles pour reconnaître les chasseurs
+  - Des balles en mousse
+  - Des plots pour tracer les carrés et leurs portes
+  organisation: Le terrain est divisé en plusieurs carrés reliés par des portes. Au départ, chaque chasseur
+    est dans un carré ; un seul a le ballon. Les autres joueurs se placent dans le carré de leur choix.
+    Au signal, les chasseurs essaient de toucher les joueurs de leur carré. S'il n'y en a pas, ils font
+    la passe à un autre chasseur. Les joueurs chassés changent de carré en passant par les portes. Un
+    joueur touché devient chasseur.
+  nb_regles: 5
+  nb_variantes: 0

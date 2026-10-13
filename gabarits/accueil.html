@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block classe_body %}page-accueil{% endblock %}
+{% block contenu %}
+
+{% set vedette = jeux | selectattr('id', 'equalto', 'poules-renards-viperes') | first %}
+<section class="ouverture cadre">
+  <div class="ouverture__texte">
+    <h1 class="ouverture__titre">Des grands jeux prêts à imprimer, conçus par un directeur d'animation</h1>
+    <p class="ouverture__intro">{{ jeux | length }} jeux collectifs testés en accueil de loisirs, de 6 à 17 ans. Chaque fiche donne le matériel, la mise en place, les règles, les variantes et un schéma du terrain. Vous imprimez, vous jouez.</p>
+    <div class="actions">
+      <a class="bouton" href="{{ lien('/jeux/') }}">Voir les jeux</a>
+      <a class="bouton bouton--contour" href="{{ lien('/jeux-gratuits/') }}">Recevoir 3 jeux offerts</a>
+    </div>
+  </div>
+
+  <figure class="fiche-vedette" aria-label="Exemple de fiche : {{ vedette.nom }}">
+    <span class="scotch scotch--gauche" aria-hidden="true"></span>
+    <span class="scotch scotch--droite" aria-hidden="true"></span>
+    <p class="fiche-vedette__numero">Fiche de grand jeu</p>
+    <p class="fiche-vedette__titre">{{ vedette.nom }}</p>
+    <p class="fiche-vedette__meta">Dès {{ vedette.age_min }} ans, {{ vedette.joueurs[0] }} à {{ vedette.joueurs[1] }} joueurs, {{ vedette.duree }} min</p>
+    <div class="fiche-vedette__schema">{{ schema(vedette.id) | safe }}</div>
+    <p class="note-main" aria-hidden="true">Chacun chasse une équipe et fuit l'autre !</p>
+    <a class="tampon tampon--grand" href="{{ lien('/jeux/' ~ vedette.id ~ '/') }}">Offert</a>
+  </figure>
+</section>
+
+<section class="section cadre" aria-labelledby="titre-univers">
+  <h2 id="titre-univers" class="section__titre">Choisissez votre univers</h2>
+  <div class="grille-univers">
+    {% for u in d.univers.univers %}
+    <a class="univers univers--{{ u.couleur }}" href="{{ lien(u.url) }}">
+      <span class="univers__public">{{ u.public }}</span>
+      <span class="univers__nom">{{ u.nom }}</span>
+      <span class="univers__accroche">{{ u.accroche }}</span>
+      <span class="univers__lien">Voir les jeux</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section--etapes" aria-labelledby="titre-etapes">
+  <div class="cadre">
+    <h2 id="titre-etapes" class="section__titre">Comment ça marche</h2>
+    <ol class="etapes">
+      <li class="etape">
+        <span class="etape__num" aria-hidden="true">1</span>
+        <h3 class="etape__titre">Choisissez un jeu</h3>
+        <p>Selon l'âge des joueurs, leur nombre et la place dont vous disposez. Chaque fiche l'indique.</p>
+      </li>
+      <li class="etape">
+        <span class="etape__num" aria-hidden="true">2</span>
+        <h3 class="etape__titre">Imprimez</h3>
+        <p>Vous recevez un PDF au format A4, lisible en couleur comme en noir et blanc.</p>
+      </li>
+      <li class="etape">
+        <span class="etape__num" aria-hidden="true">3</span>
+        <h3 class="etape__titre">Jouez</h3>
+        <p>La fiche vous guide : mise en place, règles, variantes. Vous animez, les enfants s'amusent.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section cadre" aria-labelledby="titre-idees">
+  <h2 id="titre-idees" class="section__titre">Des idées selon l'âge ou la fête</h2>
+  <div class="idees-rapides">
+    <div>
+      <p class="idees-rapides__titre">Par âge</p>
+      <ul class="pastilles">
+        {% for i in d.idees.ages %}<li><a class="pastille" href="{{ lien('/idees/' ~ i.slug ~ '/') }}">{{ i.nom }}</a></li>{% endfor %}
+      </ul>
+    </div>
+    <div>
+      <p class="idees-rapides__titre">Par fête</p>
+      <ul class="pastilles">
+        {% for i in d.idees.fetes %}<li><a class="pastille" href="{{ lien('/idees/' ~ i.slug ~ '/') }}">{{ i.nom }}</a></li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cadre">
+  <div class="bandeau-cadeau">
+    <div>
+      <h2 class="bandeau-cadeau__titre">3 grands jeux offerts</h2>
+      <p>Gendarmes et voleurs, Poules renards vipères et L'épervier gradé : 6 pages avec règles, variantes et schémas du terrain.</p>
+    </div>
+    <a class="bouton bouton--encre" href="{{ lien('/jeux-gratuits/') }}">Recevoir les 3 jeux</a>
+  </div>
+</section>
+
+<section class="section cadre" aria-labelledby="titre-pro">
+  <div class="accroche-pro">
+    <div>
+      <h2 id="titre-pro" class="section__titre">Vous animez toute l'année ?</h2>
+      <p>Avec Jeuphorie Pro, vous avez toute la bibliothèque de grands jeux, de nouvelles fiches chaque mois et jusqu'à 40 % de réduction sur les kits. Une formule existe pour les structures : accueils de loisirs, associations, écoles, clubs, comités d'entreprise.</p>
+    </div>
+    <div class="accroche-pro__prix">
+      <p><strong>4,90 €</strong> par mois</p>
+      <p><strong>39 €</strong> par an</p>
+      <p><strong>119 €</strong> par an pour une structure</p>
+      <a class="bouton" href="{{ lien('/pro/') }}">Découvrir Jeuphorie Pro</a>
+    </div>
+  </div>
+</section>
+
+{% if articles %}
+<section class="section cadre" aria-labelledby="titre-articles">
+  <h2 id="titre-articles" class="section__titre">Le carnet d'idées</h2>
+  <div class="grille-articles">
+    {% for a in articles[:3] %}{{ m.carte_article(a) }}{% endfor %}
+  </div>
+  <p><a class="lien-fort" href="{{ lien('/blog/') }}">Tous les articles</a></p>
+</section>
+{% endif %}
+
+<section class="section cadre presentation">
+  <h2 class="section__titre">Qui prépare ces jeux ?</h2>
+  <p>Je m'appelle {{ site.auteur.prenom }}. Je suis directeur adjoint d'un accueil de loisirs à Paris et je prépare un DES JEPS. Chaque semaine, j'organise des grands jeux, des Olympiades et des fêtes pour des dizaines d'enfants et d'ados. Jeuphorie met ces jeux à votre portée, pour une fête à la maison comme pour un mercredi en centre de loisirs.</p>
+  <p><a class="lien-fort" href="{{ lien('/a-propos/') }}">En savoir plus</a></p>
+</section>
+
+{% endblock %}

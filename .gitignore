@@ -1,0 +1,6 @@
+_site/
+statique/polices/
+node_modules/
+apercu-accueil.html
+__pycache__/
+.DS_Store

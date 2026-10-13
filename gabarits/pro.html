@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block classe_body %}page-pro{% endblock %}
+{% block contenu %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>Jeuphorie Pro</span></nav>
+  <header class="tete-univers tete-univers--pro">
+    <p class="tete-univers__public">Pour les animateurs et les structures</p>
+    <h1 class="titre-page">Jeuphorie Pro</h1>
+    <p class="chapo">L'abonnement pour celles et ceux qui animent toute l'année : la bibliothèque de grands jeux, de nouvelles fiches chaque mois, et une réduction sur toute la boutique.</p>
+  </header>
+
+  {% if not site.boutique.ventes_actives %}
+  <div class="encart encart--info">
+    <p><strong>L'abonnement ouvre très bientôt.</strong> Les formules ci-dessous sont celles du lancement. En attendant, les 3 jeux offerts sont déjà disponibles.</p>
+    <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Recevoir les 3 jeux</a>
+  </div>
+  {% endif %}
+
+  <section class="section section--serree" aria-labelledby="t-formules">
+    <h2 id="t-formules" class="section__titre">Les formules</h2>
+    <div class="formules">
+      {% for f in d.abonnement.formules %}
+      <article class="formule{% if f.mis_en_avant %} formule--avant{% endif %}">
+        {% if f.mis_en_avant %}<span class="formule__ruban">Le plus choisi</span>{% endif %}
+        <h3 class="formule__nom">{{ f.nom }}</h3>
+        <p class="formule__pour">{{ f.pour }}</p>
+        <p class="formule__prix"><span>{{ f.prix }}</span> {{ f.periode }}</p>
+        <p class="formule__detail">{{ f.detail }}</p>
+        <ul class="coches">{% for x in f.inclus %}<li>{{ x }}</li>{% endfor %}</ul>
+        <div class="formule__action">
+          {% if f.lien_interne %}
+          <a class="bouton bouton--contour" href="{{ lien(f.lien_interne) }}">{{ f.bouton }}</a>
+          {% elif site.boutique.ventes_actives and f.payhip %}
+          <a class="bouton" href="https://payhip.com/b/{{ f.payhip }}">{{ f.bouton }}</a>
+          {% else %}
+          <span class="fiche__etat">Ouverture très bientôt</span>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="petit">Prix toutes taxes comprises. Paiement sécurisé par Payhip et Stripe. Détail dans les <a href="{{ lien('/conditions-de-vente/') }}">conditions de vente</a>.</p>
+  </section>
+
+  <div class="deux-colonnes section section--serree">
+    <section class="bloc-pro" aria-labelledby="t-structures">
+      <h2 id="t-structures" class="bloc-pro__titre">Pour les structures</h2>
+      <p>Accueils de loisirs, associations de parents d'élèves, écoles, clubs sportifs, comités d'entreprise : un seul abonnement couvre toute l'équipe d'un même lieu, jusqu'à 15 personnes. Chacun imprime les fiches dont il a besoin, pour toutes les animations de la structure.</p>
+      <ul class="coches">
+        <li>Une facture au nom de la structure</li>
+        <li>Paiement par carte, ou par virement sur devis</li>
+        <li>Plusieurs lieux ou un réseau : tarif sur devis</li>
+      </ul>
+      <p><a class="lien-fort" href="{{ lien('/contact/') }}">Demander un devis</a></p>
+    </section>
+    <section class="bloc-pro" aria-labelledby="t-contenu">
+      <h2 id="t-contenu" class="bloc-pro__titre">Ce que contient l'espace Pro</h2>
+      <p>Les {{ jeux | length }} fiches de grands jeux, classées par âge, avec règles, variantes et schéma du terrain. Chaque mois, de nouvelles fiches s'ajoutent. Les kits, comme la kermesse clé en main et les outils du directeur, sont proposés aux abonnés à prix réduit dès leur sortie.</p>
+      <p><a class="lien-fort" href="{{ lien('/jeux/') }}">Voir la liste des jeux</a></p>
+    </section>
+  </div>
+
+  <section class="section section--serree" aria-labelledby="t-kits-pro">
+    <h2 id="t-kits-pro" class="section__titre">Les outils pour les pros</h2>
+    {{ m.grille_kits(produits('pro') + produits('kermesse'), "Les premiers outils arrivent bientôt.") }}
+  </section>
+
+  <section class="section section--serree cadre--texte" aria-labelledby="t-faq">
+    <h2 id="t-faq" class="section__titre">Questions fréquentes</h2>
+    <div class="questions">
+      {% for q in d.abonnement.questions %}
+      <details class="question">
+        <summary>{{ q.q }}</summary>
+        <p>{{ q.r }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}

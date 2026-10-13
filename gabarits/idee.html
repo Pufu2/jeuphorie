@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+{% set i = page.idee %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/idees/') }}">Idées</a> <span aria-hidden="true">/</span> <span>{{ i.nom }}</span></nav>
+  <h1 class="titre-page">{{ i.titre_page }}</h1>
+  <div class="conseil">
+    <p class="conseil__signature">Le conseil de l'animateur</p>
+    <p>{{ i.intro }}</p>
+  </div>
+
+  {% set kits_lies = kits | selectattr(page.groupe, 'contient', i.slug) | list %}
+  <section class="section section--serree">
+    <h2 class="section__titre">Les kits</h2>
+    {{ m.grille_kits(kits_lies, "Nous préparons des kits pour cette occasion. Recevez les 3 jeux offerts pour être prévenu de leur sortie.") }}
+  </section>
+
+  {% if i.pack %}
+  {% set jeux_lies = jeux | selectattr('packs', 'contient', i.pack) | list %}
+  <section class="section section--serree">
+    <h2 class="section__titre">Les grands jeux pour cet âge</h2>
+    <div class="grille-jeux">{% for j in jeux_lies %}{{ m.carte_jeu(j) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  {% set articles_lies = articles | selectattr(page.groupe, 'contient', i.slug) | list %}
+  <section class="section section--serree">
+    <h2 class="section__titre">Idées et conseils</h2>
+    {% if articles_lies %}
+    <div class="grille-articles">{% for a in articles_lies %}{{ m.carte_article(a) }}{% endfor %}</div>
+    {% else %}
+    <p class="vide">Les premiers articles sur ce thème arrivent bientôt dans le <a href="{{ lien('/blog/') }}">carnet d'idées</a>.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

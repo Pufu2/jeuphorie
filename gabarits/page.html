@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block contenu %}
+<div class="cadre cadre--texte">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>{{ page.titre }}</span></nav>
+  <h1 class="titre-page">{{ page.titre }}</h1>
+  {% if page.page_entete.chapo %}<p class="chapo">{{ page.page_entete.chapo }}</p>{% endif %}
+  <div class="texte">
+    {{ contenu | safe }}
+  </div>
+</div>
+{% endblock %}

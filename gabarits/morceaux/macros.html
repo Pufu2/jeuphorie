@@ -1,0 +1,74 @@
+{% macro nom_univers(id) -%}
+{%- for u in d.univers.univers if u.id == id %}{{ u.nom }}{% endfor -%}
+{%- endmacro %}
+
+{% macro couleur_univers(id) -%}
+{%- for u in d.univers.univers if u.id == id %}{{ u.couleur }}{% endfor -%}
+{%- endmacro %}
+
+{# Fiche d'un produit, présentée comme une fiche d'activité d'animateur #}
+{% macro fiche_kit(k, titre_niveau=3) %}
+{% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.payhip_id %}
+<article class="fiche fiche--{{ couleur_univers(k.univers) }}" id="kit-{{ k.id }}">
+  <div class="fiche__bandeau">
+    <span class="fiche__univers">{{ nom_univers(k.univers) }}</span>
+    {% if k.etat == 'en_preparation' %}<span class="tampon">Bientôt</span>{% elif not achetable %}<span class="tampon">Prêt</span>{% endif %}
+  </div>
+  <h{{ titre_niveau }} class="fiche__titre">{{ k.titre }}</h{{ titre_niveau }}>
+  <p class="fiche__accroche">{{ k.accroche }}</p>
+  <dl class="fiche__tech">
+    <div><dt>Âge</dt><dd>{{ k.age }}</dd></div>
+    <div><dt>Joueurs</dt><dd>{{ k.joueurs }}</dd></div>
+    <div><dt>Durée</dt><dd>{{ k.duree }}</dd></div>
+    <div><dt>Lieu</dt><dd>{{ k.lieu }}</dd></div>
+    <div><dt>Préparation</dt><dd>{{ k.preparation }}</dd></div>
+  </dl>
+  <p class="fiche__sous-titre">Dans le fichier</p>
+  <ul class="fiche__liste">
+    {% for c in k.contenu %}<li>{{ c }}</li>{% endfor %}
+  </ul>
+  {% if k.pack %}
+  <p class="fiche__jeux"><a href="{{ lien('/jeux/' if k.pack == 'tout' else '/jeux/#age-' ~ k.pack) }}">Voir la liste des jeux</a></p>
+  {% endif %}
+  <div class="fiche__pied">
+    {% if achetable %}
+    <span class="fiche__prix">{{ k.prix }} €</span>
+    <a class="bouton payhip-buy-button" href="https://payhip.com/b/{{ k.payhip_id }}" data-product="{{ k.payhip_id }}" data-theme="none">Acheter</a>
+    {% elif k.etat == 'en_preparation' %}
+    <span class="fiche__prix fiche__prix--prevu">Prix prévu : {{ k.prix }} €</span>
+    <span class="fiche__etat">En préparation</span>
+    {% else %}
+    <span class="fiche__prix">{{ k.prix }} €</span>
+    <span class="fiche__etat">En vente très bientôt</span>
+    {% endif %}
+  </div>
+</article>
+{% endmacro %}
+
+{# Carte d'un jeu du catalogue #}
+{% macro carte_jeu(j) %}
+<a class="carte-jeu" href="{{ lien('/jeux/' ~ j.id ~ '/') }}">
+  <span class="carte-jeu__nom">{{ j.nom }}</span>
+  <span class="carte-jeu__meta">Dès {{ j.age_min }} ans, {{ j.joueurs[0] }} à {{ j.joueurs[1] }} joueurs, {{ j.duree }} min</span>
+  {% if j.offert %}<span class="carte-jeu__offert">Offert</span>{% endif %}
+</a>
+{% endmacro %}
+
+{# Carte d'un article du blog #}
+{% macro carte_article(a) %}
+<article class="carte-article">
+  <p class="carte-article__date"><time datetime="{{ a.date.isoformat() }}">{{ a.date | date_fr }}</time>, {{ a.lecture }} min de lecture</p>
+  <h3 class="carte-article__titre"><a href="{{ lien(a.url) }}">{{ a.titre }}</a></h3>
+  <p>{{ a.description }}</p>
+</article>
+{% endmacro %}
+
+{% macro grille_kits(liste, vide) %}
+{% if liste %}
+<div class="grille-fiches">
+  {% for k in liste %}{{ fiche_kit(k) }}{% endfor %}
+</div>
+{% else %}
+<p class="vide">{{ vide }}</p>
+{% endif %}
+{% endmacro %}

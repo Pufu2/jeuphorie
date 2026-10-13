@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>Blog</span></nav>
+  <h1 class="titre-page">Le carnet d'idées</h1>
+  <p class="chapo">Des idées de jeux et des conseils d'animateur pour réussir les anniversaires, les fêtes de famille et les fêtes d'école. Un nouvel article chaque semaine.</p>
+  <ul class="pastilles pastilles--filtres" aria-label="Thèmes">
+    {% for i in d.idees.ages + d.idees.fetes %}<li><a class="pastille" href="{{ lien('/idees/' ~ i.slug ~ '/') }}">{{ i.nom }}</a></li>{% endfor %}
+  </ul>
+  {% if articles %}
+  <div class="grille-articles grille-articles--blog">
+    {% for a in articles %}{{ m.carte_article(a) }}{% endfor %}
+  </div>
+  {% else %}
+  <p class="vide">Le premier article arrive bientôt.</p>
+  {% endif %}
+</div>
+{% endblock %}

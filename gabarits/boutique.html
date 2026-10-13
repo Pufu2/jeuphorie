@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>Boutique</span></nav>
+  <h1 class="titre-page">La boutique</h1>
+  <p class="chapo">Des fichiers PDF à télécharger et imprimer, pour animer en famille, à l'école ou en accueil de loisirs.</p>
+  {% if not site.boutique.ventes_actives %}
+  <div class="encart encart--info">
+    <p><strong>Les ventes ouvrent très bientôt.</strong> Les packs de grands jeux sont prêts. En attendant, recevez 3 grands jeux offerts.</p>
+    <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Recevoir les 3 jeux</a>
+  </div>
+  {% endif %}
+
+  {% for u in d.univers.univers %}
+  {% set liste = kits | selectattr('univers', 'equalto', u.id) | list %}
+  {% if liste %}
+  <section class="section section--serree" aria-labelledby="b-{{ u.id }}">
+    <h2 id="b-{{ u.id }}" class="section__titre section__titre--{{ u.couleur }}"><a href="{{ lien(u.url) }}">{{ u.nom }}</a></h2>
+    {{ m.grille_kits(liste, "") }}
+  </section>
+  {% endif %}
+  {% endfor %}
+
+  <div class="encart encart--pro">
+    <h2 class="encart__titre">Abonnés : jusqu'à 40 % de réduction</h2>
+    <p>Jeuphorie Pro donne accès à toute la bibliothèque de grands jeux et à une réduction sur chaque kit. À partir de 4,90 € par mois.</p>
+    <div class="actions" style="margin-top:1rem"><a class="bouton" href="{{ lien('/pro/') }}">Voir les formules</a></div>
+  </div>
+
+  <section class="section section--serree">
+    <h2 class="section__titre">Bon à savoir</h2>
+    <ul class="faq">
+      <li><strong>Format.</strong> Fichiers PDF au format A4, lisibles en couleur comme en noir et blanc. Les outils pour directeurs sont des tableurs.</li>
+      <li><strong>Livraison.</strong> Le lien de téléchargement s'affiche après le paiement et arrive aussi par mail.</li>
+      <li><strong>Usage.</strong> Pour votre famille, ou pour toutes les animations de l'association ou de la structure qui achète. Pas de revente ni de partage en ligne.</li>
+      <li><strong>Paiement.</strong> Sécurisé par Payhip, par carte bancaire ou PayPal. Prix toutes taxes comprises.</li>
+    </ul>
+    <p>Le détail est dans les <a href="{{ lien('/conditions-de-vente/') }}">conditions de vente</a>.</p>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}{% if site.boutique.ventes_actives and not apercu %}<script src="https://payhip.com/payhip.js" defer></script>{% endif %}{% endblock %}

@@ -1,0 +1,64 @@
+# Réglages du site Jeuphorie
+# Modifier ici, puis le site se refabrique tout seul à la publication.
+
+nom: Jeuphorie
+signature: Jeux et animations clés en main
+description: >-
+  Kits de jeux et d'animations à imprimer pour les anniversaires, les fêtes
+  et les grands jeux, conçus par un directeur d'animation.
+
+# Adresse du site. Tant que le nom de domaine n'est pas acheté,
+# c'est l'adresse GitHub Pages (à mettre à jour après la création du compte).
+url: https://pufu2.github.io/jeuphorie
+# À remplir le jour où le nom de domaine est relié au site (ex. jeuphorie.fr).
+# Laisser vide tant que le site est à l'adresse github.io.
+nom_de_domaine: ""
+
+# Si le site est publié dans un sous-dossier (ex. https://compte.github.io/jeuphorie/),
+# indiquer ici ce sous-dossier : "/jeuphorie". Laisser vide avec un nom de domaine.
+chemin_de_base: "/jeuphorie"
+
+langue: fr
+
+# Adresse de contact affichée sur le site.
+email: contact@jeuphorie.fr
+
+auteur:
+  prenom: Rafaël
+
+# Boutique Payhip
+boutique:
+  # Passer à true seulement quand la micro-entreprise est déclarée
+  # et que les mentions légales et les conditions de vente sont complétées.
+  ventes_actives: false
+  # Adresse de la boutique Payhip, par exemple https://payhip.com/Jeuphorie
+  payhip: ""
+  # Code du produit gratuit Payhip « 3 grands jeux offerts » (contre une adresse mail).
+  # Il peut être activé avant l'ouverture des ventes : il ne demande aucun paiement.
+  jeu_gratuit_payhip: ""
+  # Codes de réduction donnés aux abonnés (à créer dans Payhip > Coupons).
+  # Ils ne sont jamais affichés sur le site public.
+
+# Informations légales (mentions légales et conditions de vente)
+editeur:
+  nom: "[[Prénom NOM]]"
+  statut: "[[Entrepreneur individuel (EI), micro-entreprise : après la déclaration]]"
+  adresse: "[[Adresse postale]]"
+  siren: "[[Numéro SIREN : après la déclaration]]"
+  tva: "[[Mention de TVA à confirmer avec l'Urssaf ou le service des impôts]]"
+
+mediateur:
+  nom: "[[Nom du médiateur de la consommation]]"
+  adresse: "[[Adresse du médiateur]]"
+  site: "[[Site internet du médiateur]]"
+
+hebergeur:
+  nom: GitHub, Inc.
+  adresse: 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis
+  telephone: "+1 877 448 4820"
+  site: https://github.com
+
+plateforme_vente:
+  nom: Payhip
+  adresse: 167-169 Great Portland Street, 5th Floor, Londres W1W 5PF, Royaume-Uni
+  site: https://payhip.com

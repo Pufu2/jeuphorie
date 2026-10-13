@@ -1,0 +1,65 @@
+# Les univers du site : une couleur et un public chacun.
+univers:
+  - id: anniversaires
+    nom: Anniversaires
+    url: /anniversaires/
+    couleur: fete
+    titre_page: Jeux d'anniversaire à imprimer
+    public: Parents
+    accroche: Des Olympiades, des chasses et des défis pour un anniversaire à la maison qui se prépare en une soirée.
+    description: Jeux d'anniversaire à imprimer pour les 3-12 ans, prêts à jouer à la maison ou au jardin, avec épreuves, feuille de score et diplômes.
+    intro: >-
+      Un anniversaire réussi, c'est un fil rouge qui tient les enfants
+      ensemble pendant une heure et demie, puis un moment où chacun repart
+      fier. Nos kits donnent ce fil rouge : un scénario, des épreuves
+      adaptées à l'âge, une feuille de score et des diplômes à remplir.
+    points:
+      - Prévus pour 6 à 16 enfants, dans un salon ou un jardin.
+      - "Matériel de la maison : gobelets, chaussettes, cuillères, ballons."
+      - Durée indiquée épreuve par épreuve, pour tenir le planning du goûter.
+
+  - id: grands-jeux
+    nom: Grands jeux
+    url: /grands-jeux/
+    couleur: plein-air
+    titre_page: Grands jeux et jeux collectifs à imprimer
+    public: Animateurs, écoles, clubs et familles
+    accroche: 34 jeux d'équipe pour la cour, le parc ou le gymnase, classés par âge de 6 à 17 ans.
+    description: "Grands jeux et jeux collectifs à imprimer pour les 6-17 ans : béret, balle au capitaine, poules renards vipères, thèque, épervier gradé. Fiches avec règles, variantes et schéma du terrain."
+    intro: >-
+      Ces jeux sont ceux qui marchent tous les mercredis en accueil de
+      loisirs : des règles claires, des équipes, du mouvement. Chaque fiche
+      tient sur une ou deux pages, avec le matériel, la mise en place, les
+      règles, les variantes et un schéma du terrain. Il suffit de l'imprimer
+      et de l'emporter sur le terrain.
+    points:
+      - "Classés par âge : 6-9 ans, 10-13 ans, 14-17 ans."
+      - "De 3 à 60 joueurs, avec le matériel d'une cour d'école : plots, chasubles, ballons."
+      - Des variantes pour adapter chaque jeu au groupe et au terrain.
+
+  - id: kermesse
+    nom: Kermesse
+    url: /kermesse/
+    couleur: soleil
+    titre_page: Kermesse et fête d'école clés en main
+    public: Associations de parents d'élèves
+    accroche: Les stands, les affiches, les tickets et le planning des bénévoles, prêts à imprimer.
+    description: "Kermesse et fête d'école clés en main pour les associations de parents d'élèves : fiches de stands, affiches, tickets et planning des bénévoles."
+    intro: >-
+      Organiser une kermesse, c'est coordonner des bénévoles qui ne se
+      connaissent pas toujours, pour des centaines d'enfants, en un
+      après-midi. Le kit kermesse donne à chaque responsable de stand une
+      fiche claire, et au bureau de l'association un planning qui tient.
+    points:
+      - "Une fiche par stand : règle, matériel, nombre de bénévoles."
+      - Affiches, tickets et lots à imprimer.
+      - Planning des bénévoles et liste de matériel à partager.
+
+  - id: pro
+    nom: Jeuphorie Pro
+    url: /pro/
+    couleur: pro
+    titre_page: Jeuphorie Pro, l'abonnement des animateurs et des structures
+    public: Animateurs et structures
+    accroche: Tous les jeux en accès libre, les nouveautés chaque mois et des réductions sur toute la boutique.
+    description: "Jeuphorie Pro, l'abonnement pour les animateurs, accueils de loisirs, associations, écoles et CSE : toute la bibliothèque de grands jeux, les nouveautés chaque mois et jusqu'à 40 % de réduction sur les kits."

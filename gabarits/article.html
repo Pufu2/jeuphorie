@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block tete %}
+{% set a = page.article %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@type": "BlogPosting", "headline": a.titre, "description": a.description, "datePublished": a.date.isoformat(), "inLanguage": "fr-FR", "author": {"@type": "Person", "name": site.auteur.prenom}, "publisher": {"@type": "Organization", "name": site.nom}, "mainEntityOfPage": url_complete} | tojson }}
+</script>
+{% endblock %}
+{% block contenu %}
+{% set a = page.article %}
+<article class="cadre cadre--texte article">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/blog/') }}">Blog</a></nav>
+  <h1 class="titre-page">{{ a.titre }}</h1>
+  <p class="article__meta">Par {{ site.auteur.prenom }}, directeur d'animation. <time datetime="{{ a.date.isoformat() }}">{{ a.date | date_fr }}</time>, {{ a.lecture }} min de lecture.</p>
+  {% if a.chapo %}<p class="chapo">{{ a.chapo }}</p>{% endif %}
+  <div class="texte">
+    {{ contenu | safe }}
+  </div>
+
+  {% if a.kit and kit(a.kit) %}
+  <aside class="kit-associe" aria-label="Le kit qui va avec">
+    <p class="kit-associe__titre">Le kit qui va avec cet article</p>
+    {{ m.fiche_kit(kit(a.kit), 2) }}
+  </aside>
+  {% endif %}
+
+  {% set themes = [] %}
+  {% for s in a.ages + a.fetes %}{% for i in d.idees.ages + d.idees.fetes if i.slug == s %}{% set _ = themes.append(i) %}{% endfor %}{% endfor %}
+  {% if themes %}
+  <p class="article__themes">Thèmes :
+    {% for i in themes %}<a class="pastille" href="{{ lien('/idees/' ~ i.slug ~ '/') }}">{{ i.nom }}</a>{% endfor %}
+  </p>
+  {% endif %}
+</article>
+{% set autres = articles | rejectattr('slug', 'equalto', a.slug) | list %}
+{% if autres %}
+<section class="section cadre" aria-labelledby="t-autres">
+  <h2 id="t-autres" class="section__titre">À lire aussi</h2>
+  <div class="grille-articles">{% for x in autres[:3] %}{{ m.carte_article(x) }}{% endfor %}</div>
+</section>
+{% endif %}
+{% endblock %}
+{% block scripts %}{% if site.boutique.ventes_actives and not apercu %}<script src="https://payhip.com/payhip.js" defer></script>{% endif %}{% endblock %}

@@ -1,0 +1,153 @@
+# Les produits de la boutique.
+# etat : pret (fichier fait, en attente de l'ouverture des ventes) | en_vente | en_preparation
+# payhip_id : le code du produit sur Payhip (la fin de son adresse : payhip.com/b/AbC12 -> AbC12).
+# Le bouton d'achat n'apparaît que si config.yml > boutique > ventes_actives vaut true,
+# que le produit est « en_vente » et qu'il a un payhip_id.
+# pack : relie le produit aux jeux de donnees/jeux.yml (6-9, 10-13, 14-17 ou tout).
+
+kits:
+  - id: pack-6-9
+    titre: Grands jeux 6-9 ans
+    univers: grands-jeux
+    aussi: [anniversaires]
+    etat: pret
+    prix: "9,90"
+    payhip_id: ""
+    pack: 6-9
+    accroche: 17 jeux collectifs pour la cour, le parc ou le jardin, du jeu du béret aux six planètes.
+    age: 6 à 9 ans
+    joueurs: 6 à 39 selon le jeu
+    duree: 10 à 30 min par jeu
+    lieu: Cour, parc, gymnase, grand jardin
+    preparation: 5 à 10 min par jeu
+    contenu:
+      - 17 fiches de jeux, une ou deux pages chacune
+      - Le matériel, la mise en place et les règles
+      - Un schéma du terrain pour chaque jeu
+      - Un sommaire par âge, nombre de joueurs et durée
+    ages: [6-8-ans]
+    fetes: []
+
+  - id: pack-10-13
+    titre: Grands jeux 10-13 ans
+    univers: grands-jeux
+    etat: pret
+    prix: "9,90"
+    payhip_id: ""
+    pack: 10-13
+    accroche: 19 jeux d'équipe plus stratégiques, de la barre à l'épervier gradé.
+    age: 10 à 13 ans
+    joueurs: 3 à 60 selon le jeu
+    duree: 20 à 30 min par jeu
+    lieu: Cour, terrain de sport, gymnase
+    preparation: 5 à 10 min par jeu
+    contenu:
+      - 19 fiches de jeux, une ou deux pages chacune
+      - Le matériel, la mise en place et les règles
+      - Un schéma du terrain pour presque chaque jeu
+      - Un sommaire par âge, nombre de joueurs et durée
+    ages: [9-12-ans]
+    fetes: []
+
+  - id: pack-14-17
+    titre: Grands jeux 14-17 ans
+    univers: grands-jeux
+    etat: pret
+    prix: "9,90"
+    payhip_id: ""
+    pack: 14-17
+    accroche: 18 jeux et sports adaptés pour les ados, de l'ultimate à la thèque.
+    age: 14 à 17 ans
+    joueurs: 3 à 60 selon le jeu
+    duree: 20 à 30 min par jeu
+    lieu: Terrain de sport, gymnase, parc
+    preparation: 5 à 10 min par jeu
+    contenu:
+      - 18 fiches de jeux, une ou deux pages chacune
+      - Le matériel, la mise en place et les règles
+      - Un schéma du terrain pour chaque jeu
+      - Un sommaire par âge, nombre de joueurs et durée
+    ages: [13-17-ans]
+    fetes: []
+
+  - id: grand-fichier
+    titre: Le grand fichier des jeux collectifs
+    univers: grands-jeux
+    aussi: [pro]
+    etat: pret
+    prix: "19,90"
+    payhip_id: ""
+    pack: tout
+    accroche: Les 34 jeux réunis en un seul fichier de 51 pages, de 6 à 17 ans.
+    age: 6 à 17 ans
+    joueurs: 3 à 60 selon le jeu
+    duree: 10 à 30 min par jeu
+    lieu: Cour, parc, terrain, gymnase
+    preparation: 5 à 10 min par jeu
+    contenu:
+      - 34 fiches de jeux avec schéma du terrain
+      - Classées par âge, avec un sommaire complet
+      - Jeux de balle, de poursuite, de stratégie et sports adaptés
+      - Le meilleur prix si vous animez plusieurs tranches d'âge
+    ages: [6-8-ans, 9-12-ans, 13-17-ans]
+    fetes: []
+
+  - id: olympiades-anniversaire
+    titre: Olympiades d'anniversaire à la maison
+    univers: anniversaires
+    etat: en_preparation
+    prix: "12"
+    payhip_id: ""
+    accroche: Des équipes, un défilé, huit épreuves et une remise de médailles, avec ce que vous avez déjà à la maison.
+    age: 6 à 12 ans
+    joueurs: 6 à 16 enfants
+    duree: 1 h 30
+    lieu: Salon, jardin ou parc
+    preparation: 30 min la veille
+    contenu:
+      - Déroulé minute par minute
+      - 8 fiches d'épreuves
+      - Feuille de score par équipe
+      - Fanions d'équipe et diplômes à remplir
+    ages: [6-8-ans, 9-12-ans]
+    fetes: []
+
+  - id: kermesse-cle-en-main
+    titre: La kermesse clé en main
+    univers: kermesse
+    etat: en_preparation
+    prix: "25"
+    payhip_id: ""
+    accroche: Des stands prêts à monter, les affiches, les tickets et le planning des bénévoles.
+    age: 3 à 11 ans
+    joueurs: Jusqu'à 300 enfants
+    duree: Un après-midi
+    lieu: Cour d'école ou salle
+    preparation: Réunion de bénévoles + 2 h d'installation
+    contenu:
+      - Une fiche par stand (règle, matériel, bénévoles)
+      - Affiches, tickets et bons de lots
+      - Planning des bénévoles et liste de matériel
+      - Rétroplanning de 8 semaines pour le bureau
+    ages: [3-5-ans, 6-8-ans, 9-12-ans]
+    fetes: [fete-de-fin-d-annee]
+
+  - id: kit-du-directeur
+    titre: Le kit du directeur d'accueil de loisirs
+    univers: pro
+    etat: en_preparation
+    prix: "29"
+    payhip_id: ""
+    accroche: Planning d'équipe, présences et taux d'encadrement, budget de séjour, dans des tableurs prêts à remplir.
+    age: Accueils de loisirs
+    joueurs: Équipes de 2 à 20 animateurs
+    duree: Toute l'année
+    lieu: Tableur (Excel, LibreOffice, Google Sheets)
+    preparation: 15 min pour l'adapter
+    contenu:
+      - Planning d'équipe à la semaine
+      - Feuille de présences avec calcul du taux d'encadrement
+      - Budget de séjour et suivi des dépenses
+      - Mode d'emploi de chaque outil
+    ages: []
+    fetes: []

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+{% set u = page.univers %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>{{ u.nom }}</span></nav>
+  <header class="tete-univers tete-univers--{{ u.couleur }}">
+    <p class="tete-univers__public">Pour : {{ u.public | lower }}</p>
+    <h1 class="titre-page">{{ u.titre_page }}</h1>
+    <p class="chapo">{{ u.intro }}</p>
+    <ul class="coches">
+      {% for p in u.points %}<li>{{ p }}</li>{% endfor %}
+    </ul>
+  </header>
+
+  <section class="section section--serree" aria-labelledby="t-kits">
+    <h2 id="t-kits" class="section__titre">Les kits</h2>
+    {{ m.grille_kits(produits(u.id), "Les premiers kits de cette catégorie arrivent bientôt.") }}
+  </section>
+
+  {% if u.id == 'grands-jeux' %}
+  <section class="section section--serree" aria-labelledby="t-jeux">
+    <h2 id="t-jeux" class="section__titre">Les jeux, un par un</h2>
+    <p class="chapo">Le but, l'âge, le nombre de joueurs et le matériel de chaque jeu.</p>
+    <div class="grille-jeux">{% for j in jeux %}{{ m.carte_jeu(j) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  {% set lies = articles | selectattr('univers', 'contient', u.id) | list %}
+  {% if lies %}
+  <section class="section section--serree" aria-labelledby="t-articles">
+    <h2 id="t-articles" class="section__titre">Idées et conseils</h2>
+    <div class="grille-articles">{% for a in lies[:6] %}{{ m.carte_article(a) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}
