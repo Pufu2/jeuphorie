@@ -1,6 +1,8 @@
 # Pages « idées par âge » et « idées par fête ».
 # Les kits et les articles s'y rangent tout seuls grâce à leurs étiquettes
 # (ages: [...] et fetes: [...]).
+# Pour une fête, « jeux » propose des grands jeux du catalogue à habiller
+# aux couleurs de la fête. Ne jamais annoncer de kit à thème qui n'existe pas.
 
 ages:
   - slug: 3-5-ans
@@ -50,6 +52,15 @@ fetes:
       Pour Halloween, le bon dosage est un frisson sans vraie peur, surtout
       avant 7 ans. Misez sur les potions, les énigmes de sorcière et les
       chasses aux bonbons plutôt que sur le noir complet.
+    jeux:
+      - id: gendarmes-voleurs
+        astuce: "Les voleurs deviennent des sorcières, les trésors des bonbons à rapporter dans le chaudron."
+      - id: poules-renards-viperes
+        astuce: "Rebaptisez les trois équipes : fantômes, vampires et chauves-souris."
+      - id: relais-des-epis
+        astuce: "Remplacez les épis par des citrouilles en papier à ramasser au plus vite."
+      - id: six-planetes
+        astuce: "Les planètes deviennent des chaudrons de sorcière à renverser."
   - slug: noel
     nom: Noël
     titre_page: Jeux de Noël en famille
@@ -58,6 +69,15 @@ fetes:
       À Noël, le jeu réunit des joueurs de 4 à 80 ans. Formez des équipes
       mélangées, gardez des épreuves où chacun a son rôle, et prévoyez le
       jeu entre le plat et le dessert, quand les enfants ne tiennent plus en place.
+    jeux:
+      - id: relais-des-epis
+        astuce: "Les épis deviennent des cadeaux à ranger dans la hotte de son équipe."
+      - id: beret
+        astuce: "Un bonnet de Noël remplace le béret : les grands-parents peuvent appeler les numéros."
+      - id: ballon-anglais
+        astuce: "Faites passer une boule de Noël incassable (ou un ballon) de main en main."
+      - id: gendarmes-voleurs
+        astuce: "Les lutins rapportent les cadeaux volés par les voleurs à l'atelier du père Noël."
   - slug: carnaval
     nom: Carnaval
     titre_page: Jeux de carnaval pour enfants
@@ -66,6 +86,15 @@ fetes:
       Le carnaval, c'est le déguisement et le défilé. Les jeux qui marchent
       le mieux font bouger les costumes : concours de pose, défilé en
       musique, relais costumés.
+    jeux:
+      - id: poules-renards-viperes
+        astuce: "Chaque équipe garde son costume : les déguisements deviennent les équipes."
+      - id: ballon-anglais
+        astuce: "Un relais costumé qui fait rire : chapeaux et capes compris."
+      - id: relais-des-epis
+        astuce: "Les épis deviennent des confettis géants ou des masques à ramasser."
+      - id: passe-a-5
+        astuce: "Mélangez les costumes dans chaque équipe pour bien se reconnaître… ou pas !"
   - slug: paques
     nom: Pâques
     titre_page: Chasses aux œufs et jeux de Pâques
@@ -74,6 +103,15 @@ fetes:
       Une chasse aux œufs réussie évite que les plus grands ramassent tout.
       Donnez une couleur d'œuf par enfant ou par tranche d'âge, et ajoutez
       des énigmes pour les plus de 8 ans.
+    jeux:
+      - id: relais-des-epis
+        astuce: "Les épis deviennent des œufs à rapporter dans le panier de son équipe."
+      - id: poules-renards-viperes
+        astuce: "Le jeu des poules tombe à pic : ajoutez des œufs à protéger dans chaque camp."
+      - id: gendarmes-voleurs
+        astuce: "Les trésors deviennent des œufs : les voleurs les rapportent sans les casser."
+      - id: ballon-anglais
+        astuce: "Faites passer un œuf en plastique au lieu du ballon."
   - slug: fete-de-fin-d-annee
     nom: Fête de fin d'année
     titre_page: Kermesse et fête de fin d'année
@@ -82,3 +120,12 @@ fetes:
       La fête de fin d'année se joue sur l'organisation : des stands simples
       à tenir, des bénévoles qui savent quoi faire, et des tickets pour
       fluidifier la file d'attente.
+    jeux:
+      - id: relais-des-epis
+        astuce: "Un stand de relais rapide, idéal pour faire tourner les groupes."
+      - id: ballon-anglais
+        astuce: "Parents contre enfants : succès garanti en fin de kermesse."
+      - id: six-planetes
+        astuce: "Un grand jeu de cour pour occuper 20 à 30 enfants pendant que les stands se montent."
+      - id: gendarmes-voleurs
+        astuce: "Un classique que les bénévoles comprennent en une minute."

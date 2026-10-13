@@ -43,6 +43,7 @@ kit: olympiades-anniversaire
 - Une seule fin commerciale, discrète : le dernier paragraphe peut présenter le kit associé.
 - Jamais de nom, logo, photo ou document de la structure où travaille l'auteur. Jamais de photo d'enfant.
 - Pas de copie d'autres sites. Les idées classiques (chasse au trésor, course en sac) sont réécrites avec nos propres règles.
+- Fêtes (Halloween, Noël, Pâques…) : l'article donne des conseils et des jeux du catalogue à habiller. Il n'annonce jamais de kit ou de jeu à thème qui n'existe pas.
 - Sécurité : préciser la surveillance d'un adulte pour l'eau, les yeux bandés, les objets à lancer.
 
 ## Publier

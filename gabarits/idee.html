@@ -11,10 +11,27 @@
   </div>
 
   {% set kits_lies = kits | selectattr(page.groupe, 'contient', i.slug) | list %}
+  {% if kits_lies %}
   <section class="section section--serree">
     <h2 class="section__titre">Les kits</h2>
-    {{ m.grille_kits(kits_lies, "Nous préparons des kits pour cette occasion. Recevez les 3 jeux offerts pour être prévenu de leur sortie.") }}
+    {{ m.grille_kits(kits_lies, "") }}
   </section>
+  {% endif %}
+
+  {% if i.jeux %}
+  <section class="section section--serree">
+    <h2 class="section__titre">Des grands jeux à habiller pour l'occasion</h2>
+    <p class="chapo">Ces jeux du catalogue se jouent toute l'année. Avec un peu de décor et de nouveaux noms, ils prennent les couleurs de la fête.</p>
+    <div class="grille-jeux">{% for c in i.jeux %}{% for j in jeux if j.id == c.id %}{{ m.carte_jeu(j, c.astuce) }}{% endfor %}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  {% if not kits_lies and (i.jeux or i.pack) %}
+  <div class="encart encart--info">
+    <p>Pour commencer tout de suite, recevez 3 grands jeux complets à imprimer : Gendarmes et voleurs, Poules renards vipères et L'épervier gradé.</p>
+    <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Recevoir les 3 jeux</a>
+  </div>
+  {% endif %}
 
   {% if i.pack %}
   {% set jeux_lies = jeux | selectattr('packs', 'contient', i.pack) | list %}

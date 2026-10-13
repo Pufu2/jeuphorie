@@ -46,10 +46,11 @@
 {% endmacro %}
 
 {# Carte d'un jeu du catalogue #}
-{% macro carte_jeu(j) %}
+{% macro carte_jeu(j, astuce=none) %}
 <a class="carte-jeu" href="{{ lien('/jeux/' ~ j.id ~ '/') }}">
   <span class="carte-jeu__nom">{{ j.nom }}</span>
   <span class="carte-jeu__meta">Dès {{ j.age_min }} ans, {{ j.joueurs[0] }} à {{ j.joueurs[1] }} joueurs, {{ j.duree }} min</span>
+  {% if astuce %}<span class="carte-jeu__astuce">{{ astuce }}</span>{% endif %}
   {% if j.offert %}<span class="carte-jeu__offert">Offert</span>{% endif %}
 </a>
 {% endmacro %}
