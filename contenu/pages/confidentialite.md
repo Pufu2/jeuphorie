@@ -13,17 +13,17 @@ Le responsable du traitement est {{ site.editeur.nom }}, éditeur du site Jeupho
 
 | Situation | Données | Raison | Durée de conservation |
 |---|---|---|---|
-| Vous demandez le jeu gratuit | Adresse mail | Vous envoyer le jeu (votre demande) | Le temps de l'envoi, sauf inscription aux nouveautés |
+| Vous demandez les jeux offerts | Adresse mail | Vous envoyer les jeux (votre demande) | Le temps de l'envoi, sauf inscription aux nouveautés |
 | Vous acceptez de recevoir nos nouveautés | Adresse mail | Vous envoyer nos nouveaux jeux, au plus une fois par mois (votre consentement) | Jusqu'à votre désinscription, ou 3 ans sans ouverture de nos messages |
-| Vous achetez un kit | Nom, adresse mail, pays, détail de la commande | Exécuter la vente, vous permettre de télécharger à nouveau, répondre aux réclamations (le contrat) | 5 ans après l'achat |
-| Vous achetez un kit | Factures et pièces comptables | Obligations comptables et fiscales (la loi) | 10 ans |
+| Vous achetez un produit ou vous abonnez | Nom, adresse mail, pays, détail de la commande ou de l'abonnement | Exécuter la vente, vous permettre de télécharger à nouveau, répondre aux réclamations (le contrat) | 5 ans après l'achat |
+| Vous achetez un produit ou vous abonnez | Factures et pièces comptables | Obligations comptables et fiscales (la loi) | 10 ans |
 | Vous nous écrivez | Adresse mail et contenu du message | Vous répondre | 3 ans après le dernier échange |
 
-Vos données bancaires sont saisies sur les pages de Payhip et de ses prestataires de paiement. Jeuphorie n'y a jamais accès.
+Vos données bancaires sont saisies sur les pages de Payhip et de ses prestataires de paiement, Stripe et PayPal. Jeuphorie n'y a jamais accès.
 
 ## Qui reçoit vos données
 
-- **Payhip** ({{ site.plateforme_vente.adresse }}), qui gère les commandes, les téléchargements, le jeu gratuit et l'envoi de nos nouveautés. Le Royaume-Uni est reconnu par la Commission européenne comme offrant un niveau de protection adéquat. [[à vérifier à l'ouverture : décision d'adéquation en vigueur]]
+- **Payhip** ({{ site.plateforme_vente.adresse }}), qui gère les commandes, les téléchargements, l'abonnement, les jeux offerts et l'envoi de nos nouveautés. Le Royaume-Uni est reconnu par la Commission européenne comme offrant un niveau de protection adéquat. [[à vérifier à l'ouverture : décision d'adéquation en vigueur]]
 - **GitHub** ({{ site.hebergeur.adresse }}), qui héberge le site. Comme tout hébergeur, GitHub peut enregistrer l'adresse IP des visiteurs pour la sécurité du service. [[à vérifier : garanties de transfert vers les États-Unis annoncées par GitHub]]
 
 Vos données ne sont jamais vendues ni transmises à des fins publicitaires.

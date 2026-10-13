@@ -1,8 +1,8 @@
 ---
 titre: Conditions générales de vente
 url: /conditions-de-vente/
-description: "Conditions générales de vente des kits Jeuphorie, produits numériques à télécharger : prix, commande, téléchargement, droit de rétractation, garanties, licence d'utilisation."
-chapo: "Version du 13 octobre 2026. Ces conditions s'appliquent à tous les achats de kits Jeuphorie."
+description: "Conditions générales de vente de Jeuphorie : produits numériques à télécharger et abonnement Jeuphorie Pro. Prix, commande, rétractation, résiliation, garanties, licence d'utilisation."
+chapo: "Version du 13 octobre 2026. Ces conditions s'appliquent à tous les achats de produits Jeuphorie et à l'abonnement Jeuphorie Pro."
 ---
 
 {% if not site.boutique.ventes_actives %}
@@ -17,7 +17,7 @@ Les commandes, les paiements et les téléchargements passent par la plateforme 
 
 ## 2. Ce qui est vendu
 
-Jeuphorie vend des **contenus numériques** : des kits de jeux et d'animations au format PDF et des outils au format tableur. Ils sont fournis par téléchargement, sans support matériel. Rien n'est envoyé par la poste.
+Jeuphorie vend des **contenus numériques** : des fichiers de jeux et des kits d'animation au format PDF, des outils au format tableur, et un abonnement, Jeuphorie Pro, qui donne accès à un espace en ligne de fiches à télécharger. Ils sont fournis par téléchargement, sans support matériel. Rien n'est envoyé par la poste.
 
 Chaque fiche produit indique le contenu du kit, l'âge conseillé, le nombre de joueurs, la durée et le format des fichiers. Pour les utiliser, il faut un appareil capable d'ouvrir un PDF et, pour les imprimer, une imprimante ou un service de reprographie. Les outils au format tableur s'ouvrent avec Microsoft Excel, LibreOffice Calc ou Google Sheets.
 
@@ -35,7 +35,7 @@ La commande est conclue au moment où vous validez le paiement. Une confirmation
 
 ## 5. Paiement
 
-Le paiement se fait par carte bancaire ou PayPal, sur les pages sécurisées de Payhip et de ses prestataires de paiement. Jeuphorie n'a jamais accès à vos données bancaires.
+Le paiement se fait par carte bancaire ou PayPal, sur les pages sécurisées de Payhip et de ses prestataires de paiement (Stripe et PayPal). L'abonnement se paie par carte bancaire, via Stripe. Jeuphorie n'a jamais accès à vos données bancaires.
 
 ## 6. Téléchargement
 
@@ -59,24 +59,42 @@ Ces accords sont recueillis par des cases à cocher, non cochées par défaut, a
 
 Les kits bénéficient de la garantie légale de conformité des contenus numériques (articles L. 224-25-12 et suivants du Code de la consommation). Si un fichier est illisible, incomplet ou ne correspond pas à sa description, signalez-le à {{ site.email }} : nous le corrigeons ou le remplaçons. Si ce n'est pas possible, vous êtes remboursé.
 
-## 9. Ce que vous pouvez faire avec un kit
+## 9. Ce que vous pouvez faire avec un fichier
 
-Le kit acheté vous donne le droit de l'**imprimer et de l'utiliser autant de fois que vous le voulez** :
+Le fichier acheté, ou téléchargé dans le cadre de l'abonnement, vous donne le droit de l'**imprimer et de l'utiliser autant de fois que vous le voulez** :
 
 - **pour un particulier** : dans le cadre familial et amical ;
 - **pour une association, une école ou une structure** : pour toutes les animations de cette structure, par toute son équipe.
 
-Il est interdit de revendre un kit, de le partager en ligne (site, réseau social, groupe de messagerie), de le transmettre à une autre structure ou de le modifier pour le diffuser. Les jeux, textes et illustrations restent la propriété de Jeuphorie ou de leurs auteurs.
+Il est interdit de revendre un fichier, de le partager en ligne (site, réseau social, groupe de messagerie), de le transmettre à une autre structure ou de le modifier pour le diffuser. Les jeux, textes et illustrations restent la propriété de Jeuphorie ou de leurs auteurs.
 
-## 10. Responsabilité
+## 10. Abonnement Jeuphorie Pro
+
+**Les formules.** Jeuphorie Pro existe en trois formules, décrites sur la page [Jeuphorie Pro](/pro/) :
+
+- **Pro Animateur mensuel**, 4,90 € par mois : accès à l'espace Pro et aux nouvelles fiches publiées pendant l'abonnement, et code de réduction de 30 % sur la boutique ;
+- **Pro Animateur annuel**, 39 € par an : accès à toute la bibliothèque de l'espace Pro dès la souscription, aux nouvelles fiches, et code de réduction de 30 % ;
+- **Pro Structure**, 119 € par an : les avantages de la formule annuelle pour toute l'équipe d'une même structure et d'un même lieu, dans la limite de 15 personnes, et code de réduction de 40 %.
+
+**Durée et renouvellement.** L'abonnement mensuel est conclu pour un mois, l'abonnement annuel pour un an. Chacun se renouvelle automatiquement pour la même durée, au prix en vigueur à la souscription, jusqu'à sa résiliation. Pour les abonnements annuels, Jeuphorie vous prévient par mail, entre un et trois mois avant l'échéance, de la date de renouvellement et de la façon d'y mettre fin (article L. 215-1 du Code de la consommation).
+
+**Résiliation.** Vous pouvez résilier à tout moment, gratuitement, depuis votre espace client Payhip, en quelques clics (article L. 215-1-1 du Code de la consommation). La résiliation faite depuis l'espace client prend effet immédiatement : l'accès à l'espace Pro et au code de réduction s'arrête, et la période déjà payée n'est pas remboursée. Pour garder l'accès jusqu'à la fin de la période payée, demandez plutôt la résiliation à l'échéance par mail à {{ site.email }} : nous la confirmons par écrit et l'appliquons la veille du renouvellement.
+
+**Après la fin de l'abonnement.** Les fiches que vous avez téléchargées ou imprimées pendant l'abonnement restent utilisables selon l'article 9. Les codes de réduction ne sont plus valables.
+
+**Droit de rétractation.** L'espace Pro est un contenu numérique fourni immédiatement : l'article 7 s'applique de la même façon à la souscription.
+
+**Structures.** Une structure peut demander un devis et payer par virement. L'abonnement Pro Structure est alors conclu pour un an à compter du paiement, sans renouvellement automatique.
+
+## 11. Responsabilité
 
 Les jeux sont conçus pour être animés par un adulte, qui reste responsable de la sécurité des enfants. Chaque kit indique l'âge conseillé et le matériel nécessaire. Adaptez les épreuves à l'espace disponible et aux enfants présents.
 
-## 11. Données personnelles
+## 12. Données personnelles
 
 Les données nécessaires à la commande sont traitées comme décrit dans la page [confidentialité](/confidentialite/).
 
-## 12. Réclamations et médiation
+## 13. Réclamations et médiation
 
 Pour toute réclamation, écrivez d'abord à {{ site.email }}. Nous répondons sous 48 heures ouvrées.
 
@@ -86,7 +104,7 @@ Si le désaccord persiste, vous pouvez recourir gratuitement au médiateur de la
 - {{ site.mediateur.adresse }}
 - {{ site.mediateur.site }}
 
-## 13. Droit applicable
+## 14. Droit applicable
 
 Ces conditions sont soumises au droit français. En cas de litige, et à défaut d'accord amiable ou de médiation, les tribunaux français sont compétents. Si vous êtes consommateur dans un autre pays de l'Union européenne, vous gardez la protection des règles impératives de votre pays.
 

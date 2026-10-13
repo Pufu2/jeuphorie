@@ -961,3 +961,6 @@ a.tampon { text-decoration: none; }
 .accroche-pro__prix { display: grid; gap: 0.4rem; justify-items: start; background: var(--fiche); border-radius: var(--rayon); padding: 1.2rem 1.3rem; }
 .accroche-pro__prix strong { font-family: var(--f-titre); font-size: 1.35rem; font-variant-numeric: tabular-nums; }
 .accroche-pro__prix .bouton { margin-top: 0.6rem; }
+
+/* les morceaux de scotch ne doivent pas élargir la page sur téléphone */
+.ouverture { overflow-x: clip; padding-top: 1rem; }

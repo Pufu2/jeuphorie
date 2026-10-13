@@ -9,7 +9,9 @@ Le site est fait de simples fichiers HTML fabriqués par `build.py`. Il peut êt
 | Pour… | Modifier |
 |---|---|
 | Ouvrir les ventes, l'adresse de contact, les informations légales | `config.yml` |
-| Ajouter ou mettre en vente un kit | `donnees/kits.yml` |
+| Ajouter ou mettre en vente un produit | `donnees/kits.yml` |
+| Les formules d'abonnement | `donnees/abonnement.yml` |
+| La partie publique des jeux | `donnees/jeux.yml` (exportée depuis le dossier privé des produits) |
 | Écrire un article | `contenu/blog/` (voir `docs/ECRIRE-UN-ARTICLE.md`) |
 | Les textes des pages À propos et légales | `contenu/pages/` |
 | Les idées par âge et par fête | `donnees/idees.yml` |
@@ -45,4 +47,4 @@ Dans `config.yml` :
 
 ## Ce qui ne va jamais dans ce dépôt
 
-Les fichiers PDF des kits vendus : ils sont uniquement sur Payhip. Le dépôt est public.
+Le dépôt est public. Les PDF vendus et les règles complètes des jeux payants restent dans le dossier privé `jeuphorie-produits` (avec `jeux.yml` et `fabriquer.py`) et sur Payhip. Seule la partie publique des jeux (but, âge, matériel, mise en place) est copiée ici par `exporter_site.py`.
