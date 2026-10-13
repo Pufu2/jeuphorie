@@ -9,14 +9,14 @@ description: >-
 
 # Adresse du site. Tant que le nom de domaine n'est pas acheté,
 # c'est l'adresse GitHub Pages (à mettre à jour après la création du compte).
-url: https://pufu2.github.io/jeuphorie
+url: https://jeuphorie.fr
 # À remplir le jour où le nom de domaine est relié au site (ex. jeuphorie.fr).
 # Laisser vide tant que le site est à l'adresse github.io.
-nom_de_domaine: ""
+nom_de_domaine: jeuphorie.fr
 
 # Si le site est publié dans un sous-dossier (ex. https://compte.github.io/jeuphorie/),
 # indiquer ici ce sous-dossier : "/jeuphorie". Laisser vide avec un nom de domaine.
-chemin_de_base: "/jeuphorie"
+chemin_de_base: ""
 
 langue: fr
 
