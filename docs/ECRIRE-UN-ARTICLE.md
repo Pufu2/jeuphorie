@@ -5,30 +5,30 @@ Ce guide sert à la personne ou à la tâche automatique qui écrit l'article de
 ## Où mettre l'article
 
 Un fichier par article dans `contenu/blog/`, nommé `AAAA-MM-JJ-mots-cles.md`.
-Exemple : `contenu/blog/2026-10-20-jeux-halloween-6-8-ans.md`.
+Exemple : `contenu/blog/2026-10-20-jeux-automne-centre-de-loisirs.md`.
 
-La partie après la date devient l'adresse : `/blog/jeux-halloween-6-8-ans/`.
+La partie après la date devient l'adresse : `/blog/jeux-automne-centre-de-loisirs/`.
 Elle reprend la recherche visée, en minuscules, sans accents, avec des tirets.
 
 ## L'entête obligatoire
 
 ```yaml
 ---
-titre: "Jeux d'Halloween pour les 6-8 ans : 7 idées qui font frissonner sans faire peur"
+titre: "Jeux d'automne en centre de loisirs : 7 idées pour les vacances de la Toussaint"
 description: "150 caractères au plus, avec la recherche visée, qui donnent envie de cliquer depuis Google."
 chapo: "Deux ou trois phrases d'introduction, affichées en grand sous le titre."
 date: 2026-10-20
 ages: [6-8-ans]
-fetes: [halloween]
+fetes: [toussaint]
 univers: [anniversaires]
 kit: olympiades-anniversaire
 ---
 ```
 
 - `date` : un article dont la date est dans le futur reste caché ; il apparaît tout seul le matin de sa date (le site se refabrique chaque jour).
-- `ages` : parmi `3-5-ans`, `6-8-ans`, `9-12-ans` (voir `donnees/idees.yml`).
-- `fetes` : parmi `halloween`, `noel`, `carnaval`, `paques`, `fete-de-fin-d-annee`.
-- `univers` : parmi `anniversaires`, `grands-jeux`, `kermesse`, `pro`.
+- `ages` : parmi `3-5-ans`, `6-8-ans`, `9-12-ans`, `13-17-ans` (sert au classement, sans page dédiée).
+- `fetes` : parmi `toussaint`, `noel`, `carnaval`, `paques` (voir `donnees/fetes.yml`). L'article apparaît sur la page de la fête.
+- `univers` : parmi `anniversaires`, `grands-jeux`, `fetes`, `kermesse`, `pro`. L'article apparaît sur la page de l'univers.
 - `kit` : l'identifiant d'un kit de `donnees/kits.yml`, ou rien. La fiche du kit s'affiche à la fin de l'article.
 - `brouillon: true` : l'article n'est pas publié.
 - Mettre entre guillemets toute valeur qui contient « : ».
@@ -39,11 +39,11 @@ kit: olympiades-anniversaire
 - 800 à 1 300 mots. Un titre qui reprend la recherche des parents.
 - Des intertitres `##` qui répondent aux questions qu'ils se posent : durée, nombre d'enfants, matériel, âge, erreurs à éviter.
 - Au moins un élément concret de directeur d'animation : déroulé minuté, règle en une phrase, matériel de la maison, adaptation par âge.
-- Lien vers une page du site quand c'est utile, par exemple `[nos idées pour les 6-8 ans](/idees/6-8-ans/)`.
+- Lien vers une page du site quand c'est utile, par exemple `[nos jeux de Noël](/fetes/noel/)` ou `[le kit des Olympiades](/boutique/olympiades-anniversaire/)`.
 - Une seule fin commerciale, discrète : le dernier paragraphe peut présenter le kit associé.
 - Jamais de nom, logo, photo ou document de la structure où travaille l'auteur. Jamais de photo d'enfant.
 - Pas de copie d'autres sites. Les idées classiques (chasse au trésor, course en sac) sont réécrites avec nos propres règles.
-- Fêtes (Halloween, Noël, Pâques…) : l'article donne des conseils et des jeux du catalogue à habiller. Il n'annonce jamais de kit ou de jeu à thème qui n'existe pas.
+- Fêtes (Toussaint, Noël, carnaval, Pâques) : l'article renvoie vers la page de la fête et son kit. Il n'annonce jamais un kit qui n'existe pas encore (voir `donnees/kits.yml`).
 - Sécurité : préciser la surveillance d'un adulte pour l'eau, les yeux bandés, les objets à lancer.
 
 ## Publier

@@ -3,13 +3,162 @@
 # payhip_id : le code du produit sur Payhip (la fin de son adresse : payhip.com/b/AbC12 -> AbC12).
 # Le bouton d'achat n'apparaît que si config.yml > boutique > ventes_actives vaut true,
 # que le produit est « en_vente » et qu'il a un payhip_id.
+# Chaque produit a sa page : /boutique/<id>/. Ses images sont dans statique/img/kits/<id>*.jpg
+# (exportées depuis le dossier privé des produits par exporter_images.py).
 # pack : relie le produit aux jeux de donnees/jeux.yml (6-9, 10-13, 14-17 ou tout).
+# fete : place le kit sur la page de sa fête (donnees/fetes.yml).
+# Jamais de règles détaillées ici : seulement ce qui donne envie et permet de choisir.
 
 kits:
+  # ---------------------------------------------------------------- Anniversaires
+  - id: olympiades-anniversaire
+    titre: Les Olympiades d'anniversaire
+    univers: anniversaires
+    etat: pret
+    prix: "12"
+    payhip_id: ""
+    accroche: Des équipes, un défilé, huit épreuves et une remise de médailles, avec le matériel de la maison.
+    age: 6 à 12 ans
+    joueurs: 6 à 16 enfants
+    duree: 1 h 30
+    lieu: Salon ou jardin
+    preparation: Une soirée la veille
+    pages: 35
+    contenu:
+      - Le déroulé minute par minute, de l'accueil au podium
+      - 8 fiches d'épreuves détaillées et 2 épreuves de rechange
+      - Le barème, le point de fair-play et les distinctions
+      - Invitations, fanions, panneaux et feuille de score
+      - Le serment des athlètes, les médailles et les diplômes
+    description: |
+      Les Olympiades sont le grand jeu qui marche à tous les coups en accueil de loisirs. Ce kit les adapte à la maison : quatre équipes, un défilé d'ouverture, huit épreuves qui alternent adresse, rapidité, coopération et mémoire, puis une vraie cérémonie de remise des médailles.
+
+      Chaque épreuve tient sur une page : la règle à annoncer en une phrase, le matériel à cocher, l'installation, le déroulement, le rôle de l'adulte, et une version plus facile et plus difficile. Le matériel est celui de la maison : chaussettes, cuillères, gobelets, bouteilles d'eau.
+
+      Le barème et le point de fair-play sont pensés pour que l'ambiance reste bonne jusqu'au bout, et que chaque équipe reparte avec une distinction.
+    deroule:
+      - "Accueil : chaque équipe choisit un nom de pays et décore son fanion."
+      - "Cérémonie d'ouverture : défilé en musique et serment des athlètes."
+      - "Deux manches de quatre épreuves, en ateliers qui tournent."
+      - "Goûter, pendant que les adultes comptent les points."
+      - "Podium, médailles et diplômes pour tous."
+    pour_qui:
+      - Un anniversaire de 6 à 16 enfants de 6 à 12 ans
+      - Une fête de quartier ou un mercredi en accueil de loisirs
+      - Deux adultes suffisent, trois avec les plus jeunes
+
+  - id: chasse-tresor-pirates
+    titre: La chasse au trésor des pirates
+    univers: anniversaires
+    etat: pret
+    prix: "9,90"
+    payhip_id: ""
+    accroche: Six épreuves pour reconstituer la carte du capitaine Barbe-Grise et retrouver son coffre.
+    age: 5 à 9 ans
+    joueurs: 5 à 14 enfants
+    duree: 1 h 30
+    lieu: Maison, jardin ou parc
+    preparation: 1 heure la veille
+    pages: 27
+    contenu:
+      - L'histoire à raconter et le déroulé minute par minute
+      - 6 épreuves, chacune récompensée par un morceau de carte
+      - La carte au trésor en 6 morceaux, à compléter avec votre cachette
+      - Le message codé, les noms de pirate et le serment de l'équipage
+      - Invitations, panneaux, étiquettes du butin et certificats de pirate
+    description: |
+      Une vraie aventure, pas une suite de jeux : chaque épreuve rapporte un morceau de la carte du capitaine Barbe-Grise. Quand les six morceaux sont réunis, la carte révèle la cachette du coffre, que vous avez choisie et écrite à l'avance.
+
+      Les enfants jouent tous ensemble, comme un seul équipage : pas de perdant, pas d'éliminé, et un butin partagé à parts égales, comme le veut le serment des pirates. Les épreuves fonctionnent sans savoir lire, avec une version plus difficile pour les lecteurs.
+
+      Le kit contient la carte au trésor illustrée, prête à découper, le message codé de la bouteille à la mer avec sa grille, et tout ce qu'il faut pour transformer le salon ou le jardin en île au trésor.
+    deroule:
+      - "Embarquement : chaque enfant trouve son nom de pirate et décore son bandeau."
+      - "L'histoire de Barbe-Grise et le serment de l'équipage."
+      - "Six épreuves, du pont des requins à la grotte du Crâne."
+      - "La carte est complète : chasse finale jusqu'au coffre."
+      - "Partage du butin et certificats de pirate."
+    pour_qui:
+      - Un anniversaire de 5 à 14 enfants de 5 à 9 ans
+      - Lecteurs et non-lecteurs ensemble
+      - Deux adultes, un qui anime et un qui prépare la suite
+
+  - id: enquete-gateau-disparu
+    titre: L'enquête du gâteau disparu
+    univers: anniversaires
+    etat: pret
+    prix: "12"
+    payhip_id: ""
+    accroche: Le gâteau d'anniversaire a disparu. Six suspects, six épreuves de détective, une seule vérité.
+    age: 8 à 12 ans
+    joueurs: 6 à 12 enfants
+    duree: 1 h 45
+    lieu: Maison ou jardin
+    preparation: 1 heure la veille
+    pages: 31
+    contenu:
+      - L'histoire, le déroulé et la solution expliquée pas à pas
+      - 6 épreuves de détective, dont l'encre invisible
+      - 6 fiches de suspects, 6 cartes de cachettes, 12 cartes indices
+      - Le carnet d'enquête et les 6 lettres des suspects
+      - Convocations, cartes d'enquêteur, panneaux et diplômes
+    description: |
+      Juste avant la fête, le gâteau d'anniversaire a disparu. Deux brigades d'enquêteurs mènent l'affaire : chaque épreuve réussie rapporte une enveloppe de deux indices, qui éliminent des suspects et des contenants. À elles de recouper, de raisonner, et de convaincre le commissaire.
+
+      L'enquête est construite avec soin : une seule solution possible, des indices qui se recoupent, une fausse piste pour pimenter le jeu, et aucune question injuste. Les épreuves font travailler l'observation, la logique et l'expression : empreintes digitales, scène du crime, message codé, détecteur de mensonges, filature et encre invisible.
+
+      À la fin, chaque brigade accuse un suspect et ouvre sa lettre. Le coupable avoue… et révèle où il a caché le vrai gâteau.
+    deroule:
+      - "Convocation au commissariat et présentation des six suspects."
+      - "Six épreuves de détective, deux par deux."
+      - "Un point d'enquête après chaque paire d'épreuves."
+      - "L'accusation : chaque brigade présente son raisonnement."
+      - "Le coupable avoue, et tout le monde court chercher le gâteau."
+    pour_qui:
+      - Un anniversaire de 6 à 12 enfants de 8 à 12 ans
+      - Des enfants qui savent lire (les plus jeunes en binôme)
+      - Deux adultes, dont un commissaire qui garde les indices
+
+  - id: safari-petits-explorateurs
+    titre: Le safari des petits explorateurs
+    univers: anniversaires
+    etat: pret
+    prix: "9,90"
+    payhip_id: ""
+    accroche: Un anniversaire d'une heure pour les 3-5 ans, avec six ateliers courts, sans perdant ni temps mort.
+    age: 3 à 5 ans
+    joueurs: 4 à 10 enfants
+    duree: 1 h
+    lieu: Salon ou jardin
+    preparation: 45 minutes la veille
+    pages: 21
+    contenu:
+      - Le déroulé d'une heure, pensé pour l'attention des tout-petits
+      - 6 ateliers de 5 à 8 minutes, du lion à la girafe
+      - La comptine des explorateurs, écrite pour le kit
+      - Les cartes des animaux et des empreintes, sans texte à lire
+      - Passeports d'explorateur, médailles, diplômes et invitations
+    description: |
+      Avant 6 ans, un enfant joue avec les autres plus qu'il ne joue contre eux. Ce kit en tient compte : des ateliers courts, un adulte proche, une comptine qui revient à chaque déplacement, et une réussite à chaque fois.
+
+      Le guide du safari emmène le groupe à la rencontre de six animaux. Chaque animal propose un petit jeu (marcher comme lui, traverser la rivière aux crocodiles, nourrir le singe, retrouver les empreintes), et chaque enfant reçoit un tampon dans son passeport d'explorateur.
+
+      Les pièces à imprimer sont faites pour des enfants qui ne lisent pas : cartes illustrées des animaux et des empreintes, passeport en images. Le guide donne aussi des conseils pour les pleurs, la timidité et la sieste.
+    deroule:
+      - "Accueil : fabrication des jumelles et décoration du passeport."
+      - "Le grand départ, en chantant la comptine des explorateurs."
+      - "Cinq rencontres avec les animaux de la savane."
+      - "La grande recherche des animaux cachés."
+      - "Retour au campement : médailles, diplômes, pique-nique."
+    pour_qui:
+      - Un anniversaire de 4 à 10 enfants de 3 à 5 ans
+      - Un adulte pour 4 enfants
+      - Les grands frères et sœurs peuvent devenir guides
+
+  # ---------------------------------------------------------------- Grands jeux
   - id: pack-6-9
     titre: Grands jeux 6-9 ans
     univers: grands-jeux
-    aussi: [anniversaires]
     etat: pret
     prix: "9,90"
     payhip_id: ""
@@ -25,8 +174,14 @@ kits:
       - Le matériel, la mise en place et les règles
       - Un schéma du terrain pour chaque jeu
       - Un sommaire par âge, nombre de joueurs et durée
-    ages: [6-8-ans]
-    fetes: []
+    description: |
+      Les grands jeux qui marchent tous les mercredis en accueil de loisirs, réécrits pour être utilisés par n'importe quel adulte : animateur débutant, enseignant, parent ou éducateur sportif.
+
+      Chaque fiche tient sur une ou deux pages : le but du jeu, le matériel, la mise en place, les règles numérotées, les variantes et un schéma du terrain. Il suffit d'imprimer la fiche et de l'emporter dans la cour.
+    pour_qui:
+      - Animateurs, enseignants, éducateurs et parents
+      - Des groupes de 6 à 39 enfants
+      - Le matériel d'une cour d'école
 
   - id: pack-10-13
     titre: Grands jeux 10-13 ans
@@ -46,8 +201,14 @@ kits:
       - Le matériel, la mise en place et les règles
       - Un schéma du terrain pour presque chaque jeu
       - Un sommaire par âge, nombre de joueurs et durée
-    ages: [9-12-ans]
-    fetes: []
+    description: |
+      À partir de 10 ans, les enfants veulent des jeux qui demandent de la stratégie, de la vitesse et un vrai travail d'équipe. Ce pack rassemble 19 grands jeux pensés pour eux, des classiques revisités aux jeux de drapeau plus rusés.
+
+      Chaque fiche donne le but du jeu, le matériel, la mise en place, les règles, les variantes et le schéma du terrain, pour animer sans hésiter, même avec un grand groupe.
+    pour_qui:
+      - Animateurs, enseignants et éducateurs sportifs
+      - Des groupes de 3 à 60 jeunes
+      - Le matériel d'une cour ou d'un gymnase
 
   - id: pack-14-17
     titre: Grands jeux 14-17 ans
@@ -67,51 +228,192 @@ kits:
       - Le matériel, la mise en place et les règles
       - Un schéma du terrain pour chaque jeu
       - Un sommaire par âge, nombre de joueurs et durée
-    ages: [13-17-ans]
-    fetes: []
+    description: |
+      Les ados jouent volontiers, à condition que le jeu soit vraiment sportif ou vraiment rusé. Ce pack propose 18 jeux et sports adaptés, avec des règles simplifiées qui laissent la place à tout le monde, y compris à ceux qui ne font pas de sport.
+
+      Chaque fiche tient sur une ou deux pages, avec le schéma du terrain : de quoi animer un séjour, une soirée de colonie ou une séance de sport collectif sans préparation.
+    pour_qui:
+      - Animateurs de séjours, d'espaces jeunes et de colonies
+      - Éducateurs sportifs et enseignants d'EPS
+      - Des groupes de 3 à 60 ados
 
   - id: grand-fichier
     titre: Le grand fichier des jeux collectifs
     univers: grands-jeux
-    aussi: [pro]
     etat: pret
     prix: "19,90"
     payhip_id: ""
     pack: tout
-    accroche: Les 34 jeux réunis en un seul fichier de 51 pages, de 6 à 17 ans.
+    accroche: Les 34 grands jeux de Jeuphorie en un seul fichier, de 6 à 17 ans, classés par âge.
     age: 6 à 17 ans
     joueurs: 3 à 60 selon le jeu
     duree: 10 à 30 min par jeu
-    lieu: Cour, parc, terrain, gymnase
+    lieu: Cour, parc, gymnase, terrain
     preparation: 5 à 10 min par jeu
     contenu:
-      - 34 fiches de jeux avec schéma du terrain
-      - Classées par âge, avec un sommaire complet
-      - Jeux de balle, de poursuite, de stratégie et sports adaptés
-      - Le meilleur prix si vous animez plusieurs tranches d'âge
-    ages: [6-8-ans, 9-12-ans, 13-17-ans]
-    fetes: []
+      - Les 34 fiches de grands jeux, classées par âge
+      - Règles, variantes et schéma du terrain pour chaque jeu
+      - Un sommaire par âge, nombre de joueurs et durée
+      - Tous les jeux des trois packs, pour le prix de deux
+    description: |
+      Le fichier de référence pour toute une année d'animation : les 34 grands jeux de Jeuphorie, de 6 à 17 ans, réunis et classés par âge. C'est le fichier que l'on garde sur son téléphone ou dans le classeur de la salle des animateurs.
 
-  - id: olympiades-anniversaire
-    titre: Olympiades d'anniversaire à la maison
-    univers: anniversaires
-    etat: en_preparation
+      Il contient tous les jeux des trois packs (6-9 ans, 10-13 ans et 14-17 ans), avec le sommaire qui permet de trouver le bon jeu en fonction de l'âge, du nombre de joueurs et de la durée.
+    pour_qui:
+      - Accueils de loisirs, écoles, clubs et colonies
+      - Animateurs qui encadrent plusieurs tranches d'âge
+      - Inclus dans l'abonnement Jeuphorie Pro annuel
+
+  # ---------------------------------------------------------------- Fêtes de l'année
+  - id: kit-toussaint
+    titre: Le grand jeu de la forêt d'automne
+    univers: fetes
+    fete: toussaint
+    etat: pret
     prix: "12"
     payhip_id: ""
-    accroche: Des équipes, un défilé, huit épreuves et une remise de médailles, avec ce que vous avez déjà à la maison.
-    age: 6 à 12 ans
-    joueurs: 6 à 16 enfants
-    duree: 1 h 30
-    lieu: Salon, jardin ou parc
-    preparation: 30 min la veille
+    accroche: Un après-midi pour les vacances de la Toussaint. Six animaux de la forêt, six ateliers, et des terriers à remplir avant l'hiver.
+    age: 4 à 11 ans
+    joueurs: 6 à 40 enfants
+    duree: 2 h à 3 h
+    lieu: Dehors ou à l'intérieur
+    preparation: 1 à 2 heures
+    pages: 27
     contenu:
-      - Déroulé minute par minute
-      - 8 fiches d'épreuves
-      - Feuille de score par équipe
-      - Fanions d'équipe et diplômes à remplir
-    ages: [6-8-ans, 9-12-ans]
-    fetes: []
+      - L'histoire de la Grande Chouette et le déroulé de l'après-midi
+      - 6 ateliers, chacun en version dehors et à l'intérieur
+      - La rotation pour 20 à 40 enfants, et la version famille
+      - 3 jeux complémentaires, une activité manuelle, le goûter
+      - Cartes réserves, terriers, panneaux, feuilles de route, diplômes
+    description: |
+      L'hiver arrive, et les terriers de la forêt sont encore vides. Chaque équipe devient une famille d'animaux et parcourt six ateliers, tenus par l'écureuil, le hérisson, la chouette, le cerf, la fourmi et le cueilleur. Chaque atelier réussi rapporte une réserve pour l'hiver.
 
+      Le grand jeu est conçu pour les accueils de loisirs pendant les vacances de la Toussaint, avec une rotation prête à l'emploi pour 20 à 40 enfants, mais il fonctionne aussi en famille. Tous les ateliers ont une version à l'intérieur, pour les jours de pluie.
+
+      Le kit complète l'après-midi avec trois jeux (un jeu de poursuite, une chasse aux couleurs d'automne, un jeu de rythme), une activité manuelle et des idées de goûter.
+    deroule:
+      - "La lettre de la Grande Chouette et la formation des familles d'animaux."
+      - "Six ateliers de 10 minutes, en rotation."
+      - "Les terriers sont pleins : l'hiver peut venir."
+      - "Le goûter d'automne, puis un jeu complémentaire."
+      - "La veillée de la chouette et les diplômes de gardien de la forêt."
+    pour_qui:
+      - Accueils de loisirs et écoles, de 20 à 40 enfants
+      - Familles et fêtes entre amis, de 6 à 12 enfants
+      - Un animateur par atelier, ou deux adultes en famille
+
+  - id: kit-noel
+    titre: L'atelier du père Noël
+    univers: fetes
+    fete: noel
+    etat: pret
+    prix: "12"
+    payhip_id: ""
+    accroche: Les lutins sont malades et la tournée part ce soir. Six ateliers pour remplir la hotte avant minuit.
+    age: 4 à 11 ans
+    joueurs: 6 à 120 enfants
+    duree: 2 h à 3 h
+    lieu: Salle, maison ou cour
+    preparation: 1 à 2 heures
+    pages: 32
+    contenu:
+      - Le message urgent du père Noël et le déroulé de l'après-midi
+      - 6 ateliers de l'atelier du Pôle Nord, du jouet au traîneau
+      - La rotation pour 20 à 40 enfants et la version arbre de Noël de CSE
+      - 3 jeux complémentaires, une activité manuelle, le goûter
+      - Modèles en pixels, lettres à trier, hottes, cartes de lutin, diplômes
+    description: |
+      Ce matin, tous les lutins ont attrapé la grippe, et la tournée part ce soir. Les enfants deviennent lutins apprentis : ils fabriquent les jouets, emballent les paquets, trient les lettres, nourrissent les rennes, préparent la neige et chargent le traîneau. Chaque atelier réussi met un cadeau dans la hotte de leur équipe.
+
+      Le kit fonctionne à toutes les échelles : un salon avec huit cousins, une école ou un accueil de loisirs avec une rotation pour 20 à 40 enfants, ou l'arbre de Noël d'un comité d'entreprise, avec une version en stands pour 40 à 120 enfants.
+
+      Il se termine par la lettre de remerciement du père Noël, à lire avant son arrivée ou avant l'ouverture des cadeaux.
+    deroule:
+      - "Le message urgent du Pôle Nord et la formation des équipes de lutins."
+      - "Six ateliers de 10 minutes, en rotation ou en stands."
+      - "Les hottes sont pleines : le traîneau peut partir."
+      - "Le goûter de Noël, puis un jeu complémentaire."
+      - "La lettre du père Noël et les diplômes de lutin d'honneur."
+    pour_qui:
+      - Familles, écoles et accueils de loisirs
+      - Arbres de Noël de CSE et d'associations, jusqu'à 120 enfants
+      - De 4 à 11 ans, avec des versions pour chaque âge
+
+  - id: kit-carnaval
+    titre: Le grand bal du carnaval
+    univers: fetes
+    fete: carnaval
+    etat: pret
+    prix: "12"
+    payhip_id: ""
+    accroche: Monsieur Carnaval a perdu ses couleurs. Six ateliers pour les retrouver, puis le défilé, le bal et le procès de Monsieur Carnaval.
+    age: 4 à 11 ans
+    joueurs: 6 à 40 enfants
+    duree: 2 h à 3 h
+    lieu: Salle, maison ou cour
+    preparation: 1 à 2 heures
+    pages: 28
+    contenu:
+      - L'histoire de Monsieur Carnaval et le déroulé de l'après-midi
+      - 6 ateliers adaptés aux enfants déguisés
+      - La rotation pour 20 à 40 enfants, et la version famille
+      - Le défilé, la farandole et le procès de Monsieur Carnaval
+      - Cartes de mime et de rythmes, chars, panneaux, diplômes
+    description: |
+      Le vent d'hiver a emporté toutes les couleurs de Monsieur Carnaval. Chaque équipe décore un char en retrouvant une couleur à chaque atelier : les confettis, le jongleur, le mime, la fanfare, le bal des masques et la chenille du carnaval.
+
+      Les ateliers sont pensés pour des enfants déguisés : peu de courses, beaucoup d'adresse, de musique et d'expression, pour que les costumes restent intacts jusqu'au défilé.
+
+      L'après-midi se termine par la tradition la plus joyeuse du carnaval : le procès de Monsieur Carnaval, accusé de toutes les misères de l'hiver, avec l'acte d'accusation prêt à lire.
+    deroule:
+      - "Le tour des déguisements et l'histoire de Monsieur Carnaval."
+      - "Six ateliers de 10 minutes, en rotation."
+      - "Les chars sont colorés : Monsieur Carnaval se réveille."
+      - "Le goûter, puis le grand défilé et la farandole."
+      - "Le procès de Monsieur Carnaval, le bal et les diplômes."
+    pour_qui:
+      - Écoles et accueils de loisirs, de 20 à 40 enfants
+      - Familles et fêtes entre amis, de 6 à 12 enfants
+      - De 4 à 11 ans, déguisés ou non
+
+  - id: kit-paques
+    titre: La grande quête des cloches
+    univers: fetes
+    fete: paques
+    etat: pret
+    prix: "12"
+    payhip_id: ""
+    accroche: Six ateliers pour gagner les indices des cloches, puis une chasse aux œufs juste, organisée par âge.
+    age: 3 à 11 ans
+    joueurs: 6 à 40 enfants
+    duree: 2 h à 3 h
+    lieu: Jardin, parc ou salle
+    preparation: 1 à 2 heures
+    pages: 29
+    contenu:
+      - L'histoire des cloches et le déroulé de l'après-midi
+      - 6 ateliers, en version jardin et en version salle
+      - La grande chasse aux œufs organisée par âge, avec ses énigmes
+      - Le memory des œufs jumeaux, les cartes œufs, les paniers
+      - Le plan de la chasse, les panneaux, les feuilles de route, les diplômes
+    description: |
+      En revenant de Rome, les cloches ont semé leurs œufs. Les équipes doivent d'abord gagner leur confiance, atelier après atelier : le nid à reconstruire, la course à l'œuf, les lapins sauteurs, les œufs jumeaux, la chaîne des œufs, le renard et la poule.
+
+      Puis vient la grande chasse, organisée pour être juste : une zone par tranche d'âge, une couleur par enfant, des énigmes pour les plus grands, et l'œuf d'or cherché tous ensemble. Chaque enfant repart avec la même part.
+
+      Le kit contient le plan de la chasse à remplir par les adultes, pour que plus aucun œuf ne soit oublié au soleil.
+    deroule:
+      - "L'histoire des cloches et la formation des équipes."
+      - "Six ateliers de 10 minutes, en rotation."
+      - "Les paniers sont pleins : les cloches révèlent les zones de chasse."
+      - "La grande chasse aux œufs, par âge et par couleur."
+      - "Le goûter de Pâques, un jeu calme et les diplômes."
+    pour_qui:
+      - Familles et fêtes entre amis, de 6 à 12 enfants
+      - Accueils de loisirs et écoles, de 20 à 40 enfants
+      - De 3 à 11 ans, avec une chasse adaptée à chaque âge
+
+  # ---------------------------------------------------------------- Kermesse
   - id: kermesse-cle-en-main
     titre: La kermesse clé en main
     univers: kermesse
@@ -124,31 +426,63 @@ kits:
     duree: Un après-midi
     lieu: Cour d'école, préau ou salle
     preparation: Une réunion de bénévoles + 2 h d'installation
+    pages: "32 + 56"
     contenu:
-      - 16 fiches de stands (règle, matériel, installation, bénévoles, lots) et 5 fiches pour les responsables
+      - 16 fiches de stands et 5 fiches pour les responsables
       - Rétroplanning de 8 semaines, budget type et démarches à prévoir
       - Plan de la cour, déroulé du jour J et planning des bénévoles
-      - Affiches, panneaux de stands, tickets, bons de lots et 100 billets de tombola numérotés
-      - Les courriers à modifier dans Word, dont le mot aux familles et la lettre aux commerçants
-    ages: [3-5-ans, 6-8-ans, 9-12-ans]
-    fetes: [fete-de-fin-d-annee]
+      - Affiches, panneaux, tickets, bons de lots, 100 billets de tombola
+      - Les courriers à modifier dans Word
+    description: |
+      Une kermesse réunit des centaines d'enfants et des bénévoles qui ne se connaissent pas toujours, le temps d'un après-midi. Ce kit donne au bureau de l'association un plan qui tient, et à chaque bénévole une fiche claire.
 
+      Le guide de 32 pages couvre tout : choisir ses stands selon le nombre d'enfants, le rétroplanning de huit semaines, un budget chiffré, les démarches (locaux, assurance, buvette, tombola, musique), le système de tickets et de bons de lots, le plan de la cour et le déroulé du jour J. Chacun des 16 stands a sa fiche : règle, matériel, installation, gains, adaptations et sécurité.
+
+      Les 56 pages à imprimer contiennent l'affiche, l'affiche à colorier, les panneaux des stands, les tickets, les bons de lots, 100 billets de tombola numérotés, le memory géant, les badges des bénévoles, la feuille de caisse et le planning. Les courriers (mot aux familles, lettre aux commerçants) sont fournis au format Word.
+    deroule:
+      - "8 semaines avant : date, locaux, assurance, responsables de pôle."
+      - "6 à 3 semaines avant : bénévoles, lots, tombola, affiches."
+      - "2 semaines avant : la réunion des bénévoles, avec une fiche par stand."
+      - "Le jour J : installation, consignes en 5 minutes, ouverture."
+      - "La semaine d'après : remerciements, bilan financier, fiche bilan."
+    pour_qui:
+      - Associations de parents d'élèves et écoles
+      - Fêtes de quartier, centres sociaux, accueils de loisirs
+      - De 100 à 300 enfants et plus
+
+  # ---------------------------------------------------------------- Pro
   - id: kit-du-directeur
     titre: Le kit du directeur d'accueil de loisirs
     univers: pro
-    etat: en_preparation
+    etat: pret
     prix: "29"
     payhip_id: ""
-    accroche: Planning d'équipe, présences et taux d'encadrement, budget de séjour, dans des tableurs prêts à remplir.
+    accroche: Un classeur qui calcule tout seul l'encadrement, le planning et le budget, et six modèles de documents.
     age: Accueils de loisirs
-    joueurs: Équipes de 2 à 20 animateurs
+    joueurs: Équipes de 2 à 30 personnes
     duree: Toute l'année
-    lieu: Tableur (Excel, LibreOffice, Google Sheets)
+    lieu: Excel, LibreOffice, Google Sheets
     preparation: 15 min pour l'adapter
+    pages: 12
     contenu:
-      - Planning d'équipe à la semaine
-      - Feuille de présences avec calcul du taux d'encadrement
-      - Budget de séjour et suivi des dépenses
-      - Mode d'emploi de chaque outil
-    ages: []
-    fetes: []
+      - Le classeur et ses 7 onglets qui se calculent tout seuls
+      - L'équipe et sa qualification, comparée aux seuils
+      - Les présences et le taux d'encadrement, jour par jour
+      - Le planning de la semaine, le budget et le journal des dépenses
+      - Le guide et 6 modèles (projet, sortie, réunion, évaluation…)
+    description: |
+      Un classeur pensé par un directeur adjoint d'accueil de loisirs pour ses collègues. Vous saisissez les inscriptions et l'équipe présente : le classeur calcule le nombre d'animateurs nécessaires pour chaque journée et affiche OK ou MANQUE. Les taux sont réglables selon le type d'accueil.
+
+      L'onglet Équipe compare la qualification de l'équipe aux seuils de référence. Le planning calcule les heures et signale les journées trop longues. Le budget et le journal des dépenses se remplissent au fil de l'eau et calculent l'écart et le coût par enfant.
+
+      Le guide explique chaque onglet et la méthode pour s'en servir au quotidien, et fournit six modèles de documents : projet d'animation, préparation d'une sortie, réunion d'équipe, évaluation d'un temps fort, accueil d'un nouvel animateur, répartition des tâches.
+    deroule:
+      - "Réglages : la structure, la période et les taux d'encadrement."
+      - "L'équipe et sa qualification."
+      - "Les présences, jour par jour, avec le calcul de l'encadrement."
+      - "Le planning de la semaine et ses alertes."
+      - "Le budget prévisionnel, puis le réalisé au fil des dépenses."
+    pour_qui:
+      - Directeurs, adjoints et coordinateurs d'accueils de loisirs
+      - Responsables de séjours et de structures jeunesse
+      - Inclus dans l'abonnement Jeuphorie Pro Structure

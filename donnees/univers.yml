@@ -6,17 +6,17 @@ univers:
     couleur: fete
     titre_page: Jeux d'anniversaire à imprimer
     public: Parents
-    accroche: Des Olympiades, des chasses et des défis pour un anniversaire à la maison qui se prépare en une soirée.
-    description: Jeux d'anniversaire à imprimer pour les 3-12 ans, prêts à jouer à la maison ou au jardin, avec épreuves, feuille de score et diplômes.
+    accroche: "Olympiades, chasse au trésor, enquête, safari des tout-petits : un anniversaire clé en main, de 3 à 12 ans."
+    description: "Jeux d'anniversaire à imprimer pour les 3-12 ans : Olympiades, chasse au trésor des pirates, enquête du gâteau disparu, safari des petits. Déroulé, épreuves, invitations et diplômes."
     intro: >-
       Un anniversaire réussi, c'est un fil rouge qui tient les enfants
       ensemble pendant une heure et demie, puis un moment où chacun repart
-      fier. Nos kits donnent ce fil rouge : un scénario, des épreuves
-      adaptées à l'âge, une feuille de score et des diplômes à remplir.
+      fier. Chaque kit donne ce fil rouge : une histoire, un déroulé minute
+      par minute, des épreuves adaptées à l'âge, les invitations et les diplômes.
     points:
-      - Prévus pour 6 à 16 enfants, dans un salon ou un jardin.
-      - "Matériel de la maison : gobelets, chaussettes, cuillères, ballons."
-      - Durée indiquée épreuve par épreuve, pour tenir le planning du goûter.
+      - De 4 à 16 enfants, de 3 à 12 ans, dans un salon ou un jardin.
+      - "Le matériel de la maison : gobelets, chaussettes, cuillères, cartons."
+      - Une version plus facile et plus difficile de chaque épreuve.
 
   - id: grands-jeux
     nom: Grands jeux
@@ -37,11 +37,29 @@ univers:
       - "De 3 à 60 joueurs, avec le matériel d'une cour d'école : plots, chasubles, ballons."
       - Des variantes pour adapter chaque jeu au groupe et au terrain.
 
+  - id: fetes
+    nom: Fêtes de l'année
+    nom_court: Fêtes
+    url: /fetes/
+    couleur: saison
+    titre_page: Jeux pour les fêtes de l'année
+    public: Familles, écoles, accueils de loisirs et CSE
+    accroche: "Toussaint, Noël, carnaval, Pâques : un grand jeu et des ateliers prêts à animer pour chaque temps fort de l'année."
+    description: "Jeux et animations pour les fêtes de l'année : Toussaint et automne, Noël, carnaval, Pâques. Kits à imprimer pour la famille, l'école, l'accueil de loisirs et l'arbre de Noël du CSE."
+    intro: >-
+      Chaque fête a ses jeux, et chacun de nos kits raconte une histoire : la forêt d'automne,
+      l'atelier du père Noël, le grand bal du carnaval, la chasse aux œufs des cloches. Un grand jeu
+      pour réunir tout le groupe, des ateliers pour varier, et tout ce qu'il faut imprimer.
+    points:
+      - Un après-midi complet par fête, avec un déroulé heure par heure.
+      - Chaque jeu en version dehors et à l'intérieur.
+      - Pour un salon en famille comme pour un groupe de 40 enfants.
+
   - id: kermesse
     nom: Kermesse
     url: /kermesse/
     couleur: soleil
-    titre_page: Kermesse et fête d'école clés en main
+    titre_page: Kermesse et fête de fin d'année clés en main
     public: Associations de parents d'élèves
     accroche: Les stands, les affiches, les tickets et le planning des bénévoles, prêts à imprimer.
     description: "Kermesse et fête d'école clés en main pour les associations de parents d'élèves : fiches de stands, affiches, tickets et planning des bénévoles."

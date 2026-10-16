@@ -6,8 +6,13 @@
   <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>Jeuphorie Pro</span></nav>
   <header class="tete-univers tete-univers--pro">
     <p class="tete-univers__public">Pour les animateurs et les structures</p>
-    <h1 class="titre-page">Jeuphorie Pro</h1>
-    <p class="chapo">L'abonnement pour celles et ceux qui animent toute l'année : la bibliothèque de grands jeux, de nouvelles fiches chaque mois, et une réduction sur toute la boutique.</p>
+    <h1 class="titre-page">Jeuphorie Pro, l'abonnement de celles et ceux qui animent toute l'année</h1>
+    <p class="chapo">Un dossier de nouvelles fiches chaque mois, le grand fichier des 34 grands jeux, et pour les structures, les kits des fêtes de l'année et les outils du directeur inclus.</p>
+    <ul class="coches">
+      <li>Un dossier de 6 à 8 fiches d'animation chaque mois</li>
+      <li>Jusqu'à 40 % de réduction sur toute la boutique</li>
+      <li>Une licence pour toute l'équipe, avec une facture au nom de la structure</li>
+    </ul>
   </header>
 
   {% if not site.boutique.ventes_actives %}
@@ -43,27 +48,48 @@
     <p class="petit">Prix toutes taxes comprises. Paiement sécurisé par Payhip et Stripe. Détail dans les <a href="{{ lien('/conditions-de-vente/') }}">conditions de vente</a>.</p>
   </section>
 
-  <div class="deux-colonnes section section--serree">
-    <section class="bloc-pro" aria-labelledby="t-structures">
-      <h2 id="t-structures" class="bloc-pro__titre">Pour les structures</h2>
-      <p>Accueils de loisirs, associations de parents d'élèves, écoles, clubs sportifs, comités d'entreprise : un seul abonnement couvre toute l'équipe d'un même lieu, jusqu'à 15 personnes. Chacun imprime les fiches dont il a besoin, pour toutes les animations de la structure.</p>
-      <ul class="coches">
-        <li>Une facture au nom de la structure</li>
-        <li>Paiement par carte, ou par virement sur devis</li>
-        <li>Plusieurs lieux ou un réseau : tarif sur devis</li>
-      </ul>
-      <p><a class="lien-fort" href="{{ lien('/contact/') }}">Demander un devis</a></p>
-    </section>
-    <section class="bloc-pro" aria-labelledby="t-contenu">
-      <h2 id="t-contenu" class="bloc-pro__titre">Ce que contient l'espace Pro</h2>
-      <p>Les {{ jeux | length }} fiches de grands jeux, classées par âge, avec règles, variantes et schéma du terrain. Chaque mois, de nouvelles fiches s'ajoutent. Les kits, comme la kermesse clé en main et les outils du directeur, sont proposés aux abonnés à prix réduit dès leur sortie.</p>
-      <p><a class="lien-fort" href="{{ lien('/jeux/') }}">Voir la liste des jeux</a></p>
-    </section>
-  </div>
+  <section class="section section--serree" aria-labelledby="t-structure">
+    <div class="valeur">
+      <div class="valeur__texte">
+        <p class="surtitre">Pro Structure</p>
+        <h2 id="t-structure" class="section__titre">Une année d'animation pour toute l'équipe</h2>
+        <p>Un seul abonnement couvre l'équipe d'un même lieu, jusqu'à 15 personnes. Les fêtes de l'année sont prêtes, le directeur a ses outils de suivi, et les animateurs trouvent chaque mois de nouvelles fiches pour les mercredis.</p>
+        <ul class="coches">
+          <li>Facture au nom de la structure</li>
+          <li>Paiement par carte, virement, bon de commande ou mandat administratif (sur devis)</li>
+          <li>Plusieurs lieux ou un réseau : tarif sur devis</li>
+        </ul>
+        <div class="actions"><a class="bouton" href="{{ lien('/contact/') }}">Demander un devis</a></div>
+      </div>
+      <div class="valeur__tableau">
+        <p class="valeur__titre">Ce qui est inclus</p>
+        <table>
+          {% for l in d.abonnement.valeur_structure %}<tr><td>{{ l[0] }}</td><td class="valeur__prix">{{ l[1] }}</td></tr>{% endfor %}
+        </table>
+        <p class="valeur__total">{{ d.abonnement.valeur_structure_total }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--serree" aria-labelledby="t-publics">
+    <h2 id="t-publics" class="section__titre">Ce que Pro change pour vous</h2>
+    <div class="arguments">
+      {% for p in d.abonnement.publics %}<div class="argument"><h3 class="argument__titre">{{ p.titre }}</h3><p>{{ p.texte }}</p></div>{% endfor %}
+    </div>
+  </section>
+
+  <section class="section section--serree" aria-labelledby="t-dossiers">
+    <h2 id="t-dossiers" class="section__titre">Les dossiers du mois</h2>
+    <p class="chapo">Chaque mois, un dossier de 6 à 8 fiches autour d'un thème, au même format que les grands jeux : règle à annoncer, matériel, installation, déroulement, variantes et conseils. Voici les prochains thèmes.</p>
+    <div class="calendrier-dossiers">
+      {% for x in d.abonnement.dossiers %}<div class="dossier"><span class="dossier__mois">{{ x[0] }}</span><span class="dossier__theme">{{ x[1] }}</span></div>{% endfor %}
+    </div>
+    <p class="petit">Les abonnés peuvent proposer des thèmes : les plus demandés passent en priorité.</p>
+  </section>
 
   <section class="section section--serree" aria-labelledby="t-kits-pro">
-    <h2 id="t-kits-pro" class="section__titre">Les outils pour les pros</h2>
-    {{ m.grille_kits(produits('pro') + produits('kermesse'), "Les premiers outils arrivent bientôt.") }}
+    <h2 id="t-kits-pro" class="section__titre">Inclus dans Pro Structure</h2>
+    {{ m.grille_kits(kits | selectattr('univers', 'equalto', 'pro') | list + kits | selectattr('univers', 'equalto', 'fetes') | list + kits | selectattr('id', 'equalto', 'grand-fichier') | list, "") }}
   </section>
 
   <section class="section section--serree cadre--texte" aria-labelledby="t-faq">

@@ -7,21 +7,19 @@ from schemas import dessiner
 
 S = {}
 
-S["potion-de-la-sorciere"] = [("legende", {"a": "équipe rouge", "b": "équipe bleue", "n": "sorcière"}),
-    ("zone", 38, 20, 24, 20, "n", ""), ("txt", 50, 25, "chaudrons", 2.8),
-    ("cerceau", 44, 31, 3.2), ("cerceau", 56, 31, 3.2), ("j", 50, 37, "n", "S"),
-    *[("plot", x, y, "a") for x, y in [(10, 10), (24, 50), (78, 8), (90, 46)]],
-    *[("plot", x, y, "b") for x, y in [(14, 44), (30, 8), (70, 52), (88, 20)]],
-    ("j", 22, 22, "a"), ("j", 76, 38, "a"), ("j", 66, 14, "b"), ("j", 30, 40, "b"),
-    ("fleche", 24, 24, 41, 30), ("fleche", 64, 16, 55, 27),
-    ("txt", 50, 57, "triangles = ingrédients cachés, de la couleur de chaque équipe", 2.6)]
+S["ecureuils-reserve-hiver"] = [("legende", {"a": "écureuils rouges", "b": "écureuils bleus", "c": "écureuils verts", "n": "renard"}),
+    ("cerceau", 6, 30, 4.4), ("txt", 6, 38, "nid", 2.6), ("cerceau", 94, 30, 4.4), ("txt", 94, 38, "nid", 2.6),
+    ("cerceau", 50, 6, 4.4), ("txt", 50, 14, "nid", 2.6),
+    *[("balle", x, y) for x, y in [(22, 14), (30, 44), (40, 24), (56, 40), (64, 18), (72, 50), (36, 52), (80, 12), (46, 34), (26, 30)]],
+    ("j", 9, 24, "a"), ("j", 30, 40, "a"), ("j", 91, 24, "b"), ("j", 66, 22, "b"), ("j", 54, 8, "c"), ("j", 44, 30, "c"),
+    ("j", 52, 46, "n", "R"), ("fleche", 32, 38, 11, 31), ("fleche", 64, 20, 89, 28),
+    ("txt", 50, 57, "les ronds blancs sont les noisettes ; R = renard", 2.6)]
 
-S["reveil-des-fantomes"] = [("legende", {"b": "fantômes", "n": "gardien"}), ("ligne", 12, 1, 12, 59),
-    ("txt", 7, 30, "départ", 2.6),
-    *[("j", x, y, "b") for x, y in [(8, 10), (20, 18), (34, 28), (16, 36), (44, 44), (26, 50)]],
-    ("j", 90, 30, "n", "G"), ("plot", 95, 30, "d"), ("txt", 90, 38, "dos tourné", 2.6),
-    ("fleche", 36, 28, 60, 28), ("fleche", 46, 44, 66, 40),
-    ("txt", 50, 57, "15 à 20 m ; G = gardien, le triangle jaune = la lanterne", 2.6)]
+S["herissons-et-tas-de-feuilles"] = [("legende", {"d": "hérissons"}),
+    *[("cerceau", x, y, 5) for x, y in [(18, 16), (50, 12), (82, 18), (28, 44), (70, 44)]],
+    *[("j", x, y, "d") for x, y in [(34, 26), (40, 34), (58, 28), (62, 36), (12, 32), (86, 34), (48, 50), (20, 28)]],
+    ("fleche", 36, 28, 46, 16), ("fleche", 60, 34, 68, 41),
+    ("txt", 50, 57, "« Le vent se lève ! » : chacun court s'abriter dans un tas de feuilles", 2.6)]
 
 S["tournee-du-pere-noel"] = [("legende", {"a": "équipe rouge", "b": "équipe bleue"}),
     ("zone", 2, 18, 16, 24, "n", "traîneau"),

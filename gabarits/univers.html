@@ -15,7 +15,7 @@
 
   <section class="section section--serree" aria-labelledby="t-kits">
     <h2 id="t-kits" class="section__titre">Les kits</h2>
-    {{ m.grille_kits(produits(u.id), "Les premiers kits de cette catégorie arrivent bientôt.") }}
+    {{ m.grille_kits(kits | selectattr('univers', 'equalto', u.id) | list, "Les premiers kits de cette catégorie arrivent bientôt.") }}
   </section>
 
   {% if u.id == 'grands-jeux' %}
@@ -29,7 +29,7 @@
   {% set lies = articles | selectattr('univers', 'contient', u.id) | list %}
   {% if lies %}
   <section class="section section--serree" aria-labelledby="t-articles">
-    <h2 id="t-articles" class="section__titre">Idées et conseils</h2>
+    <h2 id="t-articles" class="section__titre">À lire sur le blog</h2>
     <div class="grille-articles">{% for a in lies[:6] %}{{ m.carte_article(a) }}{% endfor %}</div>
   </section>
   {% endif %}

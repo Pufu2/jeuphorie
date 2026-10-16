@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block tete %}
+{% set k = page.kit %}
+{% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.payhip_id %}
+{% set u = d.univers.univers | selectattr('id', 'equalto', k.univers) | first %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+  {"@type": "ListItem", "position": 1, "name": "Accueil", "item": site.url ~ "/"},
+  {"@type": "ListItem", "position": 2, "name": u.nom, "item": site.url ~ u.url},
+  {"@type": "ListItem", "position": 3, "name": k.titre, "item": url_complete}]} | tojson }}
+</script>
+{% if achetable %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@type": "Product", "name": k.titre, "description": k.accroche, "image": site.url ~ "/img/kits/" ~ k.id ~ "-couverture.jpg", "brand": {"@type": "Brand", "name": site.nom}, "category": u.nom,
+    "offers": {"@type": "Offer", "price": k.prix | replace(",", "."), "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": url_complete}} | tojson }}
+</script>
+{% endif %}
+{% endblock %}
+{% block contenu %}
+{% set k = page.kit %}
+{% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.payhip_id %}
+{% set u = d.univers.univers | selectattr('id', 'equalto', k.univers) | first %}
+<article class="cadre produit produit--{{ u.couleur }}">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien(u.url) }}">{{ u.nom }}</a>{% if k.fete %} <span aria-hidden="true">/</span> <a href="{{ lien('/fetes/' ~ k.fete ~ '/') }}">{% for f in d.fetes.fetes if f.slug == k.fete %}{{ f.nom }}{% endfor %}</a>{% endif %} <span aria-hidden="true">/</span> <span>{{ k.titre }}</span></nav>
+  <div class="produit__haut">
+    <div class="produit__visuel">
+      <img class="produit__couverture" src="{{ statique('img/kits/' ~ k.id ~ '-couverture.jpg') }}" alt="Couverture du fichier : {{ k.titre }}" width="560" height="792">
+      {% set apercus = [1, 2, 3] %}
+      {% if k.univers != 'grands-jeux' %}
+      <div class="produit__apercus" aria-label="Aperçu de quelques pages">
+        {% for n in apercus %}<img src="{{ statique('img/kits/' ~ k.id ~ '-apercu-' ~ n ~ '.jpg') }}" alt="Aperçu d'une page du fichier" width="300" height="424" loading="lazy">{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="produit__infos">
+      <p class="surtitre">{{ u.nom }}</p>
+      <h1 class="titre-page">{{ k.titre }}</h1>
+      <p class="chapo">{{ k.accroche }}</p>
+      <dl class="produit__tech">
+        <div><dt>Âge</dt><dd>{{ k.age }}</dd></div>
+        <div><dt>Pour</dt><dd>{{ k.joueurs }}</dd></div>
+        <div><dt>Durée</dt><dd>{{ k.duree }}</dd></div>
+        <div><dt>Lieu</dt><dd>{{ k.lieu }}</dd></div>
+        <div><dt>Préparation</dt><dd>{{ k.preparation }}</dd></div>
+        {% if k.pages %}<div><dt>Fichier</dt><dd>{{ k.pages }} pages A4{% if k.id == 'kit-du-directeur' %} et un classeur{% endif %}</dd></div>{% endif %}
+      </dl>
+      <div class="produit__achat">
+        <p class="produit__prix">{{ k.prix }} €</p>
+        {% if achetable %}
+        <a class="bouton payhip-buy-button" href="https://payhip.com/b/{{ k.payhip_id }}" data-product="{{ k.payhip_id }}" data-theme="none">Acheter et télécharger</a>
+        <p class="petit">Paiement sécurisé par carte ou PayPal. Le fichier arrive aussitôt par mail.</p>
+        {% elif k.etat == 'en_preparation' %}
+        <p class="produit__etat">En préparation</p>
+        {% else %}
+        <p class="produit__etat">En vente très bientôt</p>
+        <p class="petit">Le fichier est prêt. Les ventes ouvrent dans quelques jours : en attendant, recevez nos <a href="{{ lien('/jeux-gratuits/') }}">3 grands jeux offerts</a>.</p>
+        {% endif %}
+        <p class="produit__pro">Abonnés <a href="{{ lien('/pro/') }}">Jeuphorie Pro</a> : 30 % de réduction, 40 % pour les structures.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="produit__corps">
+    <section class="texte">
+      <h2>Le kit en quelques mots</h2>
+      {% for para in k.description.strip().split("\n\n") %}<p>{{ para }}</p>{% endfor %}
+      {% if k.id == 'kit-du-directeur' %}
+      <figure class="produit__capture"><img src="{{ statique('img/kits/kit-du-directeur-classeur.jpg') }}" alt="L'onglet Présences et taux du classeur, avec le calcul automatique de l'encadrement" width="900" height="222" loading="lazy"><figcaption>L'onglet « Présences et taux » : le classeur signale tout de suite le jour où il manque un animateur.</figcaption></figure>
+      {% endif %}
+      {% if k.deroule %}
+      <h2>{% if k.univers == 'kermesse' %}De la préparation au jour J{% elif k.univers == 'pro' %}Comment s'en servir{% else %}Comment se passe la fête{% endif %}</h2>
+      <ol>{% for x in k.deroule %}<li>{{ x }}</li>{% endfor %}</ol>
+      {% endif %}
+      {% if k.pack %}
+      <h2>Les jeux du pack</h2>
+      <div class="grille-jeux">{% for j in jeux if k.pack == 'tout' or k.pack in j.packs %}{{ m.carte_jeu(j) }}{% endfor %}</div>
+      {% endif %}
+    </section>
+    <aside class="produit__cote">
+      <div class="encart encart--colonne">
+        <h2 class="encart__titre">Dans le fichier</h2>
+        <ul class="coches">{% for c in k.contenu %}<li>{{ c }}</li>{% endfor %}</ul>
+      </div>
+      {% if k.pour_qui %}
+      <div class="encart encart--colonne encart--info">
+        <h2 class="encart__titre">Pour qui</h2>
+        <ul class="coches">{% for c in k.pour_qui %}<li>{{ c }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+    </aside>
+  </div>
+
+  <section class="section section--serree cadre--texte" aria-labelledby="t-faq">
+    <h2 id="t-faq" class="section__titre">Questions fréquentes</h2>
+    <div class="questions">
+      <details class="question"><summary>Comment je reçois le fichier ?</summary><p>Juste après le paiement, un lien de téléchargement s'affiche et arrive aussi par mail. Vous pouvez télécharger le fichier plusieurs fois.</p></details>
+      <details class="question"><summary>Faut-il une imprimante couleur ?</summary><p>Non. Les fichiers sont au format A4 et restent lisibles en noir et blanc. La couleur rend seulement les pièces à imprimer (affiches, cartes, diplômes) plus jolies.</p></details>
+      <details class="question"><summary>Puis-je l'utiliser plusieurs fois ?</summary><p>Oui, autant de fois que vous le souhaitez, pour votre famille, ou pour toutes les animations de l'association ou de la structure qui l'achète. Le partage en ligne et la revente ne sont pas autorisés.</p></details>
+      <details class="question"><summary>Mon association ou ma structure peut-elle payer par virement ?</summary><p>Oui. <a href="{{ lien('/contact/') }}">Écrivez-moi</a> avec le nom de la structure : je vous envoie un devis, puis une facture. Pour une équipe entière, l'abonnement <a href="{{ lien('/pro/') }}">Jeuphorie Pro Structure</a> est souvent plus avantageux.</p></details>
+      <details class="question"><summary>Et si le fichier ne me convient pas ?</summary><p>Écrivez-moi : une question de règle, une adaptation à votre groupe, un problème d'impression, je réponds sous 48 heures ouvrées. Le droit de rétractation et ses conditions pour les fichiers téléchargés sont expliqués dans les <a href="{{ lien('/conditions-de-vente/') }}">conditions de vente</a>.</p></details>
+    </div>
+  </section>
+
+  {% set voisins = kits | selectattr('univers', 'equalto', k.univers) | rejectattr('id', 'equalto', k.id) | list %}
+  {% if voisins %}
+  <section class="section section--serree" aria-labelledby="t-voisins">
+    <h2 id="t-voisins" class="section__titre">Dans le même univers</h2>
+    {{ m.grille_kits(voisins[:3], "") }}
+  </section>
+  {% endif %}
+</article>
+{% endblock %}
+{% block scripts %}{% if site.boutique.ventes_actives and not apercu %}<script src="https://payhip.com/payhip.js" defer></script>{% endif %}{% endblock %}

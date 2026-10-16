@@ -1,0 +1,51 @@
+# Mise en avant « En ce moment » sur l'accueil, choisie selon le mois de la fabrication.
+# Le site se refabrique chaque matin : la mise en avant change toute seule.
+# kit : identifiant d'un kit de donnees/kits.yml (sa fiche s'affiche à côté), ou rien.
+saisons:
+  - mois: [9, 10]
+    titre: Les vacances de la Toussaint approchent
+    texte: >-
+      La forêt, les écureuils et le vent d'automne : un grand jeu et des ateliers pour occuper un groupe
+      dehors tant qu'il fait doux, et à l'intérieur dès qu'il pleut.
+    url: /fetes/toussaint/
+    bouton: Voir les jeux d'automne
+    kit: kit-toussaint
+  - mois: [11, 12]
+    titre: Noël se prépare maintenant
+    texte: >-
+      Un après-midi de jeux autour de l'atelier du père Noël, pour la famille, l'école, l'accueil de loisirs
+      ou l'arbre de Noël du CSE.
+    url: /fetes/noel/
+    bouton: Voir les jeux de Noël
+    kit: kit-noel
+  - mois: [1, 2]
+    titre: C'est bientôt carnaval
+    texte: >-
+      Défilé, statues, relais costumés et grand bal : de quoi faire bouger les costumes sans les abîmer.
+    url: /fetes/carnaval/
+    bouton: Voir les jeux de carnaval
+    kit: kit-carnaval
+  - mois: [3, 4]
+    titre: Pâques et la chasse aux œufs
+    texte: >-
+      Une chasse aux œufs organisée par âge, pour que chaque enfant reparte avec son panier plein,
+      et des jeux pour le reste de l'après-midi.
+    url: /fetes/paques/
+    bouton: Voir les jeux de Pâques
+    kit: kit-paques
+  - mois: [5, 6]
+    titre: La kermesse se prépare huit semaines avant
+    texte: >-
+      Stands, affiches, tickets, tombola et planning des bénévoles : tout le kit de la fête d'école,
+      avec le rétroplanning pour ne rien oublier.
+    url: /kermesse/
+    bouton: Voir le kit kermesse
+    kit: kermesse-cle-en-main
+  - mois: [7, 8]
+    titre: L'été, les grands jeux dehors
+    texte: >-
+      Pour les centres de loisirs, les colonies et les familles : des grands jeux classés par âge,
+      avec les règles, les variantes et le schéma du terrain.
+    url: /grands-jeux/
+    bouton: Voir les grands jeux
+    kit: grand-fichier

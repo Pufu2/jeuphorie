@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+{% set f = page.fete %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/fetes/') }}">Fêtes de l'année</a> <span aria-hidden="true">/</span> <span>{{ f.nom }}</span></nav>
+  <header class="tete-univers tete-univers--saison">
+    <p class="tete-univers__public">{{ f.periode }}</p>
+    <h1 class="titre-page">{{ f.titre_page }}</h1>
+    <p class="chapo">{{ f.intro }}</p>
+  </header>
+
+  {% set kits_fete = kits | selectattr('fete', 'defined') | selectattr('fete', 'equalto', f.slug) | list %}
+  <section class="section section--serree" aria-labelledby="t-kit">
+    <h2 id="t-kit" class="section__titre">Le kit {{ f.de }}</h2>
+    {{ m.grille_kits(kits_fete, "Le kit de cette fête est en cours d'écriture.") }}
+  </section>
+
+  {% set offerts = jeux_fetes | selectattr('fete', 'equalto', f.slug) | list %}
+  {% if offerts %}
+  <section class="section section--serree" aria-labelledby="t-offerts">
+    <h2 id="t-offerts" class="section__titre">Deux jeux {{ f.de }} offerts</h2>
+    <p class="chapo">Les règles complètes sont sur la page de chaque jeu, avec une version dehors et une version à l'intérieur. Vous pouvez les imprimer.</p>
+    <div class="grille-jeux">{% for x in offerts %}{{ m.carte_jeu_fete(x) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  <aside class="conseil">
+    <p class="conseil__signature">Le conseil de l'animateur</p>
+    <p>{{ f.conseil }}</p>
+  </aside>
+
+  {% set lies = articles | selectattr('fetes', 'contient', f.slug) | list %}
+  {% if lies %}
+  <section class="section section--serree" aria-labelledby="t-articles">
+    <h2 id="t-articles" class="section__titre">À lire sur le blog</h2>
+    <div class="grille-articles">{% for a in lies[:6] %}{{ m.carte_article(a) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  <nav class="autres-fetes" aria-label="Les autres fêtes">
+    <p class="autres-fetes__titre">Les autres fêtes de l'année</p>
+    <ul class="pastilles">{% for x in d.fetes.fetes if x.slug != f.slug %}<li><a class="pastille" href="{{ lien('/fetes/' ~ x.slug ~ '/') }}">{{ x.nom }}</a></li>{% endfor %}
+      <li><a class="pastille" href="{{ lien('/kermesse/') }}">Fête de fin d'année</a></li></ul>
+  </nav>
+</div>
+{% endblock %}
+{% block scripts %}{% if site.boutique.ventes_actives and not apercu %}<script src="https://payhip.com/payhip.js" defer></script>{% endif %}{% endblock %}

@@ -2,122 +2,121 @@
 # Ce fichier n'est PAS exporté depuis le dossier privé des produits :
 # on le modifie directement ici.
 #
-# fete : slug d'une fête de donnees/idees.yml (la page /idees/<fete>/<id>/ est créée toute seule)
-# ages : pages « idées par âge » où le jeu apparaît aussi
+# fete : slug d'une fête de donnees/fetes.yml (la page /fetes/<fete>/<id>/ est créée toute seule)
 # versions : une version « Dehors » et une version « À l'intérieur »
 # Le schéma du terrain (facultatif) se dessine dans outils/schemas_fetes.py, avec le même id.
 
 jeux:
 
-  # ------------------------------------------------------------ Halloween
-  - id: potion-de-la-sorciere
-    fete: halloween
-    nom: La potion de la sorcière
-    accroche: Une chasse aux ingrédients par équipes, pour remplir son chaudron sans réveiller la sorcière.
+  # ------------------------------------------------------------ Toussaint (automne)
+  - id: ecureuils-reserve-hiver
+    fete: toussaint
+    nom: Les écureuils et la réserve d'hiver
+    accroche: Un jeu de ramassage par équipes, où chaque famille d'écureuils remplit son nid avant l'hiver, sous l'œil du renard.
     age_min: 4
     age_max: 10
     ages: [3-5-ans, 6-8-ans, 9-12-ans]
-    joueurs: [6, 30]
-    duree: 30
-    but: Retrouver tous les ingrédients de sa recette et les rapporter dans son chaudron avant les autres équipes.
+    joueurs: [8, 30]
+    duree: 25
+    but: Rapporter dans le nid de son équipe le plus de noisettes possible avant que l'hiver arrive, sans se faire attraper par le renard.
     materiel:
-      - "Un chaudron par équipe : un saladier, un seau ou un carton"
-      - "5 à 8 cartes « ingrédient » par équipe, avec un bord de la couleur de l'équipe : bave de crapaud, plume de corbeau, toile d'araignée, citrouille, champignon, œil de chat…"
-      - Une carte « recette » par équipe, qui montre les ingrédients à trouver
-      - Un chapeau ou un balai pour la sorcière
-      - "Pour la fin : une « potion » à partager (jus de fruits ou sirop, avec des pailles)"
+      - "40 à 60 « noisettes » : marrons, glands, pommes de pin ramassés en balade, ou à défaut des bouchons ou des balles"
+      - "Un nid par équipe : un cerceau, une caisse ou un carton bas"
+      - Un foulard ou une chasuble pour le renard
+      - "Pour la version à l'intérieur : des cartes noisettes en papier et un chapeau ou un masque de hibou"
     histoire: >-
-      La sorcière du quartier s'est endormie au milieu de sa potion. Les apprentis sorciers
-      ont jusqu'à son réveil pour terminer leur propre potion… sans se faire remarquer.
+      Les jours raccourcissent, les feuilles tombent. Dans la forêt, chaque famille d'écureuils se dépêche
+      de remplir son nid pour passer l'hiver. Mais un renard rôde entre les arbres, et il adore les écureuils
+      un peu trop gourmands.
     versions:
       - lieu: Dehors
-        espace: Jardin, cour ou parc, sur une zone de 20 m sur 20 m environ
+        espace: Un jardin, une cour ou un coin de parc, sur une zone de 20 m sur 20 m environ
         mise_en_place: >-
-          Délimitez la zone de jeu avec des plots ou une corde. Cachez les cartes ingrédients
-          dans cette zone : sous un plot, au pied d'un arbre, derrière un pot de fleurs. Placez
-          les chaudrons au centre, à côté de la sorcière, assise les yeux fermés.
+          Délimitez la forêt avec des plots. Posez les nids sur les bords, à égale distance du centre.
+          Éparpillez les noisettes dans toute la forêt, en en gardant une poignée de côté pour plus tard.
+          Le renard (un adulte au premier tour, puis un enfant) attend au centre.
         deroulement:
-          - Chaque équipe lit sa recette, puis part chercher ses ingrédients, seulement ceux de sa couleur.
-          - On rapporte un seul ingrédient à la fois dans son chaudron.
-          - "Quand elle le décide, la sorcière se réveille en criant « Abracadabra ! ». Tout le monde se fige en statue."
-          - La sorcière ouvre les yeux et compte jusqu'à 5. Celui qu'elle voit bouger retourne toucher son chaudron avant de repartir.
-          - "La première équipe qui a toute sa recette crie la formule : « Bave de crapaud et poil de chat, la potion est prête, la voilà ! »"
+          - Au signal, les écureuils partent chercher des noisettes et les rapportent une par une dans leur nid.
+          - Le renard essaie de toucher les écureuils qui portent une noisette. Un écureuil touché donne sa noisette au renard, qui la relance dans la forêt.
+          - "L'écureuil touché retourne toucher son nid avant de repartir. Le renard n'attrape jamais deux fois de suite le même écureuil."
+          - "Toutes les deux ou trois minutes, le meneur crie « Coup de vent ! » : tout le monde rentre au nid, et il éparpille une poignée de noisettes neuves."
+          - "Au bout de 15 à 20 minutes, le meneur annonce « L'hiver arrive ! ». On compte les noisettes de chaque nid."
       - lieu: À l'intérieur
-        espace: Salon, salle d'activité, ou deux ou trois pièces de la maison
+        espace: Une salle dégagée ou deux pièces de la maison
         mise_en_place: >-
-          Choisissez deux ou trois pièces autorisées et fermez les autres portes. Cachez les cartes
-          à hauteur d'enfant : sous un coussin, derrière un rideau, dans une chaussure. Les chaudrons
-          et la sorcière sont dans la pièce principale.
+          Cachez les cartes noisettes un peu partout, à hauteur d'enfant. Le renard devient un hibou,
+          assis sur une chaise au milieu de la salle, les yeux fermés.
         deroulement:
-          - "Même jeu que dehors, mais on marche : la sorcière renvoie au chaudron celui qui court."
-          - "La sorcière se réveille seulement quand elle entend du bruit : on cherche en chuchotant."
-          - "Pour les 7 ans et plus, chaque carte recette donne une devinette au lieu d'un ingrédient. Par exemple : « J'ai quatre pieds mais je ne marche jamais » (la table). La carte ingrédient est cachée à cet endroit."
+          - Les écureuils cherchent les noisettes en marchant et les rapportent une par une au nid.
+          - "Quand il le décide, le hibou ouvre les yeux en disant « Hou hou ! » : tout le monde se fige."
+          - Le hibou compte jusqu'à 5. Celui qu'il voit bouger rapporte sa noisette au hibou, qui la cachera à nouveau.
+          - On joue jusqu'à ce que toutes les noisettes soient trouvées.
     regles:
-      - Chaque équipe ne ramasse que les ingrédients de sa couleur.
-      - Une carte d'une autre couleur reste à sa place. Interdit de la cacher davantage.
-      - Un seul ingrédient à la fois par joueur.
-      - Quand la sorcière est réveillée, on ne bouge plus.
+      - Une seule noisette à la fois.
+      - On ne prend jamais une noisette dans le nid d'une autre équipe.
+      - Le nid est une maison sûre. Le renard ne touche pas un écureuil qui a un pied dedans.
+      - Une noisette tombée en route reste par terre. Elle appartient à celui qui la ramasse.
     adapter:
-      - "3-5 ans : un adulte accompagne chaque équipe, les cartes dépassent à moitié de leur cachette, et la sorcière ne renvoie personne : elle fait juste « Bouh ! »."
-      - "6-8 ans : le jeu tel quel. Ajoutez un ingrédient « rare » par équipe, mieux caché que les autres."
-      - "9-10 ans : les devinettes, et un marché aux ingrédients au milieu du jeu : chaque équipe a reçu une carte d'une autre équipe et doit négocier l'échange."
+      - "4-5 ans : pas d'élimination ni de vol. Le renard se contente de faire le tour de la forêt en chantant, et les écureuils se cachent dans leur nid quand il passe tout près."
+      - "6-8 ans : le jeu tel quel, avec un renard au premier tour joué par un adulte pour montrer comment on attrape sans pousser."
+      - "9-10 ans : trois sortes de noisettes. Le gland vaut 1 point, le marron 2, la pomme de pin 3. Et deux renards au lieu d'un."
     securite:
-      - Pas de cachette en hauteur, près d'une route, d'un bassin ou d'une prise électrique.
-      - Gardez une lumière normale. Le frisson vient de l'histoire, pas du noir.
+      - Ramassez les marrons et les pommes de pin sur un sol sans boue ni pente. Retirez les bogues de châtaigne, qui piquent.
+      - On touche le dos avec la main, on ne pousse pas et on ne tire pas les vêtements.
     fin: >-
-      Quand toutes les potions sont prêtes, la sorcière se réveille pour de bon, goûte chaque chaudron
-      et sert à tous la vraie potion : un verre de jus avec une paille.
+      Avant l'hiver, chaque famille d'écureuils compte sa réserve à voix haute. Puis tout le monde se roule en boule
+      et fait semblant de dormir : c'est le moment du goûter, ou du retour au calme.
 
-  - id: reveil-des-fantomes
-    fete: halloween
-    nom: Le réveil des fantômes
-    accroche: Des fantômes qui avancent sans bruit vers la lanterne du gardien du cimetière.
+  - id: herissons-et-tas-de-feuilles
+    fete: toussaint
+    nom: Les hérissons et les tas de feuilles
+    accroche: Un jeu coopératif pour les petits, où personne ne reste dehors quand le vent se lève.
     age_min: 3
-    age_max: 9
+    age_max: 7
     ages: [3-5-ans, 6-8-ans]
-    joueurs: [4, 25]
+    joueurs: [5, 25]
     duree: 15
-    but: "Pour les fantômes : s'approcher sans se faire voir et reprendre la lanterne du gardien. Pour le gardien : surprendre les fantômes qui bougent."
+    but: Quand le vent se lève, trouver un abri dans un tas de feuilles, et faire en sorte que tous les hérissons soient à l'abri, même quand il reste peu de tas.
     materiel:
-      - "Une lanterne : une lampe de poche, une petite lanterne à piles ou un seau décoré"
-      - Une corde ou des plots pour la ligne de départ
-      - "Facultatif : un foulard ou un drap blanc par fantôme"
+      - "Des cerceaux, des tapis ou de grands cartons : ce sont les tas de feuilles (un pour trois enfants au départ)"
+      - Une musique douce et de quoi l'arrêter, ou un tambourin
+      - "Facultatif : de vraies feuilles mortes dans un sac, à éparpiller dans les tas pour le décor"
     histoire: >-
-      Chaque soir d'Halloween, le gardien du cimetière surveille sa lanterne. Mais dès qu'il a le dos
-      tourné, les fantômes se réveillent et s'approchent tout doucement.
+      En automne, les hérissons se promènent dans le jardin pour trouver de quoi manger. Mais quand le vent
+      se lève, ils courent se mettre à l'abri sous un tas de feuilles. Et un bon hérisson ne laisse jamais
+      un ami dehors.
     versions:
       - lieu: Dehors
-        espace: Une longueur de 15 à 20 m, dans un jardin, une cour ou un parc
+        espace: Une pelouse ou une cour, 10 m sur 10 m suffisent
         mise_en_place: >-
-          Le gardien se tient au bout du terrain, dos aux joueurs, la lanterne posée à ses pieds,
-          derrière lui. Les fantômes se placent sur la ligne de départ.
+          Posez les tas de feuilles un peu partout dans l'espace, à au moins 2 m les uns des autres.
+          Les hérissons se promènent autour, à quatre pattes pour les plus petits ou en marchant tout doucement.
         deroulement:
-          - "Le gardien, dos tourné, dit lentement : « Les fantômes dorment… », puis se retourne d'un coup en criant « Réveil ! »."
-          - Pendant la phrase, les fantômes avancent. Quand le gardien se retourne, ils se figent dans une pose de fantôme.
-          - Un fantôme que le gardien voit bouger, rire ou parler retourne sur la ligne de départ.
-          - Le fantôme qui attrape la lanterne la rapporte sur la ligne de départ. Le gardien peut le toucher pour la reprendre.
-          - Si le fantôme réussit, il devient le nouveau gardien.
+          - Pendant la musique (ou le tambourin), les hérissons se promènent en cherchant à manger.
+          - "Le meneur arrête la musique et crie « Le vent se lève ! » : chacun court s'abriter dans un tas de feuilles."
+          - Plusieurs hérissons peuvent partager le même tas, à condition d'avoir au moins un pied ou une main dedans.
+          - Le meneur retire un tas à chaque tour. Personne n'est éliminé, on se serre de plus en plus.
+          - Au dernier tour, il ne reste qu'un ou deux tas, et tout le groupe doit tenir dedans en se roulant en boule.
       - lieu: À l'intérieur
-        espace: Un couloir ou une salle dégagée, 6 à 8 m suffisent
+        espace: Une salle de motricité, une salle de classe poussée ou un grand salon
         mise_en_place: >-
-          Poussez les meubles qui gênent et marquez la ligne de départ avec une corde ou du ruban adhésif.
-          Le gardien se place au fond de la pièce.
+          Remplacez les cerceaux par des tapis, des coussins ou des serviettes. Retirez les objets sur lesquels on peut glisser.
         deroulement:
-          - "Les fantômes avancent seulement en « pas de fantôme » : des pas glissés, sans lever les pieds."
-          - Le gardien ne court pas après celui qui a la lanterne. Il lui suffit de dire son prénom avant qu'il n'atteigne la ligne pour qu'il la repose.
-          - Lumière tamisée possible, mais jamais le noir complet.
+          - Même jeu que dehors, en marchant à quatre pattes ou en « pas de hérisson », les mains sur les genoux.
+          - "Ajoutez d'autres appels que le vent : « La pluie ! », on se fait tout petit sous ses bras ; « Le soleil ! », on s'étire ; « Le renard ! », on ne bouge plus du tout."
     regles:
-      - On n'avance que quand le gardien a le dos tourné.
-      - Quand il se retourne, on reste immobile jusqu'à ce qu'il se retourne à nouveau.
-      - Le gardien doit dire le prénom du fantôme qu'il a vu bouger.
+      - Personne n'est éliminé.
+      - Un hérisson à l'abri aide les autres à entrer dans son tas.
+      - On ne court vers les tas qu'après l'appel du vent.
     adapter:
-      - "3-5 ans : un adulte fait le gardien. Un fantôme vu en train de bouger recule seulement de trois pas."
-      - "6-9 ans : le gardien annonce une pose au moment où il se retourne : « fantôme qui vole », « fantôme qui a peur », « fantôme endormi »."
+      - "3-4 ans : un adulte joue avec eux et montre les gestes. On retire un tas seulement tous les deux tours."
+      - "5-7 ans : on chronomètre le dernier tour. Le groupe a 10 secondes pour que tout le monde soit à l'abri."
     securite:
-      - Un terrain plat et sans obstacle, surtout si les fantômes portent un drap. Le drap ne couvre jamais le visage.
+      - Les cerceaux posés au sol glissent sur le carrelage. Préférez des tapis à l'intérieur.
+      - Au dernier tour, rappelez qu'on se serre sans s'écraser. Un adulte reste tout près.
     fin: >-
-      Pour terminer, tous les fantômes se réveillent en même temps et font le tour du gardien en
-      chantant. Personne n'a peur, tout le monde rit.
+      Quand tous les hérissons tiennent dans le dernier tas, le meneur raconte que l'hiver est arrivé
+      et que les hérissons s'endorment jusqu'au printemps. Une minute de silence, couchés, avant de se relever doucement.
 
   # ------------------------------------------------------------ Noël
   - id: tournee-du-pere-noel

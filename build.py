@@ -31,6 +31,29 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 RACINE = Path(__file__).resolve().parent
 SORTIE = RACINE / "_site"
 
+# Anciennes adresses -> nouvelles (une page de redirection est créée pour chacune)
+REDIRECTIONS = {
+    "/a-propos/": "/qui-suis-je/",
+    "/idees/": "/fetes/",
+    "/idees/3-5-ans/": "/anniversaires/",
+    "/idees/6-8-ans/": "/grands-jeux/",
+    "/idees/9-12-ans/": "/grands-jeux/",
+    "/idees/13-17-ans/": "/grands-jeux/",
+    "/idees/halloween/": "/fetes/toussaint/",
+    "/idees/halloween/potion-de-la-sorciere/": "/fetes/toussaint/ecureuils-reserve-hiver/",
+    "/idees/halloween/reveil-des-fantomes/": "/fetes/toussaint/herissons-et-tas-de-feuilles/",
+    "/idees/noel/": "/fetes/noel/",
+    "/idees/noel/tournee-du-pere-noel/": "/fetes/noel/tournee-du-pere-noel/",
+    "/idees/noel/rennes-egares/": "/fetes/noel/rennes-egares/",
+    "/idees/carnaval/": "/fetes/carnaval/",
+    "/idees/carnaval/defile-des-statues/": "/fetes/carnaval/defile-des-statues/",
+    "/idees/carnaval/mannequin-du-carnaval/": "/fetes/carnaval/mannequin-du-carnaval/",
+    "/idees/paques/": "/fetes/paques/",
+    "/idees/paques/chasse-aux-oeufs-des-couleurs/": "/fetes/paques/chasse-aux-oeufs-des-couleurs/",
+    "/idees/paques/voleurs-de-nids/": "/fetes/paques/voleurs-de-nids/",
+    "/idees/fete-de-fin-d-annee/": "/kermesse/",
+}
+
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
         "août", "septembre", "octobre", "novembre", "décembre"]
 
@@ -158,6 +181,14 @@ class Site:
         jeux = self.donnees.get("jeux", {}).get("jeux", [])
         return sorted(jeux, key=lambda j: (j["age_min"], j["nom"].split(" ", 1)[-1].lower()))
 
+    def moment(self):
+        """La mise en avant de saison sur l'accueil (donnees/saisons.yml), selon le mois."""
+        mois = dt.date.today().month
+        for s in self.donnees.get("saisons", {}).get("saisons", []):
+            if mois in s["mois"]:
+                return s
+        return None
+
     def jeux_fetes(self):
         return self.donnees.get("jeux-fetes", {}).get("jeux", [])
 
@@ -167,6 +198,11 @@ class Site:
         self.ajouter("/", "accueil.html", titre=None)
         self.ajouter("/boutique/", "boutique.html", titre="La boutique",
                      description="Grands jeux et jeux collectifs à télécharger et imprimer, par âge de 6 à 17 ans, et kits d'animation pour les fêtes, les écoles et les accueils de loisirs.")
+        for k in self.kits():
+            self.ajouter(f"/boutique/{k['id']}/", "produit.html",
+                         titre=k.get("titre_seo") or f"{k['titre']} : kit à imprimer",
+                         description=f"{k['accroche']} {k['age']}, {k['joueurs']}, {k['duree']}. Fichier PDF à télécharger et imprimer."[:300],
+                         kit=k, image=f"img/kits/{k['id']}-partage.jpg")
         self.ajouter("/jeux/", "jeux.html", titre="Tous les grands jeux",
                      description="34 grands jeux et jeux collectifs pour enfants et ados : but du jeu, âge, nombre de joueurs, durée et matériel de chaque jeu.")
         for j in self.jeux():
@@ -176,40 +212,39 @@ class Site:
         for u in d["univers"]["univers"]:
             if u["id"] == "pro":
                 continue
-            self.ajouter(u["url"], "univers.html", titre=u["titre_page"],
-                         description=u["description"], univers=u)
+            self.ajouter(u["url"], "fetes.html" if u["id"] == "fetes" else "univers.html",
+                         titre=u["titre_page"], description=u["description"], univers=u)
         pro = next(u for u in d["univers"]["univers"] if u["id"] == "pro")
         self.ajouter(pro["url"], "pro.html", titre=pro["titre_page"],
                      description=pro["description"], univers=pro)
-        self.ajouter("/idees/", "idees.html", titre="Idées par âge et par fête",
-                     description="Trouvez le bon jeu selon l'âge des enfants ou la fête à préparer : Halloween, Noël, carnaval, Pâques, fête de fin d'année.")
-        for groupe in ("ages", "fetes"):
-            for idee in d["idees"][groupe]:
-                self.ajouter(f"/idees/{idee['slug']}/", "idee.html",
-                             titre=idee["titre_page"], description=idee["description"],
-                             idee=idee, groupe=groupe)
-        fetes = {f["slug"]: f for f in d["idees"]["fetes"]}
+        fetes = {f["slug"]: f for f in d["fetes"]["fetes"]}
+        for f in fetes.values():
+            self.ajouter(f"/fetes/{f['slug']}/", "fete.html", titre=f["titre_page"],
+                         description=f["description"], fete=f)
         for j in self.jeux_fetes():
-            self.ajouter(f"/idees/{j['fete']}/{j['id']}/", "jeu-fete.html",
+            self.ajouter(f"/fetes/{j['fete']}/{j['id']}/", "jeu-fete.html",
                          titre=f"{j['nom']} : un jeu {fetes[j['fete']]['de']} pour enfants",
                          description=f"{j['accroche']} Règles complètes, version dehors et version à l'intérieur, dès {j['age_min']} ans.",
                          jeu=j, fete=fetes[j["fete"]])
         self.ajouter("/jeux-gratuits/", "jeux-gratuits.html", titre="3 grands jeux offerts",
                      description="Recevez 3 grands jeux collectifs à imprimer, avec règles, variantes et schéma du terrain : Gendarmes et voleurs, Poules renards vipères, L'épervier gradé.")
-        self.ajouter("/blog/", "blog.html", titre="Le carnet d'idées",
+        self.ajouter("/blog/", "blog.html", titre="Le blog : idées de jeux et conseils d'animateur",
                      description="Conseils et idées de jeux pour les anniversaires, les fêtes et les grands jeux, écrits par un directeur d'animation.")
         for a in self.articles:
             self.ajouter(a["url"], "article.html", titre=a["titre"],
                          description=a.get("description", ""), article=a,
                          type_og="article")
-        self.ajouter("/contact/", "contact.html", titre="Contact",
-                     description="Une question sur un kit, une commande pour une association ou un centre de loisirs ? Écrivez-nous.")
+        self.ajouter("/contact/", "contact.html", titre="Contact et devis",
+                     description="Une question sur un kit, une commande pour une association, un devis pour un accueil de loisirs ou un CSE : écrivez-moi, je réponds sous 48 heures ouvrées.")
         for f in sorted((RACINE / "contenu" / "pages").glob("*.md")):
             entete, corps = lire_markdown(f)
             self.ajouter(entete["url"], entete.get("gabarit", "page.html"),
                          titre=entete["titre"], description=entete.get("description", ""),
                          corps_md=corps, page_entete=entete)
         self.ajouter("/404.html", "404.html", titre="Page introuvable", indexer=False)
+        for ancienne, nouvelle in REDIRECTIONS.items():
+            self.ajouter(ancienne, "redirection.html", titre="Cette page a changé d'adresse",
+                         indexer=False, vers=nouvelle, redirection=True)
 
     def ajouter(self, url, gabarit, titre=None, description=None, indexer=True, **extra):
         self.pages.append({"url": url, "gabarit": gabarit, "titre": titre,
@@ -242,6 +277,7 @@ class Site:
             "statique": statique,
             "apercu": apercu,
             "annee": dt.date.today().year,
+            "moment": self.moment(),
             "url_complete": self.config["url"].rstrip("/") + url_page.replace("index.html", ""),
         }
         # Pages en Markdown : le texte peut utiliser {{ site.… }}

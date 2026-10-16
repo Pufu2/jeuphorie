@@ -1,0 +1,61 @@
+# Les fêtes de l'année : une page par fête dans l'univers « Fêtes de l'année » (/fetes/<slug>/).
+# Sur chaque page : le kit de la fête (donnees/kits.yml, champ fete), les jeux offerts
+# (donnees/jeux-fetes.yml) et les articles du blog qui portent l'étiquette de la fête.
+# La fête de fin d'année est traitée dans l'univers Kermesse.
+
+fetes:
+  - slug: toussaint
+    nom: Toussaint
+    de: "d'automne"
+    periode: Vacances de la Toussaint, fin octobre
+    titre_page: Jeux d'automne pour les vacances de la Toussaint
+    description: "Jeux d'automne pour enfants, pour les vacances de la Toussaint : grand jeu de la forêt, ramassage, jeux coopératifs, à la maison ou en accueil de loisirs."
+    intro: >-
+      Les vacances de la Toussaint tombent au moment où les enfants ramassent des marrons et sautent
+      dans les feuilles. Profitez-en : la forêt, les écureuils, les hérissons et le vent d'automne
+      donnent des jeux qui se jouent dehors tant qu'il fait doux, et à l'intérieur dès qu'il pleut.
+    conseil: >-
+      En automne, la nuit tombe tôt et la météo change vite. Prévoyez chaque jeu en deux versions,
+      dehors et à l'intérieur, et gardez les jeux calmes pour la fin d'après-midi.
+
+  - slug: noel
+    nom: Noël
+    de: "de Noël"
+    periode: Décembre
+    titre_page: Jeux de Noël pour enfants, en famille ou en groupe
+    description: "Jeux de Noël pour enfants : grand jeu de l'atelier du père Noël, relais, chasse aux rennes, pour la famille, l'école, l'accueil de loisirs ou l'arbre de Noël du CSE."
+    intro: >-
+      À Noël, le jeu réunit tout le monde : les cousins de 4 à 14 ans, les grands-parents, ou les enfants
+      des salariés à l'arbre de Noël de l'entreprise. Il faut des jeux où chacun a un rôle, une histoire
+      qui fait rêver les petits sans ennuyer les grands, et une fin qui tombe pile pour le goûter.
+    conseil: >-
+      Formez des équipes mélangées en âge, confiez aux grands un rôle de chef de lutins,
+      et placez le jeu avant le goûter, quand les enfants ne tiennent plus en place.
+
+  - slug: carnaval
+    nom: Carnaval
+    de: "de carnaval"
+    periode: Février et mars
+    titre_page: Jeux de carnaval pour enfants
+    description: "Jeux de carnaval pour enfants : défilé, statues, relais costumés et bal, pour l'école, l'accueil de loisirs ou la maison."
+    intro: >-
+      Le carnaval, c'est le déguisement, la musique et le défilé. Les jeux qui marchent le mieux
+      font bouger les costumes au lieu de les abîmer : poses, défilés, relais où l'on s'habille,
+      bal où l'on change de personnage.
+    conseil: >-
+      Les costumes gênent pour courir et tiennent chaud. Choisissez des jeux de posture et
+      d'adresse plutôt que des courses, et gardez les masques pour le défilé.
+
+  - slug: paques
+    nom: Pâques
+    de: "de Pâques"
+    periode: Mars et avril
+    titre_page: Chasse aux œufs et jeux de Pâques pour enfants
+    description: "Chasse aux œufs organisée par âge et jeux de Pâques pour enfants, au jardin, à la maison ou en accueil de loisirs."
+    intro: >-
+      La chasse aux œufs est le moment préféré des enfants, et souvent celui qui se termine en larmes :
+      les grands ramassent tout, les petits n'ont rien. Avec une couleur par enfant, des zones par âge
+      et des énigmes pour les plus grands, chacun repart avec un panier plein.
+    conseil: >-
+      Comptez les œufs avant de les cacher, notez les cachettes sur un papier, et gardez un œuf
+      d'or à chercher tous ensemble pour finir.

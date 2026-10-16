@@ -6,40 +6,32 @@
 {%- for u in d.univers.univers if u.id == id %}{{ u.couleur }}{% endfor -%}
 {%- endmacro %}
 
-{# Fiche d'un produit, présentée comme une fiche d'activité d'animateur #}
+{# Carte d'un produit : couverture, titre, accroche, repères, prix et lien vers sa page #}
 {% macro fiche_kit(k, titre_niveau=3) %}
 {% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.payhip_id %}
 <article class="fiche fiche--{{ couleur_univers(k.univers) }}" id="kit-{{ k.id }}">
-  <div class="fiche__bandeau">
-    <span class="fiche__univers">{{ nom_univers(k.univers) }}</span>
-    {% if k.etat == 'en_preparation' %}<span class="tampon">Bientôt</span>{% elif not achetable %}<span class="tampon">Prêt</span>{% endif %}
-  </div>
-  <h{{ titre_niveau }} class="fiche__titre">{{ k.titre }}</h{{ titre_niveau }}>
+  <a class="fiche__image" href="{{ lien('/boutique/' ~ k.id ~ '/') }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ statique('img/kits/' ~ k.id ~ '.jpg') }}" alt="" loading="lazy" width="720" height="463">
+    {% if k.etat == 'en_preparation' %}<span class="fiche__badge">Bientôt</span>{% endif %}
+  </a>
+  <p class="fiche__univers-texte">{{ nom_univers(k.univers) }}</p>
+  <h{{ titre_niveau }} class="fiche__titre"><a href="{{ lien('/boutique/' ~ k.id ~ '/') }}">{{ k.titre }}</a></h{{ titre_niveau }}>
   <p class="fiche__accroche">{{ k.accroche }}</p>
   <dl class="fiche__tech">
     <div><dt>Âge</dt><dd>{{ k.age }}</dd></div>
-    <div><dt>Joueurs</dt><dd>{{ k.joueurs }}</dd></div>
+    <div><dt>Pour</dt><dd>{{ k.joueurs }}</dd></div>
     <div><dt>Durée</dt><dd>{{ k.duree }}</dd></div>
-    <div><dt>Lieu</dt><dd>{{ k.lieu }}</dd></div>
-    <div><dt>Préparation</dt><dd>{{ k.preparation }}</dd></div>
   </dl>
-  <p class="fiche__sous-titre">Dans le fichier</p>
-  <ul class="fiche__liste">
-    {% for c in k.contenu %}<li>{{ c }}</li>{% endfor %}
-  </ul>
-  {% if k.pack %}
-  <p class="fiche__jeux"><a href="{{ lien('/jeux/' if k.pack == 'tout' else '/jeux/#age-' ~ k.pack) }}">Voir la liste des jeux</a></p>
-  {% endif %}
   <div class="fiche__pied">
-    {% if achetable %}
-    <span class="fiche__prix">{{ k.prix }} €</span>
-    <a class="bouton payhip-buy-button" href="https://payhip.com/b/{{ k.payhip_id }}" data-product="{{ k.payhip_id }}" data-theme="none">Acheter</a>
-    {% elif k.etat == 'en_preparation' %}
+    {% if k.etat == 'en_preparation' %}
     <span class="fiche__prix fiche__prix--prevu">Prix prévu : {{ k.prix }} €</span>
-    <span class="fiche__etat">En préparation</span>
     {% else %}
     <span class="fiche__prix">{{ k.prix }} €</span>
-    <span class="fiche__etat">En vente très bientôt</span>
+    {% endif %}
+    {% if achetable %}
+    <a class="bouton bouton--petit payhip-buy-button" href="https://payhip.com/b/{{ k.payhip_id }}" data-product="{{ k.payhip_id }}" data-theme="none">Acheter</a>
+    {% else %}
+    <a class="bouton bouton--petit bouton--contour" href="{{ lien('/boutique/' ~ k.id ~ '/') }}">Voir le kit</a>
     {% endif %}
   </div>
 </article>
@@ -57,7 +49,7 @@
 
 {# Carte d'un jeu de fête (donnees/jeux-fetes.yml) #}
 {% macro carte_jeu_fete(j) %}
-<a class="carte-jeu carte-jeu--fete" href="{{ lien('/idees/' ~ j.fete ~ '/' ~ j.id ~ '/') }}">
+<a class="carte-jeu carte-jeu--fete" href="{{ lien('/fetes/' ~ j.fete ~ '/' ~ j.id ~ '/') }}">
   <span class="carte-jeu__nom">{{ j.nom }}</span>
   <span class="carte-jeu__meta">Dès {{ j.age_min }} ans, {{ j.joueurs[0] }} à {{ j.joueurs[1] }} joueurs, {{ j.duree }} min</span>
   <span class="carte-jeu__astuce">{{ j.accroche }}</span>

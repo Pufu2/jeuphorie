@@ -51,10 +51,10 @@
     </a>
     {% macro liens_menu(classe) %}
       {% for u in d.univers.univers %}
-      <a href="{{ lien(u.url) }}" class="{{ classe }} {{ classe }}--{{ u.couleur }}"{% if page.url == u.url %} aria-current="page"{% endif %}>{{ u.nom }}</a>
+      <a href="{{ lien(u.url) }}" class="{{ classe }} {{ classe }}--{{ u.couleur }}"{% if page.url.startswith(u.url) %} aria-current="page"{% endif %}>{{ u.nom_court or u.nom }}</a>
       {% endfor %}
-      <a href="{{ lien('/idees/') }}" class="{{ classe }}"{% if page.url.startswith('/idees/') %} aria-current="page"{% endif %}>Idées</a>
       <a href="{{ lien('/blog/') }}" class="{{ classe }}"{% if page.url.startswith('/blog/') %} aria-current="page"{% endif %}>Blog</a>
+      <a href="{{ lien('/contact/') }}" class="{{ classe }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
       <a href="{{ lien('/boutique/') }}" class="{{ classe }} {{ classe }}--boutique"{% if page.url == '/boutique/' %} aria-current="page"{% endif %}>Boutique</a>
     {% endmacro %}
     <nav class="nav-large" aria-label="Navigation principale">
@@ -82,25 +82,27 @@
       <p class="pied__etat">Les ventes ouvrent très bientôt.</p>
       {% endif %}
     </div>
-    <nav class="pied__liens" aria-label="Pour trouver un jeu">
-      <p class="pied__titre">Trouver un jeu</p>
-      <a href="{{ lien('/anniversaires/') }}">Anniversaires</a>
-      <a href="{{ lien('/jeux/') }}">Tous les grands jeux</a>
-      <a href="{{ lien('/grands-jeux/') }}">Packs de grands jeux</a>
-      <a href="{{ lien('/kermesse/') }}">Kermesse</a>
-      <a href="{{ lien('/pro/') }}">Jeuphorie Pro, l'abonnement</a>
-      <a href="{{ lien('/idees/') }}">Idées par âge et par fête</a>
-      <a href="{{ lien('/jeux-gratuits/') }}">3 jeux offerts</a>
+    <nav class="pied__liens" aria-label="Les kits">
+      <p class="pied__titre">Les kits</p>
+      {% for u in d.univers.univers %}<a href="{{ lien(u.url) }}">{{ u.nom }}</a>
+      {% endfor %}<a href="{{ lien('/jeux/') }}">Les 34 grands jeux, un par un</a>
+      <a href="{{ lien('/jeux-gratuits/') }}">3 grands jeux offerts</a>
+      <a href="{{ lien('/boutique/') }}">Toute la boutique</a>
     </nav>
-    <nav class="pied__liens" aria-label="À propos">
+    <nav class="pied__liens" aria-label="Jeuphorie">
       <p class="pied__titre">Jeuphorie</p>
-      <a href="{{ lien('/a-propos/') }}">Qui sommes-nous</a>
-      <a href="{{ lien('/blog/') }}">Le carnet d'idées</a>
-      <a href="{{ lien('/contact/') }}">Contact</a>
+      <a href="{{ lien('/qui-suis-je/') }}">Qui suis-je</a>
+      <a href="{{ lien('/blog/') }}">Le blog</a>
+      <a href="{{ lien('/contact/') }}">Contact et devis</a>
       <a href="{{ lien('/mentions-legales/') }}">Mentions légales</a>
       <a href="{{ lien('/conditions-de-vente/') }}">Conditions de vente</a>
       <a href="{{ lien('/confidentialite/') }}">Confidentialité</a>
     </nav>
+    <div class="pied__contact">
+      <p class="pied__titre">Une question ?</p>
+      <p>Une commande pour une association, un devis pour une structure, un fichier qui ne s'ouvre pas : je réponds sous 48 heures ouvrées.</p>
+      <a class="pied__mail" href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </div>
   </div>
   <p class="cadre pied__bas">© {{ annee }} {{ site.nom }}. Les jeux sont à imprimer pour un usage privé ou au sein de la structure qui les achète.</p>
 </footer>

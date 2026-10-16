@@ -6,23 +6,22 @@
 {% set vedette = jeux | selectattr('id', 'equalto', 'poules-renards-viperes') | first %}
 <section class="ouverture cadre">
   <div class="ouverture__texte">
-    <h1 class="ouverture__titre">Des grands jeux prêts à imprimer, conçus par un directeur d'animation</h1>
-    <p class="ouverture__intro">{{ jeux | length }} jeux collectifs testés en accueil de loisirs, de 6 à 17 ans. Chaque fiche donne le matériel, la mise en place, les règles, les variantes et un schéma du terrain. Vous imprimez, vous jouez.</p>
+    <p class="surtitre">Jeux et animations clés en main</p>
+    <h1 class="ouverture__titre">Des jeux prêts à animer, conçus par un directeur d'accueil de loisirs</h1>
+    <p class="ouverture__intro">Anniversaires, grands jeux, fêtes de l'année, kermesse : chaque kit donne le déroulé, les règles, le matériel et tout ce qu'il faut imprimer. Pour une fête en famille comme pour un groupe de 40 enfants.</p>
     <div class="actions">
-      <a class="bouton" href="{{ lien('/jeux/') }}">Voir les jeux</a>
+      <a class="bouton" href="{{ lien('/boutique/') }}">Voir les kits</a>
       <a class="bouton bouton--contour" href="{{ lien('/jeux-gratuits/') }}">Recevoir 3 jeux offerts</a>
     </div>
   </div>
 
   <figure class="fiche-vedette" aria-label="Exemple de fiche : {{ vedette.nom }}">
-    <span class="scotch scotch--gauche" aria-hidden="true"></span>
-    <span class="scotch scotch--droite" aria-hidden="true"></span>
-    <p class="fiche-vedette__numero">Fiche de grand jeu</p>
+    <p class="fiche-vedette__numero">Extrait d'une fiche de grand jeu</p>
     <p class="fiche-vedette__titre">{{ vedette.nom }}</p>
     <p class="fiche-vedette__meta">Dès {{ vedette.age_min }} ans, {{ vedette.joueurs[0] }} à {{ vedette.joueurs[1] }} joueurs, {{ vedette.duree }} min</p>
     <div class="fiche-vedette__schema">{{ schema(vedette.id) | safe }}</div>
-    <p class="note-main" aria-hidden="true">Chacun chasse une équipe et fuit l'autre !</p>
-    <a class="tampon tampon--grand" href="{{ lien('/jeux/' ~ vedette.id ~ '/') }}">Offert</a>
+    <p class="fiche-vedette__note">Chaque équipe en chasse une et fuit l'autre.</p>
+    <a class="fiche-vedette__lien" href="{{ lien('/jeux/' ~ vedette.id ~ '/') }}">Lire les règles (jeu offert)</a>
   </figure>
 </section>
 
@@ -34,7 +33,7 @@
       <span class="univers__public">{{ u.public }}</span>
       <span class="univers__nom">{{ u.nom }}</span>
       <span class="univers__accroche">{{ u.accroche }}</span>
-      <span class="univers__lien">Voir les jeux</span>
+      <span class="univers__lien">Voir les kits</span>
     </a>
     {% endfor %}
   </div>
@@ -46,37 +45,51 @@
     <ol class="etapes">
       <li class="etape">
         <span class="etape__num" aria-hidden="true">1</span>
-        <h3 class="etape__titre">Choisissez un jeu</h3>
-        <p>Selon l'âge des joueurs, leur nombre et la place dont vous disposez. Chaque fiche l'indique.</p>
+        <h3 class="etape__titre">Choisissez un kit</h3>
+        <p>Selon l'occasion, l'âge des enfants, leur nombre et la place dont vous disposez. Chaque fiche l'indique.</p>
       </li>
       <li class="etape">
         <span class="etape__num" aria-hidden="true">2</span>
         <h3 class="etape__titre">Imprimez</h3>
-        <p>Vous recevez un PDF au format A4, lisible en couleur comme en noir et blanc.</p>
+        <p>Le PDF arrive aussitôt par mail, au format A4, lisible en couleur comme en noir et blanc.</p>
       </li>
       <li class="etape">
         <span class="etape__num" aria-hidden="true">3</span>
         <h3 class="etape__titre">Jouez</h3>
-        <p>La fiche vous guide : mise en place, règles, variantes. Vous animez, les enfants s'amusent.</p>
+        <p>Le déroulé vous guide étape par étape : vous animez, les enfants jouent, personne n'attend.</p>
       </li>
     </ol>
   </div>
 </section>
 
-<section class="section cadre" aria-labelledby="titre-idees">
-  <h2 id="titre-idees" class="section__titre">Des idées selon l'âge ou la fête</h2>
-  <div class="idees-rapides">
-    <div>
-      <p class="idees-rapides__titre">Par âge</p>
-      <ul class="pastilles">
-        {% for i in d.idees.ages %}<li><a class="pastille" href="{{ lien('/idees/' ~ i.slug ~ '/') }}">{{ i.nom }}</a></li>{% endfor %}
-      </ul>
+{% if moment %}
+<section class="section cadre" aria-labelledby="titre-moment">
+  <div class="moment">
+    <div class="moment__texte">
+      <p class="surtitre">En ce moment</p>
+      <h2 id="titre-moment" class="section__titre">{{ moment.titre }}</h2>
+      <p>{{ moment.texte }}</p>
+      <div class="actions"><a class="bouton" href="{{ lien(moment.url) }}">{{ moment.bouton }}</a></div>
     </div>
-    <div>
-      <p class="idees-rapides__titre">Par fête</p>
-      <ul class="pastilles">
-        {% for i in d.idees.fetes %}<li><a class="pastille" href="{{ lien('/idees/' ~ i.slug ~ '/') }}">{{ i.nom }}</a></li>{% endfor %}
-      </ul>
+    {% if moment.kit and kit(moment.kit) %}<div class="moment__kit">{{ m.fiche_kit(kit(moment.kit), 3) }}</div>{% endif %}
+  </div>
+</section>
+{% endif %}
+
+<section class="section cadre" aria-labelledby="titre-pourquoi">
+  <h2 id="titre-pourquoi" class="section__titre">Pourquoi ces kits marchent</h2>
+  <div class="arguments">
+    <div class="argument">
+      <h3 class="argument__titre">Écrits par un professionnel</h3>
+      <p>Je dirige des grands jeux, des fêtes et des journées à thème pour des groupes d'enfants toute l'année. Les kits reprennent cette méthode : une histoire, des règles claires, un rythme qui tient le groupe.</p>
+    </div>
+    <div class="argument">
+      <h3 class="argument__titre">Tout est prévu</h3>
+      <p>Le déroulé minute par minute, la règle à annoncer en une phrase, le matériel à cocher, les variantes selon l'âge et la météo, et les pièces à imprimer : affiches, cartes, diplômes.</p>
+    </div>
+    <div class="argument">
+      <h3 class="argument__titre">De 6 à 300 enfants</h3>
+      <p>Un anniversaire dans le salon, un mercredi en accueil de loisirs, une kermesse d'école ou l'arbre de Noël d'un CSE : chaque kit indique comment l'adapter au nombre d'enfants et à l'espace.</p>
     </div>
   </div>
 </section>
@@ -108,7 +121,7 @@
 
 {% if articles %}
 <section class="section cadre" aria-labelledby="titre-articles">
-  <h2 id="titre-articles" class="section__titre">Le carnet d'idées</h2>
+  <h2 id="titre-articles" class="section__titre">Sur le blog</h2>
   <div class="grille-articles">
     {% for a in articles[:3] %}{{ m.carte_article(a) }}{% endfor %}
   </div>
@@ -118,8 +131,8 @@
 
 <section class="section cadre presentation">
   <h2 class="section__titre">Qui prépare ces jeux ?</h2>
-  <p>Je m'appelle {{ site.auteur.prenom }}. Je suis directeur adjoint d'un accueil de loisirs à Paris et je prépare un DES JEPS. Chaque semaine, j'organise des grands jeux, des Olympiades et des fêtes pour des dizaines d'enfants et d'ados. Jeuphorie met ces jeux à votre portée, pour une fête à la maison comme pour un mercredi en centre de loisirs.</p>
-  <p><a class="lien-fort" href="{{ lien('/a-propos/') }}">En savoir plus</a></p>
+  <p>Je m'appelle {{ site.auteur.prenom }}. Je suis directeur adjoint d'un accueil de loisirs à Paris. Toute l'année, je prépare des grands jeux, des fêtes et des journées à thème pour des groupes d'enfants. Jeuphorie met cette méthode à votre portée, pour une fête à la maison comme pour un mercredi en centre de loisirs.</p>
+  <p><a class="lien-fort" href="{{ lien('/qui-suis-je/') }}">Mon parcours et ma façon de travailler</a></p>
 </section>
 
 {% endblock %}

@@ -9,16 +9,26 @@ Le site est fait de simples fichiers HTML fabriqués par `build.py`. Il peut êt
 | Pour… | Modifier |
 |---|---|
 | Ouvrir les ventes, l'adresse de contact, les informations légales | `config.yml` |
-| Ajouter ou mettre en vente un produit | `donnees/kits.yml` |
+| Ajouter ou mettre en vente un produit (chaque produit a sa page /boutique/<id>/) | `donnees/kits.yml` |
 | Les formules d'abonnement | `donnees/abonnement.yml` |
 | La partie publique des jeux | `donnees/jeux.yml` (exportée depuis le dossier privé des produits) |
 | Écrire un article | `contenu/blog/` (voir `docs/ECRIRE-UN-ARTICLE.md`) |
-| Les textes des pages À propos et légales | `contenu/pages/` |
-| Les idées par âge et par fête | `donnees/idees.yml` |
-| Les jeux de fêtes offerts (Halloween, Noël…), publiés en entier | `donnees/jeux-fetes.yml` (schémas dans `outils/schemas_fetes.py`) |
+| Les textes des pages Qui suis-je et légales | `contenu/pages/` |
+| Les fêtes de l'année (Toussaint, Noël, carnaval, Pâques) | `donnees/fetes.yml` |
+| La mise en avant « En ce moment » de l'accueil, selon le mois | `donnees/saisons.yml` |
+| Les univers (menu, couleurs, textes d'en-tête) | `donnees/univers.yml` |
+| Les jeux de fêtes offerts (Toussaint, Noël…), publiés en entier | `donnees/jeux-fetes.yml` (schémas dans `outils/schemas_fetes.py`) |
 | Les couleurs et la mise en page | `statique/css/site.css` |
 
 Dans les pages légales, tout ce qui est écrit `[[ainsi]]` apparaît surligné en jaune : ce sont les informations à compléter.
+
+## Les images des produits
+
+La couverture, les aperçus et l'image de partage de chaque produit sont dans `statique/img/kits/`. Ils sont exportés depuis le dossier privé des produits par `exporter_images.py`. Les aperçus sont en basse résolution : le texte des fiches y est illisible.
+
+## Les anciennes adresses
+
+Quand une page change d'adresse, ajoutez la correspondance dans `REDIRECTIONS`, en haut de `build.py` : une page de redirection est créée toute seule.
 
 ## Mettre un kit en vente
 

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+{% set u = page.univers %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>{{ u.nom }}</span></nav>
+  <header class="tete-univers tete-univers--{{ u.couleur }}">
+    <p class="tete-univers__public">Pour : {{ u.public | lower }}</p>
+    <h1 class="titre-page">{{ u.titre_page }}</h1>
+    <p class="chapo">{{ u.intro }}</p>
+    <ul class="coches">{% for p in u.points %}<li>{{ p }}</li>{% endfor %}</ul>
+  </header>
+
+  <section class="section section--serree" aria-labelledby="t-calendrier">
+    <h2 id="t-calendrier" class="section__titre">Le calendrier des fêtes</h2>
+    <div class="grille-fetes">
+      {% for f in d.fetes.fetes %}
+      {% set k = kits | selectattr('fete', 'defined') | selectattr('fete', 'equalto', f.slug) | first %}
+      <a class="carte-fete" href="{{ lien('/fetes/' ~ f.slug ~ '/') }}">
+        <span class="carte-fete__periode">{{ f.periode }}</span>
+        <span class="carte-fete__nom">{{ f.nom }}</span>
+        {% if k %}<span class="carte-fete__kit">{{ k.titre }}</span>{% endif %}
+        <span class="carte-fete__lien">Le kit et deux jeux offerts</span>
+      </a>
+      {% endfor %}
+      <a class="carte-fete" href="{{ lien('/kermesse/') }}">
+        <span class="carte-fete__periode">Juin</span>
+        <span class="carte-fete__nom">Fin d'année</span>
+        <span class="carte-fete__kit">La kermesse clé en main</span>
+        <span class="carte-fete__lien">Voir le kit kermesse</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section section--serree" aria-labelledby="t-kits">
+    <h2 id="t-kits" class="section__titre">Les kits</h2>
+    {{ m.grille_kits(kits | selectattr('univers', 'equalto', 'fetes') | list, "Les kits arrivent bientôt.") }}
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}{% if site.boutique.ventes_actives and not apercu %}<script src="https://payhip.com/payhip.js" defer></script>{% endif %}{% endblock %}

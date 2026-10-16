@@ -24,11 +24,12 @@
   </aside>
   {% endif %}
 
-  {% set themes = [] %}
-  {% for s in a.ages + a.fetes %}{% for i in d.idees.ages + d.idees.fetes if i.slug == s %}{% set _ = themes.append(i) %}{% endfor %}{% endfor %}
-  {% if themes %}
-  <p class="article__themes">Thèmes :
-    {% for i in themes %}<a class="pastille" href="{{ lien('/idees/' ~ i.slug ~ '/') }}">{{ i.nom }}</a>{% endfor %}
+  {% set fetes_liees = d.fetes.fetes | selectattr('slug', 'in', a.fetes) | list %}
+  {% set univers_lies = d.univers.univers | selectattr('id', 'in', a.univers) | list %}
+  {% if fetes_liees or univers_lies %}
+  <p class="article__themes">Pour aller plus loin :
+    {% for u in univers_lies %}<a class="pastille" href="{{ lien(u.url) }}">{{ u.nom }}</a>{% endfor %}
+    {% for f in fetes_liees %}<a class="pastille" href="{{ lien('/fetes/' ~ f.slug ~ '/') }}">{{ f.nom }}</a>{% endfor %}
   </p>
   {% endif %}
 </article>
