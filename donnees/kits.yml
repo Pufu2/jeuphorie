@@ -115,20 +115,21 @@ kits:
   - id: kermesse-cle-en-main
     titre: La kermesse clé en main
     univers: kermesse
-    etat: en_preparation
+    etat: pret
     prix: "25"
     payhip_id: ""
-    accroche: Des stands prêts à monter, les affiches, les tickets et le planning des bénévoles.
-    age: 3 à 11 ans
-    joueurs: Jusqu'à 300 enfants
+    accroche: 16 stands prêts à monter, les affiches, les tickets, la tombola et le planning des bénévoles.
+    age: 2 à 11 ans
+    joueurs: 100 à 300 enfants et plus
     duree: Un après-midi
-    lieu: Cour d'école ou salle
-    preparation: Réunion de bénévoles + 2 h d'installation
+    lieu: Cour d'école, préau ou salle
+    preparation: Une réunion de bénévoles + 2 h d'installation
     contenu:
-      - Une fiche par stand (règle, matériel, bénévoles)
-      - Affiches, tickets et bons de lots
-      - Planning des bénévoles et liste de matériel
-      - Rétroplanning de 8 semaines pour le bureau
+      - 16 fiches de stands (règle, matériel, installation, bénévoles, lots) et 5 fiches pour les responsables
+      - Rétroplanning de 8 semaines, budget type et démarches à prévoir
+      - Plan de la cour, déroulé du jour J et planning des bénévoles
+      - Affiches, panneaux de stands, tickets, bons de lots et 100 billets de tombola numérotés
+      - Les courriers à modifier dans Word, dont le mot aux familles et la lettre aux commerçants
     ages: [3-5-ans, 6-8-ans, 9-12-ans]
     fetes: [fete-de-fin-d-annee]
 
