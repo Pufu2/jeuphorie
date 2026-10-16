@@ -93,6 +93,17 @@ publics:
       Les 34 grands jeux classés par âge pour les échauffements, les stages et les veillées, et des dossiers mensuels qui
       renouvellent les idées tout au long de la saison.
 
+# Les dossiers déjà prêts, montrés en vignettes sur la page Pro (images : statique/img/pro/dossier-<image>.jpg et -fiche.jpg)
+dossiers_prets:
+  - mois: Novembre
+    image: novembre
+    titre: Les jeux des jours de pluie
+    detail: "8 fiches, la préparation de la salle et un programme d'après-midi minuté"
+  - mois: Décembre
+    image: decembre
+    titre: Les jeux coopératifs de l'hiver
+    detail: "8 fiches, le retour en cercle pas à pas et les questions à poser après chaque jeu"
+
 # Le calendrier des dossiers du mois (thèmes annoncés aux abonnés)
 dossiers:
   - [Novembre, "Les jeux des jours de pluie : 8 jeux d'intérieur pour une salle ou un préau"]

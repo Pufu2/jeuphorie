@@ -85,6 +85,20 @@
       {% for x in d.abonnement.dossiers %}<div class="dossier"><span class="dossier__mois">{{ x[0] }}</span><span class="dossier__theme">{{ x[1] }}</span></div>{% endfor %}
     </div>
     <p class="petit">Les abonnés peuvent proposer des thèmes : les plus demandés passent en priorité.</p>
+    {% if d.abonnement.dossiers_prets %}
+    <h3 class="dossiers-prets__titre">Déjà prêts</h3>
+    <div class="dossiers-prets">
+      {% for x in d.abonnement.dossiers_prets %}
+      <figure class="dossier-pret">
+        <div class="dossier-pret__images">
+          <img src="{{ statique('img/pro/dossier-' ~ x.image ~ '.jpg') }}" alt="Couverture du dossier de {{ x.mois | lower }} : {{ x.titre | lower }}" width="280" height="396" loading="lazy">
+          <img src="{{ statique('img/pro/dossier-' ~ x.image ~ '-fiche.jpg') }}" alt="Une fiche du dossier de {{ x.mois | lower }}" width="280" height="396" loading="lazy">
+        </div>
+        <figcaption><strong>{{ x.mois }} : {{ x.titre }}</strong><br>{{ x.detail }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+    {% endif %}
   </section>
 
   <section class="section section--serree" aria-labelledby="t-kits-pro">

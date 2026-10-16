@@ -1060,3 +1060,10 @@ a.tampon { text-decoration: none; }
 .dossier { background: var(--fiche); border: 1px solid var(--filet); border-left: 5px solid var(--pro-vif); border-radius: var(--rayon); padding: 0.8rem 1rem; display: grid; gap: 0.2rem; }
 .dossier__mois { font-family: var(--f-titre); font-weight: 800; }
 .dossier__theme { color: var(--encre-douce); font-size: 0.95rem; }
+.dossiers-prets__titre { font-family: var(--f-titre); font-size: 1.15rem; margin: 1.6rem 0 0.8rem; }
+.dossiers-prets { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.dossier-pret { margin: 0; background: var(--fiche); border: 1px solid var(--filet); border-radius: var(--rayon); padding: 0.9rem; }
+.dossier-pret__images { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 0.7rem; }
+.dossier-pret__images img { width: 100%; height: auto; border: 1px solid var(--filet); border-radius: 6px; box-shadow: 0 2px 6px rgba(26, 35, 64, 0.08); }
+.dossier-pret figcaption { font-size: 0.95rem; color: var(--encre-douce); }
+.dossier-pret figcaption strong { color: var(--encre); }
