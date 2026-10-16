@@ -1,4 +1,4 @@
-# Écrire et publier un article du carnet d'idées
+# Écrire et publier un article du blog
 
 Ce guide sert à la personne ou à la tâche automatique qui écrit l'article de la semaine.
 
@@ -49,3 +49,16 @@ kit: olympiades-anniversaire
 ## Publier
 
 Ajouter le fichier sur la branche `main` du dépôt : le site se refabrique et se publie en deux minutes environ (onglet **Actions** sur GitHub pour suivre).
+
+## La tâche automatique (une fois par mois)
+
+Une tâche planifiée de Claude Code se lance le 20 de chaque mois et suit exactement cette procédure. Vous n'avez rien à faire. Pour changer le rythme ou les sujets, modifiez cette section : la tâche la relit à chaque fois.
+
+1. Lister les articles de `contenu/blog/` et repérer le dernier mardi déjà couvert.
+2. Écrire un article pour chaque mardi suivant, jusqu'au dernier mardi du mois prochain (en général 4 ou 5 articles).
+3. Choisir les sujets dans le calendrier de `docs/REFERENCEMENT.md` (4 à 6 semaines d'avance sur la saison), sans reprendre un sujet déjà traité : chaque article vise une recherche différente.
+4. Varier les publics d'un mois à l'autre : parents (anniversaires, fêtes en famille), écoles et associations (kermesse, carnaval, fêtes d'école), animateurs et directeurs (grands jeux, organisation, Jeuphorie Pro).
+5. Relier chaque article à un kit existant de `donnees/kits.yml` (champ `kit`) quand le sujet s'y prête, et à des pages existantes du site (jeux offerts, fêtes, univers).
+6. Ne jamais publier les règles complètes d'un jeu vendu dans un kit, ni annoncer un kit, un dossier Pro ou un jeu qui n'existe pas, ni parler de codes de réduction.
+7. Lancer `python3 build.py --apercu` pour vérifier qu'il n'y a pas d'erreur.
+8. Enregistrer avec l'auteur `Pufu2 <Pufu2@users.noreply.github.com>` et envoyer sur `main`. Rien d'autre n'est modifié dans le dépôt.
