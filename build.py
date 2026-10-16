@@ -25,6 +25,7 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "outils"))
 from schemas import schema_svg  # noqa: E402
+from schemas_fetes import schema_fete  # noqa: E402
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 RACINE = Path(__file__).resolve().parent
@@ -115,6 +116,7 @@ class Site:
         self.env.filters["date_fr"] = date_fr
         self.env.tests["contient"] = lambda liste, x: x in (liste or [])
         self.env.globals["schema"] = schema_svg
+        self.env.globals["schema_fete"] = schema_fete
         self.pages = []  # (url, gabarit, contexte)
         self.articles = self.charger_articles()
 
@@ -156,6 +158,9 @@ class Site:
         jeux = self.donnees.get("jeux", {}).get("jeux", [])
         return sorted(jeux, key=lambda j: (j["age_min"], j["nom"].split(" ", 1)[-1].lower()))
 
+    def jeux_fetes(self):
+        return self.donnees.get("jeux-fetes", {}).get("jeux", [])
+
     # -- déclaration des pages
     def declarer(self):
         d = self.donnees
@@ -183,6 +188,12 @@ class Site:
                 self.ajouter(f"/idees/{idee['slug']}/", "idee.html",
                              titre=idee["titre_page"], description=idee["description"],
                              idee=idee, groupe=groupe)
+        fetes = {f["slug"]: f for f in d["idees"]["fetes"]}
+        for j in self.jeux_fetes():
+            self.ajouter(f"/idees/{j['fete']}/{j['id']}/", "jeu-fete.html",
+                         titre=f"{j['nom']} : un jeu {fetes[j['fete']]['de']} pour enfants",
+                         description=f"{j['accroche']} Règles complètes, version dehors et version à l'intérieur, dès {j['age_min']} ans.",
+                         jeu=j, fete=fetes[j["fete"]])
         self.ajouter("/jeux-gratuits/", "jeux-gratuits.html", titre="3 grands jeux offerts",
                      description="Recevez 3 grands jeux collectifs à imprimer, avec règles, variantes et schéma du terrain : Gendarmes et voleurs, Poules renards vipères, L'épervier gradé.")
         self.ajouter("/blog/", "blog.html", titre="Le carnet d'idées",
@@ -224,6 +235,7 @@ class Site:
             "articles": self.articles,
             "kits": self.kits(),
             "jeux": self.jeux(),
+            "jeux_fetes": self.jeux_fetes(),
             "produits": lambda u: [k for k in self.kits() if k["univers"] == u or u in k.get("aussi", [])],
             "kit": self.kit,
             "lien": lien,

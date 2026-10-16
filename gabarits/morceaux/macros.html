@@ -55,6 +55,17 @@
 </a>
 {% endmacro %}
 
+{# Carte d'un jeu de fête (donnees/jeux-fetes.yml) #}
+{% macro carte_jeu_fete(j) %}
+<a class="carte-jeu carte-jeu--fete" href="{{ lien('/idees/' ~ j.fete ~ '/' ~ j.id ~ '/') }}">
+  <span class="carte-jeu__nom">{{ j.nom }}</span>
+  <span class="carte-jeu__meta">Dès {{ j.age_min }} ans, {{ j.joueurs[0] }} à {{ j.joueurs[1] }} joueurs, {{ j.duree }} min</span>
+  <span class="carte-jeu__astuce">{{ j.accroche }}</span>
+  <span class="carte-jeu__lieux">Dehors ou à l'intérieur</span>
+  <span class="carte-jeu__offert">Offert</span>
+</a>
+{% endmacro %}
+
 {# Carte d'un article du blog #}
 {% macro carte_article(a) %}
 <article class="carte-article">

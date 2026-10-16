@@ -46,6 +46,7 @@ ages:
 fetes:
   - slug: halloween
     nom: Halloween
+    de: "d'Halloween"
     titre_page: Jeux d'Halloween pour enfants
     description: Idées de jeux d'Halloween pour enfants, qui font frissonner sans faire peur.
     intro: >-
@@ -63,6 +64,7 @@ fetes:
         astuce: "Les planètes deviennent des chaudrons de sorcière à renverser."
   - slug: noel
     nom: Noël
+    de: "de Noël"
     titre_page: Jeux de Noël en famille
     description: Grands jeux et défis de Noël à jouer en famille, des petits aux grands-parents.
     intro: >-
@@ -80,6 +82,7 @@ fetes:
         astuce: "Les lutins rapportent les cadeaux volés par les voleurs à l'atelier du père Noël."
   - slug: carnaval
     nom: Carnaval
+    de: "de carnaval"
     titre_page: Jeux de carnaval pour enfants
     description: Idées de jeux et de défilés pour le carnaval, à la maison ou à l'école.
     intro: >-
@@ -97,6 +100,7 @@ fetes:
         astuce: "Mélangez les costumes dans chaque équipe pour bien se reconnaître… ou pas !"
   - slug: paques
     nom: Pâques
+    de: "de Pâques"
     titre_page: Chasses aux œufs et jeux de Pâques
     description: Idées de chasses aux œufs et de jeux de Pâques pour enfants, au jardin ou à la maison.
     intro: >-
@@ -114,6 +118,7 @@ fetes:
         astuce: "Faites passer un œuf en plastique au lieu du ballon."
   - slug: fete-de-fin-d-annee
     nom: Fête de fin d'année
+    de: "de fin d'année"
     titre_page: Kermesse et fête de fin d'année
     description: Idées de stands et de jeux pour la kermesse et la fête de fin d'année de l'école.
     intro: >-

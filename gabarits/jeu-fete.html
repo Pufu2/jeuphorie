@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block tete %}
+{% set j = page.jeu %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@type": "HowTo", "name": j.nom, "description": j.but, "totalTime": "PT" ~ j.duree ~ "M", "supply": j.materiel, "inLanguage": "fr-FR", "isAccessibleForFree": true} | tojson }}
+</script>
+{% endblock %}
+{% block contenu %}
+{% set j = page.jeu %}
+{% set f = page.fete %}
+<article class="cadre jeu jeu-fete">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/idees/') }}">Idées</a> <span aria-hidden="true">/</span> <a href="{{ lien('/idees/' ~ f.slug ~ '/') }}">{{ f.nom }}</a> <span aria-hidden="true">/</span> <span>{{ j.nom }}</span></nav>
+  <p class="jeu-fete__surtitre">Un jeu {{ f.de }}, offert</p>
+  <h1 class="titre-page">{{ j.nom }}</h1>
+  <p class="chapo">{{ j.accroche }}</p>
+  <div class="jeu__grille">
+    <div class="jeu__texte">
+      <div class="conseil conseil--but">
+        <p class="conseil__signature">Le but du jeu</p>
+        <p>{{ j.but }}</p>
+      </div>
+      <dl class="jeu__meta">
+        <div><dt>Âge</dt><dd>{{ j.age_min }} à {{ j.age_max }} ans{% if j.age_max >= 99 %} et +{% endif %}</dd></div>
+        <div><dt>Joueurs</dt><dd>{{ j.joueurs[0] }} à {{ j.joueurs[1] }}</dd></div>
+        <div><dt>Durée</dt><dd>{{ j.duree }} min</dd></div>
+      </dl>
+      <div class="texte">
+        {% if j.histoire %}<h2>L'histoire à raconter</h2>
+        <p>{{ j.histoire }}</p>{% endif %}
+        <h2>Matériel</h2>
+        <ul>{% for x in j.materiel %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+    <aside class="jeu__cote">
+      {% set svg = schema_fete(j.id) %}
+      {% if svg %}
+      <figure class="jeu__schema">
+        {{ svg | safe }}
+        <figcaption>La version dehors, vue d'en haut.</figcaption>
+      </figure>
+      {% endif %}
+      <div class="encart encart--info encart--colonne jeu-fete__imprimer">
+        <p><strong>Ce jeu est offert.</strong> Imprimez cette page telle quelle : le menu et les encarts disparaissent à l'impression.</p>
+        <button class="bouton bouton--petit" type="button" onclick="window.print()">Imprimer la fiche</button>
+      </div>
+    </aside>
+  </div>
+
+  <section class="section section--serree">
+    <h2 class="section__titre">Deux façons d'y jouer</h2>
+    <div class="versions">
+      {% for v in j.versions %}
+      <section class="version">
+        <h3 class="version__titre">{{ v.lieu }}</h3>
+        <p class="version__espace">{{ v.espace }}</p>
+        <div class="texte">
+          <h4>Mise en place</h4>
+          <p>{{ v.mise_en_place }}</p>
+          <h4>Déroulement</h4>
+          <ol>{% for x in v.deroulement %}<li>{{ x }}</li>{% endfor %}</ol>
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div class="texte jeu-fete__suite">
+    <h2>Les règles, dans les deux versions</h2>
+    <ul>{% for r in j.regles %}<li>{{ r }}</li>{% endfor %}</ul>
+    <h2>Adapter selon l'âge</h2>
+    <ul>{% for r in j.adapter %}<li>{{ r }}</li>{% endfor %}</ul>
+    {% if j.securite %}<h2>Sécurité</h2>
+    <ul>{% for r in j.securite %}<li>{{ r }}</li>{% endfor %}</ul>{% endif %}
+    {% if j.fin %}<h2>Pour bien finir</h2>
+    <p>{{ j.fin }}</p>{% endif %}
+  </div>
+
+  {% set voisins = jeux_fetes | rejectattr('id', 'equalto', j.id) | selectattr('fete', 'equalto', j.fete) | list %}
+  {% if voisins %}
+  <section class="section section--serree jeu-fete__voisins">
+    <h2 class="section__titre">Un autre jeu {{ f.de }}</h2>
+    <div class="grille-jeux">{% for x in voisins %}{{ m.carte_jeu_fete(x) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  <div class="bandeau-cadeau">
+    <div>
+      <h2 class="bandeau-cadeau__titre">3 grands jeux offerts</h2>
+      <p>Gendarmes et voleurs, Poules renards vipères et L'épervier gradé : 6 pages avec règles, variantes et schémas du terrain, pour jouer toute l'année.</p>
+    </div>
+    <a class="bouton bouton--encre" href="{{ lien('/jeux-gratuits/') }}">Recevoir les 3 jeux</a>
+  </div>
+</article>
+{% endblock %}

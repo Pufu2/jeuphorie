@@ -1,0 +1,431 @@
+# Jeux de fêtes : jeux complets, offerts et publiés en entier sur le site.
+# Ce fichier n'est PAS exporté depuis le dossier privé des produits :
+# on le modifie directement ici.
+#
+# fete : slug d'une fête de donnees/idees.yml (la page /idees/<fete>/<id>/ est créée toute seule)
+# ages : pages « idées par âge » où le jeu apparaît aussi
+# versions : une version « Dehors » et une version « À l'intérieur »
+# Le schéma du terrain (facultatif) se dessine dans outils/schemas_fetes.py, avec le même id.
+
+jeux:
+
+  # ------------------------------------------------------------ Halloween
+  - id: potion-de-la-sorciere
+    fete: halloween
+    nom: La potion de la sorcière
+    accroche: Une chasse aux ingrédients par équipes, pour remplir son chaudron sans réveiller la sorcière.
+    age_min: 4
+    age_max: 10
+    ages: [3-5-ans, 6-8-ans, 9-12-ans]
+    joueurs: [6, 30]
+    duree: 30
+    but: Retrouver tous les ingrédients de sa recette et les rapporter dans son chaudron avant les autres équipes.
+    materiel:
+      - "Un chaudron par équipe : un saladier, un seau ou un carton"
+      - "5 à 8 cartes « ingrédient » par équipe, avec un bord de la couleur de l'équipe : bave de crapaud, plume de corbeau, toile d'araignée, citrouille, champignon, œil de chat…"
+      - Une carte « recette » par équipe, qui montre les ingrédients à trouver
+      - Un chapeau ou un balai pour la sorcière
+      - "Pour la fin : une « potion » à partager (jus de fruits ou sirop, avec des pailles)"
+    histoire: >-
+      La sorcière du quartier s'est endormie au milieu de sa potion. Les apprentis sorciers
+      ont jusqu'à son réveil pour terminer leur propre potion… sans se faire remarquer.
+    versions:
+      - lieu: Dehors
+        espace: Jardin, cour ou parc, sur une zone de 20 m sur 20 m environ
+        mise_en_place: >-
+          Délimitez la zone de jeu avec des plots ou une corde. Cachez les cartes ingrédients
+          dans cette zone : sous un plot, au pied d'un arbre, derrière un pot de fleurs. Placez
+          les chaudrons au centre, à côté de la sorcière, assise les yeux fermés.
+        deroulement:
+          - Chaque équipe lit sa recette, puis part chercher ses ingrédients, seulement ceux de sa couleur.
+          - On rapporte un seul ingrédient à la fois dans son chaudron.
+          - "Quand elle le décide, la sorcière se réveille en criant « Abracadabra ! ». Tout le monde se fige en statue."
+          - La sorcière ouvre les yeux et compte jusqu'à 5. Celui qu'elle voit bouger retourne toucher son chaudron avant de repartir.
+          - "La première équipe qui a toute sa recette crie la formule : « Bave de crapaud et poil de chat, la potion est prête, la voilà ! »"
+      - lieu: À l'intérieur
+        espace: Salon, salle d'activité, ou deux ou trois pièces de la maison
+        mise_en_place: >-
+          Choisissez deux ou trois pièces autorisées et fermez les autres portes. Cachez les cartes
+          à hauteur d'enfant : sous un coussin, derrière un rideau, dans une chaussure. Les chaudrons
+          et la sorcière sont dans la pièce principale.
+        deroulement:
+          - "Même jeu que dehors, mais on marche : la sorcière renvoie au chaudron celui qui court."
+          - "La sorcière se réveille seulement quand elle entend du bruit : on cherche en chuchotant."
+          - "Pour les 7 ans et plus, chaque carte recette donne une devinette au lieu d'un ingrédient. Par exemple : « J'ai quatre pieds mais je ne marche jamais » (la table). La carte ingrédient est cachée à cet endroit."
+    regles:
+      - Chaque équipe ne ramasse que les ingrédients de sa couleur.
+      - Une carte d'une autre couleur reste à sa place. Interdit de la cacher davantage.
+      - Un seul ingrédient à la fois par joueur.
+      - Quand la sorcière est réveillée, on ne bouge plus.
+    adapter:
+      - "3-5 ans : un adulte accompagne chaque équipe, les cartes dépassent à moitié de leur cachette, et la sorcière ne renvoie personne : elle fait juste « Bouh ! »."
+      - "6-8 ans : le jeu tel quel. Ajoutez un ingrédient « rare » par équipe, mieux caché que les autres."
+      - "9-10 ans : les devinettes, et un marché aux ingrédients au milieu du jeu : chaque équipe a reçu une carte d'une autre équipe et doit négocier l'échange."
+    securite:
+      - Pas de cachette en hauteur, près d'une route, d'un bassin ou d'une prise électrique.
+      - Gardez une lumière normale. Le frisson vient de l'histoire, pas du noir.
+    fin: >-
+      Quand toutes les potions sont prêtes, la sorcière se réveille pour de bon, goûte chaque chaudron
+      et sert à tous la vraie potion : un verre de jus avec une paille.
+
+  - id: reveil-des-fantomes
+    fete: halloween
+    nom: Le réveil des fantômes
+    accroche: Des fantômes qui avancent sans bruit vers la lanterne du gardien du cimetière.
+    age_min: 3
+    age_max: 9
+    ages: [3-5-ans, 6-8-ans]
+    joueurs: [4, 25]
+    duree: 15
+    but: "Pour les fantômes : s'approcher sans se faire voir et reprendre la lanterne du gardien. Pour le gardien : surprendre les fantômes qui bougent."
+    materiel:
+      - "Une lanterne : une lampe de poche, une petite lanterne à piles ou un seau décoré"
+      - Une corde ou des plots pour la ligne de départ
+      - "Facultatif : un foulard ou un drap blanc par fantôme"
+    histoire: >-
+      Chaque soir d'Halloween, le gardien du cimetière surveille sa lanterne. Mais dès qu'il a le dos
+      tourné, les fantômes se réveillent et s'approchent tout doucement.
+    versions:
+      - lieu: Dehors
+        espace: Une longueur de 15 à 20 m, dans un jardin, une cour ou un parc
+        mise_en_place: >-
+          Le gardien se tient au bout du terrain, dos aux joueurs, la lanterne posée à ses pieds,
+          derrière lui. Les fantômes se placent sur la ligne de départ.
+        deroulement:
+          - "Le gardien, dos tourné, dit lentement : « Les fantômes dorment… », puis se retourne d'un coup en criant « Réveil ! »."
+          - Pendant la phrase, les fantômes avancent. Quand le gardien se retourne, ils se figent dans une pose de fantôme.
+          - Un fantôme que le gardien voit bouger, rire ou parler retourne sur la ligne de départ.
+          - Le fantôme qui attrape la lanterne la rapporte sur la ligne de départ. Le gardien peut le toucher pour la reprendre.
+          - Si le fantôme réussit, il devient le nouveau gardien.
+      - lieu: À l'intérieur
+        espace: Un couloir ou une salle dégagée, 6 à 8 m suffisent
+        mise_en_place: >-
+          Poussez les meubles qui gênent et marquez la ligne de départ avec une corde ou du ruban adhésif.
+          Le gardien se place au fond de la pièce.
+        deroulement:
+          - "Les fantômes avancent seulement en « pas de fantôme » : des pas glissés, sans lever les pieds."
+          - Le gardien ne court pas après celui qui a la lanterne. Il lui suffit de dire son prénom avant qu'il n'atteigne la ligne pour qu'il la repose.
+          - Lumière tamisée possible, mais jamais le noir complet.
+    regles:
+      - On n'avance que quand le gardien a le dos tourné.
+      - Quand il se retourne, on reste immobile jusqu'à ce qu'il se retourne à nouveau.
+      - Le gardien doit dire le prénom du fantôme qu'il a vu bouger.
+    adapter:
+      - "3-5 ans : un adulte fait le gardien. Un fantôme vu en train de bouger recule seulement de trois pas."
+      - "6-9 ans : le gardien annonce une pose au moment où il se retourne : « fantôme qui vole », « fantôme qui a peur », « fantôme endormi »."
+    securite:
+      - Un terrain plat et sans obstacle, surtout si les fantômes portent un drap. Le drap ne couvre jamais le visage.
+    fin: >-
+      Pour terminer, tous les fantômes se réveillent en même temps et font le tour du gardien en
+      chantant. Personne n'a peur, tout le monde rit.
+
+  # ------------------------------------------------------------ Noël
+  - id: tournee-du-pere-noel
+    fete: noel
+    nom: La tournée du père Noël
+    accroche: Un relais où chaque lutin livre les cadeaux dans la bonne maison. Des petits aux grands-parents.
+    age_min: 4
+    age_max: 99
+    ages: [3-5-ans, 6-8-ans, 9-12-ans]
+    joueurs: [4, 30]
+    duree: 20
+    but: Livrer tous les cadeaux de sa hotte dans la bonne maison avant l'équipe adverse.
+    materiel:
+      - "Une hotte par équipe : un sac ou un panier"
+      - "10 à 20 « cadeaux » par équipe : petites boîtes ou objets emballés dans du papier journal, avec une étiquette"
+      - "Autant de « maisons » que d'étiquettes différentes : des cartons, des chaises ou des cerceaux, avec la même étiquette"
+      - Un bonnet de père Noël par équipe, que porte le joueur en train de livrer
+    histoire: >-
+      Le père Noël s'est fait mal au dos en descendant une cheminée. Ce soir, ce sont les lutins
+      qui font la tournée. Mais attention : chaque cadeau doit arriver dans la bonne maison.
+    versions:
+      - lieu: Dehors
+        espace: Jardin, cour ou parc
+        mise_en_place: >-
+          Placez les maisons un peu partout, entre 5 et 20 m du traîneau, le point de départ des équipes.
+          Chaque maison porte une étiquette (un chiffre, une couleur ou un dessin). Les cadeaux de chaque équipe
+          ont la couleur de l'équipe et les mêmes étiquettes que les maisons.
+        deroulement:
+          - Les équipes sont en file derrière le traîneau, leur hotte devant elles.
+          - Le premier lutin met le bonnet, prend un cadeau dans la hotte, le livre dans la maison qui a la même étiquette et revient.
+          - Il donne le bonnet au suivant, qui part à son tour.
+          - Un cadeau livré dans la mauvaise maison est rapporté au traîneau par le lutin contrôleur (un adulte). Il faudra le livrer à nouveau.
+          - La première équipe dont la hotte est vide a gagné.
+      - lieu: À l'intérieur
+        espace: Toute la maison, ou une salle avec des coins bien séparés
+        mise_en_place: >-
+          Les maisons sont réparties dans plusieurs pièces, qui deviennent des villes. Pour les plus grands,
+          remplacez l'étiquette par une adresse à deviner : « la maison au pied du sapin », « la maison qui sent bon le gâteau ».
+        deroulement:
+          - "Même jeu que dehors, mais on livre en marchant : un lutin qui court laisse sa place au suivant."
+          - On peut jouer avec une seule équipe contre la montre. La famille essaie de battre son record à chaque partie.
+    regles:
+      - Un seul cadeau à la fois.
+      - Le cadeau est posé dans la maison, jamais lancé.
+      - Seul le lutin qui porte le bonnet peut livrer.
+    adapter:
+      - "3-5 ans : des étiquettes en couleurs ou en dessins, et un grand qui accompagne chaque petit lutin."
+      - "6-9 ans : des chiffres, ou des additions dont le résultat donne le numéro de la maison (3 + 4 = maison 7)."
+      - "Avec les grands-parents : ils tiennent les maisons et vérifient les livraisons. Ils peuvent aussi jouer un lutin sur deux, en marchant."
+    securite:
+      - Aucune maison près de l'escalier ou du sapin décoré, pour éviter les chutes et la casse.
+    fin: >-
+      Le dernier cadeau livré, le père Noël appelle les lutins (un adulte, avec ou sans barbe) :
+      chaque équipe reçoit son diplôme de lutin livreur.
+
+  - id: rennes-egares
+    fete: noel
+    nom: Les rennes égarés
+    accroche: Une chasse au trésor où chaque renne retrouvé donne une lettre du mot mystère.
+    age_min: 4
+    age_max: 99
+    ages: [3-5-ans, 6-8-ans, 9-12-ans]
+    joueurs: [2, 20]
+    duree: 30
+    but: Retrouver tous les rennes du père Noël, reconstituer le mot mystère et découvrir où se cache le traîneau.
+    materiel:
+      - "5 à 8 rennes en papier (dessinés et découpés), qui portent chacun une lettre au dos"
+      - "Un mot mystère qui donne la cachette finale, par exemple SAPIN, BUFFET, GARAGE ou CABANE"
+      - "Une « étable » : une boîte où l'on range les rennes retrouvés"
+      - "Une surprise dans la cachette finale : le goûter, des papillotes ou un petit cadeau commun"
+      - Des pinces à linge pour accrocher les rennes, dehors
+    histoire: >-
+      Pendant la nuit, la porte de l'étable est restée ouverte et les rennes se sont échappés.
+      Sans eux, le traîneau ne peut pas partir. Il faut tous les retrouver avant ce soir.
+    versions:
+      - lieu: Dehors
+        espace: Jardin ou parc, sur une zone que l'on voit en entier
+        mise_en_place: >-
+          Accrochez les rennes avec des pinces à linge, à hauteur d'enfant : à une branche, une clôture,
+          une poignée de porte. Pour les plus grands, chaque renne porte au recto une indication pour trouver
+          le suivant, le premier étant remis au départ.
+        deroulement:
+          - Les enfants cherchent les rennes et les ramènent un par un à l'étable.
+          - "Quand tous les rennes sont rentrés, on retourne les cartes : chaque renne a une lettre."
+          - On remet les lettres dans l'ordre pour former le mot mystère, puis on court à la cachette.
+      - lieu: À l'intérieur
+        espace: La maison, ou une salle avec des recoins
+        mise_en_place: >-
+          Cachez les rennes dans plusieurs pièces, à des endroits sûrs : sous un coussin, dans une botte,
+          derrière un cadre. Pour enchaîner, chaque renne indique la pièce du suivant.
+        deroulement:
+          - Même jeu que dehors, en marchant.
+          - "Pour les grands, les indications deviennent des devinettes : « Je suis froid dedans et je ronronne la nuit » (le réfrigérateur)."
+          - Les petits cherchent avec un adulte qui dit « tu chauffes » ou « tu refroidis ».
+    regles:
+      - Les rennes retrouvés vont tout de suite à l'étable.
+      - On ne regarde les lettres que quand tous les rennes sont rentrés.
+      - "En équipes : chaque équipe a des rennes d'une couleur et ne ramène que les siens."
+    adapter:
+      - "3-5 ans : 4 ou 5 rennes bien visibles, et un mot court (SAPIN). L'adulte lit les lettres avec eux."
+      - "6-8 ans : 6 à 8 rennes et un parcours où chaque renne indique où chercher le suivant."
+      - "9-12 ans : les devinettes, et des lettres dans le désordre. Ajoutez un renne piège qui porte une lettre en trop."
+    securite:
+      - Rien de caché en hauteur, dans un placard à produits ménagers, ni près du four ou de la cheminée.
+    fin: >-
+      Dans la cachette, une lettre du père Noël remercie les enfants d'avoir sauvé la tournée,
+      et la surprise se partage entre tous.
+
+  # ------------------------------------------------------------ Carnaval
+  - id: defile-des-statues
+    fete: carnaval
+    nom: Le défilé des statues
+    accroche: Un défilé costumé en musique, puis des statues à tenir. Personne n'est éliminé.
+    age_min: 3
+    age_max: 12
+    ages: [3-5-ans, 6-8-ans, 9-12-ans]
+    joueurs: [4, 40]
+    duree: 20
+    but: Défiler en rythme, puis tenir la pose annoncée sans bouger quand la musique s'arrête.
+    materiel:
+      - Une musique entraînante et de quoi l'arrêter (enceinte ou téléphone)
+      - "12 cartes « pose » : le roi fier, le lion qui rugit, le robot, la ballerine, le super-héros qui s'envole, le pirate, la sorcière, l'arbre dans le vent…"
+      - Des gommettes ou des rubans pour les prix de la fin
+      - "Dehors : des instruments maison (boîtes de conserve, bouteilles de riz, casseroles)"
+    histoire: >-
+      Le défilé du carnaval traverse la ville. Mais chaque fois que la musique s'arrête, une fée
+      transforme tout le cortège en statues.
+    versions:
+      - lieu: Dehors
+        espace: Une cour, une rue fermée à la circulation, un parc
+        mise_en_place: >-
+          Tracez un parcours de défilé avec des plots : une boucle, un huit ou un serpentin. Un adulte tient la musique
+          et les cartes. Deux ou trois enfants commencent comme juges.
+        deroulement:
+          - Le cortège défile sur le parcours en musique, avec les instruments.
+          - La musique s'arrête et l'adulte montre une carte pose. Tout le monde prend la pose et ne bouge plus.
+          - Les juges passent entre les statues. Celle qui bouge ou qui rit devient juge au tour suivant, et un juge reprend sa place dans le défilé.
+          - On recommence, avec un nouveau rythme de musique et une nouvelle pose.
+      - lieu: À l'intérieur
+        espace: Une salle dégagée ou un grand salon
+        mise_en_place: >-
+          Le défilé se fait en ronde autour de la pièce. Retirez les objets fragiles et le tapis qui glisse.
+        deroulement:
+          - Même jeu que dehors. Variez la façon de défiler en annonçant la consigne en même temps que la musique repart.
+          - "Exemples : en marchant sur la pointe des pieds, comme un géant, à reculons doucement, en se tenant par les épaules."
+          - Pour les petits, les statues peuvent se faire assises ou allongées.
+    regles:
+      - On ne bouge plus dès que la musique s'arrête.
+      - Une statue qui bouge devient juge pour un tour, puis revient dans le défilé.
+      - Les juges peuvent faire des grimaces, mais ne touchent pas les statues.
+    adapter:
+      - "3-5 ans : 4 ou 5 poses seulement, montrées par l'adulte qui les fait aussi. Personne ne devient juge."
+      - "6-8 ans : le jeu tel quel."
+      - "9-12 ans : des poses à plusieurs (« une photo de famille », « un bateau de pirates ») à former en 10 secondes."
+    securite:
+      - Un sol qui ne glisse pas, surtout avec des costumes longs. Pas de masque qui gêne la vue pendant le défilé.
+    fin: >-
+      Chaque juge remet un ruban : la statue la plus drôle, la plus élégante, la plus effrayante, la plus solide.
+      Prévoyez assez de prix pour que chacun en reçoive un.
+
+  - id: mannequin-du-carnaval
+    fete: carnaval
+    nom: Le mannequin du carnaval
+    accroche: Un relais où chaque équipe habille son mannequin vivant, puis le fait défiler.
+    age_min: 5
+    age_max: 12
+    ages: [3-5-ans, 6-8-ans, 9-12-ans]
+    joueurs: [6, 30]
+    duree: 20
+    but: Apporter un à un tous les accessoires de la malle pour habiller son mannequin avant l'autre équipe.
+    materiel:
+      - "Une malle ou un sac par équipe, avec les mêmes accessoires : chapeau, lunettes, cape ou écharpe, collier, gants, nœud papillon, perruque…"
+      - Un mannequin vivant par équipe (un enfant volontaire ou un adulte)
+      - "Dehors : des plots et des cerceaux pour le parcours"
+    histoire: >-
+      Le grand défilé commence dans cinq minutes, et les mannequins de la vitrine ne sont pas prêts.
+      Chaque équipe de costumiers doit les habiller à temps.
+    versions:
+      - lieu: Dehors
+        espace: Une cour ou un jardin, 10 à 15 m entre le départ et le mannequin
+        mise_en_place: >-
+          Les équipes sont en file sur la ligne de départ, avec leur malle à côté d'elles. Leur mannequin
+          se tient debout, immobile, à 10 ou 15 m. Entre les deux, posez un petit parcours : un slalom, un cerceau où sauter.
+        deroulement:
+          - Le premier joueur prend un seul accessoire dans la malle, fait le parcours et le met au mannequin.
+          - Il revient en courant tout droit et tape dans la main du suivant.
+          - Le mannequin n'a pas le droit d'aider. Il peut seulement baisser la tête ou tendre les bras.
+          - Quand la malle est vide, toute l'équipe court rejoindre son mannequin et le fait défiler.
+      - lieu: À l'intérieur
+        espace: Une salle ou un salon, 4 à 6 m suffisent
+        mise_en_place: >-
+          Même installation, sans parcours. Pour éviter les courses, chacun se déplace d'une façon imposée.
+        deroulement:
+          - "À l'aller, on marche avec l'accessoire posé sur la tête. S'il tombe, on le remet et on continue."
+          - "Au retour, on revient en marche de canard, à cloche-pied ou à reculons. L'adulte change la consigne à chaque tour."
+    regles:
+      - Un seul accessoire par voyage.
+      - L'accessoire est mis sur le mannequin, pas seulement posé à ses pieds.
+      - Le joueur suivant ne part qu'après avoir été touché dans la main.
+    adapter:
+      - "5-6 ans : des accessoires faciles à mettre (chapeau, collier, écharpe), et un adulte comme mannequin."
+      - "7-9 ans : le jeu tel quel."
+      - "10-12 ans : des cartes devinettes à la place des accessoires (« quelque chose pour avoir chaud au cou »). Il faut trouver le bon objet dans la malle."
+    securite:
+      - Rien de pointu ni de fragile dans la malle. Pas de lunettes en verre.
+    fin: >-
+      Les mannequins habillés défilent devant tout le monde, et chaque équipe présente son personnage
+      en une phrase : « Voici Lady Paillette, reine du carnaval ! »
+
+  # ------------------------------------------------------------ Pâques
+  - id: chasse-aux-oeufs-des-couleurs
+    fete: paques
+    nom: La chasse aux œufs des couleurs
+    accroche: Une chasse aux œufs juste, où les plus grands ne ramassent pas tout. Avec des énigmes pour les 8 ans et plus.
+    age_min: 2
+    age_max: 12
+    ages: [3-5-ans, 6-8-ans, 9-12-ans]
+    joueurs: [2, 30]
+    duree: 30
+    but: Retrouver tous les œufs de sa couleur, puis l'œuf d'or, cherché tous ensemble.
+    materiel:
+      - "Des œufs en chocolat dans des papiers de couleur, ou des œufs en plastique à remplir : une couleur par enfant ou par tranche d'âge"
+      - "Le même nombre d'œufs pour chaque couleur (5 à 10)"
+      - Un panier ou un sac par enfant
+      - "Un œuf d'or : un gros œuf ou une boîte dorée, à partager à la fin"
+      - "Pour les 8 ans et plus : une carte énigme par œuf"
+    histoire: >-
+      Les cloches sont passées, mais elles ont été prudentes : chaque enfant a sa couleur d'œufs.
+      Et quelque part, elles ont caché un œuf d'or qu'il faudra trouver tous ensemble.
+    versions:
+      - lieu: Dehors
+        espace: Un jardin ou un coin de parc
+        mise_en_place: >-
+          Partagez le jardin en zones : les petits près de la maison, les grands au fond.
+          Chez les petits, les œufs sont posés en vue, dans l'herbe ou au pied d'un pot. Chez les grands, ils sont
+          bien cachés, à 1,20 m de haut au plus. L'œuf d'or est caché à part, pour la fin.
+        deroulement:
+          - Chaque enfant reçoit son panier et sa couleur, puis part chercher ses œufs dans sa zone.
+          - Celui qui trouve un œuf d'une autre couleur le laisse en place. Il peut aider son propriétaire en disant « tu chauffes » ou « tu refroidis ».
+          - Quand chacun a tous ses œufs, l'adulte lance la recherche de l'œuf d'or, que l'on cherche tous ensemble.
+      - lieu: À l'intérieur
+        espace: Deux ou trois pièces de la maison ou de la salle
+        mise_en_place: >-
+          Évitez le chocolat près des radiateurs et du soleil. Le plus simple, c'est de cacher des œufs en papier
+          de couleur, à échanger contre des œufs en chocolat à la fin.
+        deroulement:
+          - Même jeu que dehors, en marchant, avec une pièce par tranche d'âge si possible.
+          - "Pour les 8 ans et plus, chaque énigme donne la cachette d'un œuf : « Je suis plein de pages mais je ne parle pas » (la bibliothèque)."
+    regles:
+      - Chacun ne ramasse que sa couleur.
+      - Un œuf d'une autre couleur reste où il est.
+      - L'œuf d'or se cherche ensemble et se partage entre tous.
+    adapter:
+      - "2-4 ans : 4 ou 5 œufs bien visibles, et un adulte à côté. Pas d'œuf d'or ou un œuf d'or posé en vue."
+      - "5-7 ans : 6 à 8 œufs, à moitié cachés."
+      - "8-12 ans : des énigmes, et un œuf d'or qui ne se trouve qu'avec une dernière énigme, formée par une lettre écrite sur chaque œuf."
+    securite:
+      - Pas d'œuf caché près d'un bassin, d'une piscine, d'une route ou dans un endroit où l'on doit grimper.
+      - Pour les moins de 3 ans, pas de petits objets que l'on peut avaler.
+    fin: >-
+      L'œuf d'or est ouvert devant tout le monde et partagé. Chacun garde les œufs de sa couleur.
+
+  - id: voleurs-de-nids
+    fete: paques
+    nom: Les voleurs de nids
+    accroche: Quatre équipes, quatre nids et des œufs qu'on se vole à tour de rôle. Rapide et très rythmé.
+    age_min: 6
+    age_max: 12
+    ages: [6-8-ans, 9-12-ans]
+    joueurs: [8, 32]
+    duree: 15
+    but: Être la première équipe à avoir 6 œufs dans son nid.
+    materiel:
+      - "Une vingtaine d'œufs : œufs en plastique, balles de tennis ou chaussettes roulées en boule"
+      - Un panier pour le centre
+      - 4 cerceaux ou 4 cartons, qui servent de nids
+      - Des chasubles ou foulards de 4 couleurs
+    histoire: >-
+      Au printemps, toutes les poules du poulailler veulent le plus beau nid. Et pour le remplir,
+      tous les moyens sont bons… même aller chercher les œufs chez les voisines.
+    versions:
+      - lieu: Dehors
+        espace: Une cour ou un jardin, un carré de 15 à 20 m de côté
+        mise_en_place: >-
+          Le panier d'œufs est au centre. Chaque nid est dans un coin, à 8 ou 10 m du panier.
+          Chaque équipe se place en file derrière son nid.
+        deroulement:
+          - Au signal, le premier joueur de chaque équipe court prendre un œuf, au centre ou dans le nid d'une autre équipe.
+          - Il le rapporte et le pose dans son nid, puis tape dans la main du suivant.
+          - Dès qu'une équipe a 6 œufs dans son nid, elle crie « Cot cot ! ». L'arbitre vérifie et arrête la manche.
+          - On remet les œufs au centre et on joue une nouvelle manche.
+      - lieu: À l'intérieur
+        espace: Une salle dégagée, 3 à 4 m entre le centre et les nids
+        mise_en_place: >-
+          Même installation, plus serrée. Utilisez des chaussettes roulées, qui ne roulent pas et ne cassent rien.
+        deroulement:
+          - "On se déplace en « pas de poussin » : talon contre pointe, sans courir."
+          - Au lieu de courir, on peut aussi se déplacer à quatre pattes, l'œuf dans une main.
+    regles:
+      - Un seul œuf à la fois.
+      - L'œuf est posé dans le nid, jamais lancé.
+      - On ne protège pas son nid avec les mains ni avec le corps.
+      - Le joueur suivant ne part qu'après avoir été touché dans la main.
+    adapter:
+      - "6-7 ans : on ne prend les œufs qu'au centre pendant la première manche, pour comprendre le jeu."
+      - "8-9 ans : le jeu tel quel."
+      - "10-12 ans : chaque équipe a un œuf doré qui vaut 2 points. Il faut 8 points pour gagner."
+    securite:
+      - Les joueurs se croisent au centre. Demandez de regarder devant soi et de ralentir près du panier.
+    fin: >-
+      Jouez en 3 manches gagnantes. L'équipe gagnante choisit le nom de la poule de l'année.

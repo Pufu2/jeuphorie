@@ -18,9 +18,22 @@
   </section>
   {% endif %}
 
+  {% if page.groupe == 'fetes' %}
+  {% set jeux_du_theme = jeux_fetes | selectattr('fete', 'equalto', i.slug) | list %}
+  {% else %}
+  {% set jeux_du_theme = jeux_fetes | selectattr('ages', 'contient', i.slug) | list %}
+  {% endif %}
+  {% if jeux_du_theme %}
+  <section class="section section--serree">
+    <h2 class="section__titre">{% if page.groupe == 'fetes' %}Nos jeux {{ i.de }}, offerts{% else %}Nos jeux de fêtes pour cet âge, offerts{% endif %}</h2>
+    <p class="chapo">Des jeux complets à lire ici et à imprimer, chacun avec une version dehors et une version à l'intérieur.</p>
+    <div class="grille-jeux">{% for x in jeux_du_theme %}{{ m.carte_jeu_fete(x) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
   {% if i.jeux %}
   <section class="section section--serree">
-    <h2 class="section__titre">Des grands jeux à habiller pour l'occasion</h2>
+    <h2 class="section__titre">{% if jeux_du_theme %}Et aussi : des grands jeux à habiller{% else %}Des grands jeux à habiller pour l'occasion{% endif %}</h2>
     <p class="chapo">Ces jeux du catalogue se jouent toute l'année. Avec un peu de décor et de nouveaux noms, ils prennent les couleurs de la fête.</p>
     <div class="grille-jeux">{% for c in i.jeux %}{% for j in jeux if j.id == c.id %}{{ m.carte_jeu(j, c.astuce) }}{% endfor %}{% endfor %}</div>
   </section>

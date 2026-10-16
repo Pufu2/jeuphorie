@@ -15,6 +15,7 @@ Le site est fait de simples fichiers HTML fabriqués par `build.py`. Il peut êt
 | Écrire un article | `contenu/blog/` (voir `docs/ECRIRE-UN-ARTICLE.md`) |
 | Les textes des pages À propos et légales | `contenu/pages/` |
 | Les idées par âge et par fête | `donnees/idees.yml` |
+| Les jeux de fêtes offerts (Halloween, Noël…), publiés en entier | `donnees/jeux-fetes.yml` (schémas dans `outils/schemas_fetes.py`) |
 | Les couleurs et la mise en page | `statique/css/site.css` |
 
 Dans les pages légales, tout ce qui est écrit `[[ainsi]]` apparaît surligné en jaune : ce sont les informations à compléter.
