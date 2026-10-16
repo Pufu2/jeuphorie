@@ -4,12 +4,6 @@
 {% set k = page.kit %}
 {% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.payhip_id %}
 {% set u = d.univers.univers | selectattr('id', 'equalto', k.univers) | first %}
-<script type="application/ld+json">
-{{ {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-  {"@type": "ListItem", "position": 1, "name": "Accueil", "item": site.url ~ "/"},
-  {"@type": "ListItem", "position": 2, "name": u.nom, "item": site.url ~ u.url},
-  {"@type": "ListItem", "position": 3, "name": k.titre, "item": url_complete}]} | tojson }}
-</script>
 {% if achetable %}
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@type": "Product", "name": k.titre, "description": k.accroche, "image": site.url ~ "/img/kits/" ~ k.id ~ "-couverture.jpg", "brand": {"@type": "Brand", "name": site.nom}, "category": u.nom,

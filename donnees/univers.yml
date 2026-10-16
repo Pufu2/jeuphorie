@@ -4,7 +4,7 @@ univers:
     nom: Anniversaires
     url: /anniversaires/
     couleur: fete
-    titre_page: Jeux d'anniversaire à imprimer
+    titre_page: Jeux d'anniversaire pour enfants, à imprimer
     public: Parents
     accroche: "Olympiades, chasse au trésor, enquête, safari des tout-petits : un anniversaire clé en main, de 3 à 12 ans."
     description: "Jeux d'anniversaire à imprimer pour les 3-12 ans : Olympiades, chasse au trésor des pirates, enquête du gâteau disparu, safari des petits. Déroulé, épreuves, invitations et diplômes."
@@ -42,7 +42,7 @@ univers:
     nom_court: Fêtes
     url: /fetes/
     couleur: saison
-    titre_page: Jeux pour les fêtes de l'année
+    titre_page: "Jeux pour les fêtes de l'année : Toussaint, Noël, carnaval, Pâques"
     public: Familles, écoles, accueils de loisirs et CSE
     accroche: "Toussaint, Noël, carnaval, Pâques : un grand jeu et des ateliers prêts à animer pour chaque temps fort de l'année."
     description: "Jeux et animations pour les fêtes de l'année : Toussaint et automne, Noël, carnaval, Pâques. Kits à imprimer pour la famille, l'école, l'accueil de loisirs et l'arbre de Noël du CSE."

@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% import "morceaux/macros.html" as m with context %}
 {% block classe_body %}page-accueil{% endblock %}
+{% block tete %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [
+  {"@type": "Organization", "@id": site.url ~ "/#organisation", "name": site.nom, "url": site.url ~ "/", "logo": site.url ~ "/img/logo.png", "email": site.email, "slogan": site.signature,
+   "description": site.description | trim, "founder": {"@type": "Person", "name": site.auteur.prenom, "jobTitle": "Directeur adjoint d'accueil de loisirs"}},
+  {"@type": "WebSite", "@id": site.url ~ "/#site", "name": site.nom, "url": site.url ~ "/", "inLanguage": "fr-FR", "publisher": {"@id": site.url ~ "/#organisation"}}
+]} | tojson }}
+</script>
+{% endblock %}
 {% block contenu %}
 
 {% set vedette = jeux | selectattr('id', 'equalto', 'poules-renards-viperes') | first %}

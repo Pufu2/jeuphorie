@@ -20,6 +20,11 @@ chemin_de_base: ""
 
 langue: fr
 
+# Référencement : codes de vérification de Google Search Console et de Bing Webmaster Tools
+# (la valeur « content » de la balise meta qu'ils proposent). Laisser vide sinon.
+google_site_verification: ""
+bing_site_verification: ""
+
 # Adresse de contact affichée sur le site.
 email: contact@jeuphorie.fr
 

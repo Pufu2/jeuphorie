@@ -138,6 +138,9 @@ class Site:
                                trim_blocks=True, lstrip_blocks=True)
         self.env.filters["date_fr"] = date_fr
         self.env.tests["contient"] = lambda liste, x: x in (liste or [])
+        self.env.filters["fil_jsonld"] = lambda fil, base: [
+            {"@type": "ListItem", "position": i, "name": nom, "item": base.rstrip("/") + url}
+            for i, (nom, url) in enumerate([("Accueil", "/")] + list(fil), start=1)]
         self.env.globals["schema"] = schema_svg
         self.env.globals["schema_fete"] = schema_fete
         self.pages = []  # (url, gabarit, contexte)
@@ -195,37 +198,44 @@ class Site:
     # -- déclaration des pages
     def declarer(self):
         d = self.donnees
-        self.ajouter("/", "accueil.html", titre=None)
+        self.ajouter("/", "accueil.html", titre="Jeux et animations à imprimer pour enfants, clés en main",
+                     description="Kits de jeux à imprimer pour les anniversaires, les fêtes de l'année, la kermesse et les grands jeux, conçus par un directeur d'accueil de loisirs. Pour les familles, les écoles, les associations et les structures.")
         self.ajouter("/boutique/", "boutique.html", titre="La boutique",
                      description="Grands jeux et jeux collectifs à télécharger et imprimer, par âge de 6 à 17 ans, et kits d'animation pour les fêtes, les écoles et les accueils de loisirs.")
         for k in self.kits():
             self.ajouter(f"/boutique/{k['id']}/", "produit.html",
                          titre=k.get("titre_seo") or f"{k['titre']} : kit à imprimer",
                          description=f"{k['accroche']} {k['age']}, {k['joueurs']}, {k['duree']}. Fichier PDF à télécharger et imprimer."[:300],
-                         kit=k, image=f"img/kits/{k['id']}-partage.jpg")
+                         kit=k, image=f"img/kits/{k['id']}-partage.jpg",
+                         fil=[(next(u["nom"] for u in d["univers"]["univers"] if u["id"] == k["univers"]),
+                               next(u["url"] for u in d["univers"]["univers"] if u["id"] == k["univers"])),
+                              (k["titre"], f"/boutique/{k['id']}/")])
         self.ajouter("/jeux/", "jeux.html", titre="Tous les grands jeux",
                      description="34 grands jeux et jeux collectifs pour enfants et ados : but du jeu, âge, nombre de joueurs, durée et matériel de chaque jeu.")
         for j in self.jeux():
-            self.ajouter(f"/jeux/{j['id']}/", "jeu.html", titre=f"{j['nom']} : règles et organisation",
+            self.ajouter(f"/jeux/{j['id']}/", "jeu.html", titre=f"{j['nom']} : règles du jeu et organisation",
                          description=f"{j['nom']}, jeu collectif dès {j['age_min']} ans, de {j['joueurs'][0]} à {j['joueurs'][1]} joueurs, {j['duree']} min. {j['but']}"[:300],
-                         jeu=j)
+                         jeu=j, fil=[("Grands jeux", "/grands-jeux/"), ("Tous les jeux", "/jeux/"), (j["nom"], f"/jeux/{j['id']}/")])
         for u in d["univers"]["univers"]:
             if u["id"] == "pro":
                 continue
             self.ajouter(u["url"], "fetes.html" if u["id"] == "fetes" else "univers.html",
-                         titre=u["titre_page"], description=u["description"], univers=u)
+                         titre=u["titre_page"], description=u["description"], univers=u, fil=[(u["nom"], u["url"])])
         pro = next(u for u in d["univers"]["univers"] if u["id"] == "pro")
         self.ajouter(pro["url"], "pro.html", titre=pro["titre_page"],
-                     description=pro["description"], univers=pro)
+                     description=pro["description"], univers=pro, fil=[(pro["nom"], pro["url"])])
         fetes = {f["slug"]: f for f in d["fetes"]["fetes"]}
         for f in fetes.values():
             self.ajouter(f"/fetes/{f['slug']}/", "fete.html", titre=f["titre_page"],
-                         description=f["description"], fete=f)
+                         description=f["description"], fete=f,
+                         fil=[("Fêtes de l'année", "/fetes/"), (f["nom"], f"/fetes/{f['slug']}/")])
         for j in self.jeux_fetes():
             self.ajouter(f"/fetes/{j['fete']}/{j['id']}/", "jeu-fete.html",
                          titre=f"{j['nom']} : un jeu {fetes[j['fete']]['de']} pour enfants",
                          description=f"{j['accroche']} Règles complètes, version dehors et version à l'intérieur, dès {j['age_min']} ans.",
-                         jeu=j, fete=fetes[j["fete"]])
+                         jeu=j, fete=fetes[j["fete"]],
+                         fil=[("Fêtes de l'année", "/fetes/"), (fetes[j["fete"]]["nom"], f"/fetes/{j['fete']}/"),
+                              (j["nom"], f"/fetes/{j['fete']}/{j['id']}/")])
         self.ajouter("/jeux-gratuits/", "jeux-gratuits.html", titre="3 grands jeux offerts",
                      description="Recevez 3 grands jeux collectifs à imprimer, avec règles, variantes et schéma du terrain : Gendarmes et voleurs, Poules renards vipères, L'épervier gradé.")
         self.ajouter("/blog/", "blog.html", titre="Le blog : idées de jeux et conseils d'animateur",
@@ -233,6 +243,7 @@ class Site:
         for a in self.articles:
             self.ajouter(a["url"], "article.html", titre=a["titre"],
                          description=a.get("description", ""), article=a,
+                         fil=[("Blog", "/blog/"), (a["titre"], a["url"])],
                          type_og="article")
         self.ajouter("/contact/", "contact.html", titre="Contact et devis",
                      description="Une question sur un kit, une commande pour une association, un devis pour un accueil de loisirs ou un CSE : écrivez-moi, je réponds sous 48 heures ouvrées.")
@@ -321,7 +332,10 @@ class Site:
         for p in self.pages:
             if not p["indexer"]:
                 continue
-            lignes.append(f"  <url><loc>{html.escape(base + p['url'])}</loc></url>")
+            lastmod = ""
+            if p.get("article") and p["article"].get("date"):
+                lastmod = f"<lastmod>{p['article']['date'].isoformat()}</lastmod>"
+            lignes.append(f"  <url><loc>{html.escape(base + p['url'])}</loc>{lastmod}</url>")
         lignes.append("</urlset>")
         (SORTIE / "sitemap.xml").write_text("\n".join(lignes) + "\n", encoding="utf-8")
         (SORTIE / "robots.txt").write_text(
