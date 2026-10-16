@@ -2,7 +2,7 @@
 titre: Conditions générales de vente
 url: /conditions-de-vente/
 description: "Conditions générales de vente de Jeuphorie : produits numériques à télécharger et abonnement Jeuphorie Pro. Prix, commande, rétractation, résiliation, garanties, licence d'utilisation."
-chapo: "Version du 13 octobre 2026. Ces conditions s'appliquent à tous les achats de produits Jeuphorie et à l'abonnement Jeuphorie Pro."
+chapo: "Version du 16 octobre 2026. Ces conditions s'appliquent à tous les achats de produits Jeuphorie et à l'abonnement Jeuphorie Pro."
 ---
 
 {% if not site.boutique.ventes_actives %}
@@ -72,15 +72,17 @@ Il est interdit de revendre un fichier, de le partager en ligne (site, réseau s
 
 **Les formules.** Jeuphorie Pro existe en trois formules, décrites sur la page [Jeuphorie Pro](/pro/) :
 
-- **Pro Animateur mensuel**, 4,90 € par mois : accès à l'espace Pro et aux nouvelles fiches publiées pendant l'abonnement, et code de réduction de 30 % sur la boutique ;
-- **Pro Animateur annuel**, 39 € par an : accès à toute la bibliothèque de l'espace Pro dès la souscription, aux nouvelles fiches, et code de réduction de 30 % ;
-- **Pro Structure**, 119 € par an : les avantages de la formule annuelle pour toute l'équipe d'une même structure et d'un même lieu, dans la limite de 15 personnes, et code de réduction de 40 %.
+- **Pro Animateur mensuel**, 4,90 € par mois : le dossier du mois publié pendant chaque mois d'abonnement, et un code de réduction de 30 % sur la boutique ;
+- **Pro Animateur annuel**, 39 € par an : le grand fichier des grands jeux et tous les dossiers du mois, y compris ceux déjà parus, dès la souscription, puis les nouveaux dossiers, et un code de réduction de 30 % ;
+- **Pro Structure**, 119 € par an : les avantages de la formule annuelle pour l'équipe d'une même structure et d'un même lieu, dans la limite de 15 personnes, les kits des fêtes de l'année et le kit du directeur inclus, et un code de réduction de 40 % sur les autres kits.
+
+Les fichiers inclus dans une formule sont mis à disposition dans l'espace Pro, ou par un lien de téléchargement envoyé par mail.
 
 **Durée et renouvellement.** L'abonnement mensuel est conclu pour un mois, l'abonnement annuel pour un an. Chacun se renouvelle automatiquement pour la même durée, au prix en vigueur à la souscription, jusqu'à sa résiliation. Pour les abonnements annuels, Jeuphorie vous prévient par mail, entre un et trois mois avant l'échéance, de la date de renouvellement et de la façon d'y mettre fin (article L. 215-1 du Code de la consommation).
 
 **Résiliation.** Vous pouvez résilier à tout moment, gratuitement, depuis votre espace client Payhip, en quelques clics (article L. 215-1-1 du Code de la consommation). La résiliation faite depuis l'espace client prend effet immédiatement : l'accès à l'espace Pro et au code de réduction s'arrête, et la période déjà payée n'est pas remboursée. Pour garder l'accès jusqu'à la fin de la période payée, demandez plutôt la résiliation à l'échéance par mail à {{ site.email }} : nous la confirmons par écrit et l'appliquons la veille du renouvellement.
 
-**Après la fin de l'abonnement.** Les fiches que vous avez téléchargées ou imprimées pendant l'abonnement restent utilisables selon l'article 9. Les codes de réduction ne sont plus valables.
+**Après la fin de l'abonnement.** Les fiches que vous avez téléchargées ou imprimées pendant l'abonnement restent utilisables selon l'article 9. Les codes de réduction ne sont plus valables, et les nouveaux dossiers ne sont plus envoyés.
 
 **Droit de rétractation.** L'espace Pro est un contenu numérique fourni immédiatement : l'article 7 s'applique de la même façon à la souscription.
 

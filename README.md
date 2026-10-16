@@ -8,7 +8,7 @@ Le site est fait de simples fichiers HTML fabriqués par `build.py`. Il peut êt
 
 | Pour… | Modifier |
 |---|---|
-| Ouvrir les ventes, l'adresse de contact, les informations légales | `config.yml` |
+| Ouvrir les ventes (pas à pas : `docs/OUVRIR-LES-VENTES.md`), l'adresse de contact, les informations légales | `config.yml` |
 | Ajouter ou mettre en vente un produit (chaque produit a sa page /boutique/<id>/) | `donnees/kits.yml` |
 | Les formules d'abonnement | `donnees/abonnement.yml` |
 | La partie publique des jeux | `donnees/jeux.yml` (exportée depuis le dossier privé des produits) |
@@ -19,6 +19,8 @@ Le site est fait de simples fichiers HTML fabriqués par `build.py`. Il peut êt
 | Les univers (menu, couleurs, textes d'en-tête) | `donnees/univers.yml` |
 | Les jeux de fêtes offerts (Toussaint, Noël…), publiés en entier | `donnees/jeux-fetes.yml` (schémas dans `outils/schemas_fetes.py`) |
 | Les couleurs et la mise en page | `statique/css/site.css` |
+| Les dossiers du mois déjà prêts, montrés sur la page Pro | `donnees/abonnement.yml` (`dossiers_prets`, vignettes dans `statique/img/pro/`) |
+| Le référencement Google (stratégie et étapes) | `docs/REFERENCEMENT.md` |
 
 Dans les pages légales, tout ce qui est écrit `[[ainsi]]` apparaît surligné en jaune : ce sont les informations à compléter.
 
