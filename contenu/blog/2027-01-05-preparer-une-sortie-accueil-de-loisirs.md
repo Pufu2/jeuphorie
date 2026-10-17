@@ -5,7 +5,7 @@ chapo: "Une sortie réussie se prépare deux semaines avant, et se joue dans les
 date: 2027-01-05
 ages: []
 fetes: []
-univers: [pro]
+univers: [professionnels]
 kit: kit-du-directeur
 ---
 

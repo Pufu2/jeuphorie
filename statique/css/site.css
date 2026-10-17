@@ -226,7 +226,7 @@ mark.a-completer {
 
 .nav-large { display: none; }
 
-@media (min-width: 1000px) {
+@media (min-width: 1180px) {
   .nav-large { display: flex; align-items: center; gap: 0.25rem 1.1rem; flex-wrap: wrap; justify-content: flex-end; }
   .menu { display: none; }
 }
@@ -245,6 +245,13 @@ mark.a-completer {
 .nav-large__lien--soleil:hover, .nav-large__lien--soleil[aria-current="page"] { border-bottom-color: var(--soleil); }
 .nav-large__lien--pro:hover, .nav-large__lien--pro[aria-current="page"] { border-bottom-color: var(--pro-vif); }
 .nav-large__lien--saison:hover, .nav-large__lien--saison[aria-current="page"] { border-bottom-color: var(--saison); }
+.nav-large__lien--abonnement { color: var(--pro-vif); }
+.nav-large__lien--abonnement:hover, .nav-large__lien--abonnement[aria-current="page"] { border-bottom-color: var(--pro-vif); }
+.menu__lien--abonnement { color: var(--pro-vif); }
+.publics-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+.publics-nav__lien { font-family: var(--f-titre); font-weight: 600; font-size: 0.92rem; text-decoration: none; background: var(--fiche); border: 1px solid var(--filet); border-radius: 999px; padding: 0.35rem 0.9rem; }
+.publics-nav__lien:hover { border-color: var(--pro-vif); color: var(--pro-vif); }
+.public-bloc { scroll-margin-top: 1rem; }
 .nav-large__lien--boutique {
   border: 2px solid var(--encre);
   border-radius: 999px;
@@ -1067,3 +1074,13 @@ a.tampon { text-decoration: none; }
 .dossier-pret__images img { width: 100%; height: auto; border: 1px solid var(--filet); border-radius: 6px; box-shadow: 0 2px 6px rgba(26, 35, 64, 0.08); }
 .dossier-pret figcaption { font-size: 0.95rem; color: var(--encre-douce); }
 .dossier-pret figcaption strong { color: var(--encre); }
+
+/* page Professionnels : listes compactes par public */
+.liste-kits { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); }
+.liste-kits__lien { display: grid; grid-template-columns: 96px 1fr auto; gap: 0.9rem; align-items: center; text-decoration: none; background: var(--fiche); border: 1px solid var(--filet); border-radius: var(--rayon); padding: 0.6rem 0.9rem 0.6rem 0.6rem; }
+.liste-kits__lien:hover { border-color: var(--pro-vif); }
+.liste-kits__lien img { width: 96px; height: auto; border-radius: 6px; }
+.liste-kits__texte { display: grid; gap: 0.15rem; }
+.liste-kits__texte span { color: var(--encre-douce); font-size: 0.92rem; line-height: 1.35; }
+.liste-kits__prix { font-family: var(--f-titre); font-weight: 800; white-space: nowrap; }
+@media (max-width: 520px) { .liste-kits__lien { grid-template-columns: 72px 1fr; } .liste-kits__lien img { width: 72px; } .liste-kits__prix { grid-column: 2; } }

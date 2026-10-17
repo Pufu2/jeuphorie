@@ -2,17 +2,15 @@
 {% import "morceaux/macros.html" as m with context %}
 {% block classe_body %}page-pro{% endblock %}
 {% block contenu %}
+{% set ab = d.abonnement %}
+{% set vendus = kits | rejectattr('reserve_pro') | list %}
+{% set ns = namespace(total=0) %}{% for k in vendus %}{% set ns.total = ns.total + (k.prix | replace(',', '.') | float) %}{% endfor %}
 <div class="cadre">
   <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>Jeuphorie Pro</span></nav>
   <header class="tete-univers tete-univers--pro">
-    <p class="tete-univers__public">Pour les animateurs et les structures</p>
-    <h1 class="titre-page">Jeuphorie Pro, l'abonnement de celles et ceux qui animent toute l'année</h1>
-    <p class="chapo">Un dossier de nouvelles fiches chaque mois, le grand fichier des 34 grands jeux, et pour les structures, les kits des fêtes de l'année et les outils du directeur inclus.</p>
-    <ul class="coches">
-      <li>Un dossier de 6 à 8 fiches d'animation chaque mois</li>
-      <li>Jusqu'à 40 % de réduction sur toute la boutique</li>
-      <li>Une licence pour toute l'équipe, avec une facture au nom de la structure</li>
-    </ul>
+    <p class="tete-univers__public">L'abonnement</p>
+    <h1 class="titre-page">Jeuphorie Pro, pour animer toute l'année</h1>
+    <p class="chapo">{{ ab.page.chapo }}</p>
   </header>
 
   {% if not site.boutique.ventes_actives %}
@@ -25,9 +23,9 @@
   <section class="section section--serree" aria-labelledby="t-formules">
     <h2 id="t-formules" class="section__titre">Les formules</h2>
     <div class="formules">
-      {% for f in d.abonnement.formules %}
+      {% for f in ab.formules %}
       <article class="formule{% if f.mis_en_avant %} formule--avant{% endif %}">
-        {% if f.mis_en_avant %}<span class="formule__ruban">Le plus choisi</span>{% endif %}
+        {% if f.mis_en_avant %}<span class="formule__ruban">{{ f.ruban or "Le plus choisi" }}</span>{% endif %}
         <h3 class="formule__nom">{{ f.nom }}</h3>
         <p class="formule__pour">{{ f.pour }}</p>
         <p class="formule__prix"><span>{{ f.prix }}</span> {{ f.periode }}</p>
@@ -52,43 +50,59 @@
     <div class="valeur">
       <div class="valeur__texte">
         <p class="surtitre">Pro Structure</p>
-        <h2 id="t-structure" class="section__titre">Une année d'animation pour toute l'équipe</h2>
-        <p>Un seul abonnement couvre l'équipe d'un même lieu, jusqu'à 15 personnes. Les fêtes de l'année sont prêtes, le directeur a ses outils de suivi, et les animateurs trouvent chaque mois de nouvelles fiches pour les mercredis.</p>
+        <h2 id="t-structure" class="section__titre">Tout le site, pour toute l'équipe</h2>
+        <p>Un seul abonnement pour toute la structure, sans compter les personnes : la direction, les animateurs, les enseignants, les bénévoles. Chacun télécharge et imprime ce dont il a besoin pour les activités de la structure.</p>
         <ul class="coches">
           <li>Facture au nom de la structure</li>
-          <li>Paiement par carte, virement, bon de commande ou mandat administratif (sur devis)</li>
-          <li>Plusieurs lieux ou un réseau : tarif sur devis</li>
+          <li>Carte bancaire, virement, bon de commande ou mandat administratif (sur devis), dépôt sur Chorus Pro</li>
+          <li>Plusieurs établissements ou un réseau : tarif sur devis</li>
         </ul>
-        <div class="actions"><a class="bouton" href="{{ lien('/contact/') }}">Demander un devis</a></div>
+        <div class="actions">
+          <a class="bouton" href="{{ lien('/contact/') }}">Demander un devis</a>
+          <a class="bouton bouton--contour" href="{{ lien('/professionnels/') }}">Voir les outils des structures</a>
+        </div>
       </div>
       <div class="valeur__tableau">
         <p class="valeur__titre">Ce qui est inclus</p>
         <table>
-          {% for l in d.abonnement.valeur_structure %}<tr><td>{{ l[0] }}</td><td class="valeur__prix">{{ l[1] }}</td></tr>{% endfor %}
+          <tr><td>Les {{ vendus | length }} kits et outils de la boutique</td><td class="valeur__prix">{{ ns.total | round(0, 'floor') | int }} € au prix public</td></tr>
+          <tr><td>Les dossiers du mois, déjà parus et à venir</td><td class="valeur__prix">réservés aux abonnés</td></tr>
+          <tr><td>Le calendrier d'animation de l'année</td><td class="valeur__prix">réservé aux structures</td></tr>
+          <tr><td>Les nouveaux kits de l'année</td><td class="valeur__prix">inclus dès leur sortie</td></tr>
+          <tr><td>Toute l'équipe</td><td class="valeur__prix">sans limite de personnes</td></tr>
         </table>
-        <p class="valeur__total">{{ d.abonnement.valeur_structure_total }}</p>
+        <p class="valeur__total">Plus de {{ ((ns.total // 10) * 10) | int }} € de fichiers inclus, pour 149 € par an.</p>
       </div>
     </div>
   </section>
 
-  <section class="section section--serree" aria-labelledby="t-publics">
-    <h2 id="t-publics" class="section__titre">Ce que Pro change pour vous</h2>
+  <section class="section section--serree" aria-labelledby="t-annee">
+    <h2 id="t-annee" class="section__titre">Chaque année, ce que l'abonnement vous apporte</h2>
     <div class="arguments">
-      {% for p in d.abonnement.publics %}<div class="argument"><h3 class="argument__titre">{{ p.titre }}</h3><p>{{ p.texte }}</p></div>{% endfor %}
+      {% for p in ab.chaque_annee %}<div class="argument"><h3 class="argument__titre">{{ p.titre }}</h3><p>{{ p.texte }}</p></div>{% endfor %}
     </div>
+  </section>
+
+  <section class="section section--serree" aria-labelledby="t-comment">
+    <h2 id="t-comment" class="section__titre">Comment ça marche</h2>
+    <ol class="etapes">
+      <li class="etape"><span class="etape__num" aria-hidden="true">1</span><h3 class="etape__titre">Vous choisissez une formule</h3><p>Paiement par carte en ligne, ou sur devis et facture pour une structure.</p></li>
+      <li class="etape"><span class="etape__num" aria-hidden="true">2</span><h3 class="etape__titre">Vous ouvrez votre espace membre</h3><p>Vous y retrouvez tous les fichiers de votre formule, et chaque nouveauté au fil des mois.</p></li>
+      <li class="etape"><span class="etape__num" aria-hidden="true">3</span><h3 class="etape__titre">Vous imprimez et vous animez</h3><p>Les fichiers sont à vous : vous les imprimez autant de fois que nécessaire pour vos activités.</p></li>
+    </ol>
   </section>
 
   <section class="section section--serree" aria-labelledby="t-dossiers">
     <h2 id="t-dossiers" class="section__titre">Les dossiers du mois</h2>
-    <p class="chapo">Chaque mois, un dossier de 6 à 8 fiches autour d'un thème, au même format que les grands jeux : règle à annoncer, matériel, installation, déroulement, variantes et conseils. Voici les prochains thèmes.</p>
+    <p class="chapo">Chaque mois, un dossier de 8 fiches autour d'un thème, au même format que les grands jeux : règle à annoncer, matériel, installation, déroulement, variantes et conseils. Voici les prochains thèmes.</p>
     <div class="calendrier-dossiers">
-      {% for x in d.abonnement.dossiers %}<div class="dossier"><span class="dossier__mois">{{ x[0] }}</span><span class="dossier__theme">{{ x[1] }}</span></div>{% endfor %}
+      {% for x in ab.dossiers %}<div class="dossier"><span class="dossier__mois">{{ x[0] }}</span><span class="dossier__theme">{{ x[1] }}</span></div>{% endfor %}
     </div>
-    <p class="petit">Les abonnés peuvent proposer des thèmes : les plus demandés passent en priorité.</p>
-    {% if d.abonnement.dossiers_prets %}
+    <p class="petit">Les abonnés peuvent proposer des thèmes : ceux des structures passent en priorité.</p>
+    {% if ab.dossiers_prets %}
     <h3 class="dossiers-prets__titre">Déjà prêts</h3>
     <div class="dossiers-prets">
-      {% for x in d.abonnement.dossiers_prets %}
+      {% for x in ab.dossiers_prets %}
       <figure class="dossier-pret">
         <div class="dossier-pret__images">
           <img src="{{ statique('img/pro/dossier-' ~ x.image ~ '.jpg') }}" alt="Couverture du dossier de {{ x.mois | lower }} : {{ x.titre | lower }}" width="280" height="396" loading="lazy">
@@ -101,15 +115,10 @@
     {% endif %}
   </section>
 
-  <section class="section section--serree" aria-labelledby="t-kits-pro">
-    <h2 id="t-kits-pro" class="section__titre">Inclus dans Pro Structure</h2>
-    {{ m.grille_kits(kits | selectattr('univers', 'equalto', 'pro') | list + kits | selectattr('univers', 'equalto', 'fetes') | list + kits | selectattr('id', 'equalto', 'grand-fichier') | list, "") }}
-  </section>
-
   <section class="section section--serree cadre--texte" aria-labelledby="t-faq">
     <h2 id="t-faq" class="section__titre">Questions fréquentes</h2>
     <div class="questions">
-      {% for q in d.abonnement.questions %}
+      {% for q in ab.questions %}
       <details class="question">
         <summary>{{ q.q }}</summary>
         <p>{{ q.r }}</p>

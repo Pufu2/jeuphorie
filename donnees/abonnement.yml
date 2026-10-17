@@ -1,7 +1,14 @@
-# Jeuphorie Pro : les formules, les avantages par public et les questions.
+# Jeuphorie Pro : l'abonnement (page /pro/). Les outils pour les structures sont sur la page /professionnels/.
 # payhip : code du produit « membership » sur Payhip (payhip.com/b/CODE), à remplir à l'ouverture.
 # Les boutons ne s'activent que si config.yml > boutique > ventes_actives vaut true.
 # Les codes de réduction ne sont JAMAIS écrits dans le dépôt : ils sont donnés dans l'espace membres Payhip.
+
+page:
+  titre_page: "Jeuphorie Pro : l'abonnement des animateurs et des structures"
+  description: "Jeuphorie Pro, l'abonnement pour animer toute l'année : un dossier de nouvelles fiches chaque mois, et pour les structures, tout le site inclus pour toute l'équipe, sans limite de personnes."
+  chapo: >-
+    Un dossier de nouvelles fiches chaque mois pour les animateurs. Et pour les structures, tout le site inclus,
+    pour toute l'équipe, sans limite de personnes.
 
 formules:
   - id: decouverte
@@ -27,17 +34,16 @@ formules:
     payhip: ""
     bouton: S'abonner au mois
     inclus:
-      - Le dossier du mois, avec de nouvelles fiches d'animation
+      - Le dossier du mois, avec 8 nouvelles fiches d'animation
       - 30 % de réduction sur toute la boutique
       - Vos idées de thèmes prises en compte pour les prochains dossiers
 
   - id: animateur-annuel
     nom: Pro Animateur annuel
-    pour: Le meilleur choix si vous animez toute l'année
+    pour: Si vous animez toute l'année
     prix: "39 €"
     periode: par an
     detail: Soit 3,25 € par mois
-    mis_en_avant: true
     payhip: ""
     bouton: S'abonner à l'année
     inclus:
@@ -49,49 +55,34 @@ formules:
   - id: structure
     nom: Pro Structure
     pour: Accueil de loisirs, école, association, club, CSE
-    prix: "119 €"
+    prix: "149 €"
     periode: par an
-    detail: Facture au nom de la structure, virement ou mandat possible
+    detail: Toute l'équipe, sans limite de personnes. Facture, virement ou mandat
+    mis_en_avant: true
+    ruban: Tout le site inclus
     payhip: ""
     bouton: Abonner ma structure
     inclus:
-      - Tout Pro Animateur annuel, pour toute l'équipe (jusqu'à 15 personnes d'un même lieu)
-      - Les 4 kits des fêtes de l'année inclus (Toussaint, Noël, carnaval, Pâques)
-      - Le kit du directeur inclus (classeur et modèles)
-      - 40 % de réduction sur les autres kits, dont la kermesse
-      - Le droit d'imprimer les fiches pour toutes les animations de la structure
+      - Tous les kits et tous les outils du site, pour toute l'équipe
+      - Tous les dossiers du mois et le grand fichier
+      - Les nouveaux kits de l'année, inclus dès leur sortie
+      - Le calendrier d'animation de l'année, réservé aux structures
+      - Un prix garanti tant que vous renouvelez
 
-# Ce que représente l'abonnement Structure, en euros (prix publics de la boutique)
-valeur_structure:
-  - [Le grand fichier des 34 grands jeux, "19,90 €"]
-  - [Le kit du directeur, "29 €"]
-  - ["Les 4 kits des fêtes de l'année (4 × 12 €)", "48 €"]
-  - [12 dossiers du mois, "réservés aux abonnés"]
-  - ["40 % sur la kermesse clé en main (25 € → 15 €)", "10 € d'économie"]
-valeur_structure_total: "Plus de 100 € de fichiers inclus, et une licence pour 15 personnes, pour 119 € par an."
-
-# Ce que l'abonnement change pour chaque public
-publics:
-  - titre: Accueils de loisirs
-    texte: >-
-      Un programme de fêtes prêt pour toute l'année, le kit du directeur pour suivre l'encadrement et le budget, et un dossier
-      de nouvelles fiches chaque mois pour les mercredis. Toute l'équipe imprime ce dont elle a besoin.
-  - titre: Écoles et périscolaire
-    texte: >-
-      Des grands jeux pour la cour et les séances de sport collectif, des après-midi de fête clés en main pour Noël ou le
-      carnaval, et des fiches simples à confier à un intervenant ou à un remplaçant.
-  - titre: Associations de parents d'élèves
-    texte: >-
-      Les kits des fêtes pour animer le marché de Noël ou le carnaval de l'école, et 40 % de réduction sur la kermesse
-      clé en main. Une facture au nom de l'association pour la trésorerie.
-  - titre: Comités d'entreprise (CSE)
-    texte: >-
-      L'atelier du père Noël pour l'arbre de Noël, avec sa version en stands pour 40 à 120 enfants, la chasse aux œufs
-      de Pâques pour une journée familles, et des grands jeux pour les sorties d'été. Paiement par virement sur facture.
-  - titre: Clubs sportifs et colonies
-    texte: >-
-      Les 34 grands jeux classés par âge pour les échauffements, les stages et les veillées, et des dossiers mensuels qui
-      renouvellent les idées tout au long de la saison.
+# Pourquoi garder Pro Structure d'une année sur l'autre (page /pro/)
+chaque_annee:
+  - titre: 12 nouveaux dossiers
+    texte: Huit fiches d'animation chaque mois, sur un thème de saison, pour renouveler les mercredis et les vacances.
+  - titre: Les nouveaux kits inclus
+    texte: Chaque nouveau kit de fête, d'anniversaire ou d'outil pour les structures arrive dans votre espace dès sa sortie, sans rien payer de plus.
+  - titre: Le calendrier de la rentrée
+    texte: Une nouvelle édition du calendrier d'animation à chaque rentrée, avec les dates de l'année, des idées de thèmes et les temps forts mois par mois.
+  - titre: Des outils à jour
+    texte: Le classeur du directeur et les modèles sont mis à jour quand les usages ou les textes changent. Vous téléchargez simplement la nouvelle version.
+  - titre: Vos demandes en priorité
+    texte: Un thème qui vous manque, un public particulier, un besoin de votre équipe ? Les demandes des structures abonnées passent en premier dans le programme des dossiers.
+  - titre: Un prix garanti
+    texte: Tant que l'abonnement est renouvelé, son prix ne change pas, même si le tarif public augmente.
 
 # Les dossiers déjà prêts, montrés en vignettes sur la page Pro (images : statique/img/pro/dossier-<image>.jpg et -fiche.jpg)
 dossiers_prets:
@@ -118,26 +109,33 @@ dossiers:
 questions:
   - q: Que contient le dossier du mois ?
     r: >-
-      Chaque mois, un dossier PDF de 6 à 8 fiches d'animation autour d'un thème (les jours de pluie, les jeux coopératifs, les
+      Chaque mois, un dossier PDF de 8 fiches d'animation autour d'un thème (les jours de pluie, les jeux coopératifs, les
       jeux de piste…), avec le même format que les grands jeux : règle à annoncer, matériel, installation, déroulement,
       variantes et conseils. Il arrive dans votre espace membre au début du mois.
   - q: Mensuel ou annuel ?
     r: >-
       Le mensuel vous laisse essayer sans engagement : vous recevez le dossier du mois et la réduction sur la boutique.
       L'annuel coûte un tiers de moins, inclut le grand fichier des 34 grands jeux et ouvre tous les dossiers déjà parus.
-  - q: Comment fonctionne l'abonnement Structure ?
+  - q: Qu'est-ce qu'une « structure » ?
     r: >-
-      Un seul abonnement couvre l'équipe d'un même lieu, jusqu'à 15 personnes. La structure reçoit les fichiers inclus et
-      chaque membre de l'équipe peut les imprimer pour les animations de la structure. Pour plusieurs lieux ou un réseau,
-      demandez un devis.
+      Un établissement ou une association : un accueil de loisirs, une école, une association de parents d'élèves, un
+      club, un comité d'entreprise. Toute l'équipe de cette structure, salariés, animateurs, enseignants et bénévoles,
+      peut utiliser et imprimer les fichiers pour ses propres activités, sans limite de nombre. Pour plusieurs
+      établissements (une ville, un réseau, une fédération), demandez un devis.
+  - q: Que comprend « tout le site » ?
+    r: >-
+      Tous les kits de la boutique (anniversaires, fêtes, kermesse, grands jeux), tous les outils pour les structures,
+      tous les dossiers du mois et le calendrier d'animation. Les kits qui sortent pendant votre abonnement sont inclus
+      eux aussi.
   - q: Ma structure peut-elle payer par virement, bon de commande ou mandat administratif ?
     r: >-
-      Oui. Écrivez-moi avec le nom de la structure, son adresse et le nombre de personnes : je vous envoie un devis, puis
-      une facture. Les collectivités peuvent régler par mandat administratif.
+      Oui. Écrivez-moi avec le nom et l'adresse de la structure : je vous envoie un devis, puis une facture. Les
+      collectivités peuvent régler par mandat administratif ou déposer la facture sur Chorus Pro.
   - q: Comment résilier ?
     r: >-
-      Depuis votre espace client Payhip, à tout moment, en quelques clics. Pour l'abonnement annuel, vous pouvez aussi
+      Depuis votre espace client Payhip, à tout moment, en quelques clics. Pour un abonnement annuel, vous pouvez aussi
       m'écrire : le renouvellement est arrêté et vous gardez l'accès jusqu'à la fin de votre année.
   - q: Que se passe-t-il pour les fichiers déjà téléchargés si j'arrête ?
     r: >-
-      Vous les gardez et pouvez continuer à les utiliser. Vous perdez seulement l'accès aux nouveaux dossiers et à la réduction.
+      Vous les gardez et pouvez continuer à les utiliser pour vos activités. Vous perdez seulement l'accès aux nouveautés,
+      aux mises à jour et à la réduction.

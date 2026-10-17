@@ -5,7 +5,7 @@ chapo: "Entre 6 et 8 ans, les enfants découvrent le plaisir du jeu en équipe, 
 date: 2026-11-24
 ages: [6-8-ans]
 fetes: []
-univers: [grands-jeux, pro]
+univers: [grands-jeux, professionnels]
 kit: pack-6-9
 ---
 

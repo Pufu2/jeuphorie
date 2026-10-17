@@ -5,7 +5,7 @@ chapo: "Il pleut, les enfants tournent en rond et le salon commence à ressemble
 date: 2026-10-20
 ages: [3-5-ans, 6-8-ans, 9-12-ans]
 fetes: []
-univers: [grands-jeux, pro]
+univers: [grands-jeux, professionnels]
 kit: grand-fichier
 ---
 

@@ -28,7 +28,7 @@ kit: olympiades-anniversaire
 - `date` : un article dont la date est dans le futur reste caché ; il apparaît tout seul le matin de sa date (le site se refabrique chaque jour).
 - `ages` : parmi `3-5-ans`, `6-8-ans`, `9-12-ans`, `13-17-ans` (sert au classement, sans page dédiée).
 - `fetes` : parmi `toussaint`, `noel`, `carnaval`, `paques` (voir `donnees/fetes.yml`). L'article apparaît sur la page de la fête.
-- `univers` : parmi `anniversaires`, `grands-jeux`, `fetes`, `kermesse`, `pro`. L'article apparaît sur la page de l'univers.
+- `univers` : parmi `anniversaires`, `grands-jeux`, `fetes`, `kermesse`, `professionnels`. L'article apparaît sur la page de l'univers.
 - `kit` : l'identifiant d'un kit de `donnees/kits.yml`, ou rien. La fiche du kit s'affiche à la fin de l'article.
 - `brouillon: true` : l'article n'est pas publié.
 - Mettre entre guillemets toute valeur qui contient « : ».

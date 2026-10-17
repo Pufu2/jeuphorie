@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+{% set u = page.univers %}
+{% set vendus = kits | rejectattr('reserve_pro') | list %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>{{ u.nom }}</span></nav>
+  <header class="tete-univers tete-univers--{{ u.couleur }}">
+    <p class="tete-univers__public">Pour les accueils de loisirs, les écoles, les associations, les clubs et les CSE</p>
+    <h1 class="titre-page">Les outils des professionnels de l'animation</h1>
+    <p class="chapo">{{ u.intro }}</p>
+    <ul class="coches">
+      {% for p in u.points %}<li>{{ p }}</li>{% endfor %}
+    </ul>
+    <nav class="publics-nav" aria-label="Choisir votre structure">
+      {% for p in u.publics %}<a class="publics-nav__lien" href="#{{ p.id }}">{{ p.titre }}</a>{% endfor %}
+    </nav>
+  </header>
+
+  <section class="section section--serree" aria-labelledby="t-outils">
+    <h2 id="t-outils" class="section__titre">Les outils pour les structures</h2>
+    <p class="chapo">Projets, équipes, programmes, événements : des méthodes complètes et des modèles prêts à remplir.</p>
+    {{ m.grille_kits(vendus | selectattr('univers', 'equalto', u.id) | list, "Les outils arrivent bientôt.") }}
+  </section>
+
+  {% for p in u.publics %}
+  {% set tous = vendus | selectattr('publics', 'defined') | selectattr('publics', 'contient', p.id) | list %}
+  {% set lies = (tous | selectattr('univers', 'equalto', u.id) | list) + (tous | rejectattr('univers', 'equalto', u.id) | list) %}
+  <section class="section section--serree public-bloc" id="{{ p.id }}" aria-labelledby="t-{{ p.id }}">
+    <h2 id="t-{{ p.id }}" class="section__titre">{{ p.titre }}</h2>
+    <p class="chapo">{{ p.texte }}</p>
+    <ul class="liste-kits">
+      {% for k in lies %}
+      <li class="liste-kits__item">
+        <a class="liste-kits__lien" href="{{ lien('/boutique/' ~ k.id ~ '/') }}">
+          <img src="{{ statique('img/kits/' ~ k.id ~ '.jpg') }}" alt="" width="120" height="77" loading="lazy">
+          <span class="liste-kits__texte"><strong>{{ k.titre }}</strong><span>{{ k.accroche }}</span></span>
+          <span class="liste-kits__prix">{{ k.prix }} €</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+
+  <section class="section section--serree" aria-labelledby="t-structure">
+    <div class="accroche-pro">
+      <div>
+        <h2 id="t-structure" class="section__titre">Tout est inclus dans Pro Structure</h2>
+        <p>Tous les outils de cette page, tous les kits du site, les dossiers du mois et le calendrier d'animation de l'année, pour toute l'équipe de votre structure, sans limite de personnes. Facture au nom de la structure, paiement par carte, virement ou mandat administratif.</p>
+      </div>
+      <div class="accroche-pro__prix">
+        <p><strong>149 €</strong> par an</p>
+        <p>pour toute la structure</p>
+        <a class="bouton" href="{{ lien('/pro/') }}">Découvrir Jeuphorie Pro</a>
+        <a class="bouton bouton--contour" href="{{ lien('/contact/') }}">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+
+  {% set articles_lies = articles | selectattr('univers', 'contient', u.id) | list %}
+  {% if articles_lies %}
+  <section class="section section--serree" aria-labelledby="t-articles">
+    <h2 id="t-articles" class="section__titre">À lire sur le blog</h2>
+    <div class="grille-articles">{% for a in articles_lies[:6] %}{{ m.carte_article(a) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

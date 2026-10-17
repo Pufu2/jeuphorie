@@ -216,14 +216,13 @@ class Site:
             self.ajouter(f"/jeux/{j['id']}/", "jeu.html", titre=f"{j['nom']} : règles du jeu et organisation",
                          description=f"{j['nom']}, jeu collectif dès {j['age_min']} ans, de {j['joueurs'][0]} à {j['joueurs'][1]} joueurs, {j['duree']} min. {j['but']}"[:300],
                          jeu=j, fil=[("Grands jeux", "/grands-jeux/"), ("Tous les jeux", "/jeux/"), (j["nom"], f"/jeux/{j['id']}/")])
+        gabarits_univers = {"fetes": "fetes.html", "professionnels": "professionnels.html"}
         for u in d["univers"]["univers"]:
-            if u["id"] == "pro":
-                continue
-            self.ajouter(u["url"], "fetes.html" if u["id"] == "fetes" else "univers.html",
+            self.ajouter(u["url"], gabarits_univers.get(u["id"], "univers.html"),
                          titre=u["titre_page"], description=u["description"], univers=u, fil=[(u["nom"], u["url"])])
-        pro = next(u for u in d["univers"]["univers"] if u["id"] == "pro")
-        self.ajouter(pro["url"], "pro.html", titre=pro["titre_page"],
-                     description=pro["description"], univers=pro, fil=[(pro["nom"], pro["url"])])
+        ab = d["abonnement"]["page"]
+        self.ajouter("/pro/", "pro.html", titre=ab["titre_page"], description=ab["description"],
+                     fil=[("Jeuphorie Pro", "/pro/")])
         fetes = {f["slug"]: f for f in d["fetes"]["fetes"]}
         for f in fetes.values():
             self.ajouter(f"/fetes/{f['slug']}/", "fete.html", titre=f["titre_page"],

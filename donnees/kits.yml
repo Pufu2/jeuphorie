@@ -7,6 +7,7 @@
 # (exportées depuis le dossier privé des produits par exporter_images.py).
 # pack : relie le produit aux jeux de donnees/jeux.yml (6-9, 10-13, 14-17 ou tout).
 # fete : place le kit sur la page de sa fête (donnees/fetes.yml).
+# publics : place le kit dans les rubriques de la page Professionnels (accueils, ecoles, associations, clubs, cse).
 # Jamais de règles détaillées ici : seulement ce qui donne envie et permet de choisir.
 
 kits:
@@ -159,6 +160,7 @@ kits:
   - id: pack-6-9
     titre: Grands jeux 6-9 ans
     univers: grands-jeux
+    publics: [accueils, ecoles, clubs]
     etat: pret
     prix: "9,90"
     payhip_id: ""
@@ -186,6 +188,7 @@ kits:
   - id: pack-10-13
     titre: Grands jeux 10-13 ans
     univers: grands-jeux
+    publics: [accueils, ecoles, clubs]
     etat: pret
     prix: "9,90"
     payhip_id: ""
@@ -213,6 +216,7 @@ kits:
   - id: pack-14-17
     titre: Grands jeux 14-17 ans
     univers: grands-jeux
+    publics: [accueils, clubs]
     etat: pret
     prix: "9,90"
     payhip_id: ""
@@ -240,6 +244,7 @@ kits:
   - id: grand-fichier
     titre: Le grand fichier des jeux collectifs
     univers: grands-jeux
+    publics: [accueils, ecoles, clubs]
     etat: pret
     prix: "19,90"
     payhip_id: ""
@@ -268,6 +273,7 @@ kits:
   - id: kit-toussaint
     titre: Le grand jeu de la forêt d'automne
     univers: fetes
+    publics: [accueils, ecoles]
     fete: toussaint
     etat: pret
     prix: "12"
@@ -305,6 +311,7 @@ kits:
   - id: kit-noel
     titre: L'atelier du père Noël
     univers: fetes
+    publics: [accueils, ecoles, associations, cse]
     fete: noel
     etat: pret
     prix: "12"
@@ -342,6 +349,7 @@ kits:
   - id: kit-carnaval
     titre: Le grand bal du carnaval
     univers: fetes
+    publics: [accueils, ecoles, associations]
     fete: carnaval
     etat: pret
     prix: "12"
@@ -379,6 +387,7 @@ kits:
   - id: kit-paques
     titre: La grande quête des cloches
     univers: fetes
+    publics: [accueils, ecoles, associations, cse]
     fete: paques
     etat: pret
     prix: "12"
@@ -417,6 +426,7 @@ kits:
   - id: kermesse-cle-en-main
     titre: La kermesse clé en main
     univers: kermesse
+    publics: [associations, ecoles, accueils]
     etat: pret
     prix: "25"
     payhip_id: ""
@@ -453,7 +463,8 @@ kits:
   # ---------------------------------------------------------------- Pro
   - id: kit-du-directeur
     titre: Le kit du directeur d'accueil de loisirs
-    univers: pro
+    univers: professionnels
+    publics: [accueils]
     etat: pret
     prix: "29"
     payhip_id: ""

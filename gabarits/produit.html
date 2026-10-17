@@ -50,7 +50,7 @@
         <p class="produit__etat">En vente très bientôt</p>
         <p class="petit">Le fichier est prêt. Les ventes ouvrent dans quelques jours : en attendant, recevez nos <a href="{{ lien('/jeux-gratuits/') }}">3 grands jeux offerts</a>.</p>
         {% endif %}
-        <p class="produit__pro">Abonnés <a href="{{ lien('/pro/') }}">Jeuphorie Pro</a> : 30 % de réduction, 40 % pour les structures.</p>
+        <p class="produit__pro">Inclus dans <a href="{{ lien('/pro/') }}">Jeuphorie Pro Structure</a>, pour toute l'équipe. Abonnés Pro Animateur : 30 % de réduction.</p>
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@
       <figure class="produit__capture"><img src="{{ statique('img/kits/kit-du-directeur-classeur.jpg') }}" alt="L'onglet Présences et taux du classeur, avec le calcul automatique de l'encadrement" width="900" height="222" loading="lazy"><figcaption>L'onglet « Présences et taux » : le classeur signale tout de suite le jour où il manque un animateur.</figcaption></figure>
       {% endif %}
       {% if k.deroule %}
-      <h2>{% if k.univers == 'kermesse' %}De la préparation au jour J{% elif k.univers == 'pro' %}Comment s'en servir{% else %}Comment se passe la fête{% endif %}</h2>
+      <h2>{% if k.univers == 'kermesse' %}De la préparation au jour J{% elif k.univers == 'professionnels' %}Comment s'en servir{% else %}Comment se passe la fête{% endif %}</h2>
       <ol>{% for x in k.deroule %}<li>{{ x }}</li>{% endfor %}</ol>
       {% endif %}
       {% if k.pack %}

@@ -5,7 +5,7 @@ chapo: "Chaque année, des élus de CSE et des bénévoles d'association se retr
 date: 2026-11-17
 ages: [3-5-ans, 6-8-ans, 9-12-ans]
 fetes: [noel]
-univers: [fetes, pro]
+univers: [fetes, professionnels]
 kit: kit-noel
 ---
 

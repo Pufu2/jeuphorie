@@ -73,11 +73,47 @@ univers:
       - Affiches, tickets et lots à imprimer.
       - Planning des bénévoles et liste de matériel à partager.
 
-  - id: pro
-    nom: Jeuphorie Pro
-    url: /pro/
+  - id: professionnels
+    nom: Professionnels
+    nom_court: Professionnels
+    url: /professionnels/
     couleur: pro
-    titre_page: Jeuphorie Pro, l'abonnement des animateurs et des structures
-    public: Animateurs et structures
-    accroche: Tous les jeux en accès libre, les nouveautés chaque mois et des réductions sur toute la boutique.
-    description: "Jeuphorie Pro, l'abonnement pour les animateurs, accueils de loisirs, associations, écoles et CSE : toute la bibliothèque de grands jeux, les nouveautés chaque mois et jusqu'à 40 % de réduction sur les kits."
+    titre_page: "Outils et kits pour les structures : accueils de loisirs, écoles, associations, clubs, CSE"
+    public: Accueils de loisirs, écoles, associations, clubs, CSE
+    accroche: "Les outils de direction, les projets, les programmes et les événements d'une structure, prêts à l'emploi."
+    description: "Kits et outils pour les professionnels de l'animation : projet pédagogique, livret d'accueil de l'équipe, semaine de vacances, récréation, association de parents, stage sportif, journée familles du CSE."
+    intro: >-
+      Diriger un accueil, animer une cour d'école, faire vivre une association ou organiser
+      l'événement du comité d'entreprise : ce sont des métiers à part entière, avec leurs
+      documents, leurs réunions et leurs imprévus. Ces outils ont été écrits par un directeur
+      d'accueil de loisirs pour faire gagner du temps aux équipes, sans sacrifier la qualité.
+    points:
+      - "Des modèles prêts à remplir, en PDF et en Word."
+      - "Des méthodes testées sur le terrain, avec les erreurs à éviter."
+      - "Tout est inclus dans l'abonnement Pro Structure, pour toute l'équipe."
+    publics:
+      - id: accueils
+        titre: Accueils de loisirs et périscolaire
+        texte: >-
+          Le projet pédagogique, l'accueil des nouveaux animateurs, le suivi de l'encadrement
+          et du budget, et des programmes de vacances prêts à animer.
+      - id: ecoles
+        titre: Écoles
+        texte: >-
+          Une cour de récréation plus calme, des grands jeux pour la cour et le sport, et des
+          après-midi de fête clés en main pour Noël, le carnaval ou la fin d'année.
+      - id: associations
+        titre: Associations de parents d'élèves
+        texte: >-
+          Le bureau, l'assemblée générale, la trésorerie, les démarches et les courriers, et
+          les kits pour la kermesse, le carnaval ou le marché de Noël.
+      - id: clubs
+        titre: Clubs sportifs et centres de vacances
+        texte: >-
+          Un stage multisport de vacances prêt à animer, des échauffements ludiques et les
+          grands jeux collectifs classés par âge.
+      - id: cse
+        titre: Comités d'entreprise (CSE)
+        texte: >-
+          La journée familles d'été et l'arbre de Noël clés en main, avec des stands que des
+          élus et des bénévoles peuvent tenir sans être animateurs.

@@ -5,7 +5,7 @@ chapo: "Dans un jeu coopératif, il n'y a ni gagnant ni perdant : tout le groupe
 date: 2026-12-08
 ages: [3-5-ans, 6-8-ans, 9-12-ans]
 fetes: []
-univers: [grands-jeux, pro]
+univers: [grands-jeux, professionnels]
 kit: grand-fichier
 ---
 
