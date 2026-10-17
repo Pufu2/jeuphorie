@@ -9,7 +9,7 @@
 {% block contenu %}
 {% set j = page.jeu %}
 <article class="cadre jeu">
-  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/jeux/') }}">Tous les jeux</a> <span aria-hidden="true">/</span> <span>{{ j.nom }}</span></nav>
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/jeux/') }}">Catalogue</a> <span aria-hidden="true">/</span> <span>{{ j.nom }}</span></nav>
   <h1 class="titre-page">{{ j.nom }}</h1>
   <div class="jeu__grille">
     <div class="jeu__texte">
@@ -45,8 +45,8 @@
       {% endif %}
       {% if j.offert %}
       <div class="encart encart--info encart--colonne">
-        <p><strong>Ce jeu est offert.</strong> Recevez sa fiche à imprimer, avec deux autres grands jeux.</p>
-        <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Recevoir les 3 jeux</a>
+        <p><strong>Ce jeu est offert.</strong> Téléchargez sa fiche à imprimer, avec deux autres grands jeux, sans inscription.</p>
+        <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Télécharger les 3 jeux</a>
       </div>
       {% else %}
       <div class="encart encart--colonne">

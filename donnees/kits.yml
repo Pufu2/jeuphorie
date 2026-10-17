@@ -1,8 +1,8 @@
 # Les produits de la boutique.
 # etat : pret (fichier fait, en attente de l'ouverture des ventes) | en_vente | en_preparation
-# payhip_id : le code du produit sur Payhip (la fin de son adresse : payhip.com/b/AbC12 -> AbC12).
+# paiement : le lien de paiement Stripe du produit (https://buy.stripe.com/...), rempli à l'ouverture des ventes.
 # Le bouton d'achat n'apparaît que si config.yml > boutique > ventes_actives vaut true,
-# que le produit est « en_vente » et qu'il a un payhip_id.
+# que le produit est « en_vente » et qu'il a un lien de paiement.
 # Chaque produit a sa page : /boutique/<id>/. Ses images sont dans statique/img/kits/<id>*.jpg
 # (exportées depuis le dossier privé des produits par exporter_images.py).
 # pack : relie le produit aux jeux de donnees/jeux.yml (6-9, 10-13, 14-17 ou tout).
@@ -17,7 +17,7 @@ kits:
     univers: anniversaires
     etat: pret
     prix: "12"
-    payhip_id: ""
+    paiement: ""
     accroche: Des équipes, un défilé, huit épreuves et une remise de médailles, avec le matériel de la maison.
     age: 6 à 12 ans
     joueurs: 6 à 16 enfants
@@ -53,7 +53,7 @@ kits:
     univers: anniversaires
     etat: pret
     prix: "9,90"
-    payhip_id: ""
+    paiement: ""
     accroche: Six épreuves pour reconstituer la carte du capitaine Barbe-Grise et retrouver son coffre.
     age: 5 à 9 ans
     joueurs: 5 à 14 enfants
@@ -89,7 +89,7 @@ kits:
     univers: anniversaires
     etat: pret
     prix: "12"
-    payhip_id: ""
+    paiement: ""
     accroche: Le gâteau d'anniversaire a disparu. Six suspects, six épreuves de détective, une seule vérité.
     age: 8 à 12 ans
     joueurs: 6 à 12 enfants
@@ -125,7 +125,7 @@ kits:
     univers: anniversaires
     etat: pret
     prix: "9,90"
-    payhip_id: ""
+    paiement: ""
     accroche: Un anniversaire d'une heure pour les 3-5 ans, avec six ateliers courts, sans perdant ni temps mort.
     age: 3 à 5 ans
     joueurs: 4 à 10 enfants
@@ -163,7 +163,7 @@ kits:
     publics: [accueils, ecoles, clubs]
     etat: pret
     prix: "9,90"
-    payhip_id: ""
+    paiement: ""
     pack: 6-9
     accroche: 17 jeux collectifs pour la cour, le parc ou le jardin, du jeu du béret aux six planètes.
     age: 6 à 9 ans
@@ -191,7 +191,7 @@ kits:
     publics: [accueils, ecoles, clubs]
     etat: pret
     prix: "9,90"
-    payhip_id: ""
+    paiement: ""
     pack: 10-13
     accroche: 19 jeux d'équipe plus stratégiques, de la barre à l'épervier gradé.
     age: 10 à 13 ans
@@ -219,7 +219,7 @@ kits:
     publics: [accueils, clubs]
     etat: pret
     prix: "9,90"
-    payhip_id: ""
+    paiement: ""
     pack: 14-17
     accroche: 18 jeux et sports adaptés pour les ados, de l'ultimate à la thèque.
     age: 14 à 17 ans
@@ -247,7 +247,7 @@ kits:
     publics: [accueils, ecoles, clubs]
     etat: pret
     prix: "19,90"
-    payhip_id: ""
+    paiement: ""
     pack: tout
     accroche: Les 34 grands jeux de Jeuphorie en un seul fichier, de 6 à 17 ans, classés par âge.
     age: 6 à 17 ans
@@ -277,7 +277,7 @@ kits:
     fete: toussaint
     etat: pret
     prix: "12"
-    payhip_id: ""
+    paiement: ""
     accroche: Un après-midi pour les vacances de la Toussaint. Six animaux de la forêt, six ateliers, et des terriers à remplir avant l'hiver.
     age: 4 à 11 ans
     joueurs: 6 à 40 enfants
@@ -315,7 +315,7 @@ kits:
     fete: noel
     etat: pret
     prix: "12"
-    payhip_id: ""
+    paiement: ""
     accroche: Les lutins sont malades et la tournée part ce soir. Six ateliers pour remplir la hotte avant minuit.
     age: 4 à 11 ans
     joueurs: 6 à 120 enfants
@@ -353,7 +353,7 @@ kits:
     fete: carnaval
     etat: pret
     prix: "12"
-    payhip_id: ""
+    paiement: ""
     accroche: Monsieur Carnaval a perdu ses couleurs. Six ateliers pour les retrouver, puis le défilé, le bal et le procès de Monsieur Carnaval.
     age: 4 à 11 ans
     joueurs: 6 à 40 enfants
@@ -391,7 +391,7 @@ kits:
     fete: paques
     etat: pret
     prix: "12"
-    payhip_id: ""
+    paiement: ""
     accroche: Six ateliers pour gagner les indices des cloches, puis une chasse aux œufs juste, organisée par âge.
     age: 3 à 11 ans
     joueurs: 6 à 40 enfants
@@ -429,7 +429,7 @@ kits:
     publics: [associations, ecoles, accueils]
     etat: pret
     prix: "25"
-    payhip_id: ""
+    paiement: ""
     accroche: 16 stands prêts à monter, les affiches, les tickets, la tombola et le planning des bénévoles.
     age: 2 à 11 ans
     joueurs: 100 à 300 enfants et plus
@@ -467,7 +467,7 @@ kits:
     publics: [accueils]
     etat: pret
     prix: "29"
-    payhip_id: ""
+    paiement: ""
     accroche: Un classeur qui calcule tout seul l'encadrement, le planning et le budget, et six modèles de documents.
     age: Accueils de loisirs
     joueurs: Équipes de 2 à 30 personnes
@@ -506,7 +506,7 @@ kits:
     - accueils
     etat: pret
     prix: '19'
-    payhip_id: ''
+    paiement: ''
     accroche: Construire avec votre équipe un projet pédagogique court, clair et vivant, de l'écriture au bilan.
     age: Accueils de loisirs, périscolaire, séjours
     joueurs: Équipes de 3 à 20 animateurs
@@ -559,7 +559,7 @@ kits:
     - clubs
     etat: pret
     prix: '19'
-    payhip_id: ''
+    paiement: ''
     accroche: Un livret Word prêt à personnaliser et un guide pour accueillir les nouveaux animateurs et les stagiaires
       BAFA, et sécuriser leurs premiers jours.
     age: Accueils de loisirs, périscolaire, séjours
@@ -613,7 +613,7 @@ kits:
     - clubs
     etat: pret
     prix: '19'
-    payhip_id: ''
+    paiement: ''
     accroche: 'Une machine à voyager dans le temps en panne, cinq époques à visiter et une pièce à rapporter chaque
       jour : toute votre semaine de vacances est prête.'
     age: Accueils de loisirs, 3-5 ans et 6-11 ans
@@ -666,7 +666,7 @@ kits:
     - accueils
     etat: pret
     prix: '15'
-    payhip_id: ''
+    paiement: ''
     accroche: Une méthode sur un trimestre pour partager la cour, prévenir les conflits et donner à chaque enfant
       un jeu à sa mesure.
     age: Écoles maternelles et élémentaires, périscolaire, accueils de loisirs
@@ -718,7 +718,7 @@ kits:
     - ecoles
     etat: pret
     prix: '15'
-    payhip_id: ''
+    paiement: ''
     accroche: 'Une année d''association prête à suivre : le bureau, l''assemblée générale, la trésorerie, les actions
       qui rapportent et tous les courriers.'
     age: Associations de parents d'élèves
@@ -773,7 +773,7 @@ kits:
     - accueils
     etat: pret
     prix: '15'
-    payhip_id: ''
+    paiement: ''
     accroche: Cinq jours de jeux sportifs pour 16 à 32 enfants de 6 à 12 ans, avec le programme, les fiches, l'organisation
       et tous les documents.
     age: Clubs sportifs, offices des sports, accueils de loisirs
@@ -826,7 +826,7 @@ kits:
     - associations
     etat: pret
     prix: '19'
-    payhip_id: ''
+    paiement: ''
     accroche: Un après-midi de jeux pour les salariés et leurs familles, organisé en douze semaines par des élus et
       des bénévoles, du premier devis au compte rendu au CSE.
     age: CSE, amicales du personnel, associations

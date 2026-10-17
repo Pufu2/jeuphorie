@@ -26,11 +26,11 @@ Voici les familles de jeux qui fonctionnent le mieux, avec un exemple de chaque 
 
 | Famille | Exemple | Pourquoi ça marche |
 |---|---|---|
-| Ramassage en relais | [le relais des épis](/jeux/relais-des-epis/) | Tout le monde joue, la règle tient en une phrase |
+| Ramassage en relais | le relais des épis | Tout le monde joue, la règle tient en une phrase |
 | Poursuite avec refuge | [poules, renards, vipères](/jeux/poules-renards-viperes/) | On n'est jamais éliminé longtemps |
-| Course et réflexe | [le jeu du béret](/jeux/beret/) | Chacun joue à son tour, devant tout le monde |
+| Course et réflexe | le jeu du béret | Chacun joue à son tour, devant tout le monde |
 | Transport de trésors | [gendarmes et voleurs](/jeux/gendarmes-voleurs/) | Une histoire, deux rôles simples, beaucoup de course |
-| Ballon sans contact | [le ballon anglais](/jeux/ballon-anglais/) | Coopération dans l'équipe, aucun choc |
+| Ballon sans contact | le ballon anglais | Coopération dans l'équipe, aucun choc |
 
 Les jeux de balle où l'on se fait toucher, comme la balle assise ou le ballon prisonnier, se jouent bien en fin de tranche (7-8 ans), avec une balle en mousse et une règle qui permet de revenir vite dans le jeu.
 

@@ -210,12 +210,17 @@ class Site:
                          fil=[(next(u["nom"] for u in d["univers"]["univers"] if u["id"] == k["univers"]),
                                next(u["url"] for u in d["univers"]["univers"] if u["id"] == k["univers"])),
                               (k["titre"], f"/boutique/{k['id']}/")])
-        self.ajouter("/jeux/", "jeux.html", titre="Tous les grands jeux",
-                     description="34 grands jeux et jeux collectifs pour enfants et ados : but du jeu, âge, nombre de joueurs, durée et matériel de chaque jeu.")
+        self.ajouter("/jeux/", "jeux.html", titre="Catalogue des grands jeux collectifs pour enfants et ados",
+                     description="Le catalogue des 34 grands jeux collectifs de Jeuphorie, de 6 à 17 ans : âge, nombre de joueurs et durée de chaque jeu, et 3 jeux offerts en entier.")
         for j in self.jeux():
+            if not j.get("offert"):
+                # seules les règles des jeux offerts sont publiées : les autres adresses renvoient au catalogue
+                self.ajouter(f"/jeux/{j['id']}/", "redirection.html", titre="Cette page a changé d'adresse",
+                             indexer=False, vers="/jeux/", redirection=True)
+                continue
             self.ajouter(f"/jeux/{j['id']}/", "jeu.html", titre=f"{j['nom']} : règles du jeu et organisation",
                          description=f"{j['nom']}, jeu collectif dès {j['age_min']} ans, de {j['joueurs'][0]} à {j['joueurs'][1]} joueurs, {j['duree']} min. {j['but']}"[:300],
-                         jeu=j, fil=[("Grands jeux", "/grands-jeux/"), ("Tous les jeux", "/jeux/"), (j["nom"], f"/jeux/{j['id']}/")])
+                         jeu=j, fil=[("Grands jeux", "/grands-jeux/"), ("Catalogue", "/jeux/"), (j["nom"], f"/jeux/{j['id']}/")])
         gabarits_univers = {"fetes": "fetes.html", "professionnels": "professionnels.html"}
         for u in d["univers"]["univers"]:
             self.ajouter(u["url"], gabarits_univers.get(u["id"], "univers.html"),

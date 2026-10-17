@@ -12,9 +12,6 @@
     <ul class="coches">
       {% for p in u.points %}<li>{{ p }}</li>{% endfor %}
     </ul>
-    <nav class="publics-nav" aria-label="Choisir votre structure">
-      {% for p in u.publics %}<a class="publics-nav__lien" href="#{{ p.id }}">{{ p.titre }}</a>{% endfor %}
-    </nav>
   </header>
 
   <section class="section section--serree" aria-labelledby="t-outils">
@@ -23,25 +20,21 @@
     {{ m.grille_kits(vendus | selectattr('univers', 'equalto', u.id) | list, "Les outils arrivent bientôt.") }}
   </section>
 
-  {% for p in u.publics %}
-  {% set tous = vendus | selectattr('publics', 'defined') | selectattr('publics', 'contient', p.id) | list %}
-  {% set lies = (tous | selectattr('univers', 'equalto', u.id) | list) + (tous | rejectattr('univers', 'equalto', u.id) | list) %}
-  <section class="section section--serree public-bloc" id="{{ p.id }}" aria-labelledby="t-{{ p.id }}">
-    <h2 id="t-{{ p.id }}" class="section__titre">{{ p.titre }}</h2>
-    <p class="chapo">{{ p.texte }}</p>
-    <ul class="liste-kits">
-      {% for k in lies %}
-      <li class="liste-kits__item">
-        <a class="liste-kits__lien" href="{{ lien('/boutique/' ~ k.id ~ '/') }}">
-          <img src="{{ statique('img/kits/' ~ k.id ~ '.jpg') }}" alt="" width="120" height="77" loading="lazy">
-          <span class="liste-kits__texte"><strong>{{ k.titre }}</strong><span>{{ k.accroche }}</span></span>
-          <span class="liste-kits__prix">{{ k.prix }} €</span>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+  <section class="section section--serree" aria-labelledby="t-calendrier">
+    <div class="calendrier-pro">
+      <img src="{{ statique('img/pro/dossier-calendrier.jpg') }}" alt="Couverture du calendrier d'animation de l'année 2026-2027" width="280" height="396" loading="lazy">
+      <div>
+        <p class="surtitre">Réservé aux abonnés Pro Structure</p>
+        <h2 id="t-calendrier" class="section__titre">Le calendrier d'animation de l'année</h2>
+        <p>Pour poser le programme de toute l'année en une réunion de rentrée : les vacances scolaires et les jours fériés, et pour chaque mois, les dates à ne pas manquer, trois idées de thèmes, un temps fort détaillé, les kits utiles et le rappel d'organisation de la direction. Une nouvelle édition paraît à chaque rentrée.</p>
+        <ul class="coches">
+          <li>12 pages mensuelles, de septembre à août</li>
+          <li>La méthode et l'ordre du jour de la réunion de rentrée</li>
+          <li>Les plannings annuels et de période, prêts à remplir</li>
+        </ul>
+      </div>
+    </div>
   </section>
-  {% endfor %}
 
   <section class="section section--serree" aria-labelledby="t-structure">
     <div class="accroche-pro">

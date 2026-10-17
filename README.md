@@ -34,8 +34,8 @@ Quand une page change d'adresse, ajoutez la correspondance dans `REDIRECTIONS`, 
 
 ## Mettre un kit en vente
 
-1. Créer le produit sur Payhip et noter son code (la fin de son adresse, par exemple `https://payhip.com/b/AbC12` → `AbC12`).
-2. Dans `donnees/kits.yml`, pour ce kit : `etat: en_vente` et `payhip_id: "AbC12"`.
+1. Créer le lien de paiement Stripe du produit (Claude le fait par l'accès programmable de Stripe, voir `docs/OUVRIR-LES-VENTES.md`).
+2. Dans `donnees/kits.yml`, pour ce kit : `etat: en_vente` et `paiement: "https://buy.stripe.com/..."`.
 3. Dans `config.yml` : `ventes_actives: true` (une seule fois, après la déclaration de la micro-entreprise).
 
 ## Fabriquer le site sur un ordinateur
@@ -60,4 +60,4 @@ Dans `config.yml` :
 
 ## Ce qui ne va jamais dans ce dépôt
 
-Le dépôt est public. Les PDF vendus et les règles complètes des jeux payants restent dans le dossier privé `jeuphorie-produits` (avec `jeux.yml` et `fabriquer.py`) et sur Payhip. Seule la partie publique des jeux (but, âge, matériel, mise en place) est copiée ici par `exporter_site.py`.
+Le dépôt est public. Les PDF vendus et les règles complètes des jeux payants restent dans le dépôt GitHub privé `jeuphorie-produits` et dans votre dossier privé des grands jeux (avec `jeux.yml` et `fabriquer.py`). Seule la partie publique des jeux (but, âge, matériel, mise en place) est copiée ici par `exporter_site.py`.

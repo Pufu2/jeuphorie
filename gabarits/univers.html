@@ -20,9 +20,9 @@
 
   {% if u.id == 'grands-jeux' %}
   <section class="section section--serree" aria-labelledby="t-jeux">
-    <h2 id="t-jeux" class="section__titre">Les jeux, un par un</h2>
-    <p class="chapo">Le but, l'âge, le nombre de joueurs et le matériel de chaque jeu.</p>
-    <div class="grille-jeux">{% for j in jeux %}{{ m.carte_jeu(j) }}{% endfor %}</div>
+    <h2 id="t-jeux" class="section__titre">Trois jeux offerts, en entier</h2>
+    <p class="chapo">Les règles complètes, à lire ici ou à télécharger. Les {{ jeux | length }} jeux des fiches sont présentés dans <a href="{{ lien('/jeux/') }}">le catalogue</a>.</p>
+    <div class="grille-jeux">{% for j in jeux | selectattr('offert') %}{{ m.carte_jeu(j) }}{% endfor %}</div>
   </section>
   {% endif %}
 

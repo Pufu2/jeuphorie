@@ -8,7 +8,7 @@
   {% if not site.boutique.ventes_actives %}
   <div class="encart encart--info">
     <p><strong>Les ventes ouvrent très bientôt.</strong> Les packs de grands jeux sont prêts. En attendant, recevez 3 grands jeux offerts.</p>
-    <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Recevoir les 3 jeux</a>
+    <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Télécharger les 3 jeux</a>
   </div>
   {% endif %}
 
@@ -24,7 +24,7 @@
 
   <div class="encart encart--pro">
     <h2 class="encart__titre">Pour une structure : toute la boutique incluse</h2>
-    <p>Avec Jeuphorie Pro Structure, tous les kits et tous les outils de la boutique sont inclus pour toute votre équipe, ainsi que les nouveautés de l'année. Pour un animateur, Pro Animateur donne 30 % de réduction sur chaque kit, dès 4,90 € par mois.</p>
+    <p>Avec Jeuphorie Pro Structure, tous les kits et tous les outils de la boutique sont inclus pour toute votre équipe, ainsi que les nouveautés de l'année. Pour un animateur, Pro Animateur donne 30 % de réduction sur les kits d'anniversaire, de fêtes et de kermesse, dès 4,90 € par mois.</p>
     <div class="actions" style="margin-top:1rem"><a class="bouton" href="{{ lien('/pro/') }}">Voir les formules</a></div>
   </div>
 
@@ -34,10 +34,9 @@
       <li><strong>Format.</strong> Fichiers PDF au format A4, lisibles en couleur comme en noir et blanc. Les outils pour directeurs sont des tableurs.</li>
       <li><strong>Livraison.</strong> Le lien de téléchargement s'affiche après le paiement et arrive aussi par mail.</li>
       <li><strong>Usage.</strong> Pour votre famille, ou pour toutes les animations de l'association ou de la structure qui achète. Pas de revente ni de partage en ligne.</li>
-      <li><strong>Paiement.</strong> Sécurisé par Payhip, par carte bancaire ou PayPal. Prix toutes taxes comprises.</li>
+      <li><strong>Paiement.</strong> Sécurisé par Stripe, par carte bancaire. Prix toutes taxes comprises.</li>
     </ul>
     <p>Le détail est dans les <a href="{{ lien('/conditions-de-vente/') }}">conditions de vente</a>.</p>
   </section>
 </div>
 {% endblock %}
-{% block scripts %}{% if site.boutique.ventes_actives and not apercu %}<script src="https://payhip.com/payhip.js" defer></script>{% endif %}{% endblock %}

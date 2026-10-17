@@ -16,10 +16,11 @@ Répondre mieux que les autres aux recherches précises des parents, des associa
 | Fête | /fetes/noel/ | « jeux de Noël enfants », « activités Toussaint centre de loisirs » |
 | Produit | /boutique/kit-noel/ | « kit animation Noël à imprimer », « jeux arbre de Noël CSE » |
 | Jeu offert | /fetes/paques/chasse-aux-oeufs-des-couleurs/ | « organiser une chasse aux œufs », « chasse aux œufs plusieurs âges » |
-| Grand jeu | /jeux/beret/ | « règle du jeu du béret », « jeu des poules renards vipères » |
+| Grand jeu offert | /jeux/poules-renards-viperes/ | « jeu des poules renards vipères », « règle gendarmes et voleurs » |
+| Catalogue | /jeux/ | « grands jeux collectifs enfants », « jeux de cour par âge » |
 | Article | /blog/... | Questions précises : « que faire à un anniversaire de 4 ans », « jeux quand il pleut » |
 
-Les 34 pages de grands jeux et les 8 jeux de fêtes publiés en entier sont la « longue traîne » : chacune vise une recherche peu concurrentielle mais très ciblée (le nom d'un jeu, une règle).
+Les 3 grands jeux offerts et les 8 jeux de fêtes, publiés en entier, sont la « longue traîne » : chacun vise une recherche peu concurrentielle mais très ciblée (le nom d'un jeu, une règle). Les 31 autres grands jeux ne sont présentés que dans le catalogue (âge, joueurs, durée) : une page sans les règles décevrait les visiteurs venus de Google, et les règles restent réservées aux fiches vendues.
 
 ### 2. Le blog, un article par semaine
 

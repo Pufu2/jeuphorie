@@ -61,22 +61,29 @@
       <span class="logo__mot"><span class="logo__jeu">Jeu</span>phorie</span>
       <span class="logo__signature">{{ site.signature }}</span>
     </a>
+    {% macro liens_secondaires(classe) %}
+      <a href="{{ lien('/blog/') }}" class="{{ classe }}"{% if page.url.startswith('/blog/') %} aria-current="page"{% endif %}>Blog</a>
+      <a href="{{ lien('/qui-suis-je/') }}" class="{{ classe }}"{% if page.url == '/qui-suis-je/' %} aria-current="page"{% endif %}>Qui suis-je</a>
+      <a href="{{ lien('/contact/') }}" class="{{ classe }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
+    {% endmacro %}
     {% macro liens_menu(classe) %}
       {% for u in d.univers.univers %}
       <a href="{{ lien(u.url) }}" class="{{ classe }} {{ classe }}--{{ u.couleur }}"{% if page.url.startswith(u.url) %} aria-current="page"{% endif %}>{{ u.nom_court or u.nom }}</a>
       {% endfor %}
-      <a href="{{ lien('/blog/') }}" class="{{ classe }}"{% if page.url.startswith('/blog/') %} aria-current="page"{% endif %}>Blog</a>
-      <a href="{{ lien('/contact/') }}" class="{{ classe }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
-      <a href="{{ lien('/pro/') }}" class="{{ classe }} {{ classe }}--abonnement"{% if page.url == '/pro/' %} aria-current="page"{% endif %}>Jeuphorie Pro</a>
       <a href="{{ lien('/boutique/') }}" class="{{ classe }} {{ classe }}--boutique"{% if page.url == '/boutique/' %} aria-current="page"{% endif %}>Boutique</a>
+      <a href="{{ lien('/pro/') }}" class="{{ classe }} {{ classe }}--abonnement"{% if page.url == '/pro/' %} aria-current="page"{% endif %}>Jeuphorie Pro</a>
     {% endmacro %}
-    <nav class="nav-large" aria-label="Navigation principale">
-      {{ liens_menu('nav-large__lien') }}
-    </nav>
+    <div class="nav-zone">
+      <nav class="nav-petite" aria-label="Liens utiles">{{ liens_secondaires('nav-petite__lien') }}</nav>
+      <nav class="nav-large" aria-label="Navigation principale">
+        {{ liens_menu('nav-large__lien') }}
+      </nav>
+    </div>
     <details class="menu">
       <summary class="menu__bouton">Menu</summary>
       <nav class="menu__liens" aria-label="Navigation principale (mobile)">
         {{ liens_menu('menu__lien') }}
+        {{ liens_secondaires('menu__lien menu__lien--secondaire') }}
       </nav>
     </details>
   </div>
@@ -98,7 +105,7 @@
     <nav class="pied__liens" aria-label="Les kits">
       <p class="pied__titre">Les kits</p>
       {% for u in d.univers.univers %}<a href="{{ lien(u.url) }}">{{ u.nom }}</a>
-      {% endfor %}<a href="{{ lien('/jeux/') }}">Les 34 grands jeux, un par un</a>
+      {% endfor %}<a href="{{ lien('/jeux/') }}">Le catalogue des grands jeux</a>
       <a href="{{ lien('/jeux-gratuits/') }}">3 grands jeux offerts</a>
       <a href="{{ lien('/pro/') }}">L'abonnement Jeuphorie Pro</a>
       <a href="{{ lien('/boutique/') }}">Toute la boutique</a>

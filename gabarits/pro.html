@@ -16,7 +16,7 @@
   {% if not site.boutique.ventes_actives %}
   <div class="encart encart--info">
     <p><strong>L'abonnement ouvre très bientôt.</strong> Les formules ci-dessous sont celles du lancement. En attendant, les 3 jeux offerts sont déjà disponibles.</p>
-    <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Recevoir les 3 jeux</a>
+    <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Télécharger les 3 jeux</a>
   </div>
   {% endif %}
 
@@ -34,8 +34,8 @@
         <div class="formule__action">
           {% if f.lien_interne %}
           <a class="bouton bouton--contour" href="{{ lien(f.lien_interne) }}">{{ f.bouton }}</a>
-          {% elif site.boutique.ventes_actives and f.payhip %}
-          <a class="bouton" href="https://payhip.com/b/{{ f.payhip }}">{{ f.bouton }}</a>
+          {% elif site.boutique.ventes_actives and f.paiement %}
+          <a class="bouton" href="{{ f.paiement }}">{{ f.bouton }}</a>
           {% else %}
           <span class="fiche__etat">Ouverture très bientôt</span>
           {% endif %}
@@ -43,7 +43,7 @@
       </article>
       {% endfor %}
     </div>
-    <p class="petit">Prix toutes taxes comprises. Paiement sécurisé par Payhip et Stripe. Détail dans les <a href="{{ lien('/conditions-de-vente/') }}">conditions de vente</a>.</p>
+    <p class="petit">Prix toutes taxes comprises. Paiement sécurisé par Stripe. Détail dans les <a href="{{ lien('/conditions-de-vente/') }}">conditions de vente</a>.</p>
   </section>
 
   <section class="section section--serree" aria-labelledby="t-structure">
@@ -87,33 +87,11 @@
     <h2 id="t-comment" class="section__titre">Comment ça marche</h2>
     <ol class="etapes">
       <li class="etape"><span class="etape__num" aria-hidden="true">1</span><h3 class="etape__titre">Vous choisissez une formule</h3><p>Paiement par carte en ligne, ou sur devis et facture pour une structure.</p></li>
-      <li class="etape"><span class="etape__num" aria-hidden="true">2</span><h3 class="etape__titre">Vous ouvrez votre espace membre</h3><p>Vous y retrouvez tous les fichiers de votre formule, et chaque nouveauté au fil des mois.</p></li>
+      <li class="etape"><span class="etape__num" aria-hidden="true">2</span><h3 class="etape__titre">Vous recevez votre bibliothèque</h3><p>Le lien arrive par mail : tous les fichiers de votre formule, puis chaque nouveauté au fil des mois. Pas de compte à créer.</p></li>
       <li class="etape"><span class="etape__num" aria-hidden="true">3</span><h3 class="etape__titre">Vous imprimez et vous animez</h3><p>Les fichiers sont à vous : vous les imprimez autant de fois que nécessaire pour vos activités.</p></li>
     </ol>
   </section>
 
-  <section class="section section--serree" aria-labelledby="t-dossiers">
-    <h2 id="t-dossiers" class="section__titre">Les dossiers du mois</h2>
-    <p class="chapo">Chaque mois, un dossier de 8 fiches autour d'un thème, au même format que les grands jeux : règle à annoncer, matériel, installation, déroulement, variantes et conseils. Voici les prochains thèmes.</p>
-    <div class="calendrier-dossiers">
-      {% for x in ab.dossiers %}<div class="dossier"><span class="dossier__mois">{{ x[0] }}</span><span class="dossier__theme">{{ x[1] }}</span></div>{% endfor %}
-    </div>
-    <p class="petit">Les abonnés peuvent proposer des thèmes : ceux des structures passent en priorité.</p>
-    {% if ab.dossiers_prets %}
-    <h3 class="dossiers-prets__titre">Déjà prêts</h3>
-    <div class="dossiers-prets">
-      {% for x in ab.dossiers_prets %}
-      <figure class="dossier-pret">
-        <div class="dossier-pret__images">
-          <img src="{{ statique('img/pro/dossier-' ~ x.image ~ '.jpg') }}" alt="Couverture : {{ x.titre }}" width="280" height="396" loading="lazy">
-          <img src="{{ statique('img/pro/dossier-' ~ x.image ~ '-fiche.jpg') }}" alt="Une page : {{ x.titre }}" width="280" height="396" loading="lazy">
-        </div>
-        <figcaption><strong>{{ x.mois }} : {{ x.titre }}</strong><br>{{ x.detail }}</figcaption>
-      </figure>
-      {% endfor %}
-    </div>
-    {% endif %}
-  </section>
 
   <section class="section section--serree cadre--texte" aria-labelledby="t-faq">
     <h2 id="t-faq" class="section__titre">Questions fréquentes</h2>

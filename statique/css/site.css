@@ -245,8 +245,14 @@ mark.a-completer {
 .nav-large__lien--soleil:hover, .nav-large__lien--soleil[aria-current="page"] { border-bottom-color: var(--soleil); }
 .nav-large__lien--pro:hover, .nav-large__lien--pro[aria-current="page"] { border-bottom-color: var(--pro-vif); }
 .nav-large__lien--saison:hover, .nav-large__lien--saison[aria-current="page"] { border-bottom-color: var(--saison); }
-.nav-large__lien--abonnement { color: var(--pro-vif); }
-.nav-large__lien--abonnement:hover, .nav-large__lien--abonnement[aria-current="page"] { border-bottom-color: var(--pro-vif); }
+.nav-large__lien--abonnement { background: var(--pro-vif); color: #fff; border: 2px solid var(--pro-vif); border-radius: 999px; padding: 0.3rem 1rem; }
+.nav-large__lien--abonnement:hover, .nav-large__lien--abonnement[aria-current="page"] { background: var(--pro); border-color: var(--pro); color: #fff; }
+.nav-zone { display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; }
+.nav-petite { display: none; }
+@media (min-width: 1180px) { .nav-petite { display: flex; gap: 1.1rem; } }
+.nav-petite__lien { font-size: 0.85rem; color: var(--encre-douce); text-decoration: none; }
+.nav-petite__lien:hover, .nav-petite__lien[aria-current="page"] { color: var(--encre); text-decoration: underline; }
+.menu__lien--secondaire { font-size: 0.95em; color: var(--encre-douce); }
 .menu__lien--abonnement { color: var(--pro-vif); }
 .publics-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
 .publics-nav__lien { font-family: var(--f-titre); font-weight: 600; font-size: 0.92rem; text-decoration: none; background: var(--fiche); border: 1px solid var(--filet); border-radius: 999px; padding: 0.35rem 0.9rem; }
@@ -1084,3 +1090,16 @@ a.tampon { text-decoration: none; }
 .liste-kits__texte span { color: var(--encre-douce); font-size: 0.92rem; line-height: 1.35; }
 .liste-kits__prix { font-family: var(--f-titre); font-weight: 800; white-space: nowrap; }
 @media (max-width: 520px) { .liste-kits__lien { grid-template-columns: 72px 1fr; } .liste-kits__lien img { width: 72px; } .liste-kits__prix { grid-column: 2; } }
+
+/* catalogue des grands jeux */
+.catalogue { overflow-x: auto; }
+.catalogue table { width: 100%; border-collapse: collapse; background: var(--fiche); border: 1px solid var(--filet); border-radius: var(--rayon); }
+.catalogue th { text-align: left; font-family: var(--f-titre); font-size: 0.85rem; padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--filet); }
+.catalogue td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--filet); font-size: 0.95rem; }
+.catalogue tr:last-child td { border-bottom: 0; }
+.catalogue td:not(:first-child) { white-space: nowrap; color: var(--encre-douce); }
+.catalogue__offert { font-family: var(--f-titre); font-size: 0.75rem; font-weight: 700; background: var(--soleil-clair, #FFF2CC); padding: 0.1rem 0.45rem; border-radius: 999px; }
+
+.calendrier-pro { display: grid; gap: 1.5rem; grid-template-columns: 1fr; align-items: center; background: var(--pro-clair); border-radius: var(--rayon); padding: 1.5rem; }
+.calendrier-pro img { width: 180px; height: auto; border-radius: 6px; box-shadow: 0 4px 12px rgba(26, 35, 64, 0.15); }
+@media (min-width: 700px) { .calendrier-pro { grid-template-columns: 200px 1fr; } }

@@ -31,18 +31,13 @@ email: contact@jeuphorie.fr
 auteur:
   prenom: Rafaël
 
-# Boutique Payhip
+# Boutique (paiements par Stripe)
 boutique:
   # Passer à true seulement quand la micro-entreprise est déclarée
   # et que les mentions légales et les conditions de vente sont complétées.
   ventes_actives: false
-  # Adresse de la boutique Payhip, par exemple https://payhip.com/Jeuphorie
-  payhip: ""
-  # Code du produit gratuit Payhip « 3 grands jeux offerts » (contre une adresse mail).
-  # Il peut être activé avant l'ouverture des ventes : il ne demande aucun paiement.
-  jeu_gratuit_payhip: ""
-  # Codes de réduction donnés aux abonnés (à créer dans Payhip > Coupons).
-  # Ils ne sont jamais affichés sur le site public.
+  # Les liens de paiement Stripe sont dans donnees/kits.yml et donnees/abonnement.yml (champ paiement).
+  # Les codes de réduction des abonnés ne sont jamais écrits dans ce dépôt ni affichés sur le site.
 
 # Informations légales (mentions légales et conditions de vente)
 editeur:
@@ -64,6 +59,6 @@ hebergeur:
   site: https://github.com
 
 plateforme_vente:
-  nom: Payhip
-  adresse: 167-169 Great Portland Street, 5th Floor, Londres W1W 5PF, Royaume-Uni
-  site: https://payhip.com
+  nom: Stripe Payments Europe, Limited
+  adresse: 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, D02 H210, Irlande
+  site: https://stripe.com

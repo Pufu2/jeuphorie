@@ -2,7 +2,7 @@
 {% import "morceaux/macros.html" as m with context %}
 {% block tete %}
 {% set k = page.kit %}
-{% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.payhip_id %}
+{% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.paiement %}
 {% set u = d.univers.univers | selectattr('id', 'equalto', k.univers) | first %}
 {% if achetable %}
 <script type="application/ld+json">
@@ -13,7 +13,7 @@
 {% endblock %}
 {% block contenu %}
 {% set k = page.kit %}
-{% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.payhip_id %}
+{% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.paiement %}
 {% set u = d.univers.univers | selectattr('id', 'equalto', k.univers) | first %}
 <article class="cadre produit produit--{{ u.couleur }}">
   <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien(u.url) }}">{{ u.nom }}</a>{% if k.fete %} <span aria-hidden="true">/</span> <a href="{{ lien('/fetes/' ~ k.fete ~ '/') }}">{% for f in d.fetes.fetes if f.slug == k.fete %}{{ f.nom }}{% endfor %}</a>{% endif %} <span aria-hidden="true">/</span> <span>{{ k.titre }}</span></nav>
@@ -42,15 +42,17 @@
       <div class="produit__achat">
         <p class="produit__prix">{{ k.prix }} €</p>
         {% if achetable %}
-        <a class="bouton payhip-buy-button" href="https://payhip.com/b/{{ k.payhip_id }}" data-product="{{ k.payhip_id }}" data-theme="none">Acheter et télécharger</a>
-        <p class="petit">Paiement sécurisé par carte ou PayPal. Le fichier arrive aussitôt par mail.</p>
+        <a class="bouton" href="{{ k.paiement }}">Acheter et télécharger</a>
+        <p class="petit">Paiement sécurisé par carte bancaire. Le fichier se télécharge aussitôt, et le lien arrive aussi par mail.</p>
         {% elif k.etat == 'en_preparation' %}
         <p class="produit__etat">En préparation</p>
         {% else %}
         <p class="produit__etat">En vente très bientôt</p>
         <p class="petit">Le fichier est prêt. Les ventes ouvrent dans quelques jours : en attendant, recevez nos <a href="{{ lien('/jeux-gratuits/') }}">3 grands jeux offerts</a>.</p>
         {% endif %}
-        <p class="produit__pro">Inclus dans <a href="{{ lien('/pro/') }}">Jeuphorie Pro Structure</a>, pour toute l'équipe. Abonnés Pro Animateur : 30 % de réduction.</p>
+        {% if k.univers == 'professionnels' %}<p class="produit__pro">Inclus dans <a href="{{ lien('/pro/') }}">Jeuphorie Pro Structure</a>, pour toute l'équipe.</p>
+        {% elif k.id == 'grand-fichier' %}<p class="produit__pro">Inclus dans <a href="{{ lien('/pro/') }}">Jeuphorie Pro</a> Animateur annuel et Pro Structure.</p>
+        {% else %}<p class="produit__pro">Inclus dans <a href="{{ lien('/pro/') }}">Jeuphorie Pro Structure</a>. Abonnés Pro Animateur : 30 % de réduction.</p>{% endif %}
       </div>
     </div>
   </div>
@@ -105,4 +107,3 @@
   {% endif %}
 </article>
 {% endblock %}
-{% block scripts %}{% if site.boutique.ventes_actives and not apercu %}<script src="https://payhip.com/payhip.js" defer></script>{% endif %}{% endblock %}

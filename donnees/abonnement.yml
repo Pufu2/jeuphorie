@@ -1,7 +1,7 @@
 # Jeuphorie Pro : l'abonnement (page /pro/). Les outils pour les structures sont sur la page /professionnels/.
-# payhip : code du produit « membership » sur Payhip (payhip.com/b/CODE), à remplir à l'ouverture.
+# paiement : lien de paiement Stripe de la formule (https://buy.stripe.com/...), à remplir à l'ouverture.
 # Les boutons ne s'activent que si config.yml > boutique > ventes_actives vaut true.
-# Les codes de réduction ne sont JAMAIS écrits dans le dépôt : ils sont donnés dans l'espace membres Payhip.
+# Les codes de réduction ne sont JAMAIS écrits dans le dépôt : ils sont donnés dans la bibliothèque des abonnés.
 
 page:
   titre_page: "Jeuphorie Pro : l'abonnement des animateurs et des structures"
@@ -17,13 +17,13 @@ formules:
     prix: "0 €"
     periode: ""
     detail: Sans carte bancaire
-    payhip: ""
+    paiement: ""
     lien_interne: /jeux-gratuits/
-    bouton: Recevoir les 3 jeux
+    bouton: Télécharger les 3 jeux
     inclus:
       - 3 grands jeux complets à imprimer
+      - 8 jeux de fêtes publiés en entier sur le site
       - Un article du blog chaque semaine
-      - Les nouveautés par mail, si vous le souhaitez
 
   - id: animateur-mensuel
     nom: Pro Animateur
@@ -31,11 +31,11 @@ formules:
     prix: "4,90 €"
     periode: par mois
     detail: Sans engagement, résiliable en ligne
-    payhip: ""
+    paiement: ""
     bouton: S'abonner au mois
     inclus:
       - Le dossier du mois, avec 8 nouvelles fiches d'animation
-      - 30 % de réduction sur toute la boutique
+      - 30 % de réduction sur les kits d'anniversaire, de fêtes, de kermesse et de grands jeux
       - Vos idées de thèmes prises en compte pour les prochains dossiers
 
   - id: animateur-annuel
@@ -44,12 +44,12 @@ formules:
     prix: "39 €"
     periode: par an
     detail: Soit 3,25 € par mois
-    payhip: ""
+    paiement: ""
     bouton: S'abonner à l'année
     inclus:
       - Le grand fichier des 34 grands jeux, dès le premier jour
       - Tous les dossiers du mois, y compris ceux déjà parus
-      - 30 % de réduction sur toute la boutique
+      - 30 % de réduction sur les kits d'anniversaire, de fêtes et de kermesse
       - Vos idées de thèmes prises en compte en priorité
 
   - id: structure
@@ -60,10 +60,10 @@ formules:
     detail: Toute l'équipe, sans limite de personnes. Facture, virement ou mandat
     mis_en_avant: true
     ruban: Tout le site inclus
-    payhip: ""
+    paiement: ""
     bouton: Abonner ma structure
     inclus:
-      - Tous les kits et tous les outils du site, pour toute l'équipe
+      - Tous les kits et tous les outils professionnels, pour toute l'équipe
       - Tous les dossiers du mois et le grand fichier
       - Les nouveaux kits de l'année, inclus dès leur sortie
       - Le calendrier d'animation de l'année, réservé aux structures
@@ -74,7 +74,7 @@ chaque_annee:
   - titre: 12 nouveaux dossiers
     texte: Huit fiches d'animation chaque mois, sur un thème de saison, pour renouveler les mercredis et les vacances.
   - titre: Les nouveaux kits inclus
-    texte: Chaque nouveau kit de fête, d'anniversaire ou d'outil pour les structures arrive dans votre espace dès sa sortie, sans rien payer de plus.
+    texte: Chaque nouveau kit de fête, d'anniversaire ou d'outil pour les structures arrive dans votre bibliothèque dès sa sortie, sans rien payer de plus.
   - titre: Le calendrier de la rentrée
     texte: Une nouvelle édition du calendrier d'animation à chaque rentrée, avec les dates de l'année, des idées de thèmes et les temps forts mois par mois.
   - titre: Des outils à jour
@@ -84,22 +84,7 @@ chaque_annee:
   - titre: Un prix garanti
     texte: Tant que l'abonnement est renouvelé, son prix ne change pas, même si le tarif public augmente.
 
-# Les dossiers déjà prêts, montrés en vignettes sur la page Pro (images : statique/img/pro/dossier-<image>.jpg et -fiche.jpg)
-dossiers_prets:
-  - mois: Pro Structure
-    image: calendrier
-    titre: Le calendrier d'animation 2026-2027
-    detail: "Les dates et les vacances de l'année, un temps fort et des thèmes pour chaque mois, réservé aux structures"
-  - mois: Novembre
-    image: novembre
-    titre: Les jeux des jours de pluie
-    detail: "8 fiches, la préparation de la salle et un programme d'après-midi minuté"
-  - mois: Décembre
-    image: decembre
-    titre: Les jeux coopératifs de l'hiver
-    detail: "8 fiches, le retour en cercle pas à pas et les questions à poser après chaque jeu"
-
-# Le calendrier des dossiers du mois (thèmes annoncés aux abonnés)
+# Le programme des dossiers du mois (interne : n'est plus affiché sur le site)
 dossiers:
   - [Novembre, "Les jeux des jours de pluie : 8 jeux d'intérieur pour une salle ou un préau"]
   - [Décembre, "Les jeux coopératifs de l'hiver : 8 jeux où l'on gagne tous ensemble"]
@@ -115,11 +100,22 @@ questions:
     r: >-
       Chaque mois, un dossier PDF de 8 fiches d'animation autour d'un thème (les jours de pluie, les jeux coopératifs, les
       jeux de piste…), avec le même format que les grands jeux : règle à annoncer, matériel, installation, déroulement,
-      variantes et conseils. Il arrive dans votre espace membre au début du mois.
+      variantes et conseils. Il arrive dans votre bibliothèque au début du mois.
   - q: Mensuel ou annuel ?
     r: >-
       Le mensuel vous laisse essayer sans engagement : vous recevez le dossier du mois et la réduction sur la boutique.
       L'annuel coûte un tiers de moins, inclut le grand fichier des 34 grands jeux et ouvre tous les dossiers déjà parus.
+  - q: Faut-il créer un compte ?
+    r: >-
+      Non. Après le paiement, vous recevez par mail le lien de votre bibliothèque personnelle : tous les fichiers de votre
+      formule, et chaque nouveauté au fil des mois. Gardez ce mail, ou ajoutez la page à vos favoris. Pas de mot de passe
+      à retenir.
+  - q: Comment fonctionne la réduction de 30 % ?
+    r: >-
+      Elle est réservée aux formules Animateur et s'applique aux kits qui ne sont pas déjà dans votre formule : les kits
+      d'anniversaire, de fêtes et de kermesse, et les packs de grands jeux pour la formule mensuelle. Votre code est
+      indiqué dans votre bibliothèque. Les outils pour les structures sont réservés à Pro Structure, ou s'achètent à
+      l'unité au prix normal.
   - q: Qu'est-ce qu'une « structure » ?
     r: >-
       Un établissement ou une association : un accueil de loisirs, une école, une association de parents d'élèves, un
@@ -137,7 +133,7 @@ questions:
       collectivités peuvent régler par mandat administratif ou déposer la facture sur Chorus Pro.
   - q: Comment résilier ?
     r: >-
-      Depuis votre espace client Payhip, à tout moment, en quelques clics. Pour un abonnement annuel, vous pouvez aussi
+      Depuis le lien de gestion de l'abonnement envoyé avec votre reçu, à tout moment, en quelques clics. Pour un abonnement annuel, vous pouvez aussi
       m'écrire : le renouvellement est arrêté et vous gardez l'accès jusqu'à la fin de votre année.
   - q: Que se passe-t-il pour les fichiers déjà téléchargés si j'arrête ?
     r: >-

@@ -2,7 +2,7 @@
 titre: Conditions générales de vente
 url: /conditions-de-vente/
 description: "Conditions générales de vente de Jeuphorie : produits numériques à télécharger et abonnement Jeuphorie Pro. Prix, commande, rétractation, résiliation, garanties, licence d'utilisation."
-chapo: "Version du 17 octobre 2026. Ces conditions s'appliquent à tous les achats de produits Jeuphorie et à l'abonnement Jeuphorie Pro."
+chapo: "Version du 18 octobre 2026. Ces conditions s'appliquent à tous les achats de produits Jeuphorie et à l'abonnement Jeuphorie Pro."
 ---
 
 {% if not site.boutique.ventes_actives %}
@@ -13,33 +13,33 @@ chapo: "Version du 17 octobre 2026. Ces conditions s'appliquent à tous les acha
 
 Les kits sont vendus par {{ site.editeur.nom }}, {{ site.editeur.statut }}, {{ site.editeur.adresse }}, SIREN {{ site.editeur.siren }}, joignable à {{ site.email }} (ci-après « Jeuphorie »).
 
-Les commandes, les paiements et les téléchargements passent par la plateforme **Payhip** ({{ site.plateforme_vente.adresse }}).
+Les paiements sont traités par **{{ site.plateforme_vente.nom }}** ({{ site.plateforme_vente.adresse }}), prestataire de paiement agréé.
 
 ## 2. Ce qui est vendu
 
-Jeuphorie vend des **contenus numériques** : des fichiers de jeux et des kits d'animation au format PDF, des outils au format tableur, et un abonnement, Jeuphorie Pro, qui donne accès à un espace en ligne de fiches à télécharger. Ils sont fournis par téléchargement, sans support matériel. Rien n'est envoyé par la poste.
+Jeuphorie vend des **contenus numériques** : des fichiers de jeux et des kits d'animation au format PDF, des outils au format tableur, et un abonnement, Jeuphorie Pro, qui donne accès à une bibliothèque en ligne de fichiers à télécharger. Ils sont fournis par téléchargement, sans support matériel. Rien n'est envoyé par la poste.
 
 Chaque fiche produit indique le contenu du kit, l'âge conseillé, le nombre de joueurs, la durée et le format des fichiers. Pour les utiliser, il faut un appareil capable d'ouvrir un PDF et, pour les imprimer, une imprimante ou un service de reprographie. Les outils au format tableur s'ouvrent avec Microsoft Excel, LibreOffice Calc ou Google Sheets.
 
 ## 3. Prix
 
-Les prix sont indiqués en euros, toutes taxes comprises. Pour les acheteurs situés dans l'Union européenne et au Royaume-Uni, la TVA applicable aux contenus numériques est calculée, collectée et reversée par Payhip selon le pays de l'acheteur.
+Les prix sont indiqués en euros, toutes taxes comprises. {{ site.editeur.tva }}
 
 Le prix payé est celui affiché au moment de la commande.
 
 ## 4. Commande
 
-Pour commander, vous cliquez sur le bouton d'achat du kit, puis vous suivez les étapes de paiement sur Payhip : adresse mail, moyen de paiement, puis validation. Avant de payer, vous pouvez vérifier le contenu de votre panier et corriger vos informations.
+Pour commander, vous cliquez sur le bouton d'achat du kit, puis vous suivez les étapes de la page de paiement sécurisée : adresse mail, carte bancaire, cases à cocher, puis validation. Avant de payer, vous pouvez vérifier le produit, son prix et corriger vos informations.
 
 La commande est conclue au moment où vous validez le paiement. Une confirmation est envoyée à l'adresse mail indiquée : elle reprend le kit acheté, son prix et, le cas échéant, votre accord pour un accès immédiat (voir l'article 7).
 
 ## 5. Paiement
 
-Le paiement se fait par carte bancaire ou PayPal, sur les pages sécurisées de Payhip et de ses prestataires de paiement (Stripe et PayPal). L'abonnement se paie par carte bancaire, via Stripe. Jeuphorie n'a jamais accès à vos données bancaires.
+Le paiement se fait par carte bancaire, sur les pages sécurisées de Stripe. Jeuphorie n'a jamais accès à vos données bancaires. Une structure peut aussi payer par virement ou mandat administratif, sur devis et facture.
 
 ## 6. Téléchargement
 
-Le lien de téléchargement s'affiche dès le paiement validé et vous est aussi envoyé par mail. Si vous ne le recevez pas, vérifiez vos courriers indésirables puis écrivez à {{ site.email }} : nous vous renvoyons le kit.
+Dès le paiement validé, vous arrivez sur la page de téléchargement de votre achat, dont le lien vous est aussi envoyé par mail. Pour un abonnement, vous recevez par mail le lien de votre bibliothèque. Si vous ne le recevez pas, vérifiez vos courriers indésirables puis écrivez à {{ site.email }} : nous vous renvoyons le kit.
 
 ## 7. Droit de rétractation
 
@@ -53,7 +53,7 @@ En principe, un consommateur dispose de 14 jours pour se rétracter après un ac
 
 Ces accords sont recueillis par des cases à cocher, non cochées par défaut, au moment de la commande.
 
-**Si ces conditions ne sont pas réunies**, vous gardez votre droit de rétractation pendant 14 jours à compter de la commande. Pour l'exercer, utilisez la fonction de rétractation proposée lors de votre achat, ou envoyez à {{ site.email }} une déclaration claire, par exemple le modèle en fin de page. Vous êtes remboursé dans les 14 jours, par le moyen de paiement utilisé lors de l'achat.
+**Si ces conditions ne sont pas réunies**, vous gardez votre droit de rétractation pendant 14 jours à compter de la commande. Pour l'exercer, utilisez le bouton « Me rétracter d'un achat » de la [page Contact](/contact/), ou envoyez à {{ site.email }} une déclaration claire, par exemple le modèle en fin de page. Vous êtes remboursé dans les 14 jours, par le moyen de paiement utilisé lors de l'achat.
 
 ## 8. Garantie légale de conformité
 
@@ -72,19 +72,19 @@ Il est interdit de revendre un fichier, de le partager en ligne (site, réseau s
 
 **Les formules.** Jeuphorie Pro existe en trois formules, décrites sur la page [Jeuphorie Pro](/pro/) :
 
-- **Pro Animateur mensuel**, 4,90 € par mois : le dossier du mois publié pendant chaque mois d'abonnement, et un code de réduction de 30 % sur la boutique ;
-- **Pro Animateur annuel**, 39 € par an : le grand fichier des grands jeux et tous les dossiers du mois, y compris ceux déjà parus, dès la souscription, puis les nouveaux dossiers, et un code de réduction de 30 % ;
+- **Pro Animateur mensuel**, 4,90 € par mois : le dossier du mois publié pendant chaque mois d'abonnement, et un code de réduction de 30 % sur les kits d'anniversaire, de fêtes, de kermesse et de grands jeux ;
+- **Pro Animateur annuel**, 39 € par an : le grand fichier des grands jeux et tous les dossiers du mois, y compris ceux déjà parus, dès la souscription, puis les nouveaux dossiers, et un code de réduction de 30 % sur les kits d'anniversaire, de fêtes et de kermesse. Les outils pour les structures ne bénéficient pas de cette réduction ;
 - **Pro Structure**, 149 € par an : pour une structure (un établissement ou une association, voir l'article 9), tous les produits de la boutique, tous les dossiers du mois, le calendrier d'animation de l'année et les produits publiés pendant l'abonnement, pour toute l'équipe de la structure, sans limite de nombre de personnes.
 
-Les fichiers inclus dans une formule sont mis à disposition dans l'espace Pro, ou par un lien de téléchargement envoyé par mail.
+Les fichiers inclus dans une formule sont mis à disposition dans une bibliothèque en ligne, dont le lien est envoyé par mail à la souscription, puis à chaque nouveauté.
 
 **Durée et renouvellement.** L'abonnement mensuel est conclu pour un mois, l'abonnement annuel pour un an. Chacun se renouvelle automatiquement pour la même durée, au prix payé à la souscription, jusqu'à sa résiliation : tant que l'abonnement est renouvelé sans interruption, son prix n'augmente pas. Pour les abonnements annuels, Jeuphorie vous prévient par mail, entre un et trois mois avant l'échéance, de la date de renouvellement et de la façon d'y mettre fin (article L. 215-1 du Code de la consommation).
 
-**Résiliation.** Vous pouvez résilier à tout moment, gratuitement, depuis votre espace client Payhip, en quelques clics (article L. 215-1-1 du Code de la consommation). La résiliation faite depuis l'espace client prend effet immédiatement : l'accès à l'espace Pro et au code de réduction s'arrête, et la période déjà payée n'est pas remboursée. Pour garder l'accès jusqu'à la fin de la période payée, demandez plutôt la résiliation à l'échéance par mail à {{ site.email }} : nous la confirmons par écrit et l'appliquons la veille du renouvellement.
+**Résiliation.** Vous pouvez résilier à tout moment, gratuitement, en quelques clics, depuis le lien de gestion de l'abonnement envoyé avec chaque reçu, ou par mail à {{ site.email }} (article L. 215-1-1 du Code de la consommation). La résiliation arrête le renouvellement : vous gardez l'accès à votre bibliothèque jusqu'à la fin de la période payée, qui n'est pas remboursée.
 
 **Après la fin de l'abonnement.** Les fiches que vous avez téléchargées ou imprimées pendant l'abonnement restent utilisables selon l'article 9. Les codes de réduction ne sont plus valables, et les nouveautés et mises à jour ne sont plus accessibles.
 
-**Droit de rétractation.** L'espace Pro est un contenu numérique fourni immédiatement : l'article 7 s'applique de la même façon à la souscription.
+**Droit de rétractation.** La bibliothèque Pro est un contenu numérique fourni immédiatement : l'article 7 s'applique de la même façon à la souscription.
 
 **Structures.** Une structure peut demander un devis et payer par virement. L'abonnement Pro Structure est alors conclu pour un an à compter du paiement, sans renouvellement automatique.
 

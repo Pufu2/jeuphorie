@@ -32,7 +32,7 @@ Le site est hébergé par :
 
 ## Plateforme de vente
 
-Les ventes et les téléchargements sont gérés par **{{ site.plateforme_vente.nom }}**, {{ site.plateforme_vente.adresse }} ({{ site.plateforme_vente.site }}). Le paiement est traité par Payhip et ses prestataires de paiement : l'éditeur du site n'a jamais accès à vos données bancaires.
+Les paiements sont traités par **{{ site.plateforme_vente.nom }}**, {{ site.plateforme_vente.adresse }} ({{ site.plateforme_vente.site }}). L'éditeur du site n'a jamais accès à vos données bancaires.
 
 ## Propriété intellectuelle
 

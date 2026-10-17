@@ -62,9 +62,9 @@ Choisissez « Créer une entreprise », puis « Entreprise individuelle », puis
 
 - **Un compte bancaire pour l'activité.** Obligatoire si le chiffre d'affaires dépasse 10 000 € deux années civiles de suite, conseillé dès le début : un second compte gratuit dans une banque en ligne suffit.
 - **Un médiateur de la consommation.** Obligatoire pour vendre à des particuliers. Choisissez-en un sur la liste officielle des médiateurs référencés (site economie.gouv.fr, rubrique « médiation de la consommation »). Pour une micro-entreprise, l'adhésion coûte quelques dizaines d'euros pour plusieurs années (par exemple CM2C, CNPM ou d'autres) : comparez les tarifs sur leurs sites.
-- **Un livre des recettes.** La liste chronologique de vos encaissements (date, client, montant, moyen de paiement). Les exports des ventes de Payhip suffisent si vous les gardez chaque mois.
-- **Les factures.** Payhip envoie un reçu au client. Pour une structure qui paie par virement, utilisez le modèle de facture de `docs/OUVRIR-LES-VENTES.md`. Mention obligatoire en franchise : « TVA non applicable, article 293 B du CGI ».
-- **La facturation électronique** : les micro-entreprises devront pouvoir recevoir des factures électroniques à partir de septembre 2026 et en émettre à partir de septembre 2027. Payhip et un outil gratuit de facturation suffiront ; rien à faire pour l'instant.
+- **Un livre des recettes.** La liste chronologique de vos encaissements (date, client, montant, moyen de paiement). Les exports des paiements de Stripe suffisent si vous les gardez chaque mois.
+- **Les factures.** Stripe envoie un reçu au client. Pour une structure qui paie par virement, utilisez le modèle de facture de `docs/OUVRIR-LES-VENTES.md`. Mention obligatoire en franchise : « TVA non applicable, article 293 B du CGI ».
+- **La facturation électronique** : les micro-entreprises devront pouvoir recevoir des factures électroniques à partir de septembre 2026 et en émettre à partir de septembre 2027. Stripe et un outil gratuit de facturation suffiront ; rien à faire pour l'instant.
 
 ## Étape 5 : votre adresse sur le site
 

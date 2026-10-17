@@ -8,7 +8,7 @@
 
 {# Carte d'un produit : couverture, titre, accroche, repères, prix et lien vers sa page #}
 {% macro fiche_kit(k, titre_niveau=3) %}
-{% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.payhip_id %}
+{% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.paiement %}
 <article class="fiche fiche--{{ couleur_univers(k.univers) }}" id="kit-{{ k.id }}">
   <a class="fiche__image" href="{{ lien('/boutique/' ~ k.id ~ '/') }}" tabindex="-1" aria-hidden="true">
     <img src="{{ statique('img/kits/' ~ k.id ~ '.jpg') }}" alt="" loading="lazy" width="720" height="463">
@@ -29,7 +29,7 @@
     <span class="fiche__prix">{{ k.prix }} €</span>
     {% endif %}
     {% if achetable %}
-    <a class="bouton bouton--petit payhip-buy-button" href="https://payhip.com/b/{{ k.payhip_id }}" data-product="{{ k.payhip_id }}" data-theme="none">Acheter</a>
+    <a class="bouton bouton--petit" href="{{ k.paiement }}">Acheter</a>
     {% else %}
     <a class="bouton bouton--petit bouton--contour" href="{{ lien('/boutique/' ~ k.id ~ '/') }}">Voir le kit</a>
     {% endif %}
