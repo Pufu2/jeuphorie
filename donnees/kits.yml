@@ -497,3 +497,377 @@ kits:
       - Directeurs, adjoints et coordinateurs d'accueils de loisirs
       - Responsables de séjours et de structures jeunesse
       - Inclus dans l'abonnement Jeuphorie Pro Structure
+
+  # ---------------------------------------------------------------- Professionnels (suite)
+  - id: kit-projet-pedagogique
+    titre: Le kit du projet pédagogique
+    univers: professionnels
+    publics:
+    - accueils
+    etat: pret
+    prix: '19'
+    payhip_id: ''
+    accroche: Construire avec votre équipe un projet pédagogique court, clair et vivant, de l'écriture au bilan.
+    age: Accueils de loisirs, périscolaire, séjours
+    joueurs: Équipes de 3 à 20 animateurs
+    duree: 6 semaines de préparation, puis toute la période
+    lieu: Guide PDF à imprimer et trame Word
+    preparation: Une réunion d'équipe de 2 h 30
+    pages: 30 + trame Word
+    contenu:
+    - 'Projet éducatif, pédagogique, d''animation : qui écrit quoi'
+    - La méthode en 8 étapes, avec son calendrier
+    - 14 objectifs bien formulés, avec moyens et indicateurs
+    - Les rythmes de l'enfant et des journées types commentées
+    - La réunion d'équipe minutée, la version familles, les outils du bilan
+    description: 'Le projet pédagogique est souvent écrit seul, la veille de l''ouverture, puis rangé dans un classeur.
+      Ce kit vous aide à en faire un document court, construit avec votre équipe, qui sert chaque jour à décider,
+      à informer les familles et à faire un vrai bilan. Il rappelle ce que la réglementation des accueils collectifs
+      de mineurs demande d''y trouver, et où le traiter.
+
+
+      Vous y trouvez la différence entre projet éducatif, pédagogique et d''animation, une méthode en huit étapes
+      sur six semaines, une banque de 14 objectifs opérationnels classés en sept thèmes (chacun avec deux moyens concrets
+      et deux indicateurs), six objectifs mal formulés et corrigés, les rythmes de l''enfant de 3 à 14 ans, une journée
+      type du mercredi et une semaine de vacances commentées, une réunion de construction de 2 h 30 minutée et un
+      exemple de version familles d''une page. Côté modèles : la trame du projet, la fiche projet d''animation, la
+      grille d''évaluation des objectifs, le bilan de période, un questionnaire enfants à visages et un questionnaire
+      familles, plus la trame complète en Word, avec des questions-guides sous chaque rubrique.
+
+
+      Pensé pour les directeurs et adjoints d''accueils de loisirs, de périscolaire et de séjours, qu''ils écrivent
+      leur premier projet ou reprennent celui de l''an dernier. Suivez la méthode dans l''ordre si vous avez six semaines,
+      ou allez directement au diagnostic, à la réunion d''équipe et à la banque d''objectifs si l''ouverture approche.
+
+      '
+    deroule:
+    - Relire le projet éducatif et faire le diagnostic.
+    - Construire les intentions et les objectifs en réunion d'équipe.
+    - Choisir les moyens et préparer l'évaluation.
+    - Écrire le projet dans la trame Word et sa version familles.
+    - Le faire vivre, puis faire le bilan avec les questionnaires.
+    pour_qui:
+    - Directeurs et adjoints d'accueils de loisirs et de périscolaire
+    - Directeurs de séjours de vacances
+    - Animateurs en formation BAFD ou BPJEPS qui préparent un projet
+
+  - id: livret-equipe-animation
+    titre: Le livret d'accueil de l'équipe d'animation
+    univers: professionnels
+    publics:
+    - accueils
+    - clubs
+    etat: pret
+    prix: '19'
+    payhip_id: ''
+    accroche: Un livret Word prêt à personnaliser et un guide pour accueillir les nouveaux animateurs et les stagiaires
+      BAFA, et sécuriser leurs premiers jours.
+    age: Accueils de loisirs, périscolaire, séjours
+    joueurs: Équipes de 3 à 30 personnes
+    duree: Avant et pendant chaque période
+    lieu: Guide PDF et livret Word
+    preparation: 2 h pour adapter le livret
+    pages: 26 + livret Word
+    contenu:
+    - La réunion de préparation de l'équipe, minutée sur 3 heures
+    - Le parcours des 3 premiers jours d'un nouvel animateur
+    - Le suivi du stagiaire BAFA et sa grille d'observation
+    - 10 fiches réflexes et chaque rubrique du livret avec un exemple
+    - 5 modèles à imprimer et le livret complet en Word
+    description: 'Un nouvel animateur arrive souvent la veille, parfois le matin même, quand la direction a le moins
+      de temps. Ce qu''on lui explique en courant dans le couloir, il en oublie la moitié. Le livret d''accueil met
+      par écrit ce que chacun doit savoir avant d''être seul avec des enfants : il évite de tout répéter à chaque
+      arrivée et sécurise les premiers jours.
+
+
+      Le guide de 26 pages détaille la réunion de préparation avant les vacances (ordre du jour minuté sur 3 heures,
+      décisions à prendre, place des nouveaux), le parcours des trois premiers jours en binôme, l''accompagnement
+      d''un stagiaire BAFA avec ses entretiens et une grille d''observation par compétences, le contenu du livret
+      rubrique par rubrique avec un exemple rédigé pour chacune, dix fiches réflexes prudentes (soins, accident, enfant
+      introuvable, départs, PAI, suspicion de maltraitance…) et la vie d''équipe. Cinq modèles sont prêts à imprimer
+      : fiche d''accueil, grille d''observation, compte rendu d''entretien, fiche de poste, fiche réflexe vierge.
+
+
+      Le fichier Word contient le livret complet, déjà rédigé, avec les passages à adapter entre crochets : il suffit
+      de le compléter, de faire valider les procédures par votre organisateur et de l''envoyer à l''équipe avant la
+      réunion de préparation.
+
+      '
+    deroule:
+    - Lire le guide et ouvrir le livret Word.
+    - Compléter les passages entre crochets et faire valider les fiches réflexes.
+    - Envoyer le livret à l'équipe avant la réunion de préparation.
+    - Accueillir chaque nouveau avec le parcours en trois jours et sa fiche d'accueil.
+    - Suivre les stagiaires BAFA avec la grille et les comptes rendus d'entretien.
+    pour_qui:
+    - Directeurs et adjoints d'accueils de loisirs, de périscolaire et de séjours
+    - Responsables de clubs et d'associations qui accueillent des animateurs
+    - Référents de stagiaires BAFA
+
+  - id: semaine-voyageurs-du-temps
+    titre: 'Une semaine de vacances clé en main : les voyageurs du temps'
+    univers: professionnels
+    publics:
+    - accueils
+    - ecoles
+    - clubs
+    etat: pret
+    prix: '19'
+    payhip_id: ''
+    accroche: 'Une machine à voyager dans le temps en panne, cinq époques à visiter et une pièce à rapporter chaque
+      jour : toute votre semaine de vacances est prête.'
+    age: Accueils de loisirs, 3-5 ans et 6-11 ans
+    joueurs: 24 enfants par groupe d'âge
+    duree: 5 jours, du lundi au vendredi
+    lieu: 'Accueil de loisirs : salle d''activité et cour'
+    preparation: Environ 10 heures d'équipe sur les deux semaines d'avant
+    pages: 32 + mot aux familles en Word
+    contenu:
+    - L'histoire, la machine en cartons et les messages du matin
+    - Les plannings 3-5 ans et 6-11 ans, avec l'encadrement
+    - Le matériel chiffré pour 24 enfants et le budget
+    - 5 activités manuelles et 5 grands jeux, un par époque
+    - Le grand jeu de clôture, l'exposition et les modèles
+    description: 'Construire une semaine thématique qui tient du lundi au vendredi demande des heures : trouver un
+      fil rouge, équilibrer les journées, chiffrer le matériel, inventer des jeux qui marchent avec des petits comme
+      avec des grands. Ce programme vous donne une semaine entière, déjà pensée, où chaque journée a son sens et où
+      le vendredi devient un vrai temps fort avec les familles.
+
+
+      Lundi, une machine à voyager dans le temps tombe en panne au centre. Chaque jour, les enfants visitent une époque,
+      la préhistoire, l''Égypte ancienne, le Moyen Âge, les grands navigateurs et le futur, et rapportent une pièce
+      pour la réparer. Vous trouverez le lancement minuté du lundi, la construction de la machine en cartons, cinq
+      messages à lire, les plannings des 3-5 ans et des 6-11 ans avec le nombre d''adultes, la liste de matériel chiffrée
+      pour 24 enfants, le budget, le calendrier de préparation, cinq activités manuelles avec leur version 3-5 ans,
+      cinq fiches de grands jeux originaux, cinq histoires courtes pour les temps calmes, le grand jeu de clôture
+      en ateliers, la cérémonie de réparation et l''exposition. S''y ajoutent un planning vierge, un passeport du
+      voyageur, un diplôme et le mot aux familles en Word.
+
+
+      Il s''adresse aux équipes d''accueil de loisirs pendant les vacances, mais se vit aussi sur cinq mercredis en
+      périscolaire ou sur une semaine de séjour. Lisez-le en réunion d''équipe deux semaines avant, répartissez les
+      six rôles proposés, puis suivez le calendrier de préparation : le jour venu, il ne reste qu''à jouer.'
+    deroule:
+    - Deux semaines avant, envoyez le mot aux familles pour récupérer boîtes et briques.
+    - En réunion d'équipe, répartissez les rôles et testez un jeu entre adultes.
+    - La semaine d'avant, construisez la machine et préparez un bac par jour.
+    - Chaque matin, faites le rituel du départ et lisez le message du jour.
+    - Vendredi, réparez la machine devant les familles et remettez les diplômes.
+    pour_qui:
+    - Les animateurs et directeurs d'accueil de loisirs qui préparent une semaine de vacances
+    - Les équipes périscolaires qui cherchent un projet sur cinq mercredis
+    - Les équipes de centres de vacances qui veulent un fil rouge sur un séjour
+
+  - id: recreation-apaisee
+    titre: Le kit de la récréation apaisée
+    univers: professionnels
+    publics:
+    - ecoles
+    - accueils
+    etat: pret
+    prix: '15'
+    payhip_id: ''
+    accroche: Une méthode sur un trimestre pour partager la cour, prévenir les conflits et donner à chaque enfant
+      un jeu à sa mesure.
+    age: Écoles maternelles et élémentaires, périscolaire, accueils de loisirs
+    joueurs: Une cour de 50 à 300 enfants
+    duree: Un trimestre
+    lieu: Cour d'école ou d'accueil, PDF à imprimer
+    preparation: Une réunion d'équipe et un conseil d'enfants
+    pages: '29'
+    contenu:
+    - La méthode en sept étapes, semaine par semaine
+    - Les cinq zones de la cour et le roulement du ballon
+    - Le rôle des adultes et les élèves médiateurs
+    - La malle de jeux chiffrée pour 100 élèves
+    - 12 fiches de jeux de cour et 5 modèles à imprimer
+    description: 'Un match de football au centre, les autres enfants sur les bords, des disputes qui naissent de l''ennui
+      et du manque de place : ce kit aide les équipes à réorganiser la cour en un trimestre, avec les adultes et avec
+      les enfants, pour que chacun y trouve une place et un jeu.
+
+
+      Vous y trouvez une grille pour observer votre cour, la méthode semaine par semaine avec des ordres du jour minutés
+      (réunion d''équipe, conseil d''enfants), le découpage en cinq zones, le roulement de la zone ballon par classe,
+      l''écriture de cinq règles avec les enfants, le rôle des adultes de surveillance avec une méthode en cinq étapes
+      face à un conflit, la formation des élèves médiateurs en quatre séances, la malle de jeux chiffrée pour 100
+      élèves, 12 fiches de jeux de cour (course, corde, élastique, marelle, jeux calmes, maternelle) et 5 modèles
+      à imprimer.
+
+
+      Pensé pour les écoles maternelles et élémentaires, les équipes de la pause méridienne et du périscolaire, et
+      les accueils de loisirs qui disposent d''une cour. Le projet se porte idéalement à plusieurs, temps scolaire
+      et périscolaire ensemble, mais peut commencer sur un seul temps de la journée.
+
+      '
+    deroule:
+    - 'Semaines 1 et 2 : observer trois récréations avec la grille.'
+    - 'Semaines 3 et 4 : réunir l''équipe, puis le conseil d''enfants.'
+    - 'Semaines 5 et 6 : tracer les zones, lancer le roulement du ballon, écrire les règles.'
+    - 'Semaines 6 à 10 : ouvrir la malle, apprendre un jeu par semaine, former les médiateurs.'
+    - 'Semaines 11 et 12 : observer de nouveau et faire le bilan.'
+    pour_qui:
+    - Directions, enseignants et ATSEM des écoles maternelles et élémentaires
+    - Équipes de la pause méridienne et du périscolaire
+    - Accueils de loisirs qui disposent d'une cour
+
+  - id: kit-association-parents
+    titre: Le kit de l'association de parents d'élèves
+    univers: professionnels
+    publics:
+    - associations
+    - ecoles
+    etat: pret
+    prix: '15'
+    payhip_id: ''
+    accroche: 'Une année d''association prête à suivre : le bureau, l''assemblée générale, la trésorerie, les actions
+      qui rapportent et tous les courriers.'
+    age: Associations de parents d'élèves
+    joueurs: Bureaux de 4 à 12 parents
+    duree: Toute l'année scolaire
+    lieu: Guide PDF et courriers Word
+    preparation: Une réunion de bureau pour l'adapter
+    pages: 24 + courriers Word
+    contenu:
+    - Une année type, mois par mois, de la rentrée à la kermesse
+    - Le bureau, l'assemblée générale et le procès-verbal
+    - Un budget type chiffré et la caisse d'une fête tenue à deux
+    - 8 actions qui rapportent, avec recettes et travail demandé
+    - 7 modèles à imprimer et 9 courriers Word à adapter
+    description: 'Chaque année, une partie du bureau de l''association de parents change, et la nouvelle équipe repart
+      souvent de zéro : quand convoquer l''assemblée générale, comment tenir la caisse de la kermesse, quelles demandes
+      faire à la mairie, quelle action rapporte vraiment. Ce kit rassemble ce savoir-faire en un seul document, avec
+      des exemples chiffrés pour une école de 200 élèves.
+
+
+      Vous y trouvez une année type mois par mois, la différence entre l''association et les représentants élus au
+      conseil d''école, la répartition des rôles et une réunion de bureau d''une heure minutée, le déroulé d''une
+      assemblée générale, un budget prévisionnel complet, la tenue du cahier de recettes et dépenses, la caisse d''une
+      fête, 8 actions avec leur recette habituelle et le nombre de bénévoles, les démarches avant un événement et
+      des mots aux familles réécrits. Sept modèles sont prêts à imprimer, et un fichier Word contient neuf courriers
+      à compléter : convocation, procès-verbal, bulletin d''adhésion, demandes à la mairie et à l''école, appel aux
+      bénévoles, remerciements.
+
+
+      Pensé pour les présidents, trésoriers et secrétaires d''associations de parents, nouveaux comme expérimentés,
+      et pour les directions d''école qui veulent aider leur association à démarrer. Lisez-le en début d''année, reprenez
+      le budget avec vos chiffres et ouvrez les courriers au fil des événements. Les règles qui dépendent de vos statuts
+      ou de votre commune sont signalées, avec l''interlocuteur à qui les demander.
+
+      '
+    deroule:
+    - 'À la rentrée : l''année type et la répartition des rôles.'
+    - L'assemblée générale, de la convocation au procès-verbal.
+    - Le budget prévisionnel, repris avec vos chiffres.
+    - 'Avant chaque événement : les démarches et le planning des bénévoles.'
+    - 'Après chaque événement : la caisse, le bilan et les remerciements.'
+    pour_qui:
+    - Bureaux d'associations de parents d'élèves
+    - Parents qui reprennent la présidence ou la trésorerie
+    - Directions d'école qui accompagnent leur association
+
+  - id: stage-multisport-vacances
+    titre: Le stage multisport de vacances clé en main
+    univers: professionnels
+    publics:
+    - clubs
+    - accueils
+    etat: pret
+    prix: '15'
+    payhip_id: ''
+    accroche: Cinq jours de jeux sportifs pour 16 à 32 enfants de 6 à 12 ans, avec le programme, les fiches, l'organisation
+      et tous les documents.
+    age: Clubs sportifs, offices des sports, accueils de loisirs
+    joueurs: 16 à 32 enfants, en 2 groupes d'âge
+    duree: 5 journées ou 5 matinées
+    lieu: Gymnase ou terrain extérieur
+    preparation: Une demi-journée, la semaine précédente
+    pages: 30 + modèles Word
+    contenu:
+    - Le programme des 5 jours, pour les 6-8 ans et les 9-12 ans
+    - La séance type minutée et 7 sports collectifs adaptés
+    - 10 échauffements ludiques et 6 jeux d'activité en fiches
+    - Encadrement, matériel jour par jour, documents et sécurité
+    - Carnet du champion, diplôme, planning, inscription, présences
+    description: 'Monter un stage de vacances demande de tout prévoir à la fois : un programme qui tienne cinq jours,
+      des séances où les enfants bougent vraiment, un encadrement suffisant, du matériel en quantité, des documents
+      en règle et des familles bien informées. Ce kit rassemble tout cela, autour d''un fil conducteur qui donne envie
+      aux enfants de revenir chaque matin : les petits champions.
+
+
+      Vous y trouvez le programme de la semaine pour deux groupes d''âge (jeux de ballon, opposition ludique, athlétisme
+      ludique, raquette, sports collectifs adaptés, grand tournoi du vendredi), la séance type minutée et ses principes,
+      16 fiches de jeux d''une page, l''organisation de l''équipe et de l''espace, le matériel jour par jour, les
+      points à vérifier pour les documents, l''assurance et la sécurité, et six modèles à imprimer, dont le carnet
+      du champion et le diplôme. Un fichier Word complète le tout : lettre aux familles, dossier d''inscription et
+      diplôme modifiables.
+
+
+      Il s''adresse aux clubs, associations sportives et offices des sports qui organisent un stage pendant les vacances,
+      et aux accueils de loisirs qui veulent proposer une semaine sportive. Lisez les chapitres d''organisation la
+      semaine d''avant, imprimez les modèles, et suivez le programme jour après jour.
+
+      '
+    deroule:
+    - 'Une semaine avant : inscriptions, documents, matériel et lettre aux familles.'
+    - 'Le lundi : accueil des familles et remise des carnets du champion.'
+    - 'Chaque jour : un thème le matin, un sport collectif et un défi l''après-midi.'
+    - 'Le jeudi soir : équipes du tournoi formées et diplômes remplis.'
+    - 'Le vendredi : grand tournoi, démonstration aux familles et récompenses.'
+    pour_qui:
+    - Clubs, associations sportives et offices des sports
+    - Accueils de loisirs qui organisent une semaine sportive
+    - 2 à 4 encadrants pour 16 à 32 enfants de 6 à 12 ans
+
+  - id: journee-familles-cse
+    titre: La journée familles du CSE clé en main
+    univers: professionnels
+    publics:
+    - cse
+    - associations
+    etat: pret
+    prix: '19'
+    payhip_id: ''
+    accroche: Un après-midi de jeux pour les salariés et leurs familles, organisé en douze semaines par des élus et
+      des bénévoles, du premier devis au compte rendu au CSE.
+    age: CSE, amicales du personnel, associations
+    joueurs: 50 à 300 participants, dont des enfants de 3 à 12 ans
+    duree: Demi-journée ou journée
+    lieu: Site de l'entreprise, parc ou base de loisirs
+    preparation: 12 semaines, avec une équipe d'élus et de bénévoles
+    pages: 32 + textes Word
+    contenu:
+    - Le choix de la formule et des prestataires, avec des coûts indicatifs
+    - Le rétroplanning sur 12 semaines, les rôles et le budget pour 150 personnes
+    - Les quatre messages aux salariés et le programme minuté
+    - 10 stands de jeux parents-enfants et un grand rallye des familles
+    - Sécurité, plan B, bilan et 7 modèles à imprimer
+    description: 'Organiser une journée familles quand on est élu ou bénévole, c''est jongler avec les devis, l''assurance,
+      les inscriptions, la météo et une équipe qui n''est pas animatrice de métier. Ce kit remet tout dans l''ordre
+      : quoi décider, quand, avec qui, et pour combien.
+
+
+      Vous y trouvez le choix du lieu, de la durée et des prestataires avec des ordres de grandeur de coût, un rétroplanning
+      sur 12 semaines, la répartition des rôles et l''ordre du jour de la réunion de lancement, un budget type pour
+      150 participants, les quatre messages aux salariés prêts à copier, le programme minuté de l''après-midi et de
+      la journée, 10 stands de jeux en fiches d''une page (matériel en quantités, nombre de bénévoles, durée de passage)
+      et un rallye des familles de 45 minutes entièrement détaillé. S''y ajoutent les consignes de sécurité (enfant
+      perdu, secours, chaleur, plan B, droit à l''image), la méthode du bilan et 7 modèles à imprimer, plus les textes
+      modifiables en Word.
+
+
+      Il s''adresse aux CSE, comités d''entreprise, amicales du personnel et associations qui accueillent de 50 à
+      300 personnes. Suivez le calendrier semaine par semaine, distribuez une fiche à chaque bénévole de stand, et
+      gardez le dossier rempli pour l''édition suivante.
+
+      '
+    deroule:
+    - 'Réunion de lancement : formule, date, budget, rôles.'
+    - Devis, autorisations et assurance, puis annonce aux salariés.
+    - Inscriptions, collecte du matériel et réunion des bénévoles.
+    - 'Le jour J : accueil, stands, rallye des familles, goûter.'
+    - Questionnaire, bilan financier et compte rendu au CSE.
+    pour_qui:
+    - CSE, comités d'entreprise et amicales du personnel
+    - Associations qui organisent une fête des familles
+    - De 50 à 300 participants, enfants de 3 à 12 ans
+

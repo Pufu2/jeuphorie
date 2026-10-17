@@ -86,6 +86,10 @@ chaque_annee:
 
 # Les dossiers déjà prêts, montrés en vignettes sur la page Pro (images : statique/img/pro/dossier-<image>.jpg et -fiche.jpg)
 dossiers_prets:
+  - mois: Pro Structure
+    image: calendrier
+    titre: Le calendrier d'animation 2026-2027
+    detail: "Les dates et les vacances de l'année, un temps fort et des thèmes pour chaque mois, réservé aux structures"
   - mois: Novembre
     image: novembre
     titre: Les jeux des jours de pluie

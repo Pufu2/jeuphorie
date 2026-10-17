@@ -105,8 +105,8 @@
       {% for x in ab.dossiers_prets %}
       <figure class="dossier-pret">
         <div class="dossier-pret__images">
-          <img src="{{ statique('img/pro/dossier-' ~ x.image ~ '.jpg') }}" alt="Couverture du dossier de {{ x.mois | lower }} : {{ x.titre | lower }}" width="280" height="396" loading="lazy">
-          <img src="{{ statique('img/pro/dossier-' ~ x.image ~ '-fiche.jpg') }}" alt="Une fiche du dossier de {{ x.mois | lower }}" width="280" height="396" loading="lazy">
+          <img src="{{ statique('img/pro/dossier-' ~ x.image ~ '.jpg') }}" alt="Couverture : {{ x.titre }}" width="280" height="396" loading="lazy">
+          <img src="{{ statique('img/pro/dossier-' ~ x.image ~ '-fiche.jpg') }}" alt="Une page : {{ x.titre }}" width="280" height="396" loading="lazy">
         </div>
         <figcaption><strong>{{ x.mois }} : {{ x.titre }}</strong><br>{{ x.detail }}</figcaption>
       </figure>
