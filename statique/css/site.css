@@ -462,7 +462,7 @@ mark.a-completer {
 /* univers */
 .grille-univers {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 195px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
   gap: 1.1rem;
 }
 .univers {
@@ -481,7 +481,8 @@ mark.a-completer {
 }
 .univers:hover { transform: translateY(-3px); text-decoration: none; }
 .univers__public { font-size: 0.9rem; font-weight: 700; color: var(--c-texte); }
-.univers__nom { font-family: var(--f-titre); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1.1; }
+.univers__nom { font-family: var(--f-titre); font-weight: 800; font-size: clamp(1.25rem, 1.55vw, 1.6rem); letter-spacing: -0.02em; line-height: 1.1; overflow-wrap: break-word; hyphens: auto; }
+.univers { min-width: 0; }
 .univers__accroche { color: var(--encre-douce); }
 .univers__lien { font-family: var(--f-titre); font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; margin-top: 0.3rem; }
 

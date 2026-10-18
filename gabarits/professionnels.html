@@ -14,10 +14,17 @@
     </ul>
   </header>
 
-  <section class="section section--serree" aria-labelledby="t-outils">
-    <h2 id="t-outils" class="section__titre">Les outils pour les structures</h2>
-    <p class="chapo">Projets, équipes, programmes, événements : des méthodes complètes et des modèles prêts à remplir.</p>
-    {{ m.grille_kits(vendus | selectattr('univers', 'equalto', u.id) | list, "Les outils arrivent bientôt.") }}
+  {% set outils = vendus | selectattr('univers', 'equalto', u.id) | list %}
+  <section class="section section--serree" aria-labelledby="t-gestion">
+    <h2 id="t-gestion" class="section__titre">Gestion et administratif</h2>
+    <p class="chapo">Diriger, organiser, documenter : les projets, l'équipe, l'encadrement, le budget et la vie de l'association, avec des modèles prêts à remplir.</p>
+    {{ m.grille_kits(outils | selectattr('rubrique', 'equalto', 'gestion') | list, "Les outils arrivent bientôt.") }}
+  </section>
+
+  <section class="section section--serree" aria-labelledby="t-animation">
+    <h2 id="t-animation" class="section__titre">Animation des groupes d'enfants</h2>
+    <p class="chapo">Des programmes complets à animer : une semaine de vacances, la cour de récréation, un stage sportif, une journée familles.</p>
+    {{ m.grille_kits(outils | selectattr('rubrique', 'equalto', 'animation') | list, "Les outils arrivent bientôt.") }}
   </section>
 
   <section class="section section--serree" aria-labelledby="t-calendrier">

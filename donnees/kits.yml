@@ -7,6 +7,7 @@
 # (exportées depuis le dossier privé des produits par exporter_images.py).
 # pack : relie le produit aux jeux de donnees/jeux.yml (6-9, 10-13, 14-17 ou tout).
 # fete : place le kit sur la page de sa fête (donnees/fetes.yml).
+# rubrique (outils professionnels) : gestion (administratif, direction) ou animation (groupes d'enfants).
 # publics : place le kit dans les rubriques de la page Professionnels (accueils, ecoles, associations, clubs, cse).
 # Jamais de règles détaillées ici : seulement ce qui donne envie et permet de choisir.
 
@@ -464,6 +465,7 @@ kits:
   - id: kit-du-directeur
     titre: Le kit du directeur d'accueil de loisirs
     univers: professionnels
+    rubrique: gestion
     publics: [accueils]
     etat: pret
     prix: "29"
@@ -502,6 +504,7 @@ kits:
   - id: kit-projet-pedagogique
     titre: Le kit du projet pédagogique
     univers: professionnels
+    rubrique: gestion
     publics:
     - accueils
     etat: pret
@@ -554,6 +557,7 @@ kits:
   - id: livret-equipe-animation
     titre: Le livret d'accueil de l'équipe d'animation
     univers: professionnels
+    rubrique: gestion
     publics:
     - accueils
     - clubs
@@ -607,6 +611,7 @@ kits:
   - id: semaine-voyageurs-du-temps
     titre: 'Une semaine de vacances clé en main : les voyageurs du temps'
     univers: professionnels
+    rubrique: animation
     publics:
     - accueils
     - ecoles
@@ -661,6 +666,7 @@ kits:
   - id: recreation-apaisee
     titre: Le kit de la récréation apaisée
     univers: professionnels
+    rubrique: animation
     publics:
     - ecoles
     - accueils
@@ -713,6 +719,7 @@ kits:
   - id: kit-association-parents
     titre: Le kit de l'association de parents d'élèves
     univers: professionnels
+    rubrique: gestion
     publics:
     - associations
     - ecoles
@@ -768,6 +775,7 @@ kits:
   - id: stage-multisport-vacances
     titre: Le stage multisport de vacances clé en main
     univers: professionnels
+    rubrique: animation
     publics:
     - clubs
     - accueils
@@ -821,6 +829,7 @@ kits:
   - id: journee-familles-cse
     titre: La journée familles du CSE clé en main
     univers: professionnels
+    rubrique: animation
     publics:
     - cse
     - associations
