@@ -880,3 +880,60 @@ kits:
     - Associations qui organisent une fête des familles
     - De 50 à 300 participants, enfants de 3 à 12 ans
 
+  - id: tournoi-des-nations
+    titre: 'Le tournoi des nations : un grand événement multisport par équipes'
+    univers: professionnels
+    rubrique: animation
+    publics:
+    - accueils
+    - ecoles
+    - clubs
+    etat: pret
+    prix: '29'
+    paiement: ''
+    accroche: Une ou deux journées de compétition multisport où chaque équipe défend la nation qu'elle a inventée,
+      avec le programme, les grilles de rotation, les épreuves, les cérémonies et un classeur qui calcule le classement.
+    age: Accueils de loisirs, écoles, clubs, de 6 à 15 ans
+    joueurs: 4 à 12 équipes de 5 à 12 enfants (30 à 150 enfants)
+    duree: 1 ou 2 journées
+    lieu: Terrain de sport ou grand espace en herbe, avec un repli couvert
+    preparation: 4 semaines, dont une réunion d'équipe et une demi-journée d'installation
+    pages: 36 + classeur Excel
+    contenu:
+    - Le programme type sur une et sur deux journées
+    - Des grilles de rotation vérifiées, de 4 à 12 équipes
+    - 9 épreuves individuelles en fiches et 4 sports collectifs
+    - Fair-play, poules, phases finales et classement sur 1000 points
+    - Cérémonies, matériel, plan du site et 8 modèles à imprimer
+    description: 'Un grand tournoi multisport réunit vite cent enfants, une douzaine d''adultes et des dizaines d''épreuves.
+      Sans organisation solide, les équipes attendent, les ateliers se décalent, les résultats se perdent et le classement
+      se calcule tard le soir, avec des erreurs. Ce kit donne une organisation éprouvée sur le terrain : chaque équipe
+      invente sa nation, tout le monde tourne au même signal, et le classement se calcule tout seul.
+
+
+      Le guide de 36 pages contient le rétroplanning sur quatre semaines, la méthode pour constituer des équipes équilibrées,
+      la répartition des rôles adultes et l''ordre du jour de la réunion de préparation, le programme type sur une
+      et sur deux journées, des grilles de rotation prêtes à l''emploi et vérifiées pour 4, 6, 8, 10 et 12 équipes,
+      neuf fiches d''épreuves individuelles (lancers, tir à l''arc à ventouses, course, saut, cross…), les règles
+      de quatre sports collectifs, les poules et les phases finales, la note de fair-play avec sa grille de critères,
+      le système de points expliqué avec un exemple, les cérémonies d''ouverture et de clôture avec le serment du
+      fair-play, le matériel atelier par atelier et huit modèles à imprimer. Le classeur Excel calcule les poules,
+      le fair-play, le classement des équipes sur 1000 points et les podiums par catégorie d''âge.
+
+
+      Il s''adresse aux directeurs et animateurs d''accueils de loisirs, aux enseignants et aux éducateurs de clubs
+      qui organisent un temps fort sportif, seuls ou à plusieurs structures. Lisez les chapitres d''organisation un
+      mois avant, remplissez le classeur deux semaines avant, imprimez les grilles et les feuilles, puis suivez le
+      programme le jour J.
+
+      '
+    deroule:
+    - '4 semaines avant : date, lieu, matériel et rôles des adultes.'
+    - '2 semaines avant : équipes équilibrées, réunion d''équipe, classeur rempli.'
+    - 'La semaine d''avant : les enfants inventent leur nation, drapeau et cri.'
+    - 'Le jour J : cérémonie d''ouverture, rotations, matchs et phases finales.'
+    - 'La clôture : podiums, diplômes et classement annoncé du dernier au premier.'
+    pour_qui:
+    - Accueils de loisirs et regroupements de structures
+    - Écoles et clubs qui organisent une journée sportive
+    - 30 à 150 enfants de 6 à 15 ans, 10 à 15 adultes
