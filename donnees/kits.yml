@@ -937,3 +937,46 @@ kits:
     - Accueils de loisirs et regroupements de structures
     - Écoles et clubs qui organisent une journée sportive
     - 30 à 150 enfants de 6 à 15 ans, 10 à 15 adultes
+
+  - id: armonia
+    titre: 'Armonia, la légende des sept éléments : un thème de séjour complet'
+    univers: professionnels
+    rubrique: sejours
+    publics:
+    - accueils
+    etat: pret
+    prix: '39'
+    paiement: ''
+    accroche: Un fil rouge pour tout un séjour, avec un monde de légende, sept peuples, une histoire en onze épisodes, trois veillées écrites scène par scène et cinq grands jeux qui font avancer le récit.
+    age: Séjours de vacances et accueils de loisirs, de 8 à 14 ans
+    joueurs: 24 à 120 enfants, en 4 à 6 peuples
+    duree: Séjour de 5 à 12 jours, ou une à deux semaines d'accueil de loisirs
+    lieu: Une salle de veillée, un grand terrain ou un bois clair
+    preparation: 6 à 8 semaines, dont une réunion d'équipe et deux répétitions
+    pages: '89'
+    contenu:
+    - L'univers, la carte et sept peuples en fiches détaillées
+    - L'histoire en onze épisodes et les plannings de 5, 8 et 12 jours
+    - Trois veillées écrites scène par scène, avec la lumière et le son
+    - Cinq grands jeux et un jeu de nuit en fiches, plus les scènes des repas
+    - Décors, costumes, matériel, budget, rétroplanning et pédagogie
+    - 9 planches à imprimer, de la carte au brevet de gardien
+    description: 'Un thème de séjour réussi demande des semaines de travail à une équipe : inventer un univers, écrire une histoire qui tienne du premier au dernier soir, relier les veillées aux grands jeux, fabriquer les décors. Ce kit vous donne tout cela, prêt à jouer. Les enfants deviennent l''un des peuples d''Armonia et vivent, épisode après épisode, l''aventure d''Hypérion, un jeune apprenti qui doit rendre au monde son équilibre et sauver son grand frère, perdu par la soif de pouvoir.
+
+
+      Le guide de 70 pages présente l''univers et sa carte, les sept peuples (valeurs, habitat, costume, salut, faune et flore, force dans les jeux), les douze personnages, l''histoire en onze épisodes avec les plannings de 5, 8 et 12 jours et une version pour l''accueil de loisirs. Il contient trois veillées écrites scène par scène, avec la voix off, les répliques, la lumière, le son et des jeux où les enfants montent sur scène, ainsi que cinq scènes courtes à jouer pendant les repas. Viennent ensuite six fiches de jeux : le grand tour d''Armonia, la défense de Floralia, les Armoniales, l''expédition vers le Sanctuaire, le jeu de nuit des ruines et la marche des peuples, avec des duels réglés par la loi des éléments. Le guide se termine par les décors, les costumes, le matériel et le budget, le rétroplanning, la distribution des rôles, la pédagogie (objectifs, dosage de la peur, version douce pour les plus jeunes) et six modèles. Les 19 pages de planches contiennent la carte, les affiches des peuples, le passeport du voyageur, les cartes des éléments, les fragments de lumière, les inscriptions, la prophétie et le brevet de gardien.
+
+
+      Il s''adresse aux directeurs et aux équipes de séjours de vacances et d''accueils de loisirs. Les jeux d''un épisode font avancer l''histoire de l''épisode suivant, et la victoire finale appartient à tous les peuples réunis. Le thème est laïque et ne contient aucune référence religieuse.
+
+      '
+    deroule:
+    - '8 semaines avant : le thème validé, la durée choisie, un responsable désigné.'
+    - '6 semaines avant : la réunion d''équipe, les rôles distribués.'
+    - '3 semaines avant : les planches imprimées, les décors et les costumes fabriqués.'
+    - 'Pendant le séjour : un épisode par jour, des veillées aux grands jeux.'
+    - 'Le dernier soir : la flamme retrouvée, la fête des peuples et les brevets.'
+    pour_qui:
+    - Séjours de vacances, colonies, camps et mini-séjours
+    - Accueils de loisirs qui veulent un fil rouge sur une ou deux semaines
+    - 24 à 120 enfants de 8 à 14 ans, 8 animateurs comédiens

@@ -27,6 +27,12 @@
     {{ m.grille_kits(outils | selectattr('rubrique', 'equalto', 'animation') | list, "Les outils arrivent bientôt.") }}
   </section>
 
+  <section class="section section--serree" aria-labelledby="t-sejours">
+    <h2 id="t-sejours" class="section__titre">Thèmes de séjour</h2>
+    <p class="chapo">Un fil rouge pour tout un séjour ou une semaine de vacances : l'univers, l'histoire jour après jour, les veillées écrites scène par scène, les grands jeux, les décors et les costumes.</p>
+    {{ m.grille_kits(outils | selectattr('rubrique', 'equalto', 'sejours') | list, "Les thèmes arrivent bientôt.") }}
+  </section>
+
   <section class="section section--serree" aria-labelledby="t-calendrier">
     <div class="calendrier-pro">
       <img src="{{ statique('img/pro/dossier-calendrier.jpg') }}" alt="Couverture du calendrier d'animation de l'année 2026-2027" width="280" height="396" loading="lazy">
