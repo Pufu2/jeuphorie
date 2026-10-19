@@ -21,7 +21,7 @@ date: 2026-10-20
 ages: [6-8-ans]
 fetes: [toussaint]
 univers: [anniversaires]
-kit: olympiades-anniversaire
+kit: defi-des-champions
 ---
 ```
 
@@ -39,7 +39,7 @@ kit: olympiades-anniversaire
 - 800 à 1 300 mots. Un titre qui reprend la recherche des parents.
 - Des intertitres `##` qui répondent aux questions qu'ils se posent : durée, nombre d'enfants, matériel, âge, erreurs à éviter.
 - Au moins un élément concret de directeur d'animation : déroulé minuté, règle en une phrase, matériel de la maison, adaptation par âge.
-- Lien vers une page du site quand c'est utile, par exemple `[nos jeux de Noël](/fetes/noel/)` ou `[le kit des Olympiades](/boutique/olympiades-anniversaire/)`.
+- Lien vers une page du site quand c'est utile, par exemple `[nos jeux de Noël](/fetes/noel/)` ou `[le kit du défi des champions](/boutique/defi-des-champions/)`.
 - Une seule fin commerciale, discrète : le dernier paragraphe peut présenter le kit associé.
 - Jamais de nom, logo, photo ou document de la structure où travaille l'auteur. Jamais de photo d'enfant.
 - Pas de copie d'autres sites. Les idées classiques (chasse au trésor, course en sac) sont réécrites avec nos propres règles.

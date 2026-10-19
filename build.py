@@ -52,6 +52,8 @@ REDIRECTIONS = {
     "/idees/paques/chasse-aux-oeufs-des-couleurs/": "/fetes/paques/chasse-aux-oeufs-des-couleurs/",
     "/idees/paques/voleurs-de-nids/": "/fetes/paques/voleurs-de-nids/",
     "/idees/fete-de-fin-d-annee/": "/kermesse/",
+    "/boutique/olympiades-anniversaire/": "/boutique/defi-des-champions/",
+    "/blog/olympiades-anniversaire-maison/": "/blog/defi-des-champions-anniversaire-maison/",
 }
 
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",

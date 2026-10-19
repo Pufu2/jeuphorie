@@ -13,8 +13,8 @@
 
 kits:
   # ---------------------------------------------------------------- Anniversaires
-  - id: olympiades-anniversaire
-    titre: Les Olympiades d'anniversaire
+  - id: defi-des-champions
+    titre: Le défi des champions
     univers: anniversaires
     etat: pret
     prix: "12"
@@ -33,7 +33,7 @@ kits:
       - Invitations, fanions, panneaux et feuille de score
       - Le serment des athlètes, les médailles et les diplômes
     description: |
-      Les Olympiades sont le grand jeu qui marche à tous les coups en accueil de loisirs. Ce kit les adapte à la maison : quatre équipes, un défilé d'ouverture, huit épreuves qui alternent adresse, rapidité, coopération et mémoire, puis une vraie cérémonie de remise des médailles.
+      Les grands défis sportifs par équipes marchent à tous les coups en accueil de loisirs. Ce kit les adapte à la maison : quatre équipes, un défilé d'ouverture, huit épreuves qui alternent adresse, rapidité, coopération et mémoire, puis une vraie cérémonie de remise des médailles.
 
       Chaque épreuve tient sur une page : la règle à annoncer en une phrase, le matériel à cocher, l'installation, le déroulement, le rôle de l'adulte, et une version plus facile et plus difficile. Le matériel est celui de la maison : chaussettes, cuillères, gobelets, bouteilles d'eau.
 

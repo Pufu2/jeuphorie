@@ -1,15 +1,15 @@
 ---
-titre: "Olympiades d'anniversaire à la maison : 8 épreuves pour les 6-12 ans"
-description: "Organiser des Olympiades d'anniversaire à la maison : le déroulé minute par minute, 8 épreuves avec le matériel de la maison et les astuces d'un directeur d'animation."
-chapo: "Des équipes, un défilé, des épreuves et une remise de médailles : les Olympiades plaisent à tous les enfants de 6 à 12 ans. Voici comment les organiser dans un salon ou un jardin, avec ce que vous avez déjà chez vous."
+titre: "Un défi des champions d'anniversaire à la maison : 8 épreuves pour les 6-12 ans"
+description: "Organiser un anniversaire sportif à la maison : le déroulé minute par minute, 8 épreuves avec le matériel de la maison et les astuces d'un directeur d'animation."
+chapo: "Des équipes, un défilé, des épreuves et une remise de médailles : le défi des champions plaît à tous les enfants de 6 à 12 ans. Voici comment l'organiser dans un salon ou un jardin, avec ce que vous avez déjà chez vous."
 date: 2026-10-13
 ages: [6-8-ans, 9-12-ans]
 fetes: []
 univers: [anniversaires]
-kit: olympiades-anniversaire
+kit: defi-des-champions
 ---
 
-En centre de loisirs, les Olympiades sont le grand jeu qui marche à tous les coups. Les enfants adorent porter les couleurs d'une équipe, défiler et recevoir une médaille. À la maison, la recette fonctionne aussi bien, à condition de bien préparer trois choses : les équipes, le timing et le score.
+En centre de loisirs, les grands défis sportifs par équipes sont le jeu qui marche à tous les coups. Les enfants adorent porter les couleurs d'une équipe, défiler et recevoir une médaille. À la maison, la recette fonctionne aussi bien, à condition de bien préparer trois choses : les équipes, le timing et le score.
 
 ## Le déroulé en 1 h 30
 
@@ -61,4 +61,4 @@ Au moment de la remise des médailles, gardez une distinction pour chaque équip
 - **Des temps morts.** Préparez toutes les épreuves avant l'arrivée des invités : la pause pendant qu'un adulte cherche des gobelets suffit à disperser le groupe.
 - **Un score secret.** Affichez la feuille de score au mur et mettez-la à jour après chaque épreuve : le suspense fait partie du jeu.
 
-Les Olympiades demandent une soirée de préparation, mais elles laissent un souvenir que les enfants racontent longtemps. Pour gagner cette soirée, notre kit contient les fiches de toutes les épreuves, la feuille de score, les fanions et les diplômes, prêts à imprimer.
+Un défi des champions demande une soirée de préparation, mais il laisse un souvenir que les enfants racontent longtemps. Pour gagner cette soirée, notre kit contient les fiches de toutes les épreuves, la feuille de score, les fanions et les diplômes, prêts à imprimer.

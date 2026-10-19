@@ -34,7 +34,7 @@ Le calendrier suit les saisons, avec 4 à 6 semaines d'avance sur les recherches
 | Novembre, décembre | Noël en famille, arbre de Noël du CSE, jeux coopératifs |
 | Janvier, février | Carnaval, jeux calmes, galette des rois, anniversaires d'hiver |
 | Mars, avril | Pâques et chasse aux œufs, grands jeux de printemps |
-| Mai, juin | Kermesse et fête d'école, olympiades, jeux d'eau |
+| Mai, juin | Kermesse et fête d'école, journées sportives, jeux d'eau |
 | Juillet, août | Grands jeux d'été, colonies, anniversaires au jardin |
 
 ### 3. La technique (déjà en place)

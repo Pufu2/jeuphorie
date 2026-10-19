@@ -6,7 +6,7 @@ date: 2026-10-27
 ages: [3-5-ans, 6-8-ans, 9-12-ans]
 fetes: []
 univers: [anniversaires]
-kit: olympiades-anniversaire
+kit: defi-des-champions
 ---
 
 Quand je prépare une fête avec des enfants, en accueil de loisirs ou en famille, je me pose toujours les mêmes questions dans le même ordre : pour combien d'enfants, combien de temps, avec quelle histoire, et que se passe-t-il à chaque minute. Les idées de jeux viennent en dernier. C'est cet ordre qui fait la différence entre une fête qui tient et une fête qui déborde.
@@ -29,13 +29,13 @@ Une fête trop longue se termine mal : les enfants fatiguent, l'excitation monte
 
 ## Choisir un fil rouge
 
-Un anniversaire réussi raconte une histoire : une chasse au trésor de pirates, des Olympiades, une enquête, un safari. Le thème n'est pas qu'une décoration. Il donne un sens à chaque jeu (« pour récupérer le morceau de carte, il faut traverser la mer aux requins »), et c'est ce sens qui tient les enfants ensemble pendant une heure.
+Un anniversaire réussi raconte une histoire : une chasse au trésor de pirates, un défi sportif, une enquête, un safari. Le thème n'est pas qu'une décoration. Il donne un sens à chaque jeu (« pour récupérer le morceau de carte, il faut traverser la mer aux requins »), et c'est ce sens qui tient les enfants ensemble pendant une heure.
 
 Choisissez le fil rouge avec votre enfant, selon son âge :
 
 - **3-5 ans** : un univers simple et rassurant, des animaux à rencontrer, aucun perdant. Notre [safari des petits explorateurs](/boutique/safari-petits-explorateurs/) est construit sur ce principe.
 - **5-9 ans** : une aventure avec une récompense à la fin, comme une [chasse au trésor de pirates](/boutique/chasse-tresor-pirates/) où chaque épreuve rapporte un morceau de carte.
-- **6-12 ans** : des défis par équipes, du score, un podium. Les [Olympiades d'anniversaire](/boutique/olympiades-anniversaire/) marchent à tous les coups.
+- **6-12 ans** : des défis par équipes, du score, un podium. Les [Défi des champions](/boutique/defi-des-champions/) marchent à tous les coups.
 - **8-12 ans** : un vrai problème à résoudre, avec des indices et de la logique, comme [l'enquête du gâteau disparu](/boutique/enquete-gateau-disparu/).
 
 ## Le déroulé type
