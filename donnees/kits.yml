@@ -980,3 +980,46 @@ kits:
     - Séjours de vacances, colonies, camps et mini-séjours
     - Accueils de loisirs qui veulent un fil rouge sur une ou deux semaines
     - 24 à 120 enfants de 8 à 14 ans, 8 animateurs comédiens
+
+  - id: terres-oubliees
+    titre: 'Les Terres Oubliées, la légende du Kraken : un thème de séjour pirates et marine'
+    univers: professionnels
+    rubrique: sejours
+    publics:
+    - accueils
+    etat: pret
+    prix: '39'
+    paiement: ''
+    accroche: Un fil rouge pirates et marine pour tout un séjour, avec la carte, cinq camps, l'histoire de Luc en douze épisodes, trois veillées écrites scène par scène et sept grands jeux, dont un plateau géant.
+    age: Séjours de vacances et accueils de loisirs, de 8 à 14 ans
+    joueurs: 24 à 120 enfants, en 4 à 6 équipages
+    duree: Séjour de 7 à 14 jours, ou deux semaines d'accueil de loisirs
+    lieu: Une salle de veillée, un grand terrain ou un bois, une salle pour le plateau
+    preparation: 6 à 8 semaines, dont une réunion d'équipe et deux répétitions
+    pages: '86'
+    contenu:
+    - La carte des Terres Oubliées, cinq camps et six équipages
+    - L'histoire de Luc en douze épisodes et les plannings de 7, 12 et 14 jours
+    - Trois veillées écrites scène par scène, et huit scènes pour les repas
+    - Sept grands jeux en fiches, dont un plateau géant et une chasse au trésor
+    - Décors, costumes, chants, matériel, budget, rétroplanning et pédagogie
+    - 11 planches à imprimer, de la carte au brevet de lieutenant
+    description: 'Un séjour pirates et marine qui ne se contente pas de chasses au trésor : une vraie histoire, du premier soir au dernier, que les enfants vivent de l''intérieur. Ils forment les équipages de la flotte d''Épannghélia et suivent Luc, un jeune homme qui perd son père dans une invasion, choisit la vengeance, devient pirate, se trompe, se relève, tue le Kraken et découvre que le pardon peut changer un pays entier.
+
+
+      Le guide de 67 pages présente la carte et les lieux, les cinq camps (la Marine, les pirates, les Insurgés, les corsaires et le peuple de Divio), les équipages et les postes à bord, les personnages, l''histoire en douze épisodes avec les plannings de 7, 12 et 14 jours et une version pour l''accueil de loisirs. Il contient trois veillées écrites scène par scène, avec la voix off, les répliques, la lumière, le son et des jeux où les enfants montent sur scène, et huit scènes courtes pour les repas. Viennent ensuite sept fiches de jeux : l''enrôlement, la traversée vers l''île aux Traîtres sur un plateau géant, le coffre de Rackham, le grand entraînement, la fête de Divio, la chasse au harpon et la bataille de Nicème. Le guide se termine par les décors, les costumes, le matériel et le budget, le rétroplanning, la distribution des rôles, la pédagogie (la colère, la vengeance, le pardon, version douce pour les plus jeunes) et six modèles. Les 19 pages de planches contiennent la carte, les affiches des camps, les pavillons, le carnet de bord, le plateau et sa carte secrète, les ressources, les accessoires de l''histoire et le brevet de lieutenant.
+
+
+      Il s''adresse aux directeurs et aux équipes de séjours de vacances et d''accueils de loisirs. Le thème est laïque : le trésor d''Épannghélia est un livre de sagesse humaine, que les équipages complètent le dernier soir.
+
+      '
+    deroule:
+    - '8 semaines avant : le thème validé, la durée choisie, un responsable désigné.'
+    - '6 semaines avant : la réunion d''équipe, les rôles distribués.'
+    - '3 semaines avant : les planches imprimées, le coffre, le Livre et les décors fabriqués.'
+    - 'Pendant le séjour : un épisode par jour, de l''invasion à la bataille de Nicème.'
+    - 'Le dernier soir : le trésor ouvert, le Livre complété, le banquet de la paix.'
+    pour_qui:
+    - Séjours de vacances, colonies, camps et séjours à la mer
+    - Accueils de loisirs qui veulent un fil rouge sur deux semaines
+    - 24 à 120 enfants de 8 à 14 ans, 8 à 10 animateurs comédiens
