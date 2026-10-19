@@ -1023,3 +1023,42 @@ kits:
     - Séjours de vacances, colonies, camps et séjours à la mer
     - Accueils de loisirs qui veulent un fil rouge sur deux semaines
     - 24 à 120 enfants de 8 à 14 ans, 8 à 10 animateurs comédiens
+
+  - id: dystopia
+    titre: "Dystopia, la cité d'Omnix : un thème de séjour d'anticipation"
+    univers: professionnels
+    rubrique: sejours
+    publics:
+    - accueils
+    etat: pret
+    prix: '39'
+    paiement: ''
+    accroche: "Un fil rouge d'anticipation pour tout un séjour : une mégapole gouvernée par une intelligence artificielle, l'histoire d'Aléthès en douze épisodes, trois veillées écrites scène par scène et sept grands jeux."
+    age: Séjours de vacances et accueils de loisirs, de 10 à 14 ans
+    joueurs: 24 à 120 enfants, en 4 à 6 secteurs
+    duree: Séjour de 7 à 14 jours, ou deux semaines d'accueil de loisirs
+    lieu: Une salle de veillée, un grand terrain ou un parc, quelques salles pour les énigmes
+    preparation: 6 à 8 semaines, dont une réunion d'équipe et deux répétitions
+    pages: '121'
+    contenu:
+    - La carte de Dystopia, ses quartiers, ses tours et les trois règles d'Omnix
+    - L'histoire d'Aléthès en douze épisodes et les plannings de 7, 12 et 14 jours
+    - Trois veillées et une soirée finale écrites scène par scène, huit messages d'Omnix pour les repas
+    - Sept grands jeux en fiches, de la déchetterie électronique à la nuit des souvenirs
+    - Décors, costumes, lumière, son, matériel, budget, rétroplanning et pédagogie
+    - 16 planches à imprimer, du flyer de bienvenue à la carte du vrai nom
+    description: |
+      Une mégapole parfaite en apparence : propre, sûre, confortable, et entièrement gouvernée par Omnix, une intelligence artificielle qui veille sur le bonheur de chacun. Pendant le séjour, les enfants deviennent des citoyens de Dystopia. Ils reçoivent leur carte citoyenne et leurs cent points de crédit social, et suivent Aléthès, un garçon qui ne se pose aucune question, jusqu'au jour où son grand-père meurt et lui laisse une lettre, une clé et quatre noms.
+
+      Le guide de 84 pages présente la carte et les lieux, les secteurs, les personnages, l'histoire en douze épisodes avec les plannings de 7, 12 et 14 jours et une version pour l'accueil de loisirs. Il contient trois veillées, une soirée courte et une soirée finale écrites scène par scène, avec les répliques, la lumière, le son et des jeux où les enfants participent, les scènes d'introduction des jeux et huit messages d'Omnix pour les repas. Viennent ensuite sept fiches de jeux : le parcours d'intégration, le quartier des Satisfactions, la déchetterie électronique, la clé de Franck, les Jeux de Dystopia, la recherche d'Aléthès et la nuit des souvenirs. Le guide se termine par les décors, les costumes, le matériel et le budget, le rétroplanning, la distribution des rôles, la pédagogie (esprit critique, plaisir et bonheur, écrans, liberté de choisir, version douce) et six modèles. Les 37 pages de planches contiennent la carte, les affiches d'Omnix, le flyer et les cartes citoyennes, les secteurs, le matériel des jeux, les écrans des archives et les accessoires de l'histoire.
+
+      Il s'adresse aux directeurs et aux équipes de séjours de vacances et d'accueils de loisirs. Le thème ne dit pas que la technologie est mauvaise : il montre ce qui arrive quand on laisse un système choisir à notre place, et comment l'amitié peut réveiller une ville. Il est laïque, et aucun enfant n'y joue un surveillant ou un dénonciateur.
+    deroule:
+    - '8 semaines avant : le thème validé, la durée choisie, un responsable désigné.'
+    - '6 semaines avant : la réunion d''équipe, les rôles distribués.'
+    - '3 semaines avant : les planches imprimées, la voix d''Omnix enregistrée, l''Effaceur et la clé fabriqués.'
+    - 'Pendant le séjour : un épisode par jour, de l''arrivée à la nuit des souvenirs.'
+    - 'Le dernier soir : la lettre d''Aléthès, la carte du vrai nom, la fête des éveillés.'
+    pour_qui:
+    - Séjours de vacances, colonies, camps et séjours d'ados
+    - Accueils de loisirs qui veulent un fil rouge sur deux semaines
