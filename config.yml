@@ -36,7 +36,7 @@ brevo_formulaire: "https://6aa67dd9.sibforms.com/serve/MUIFAALwFHFW1gpRlMArjyrYS
 brevo_liste: "3"
 lettre_expediteur: "contact@jeuphorie.fr"
 # Mesure d'audience sans cookie (GoatCounter) : le code du compte, ex. « jeuphorie » pour jeuphorie.goatcounter.com. Vide : aucune mesure.
-goatcounter: ""
+goatcounter: "jeuphorie"
 # Réseaux sociaux (identifiants publics, pas des secrets ; le jeton, lui, est dans les secrets GitHub : META_PAGE_TOKEN)
 meta_page_id: "1420693194451781"
 instagram_id: "17841461657685341"
