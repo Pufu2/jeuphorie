@@ -33,7 +33,7 @@ pinterest_site_verification: "bb418ec8ae71343ebbe6f62c69349df2"
 brevo_formulaire: ""
 # Lettre mensuelle (outils/lettre.py) : numéro de la liste Brevo et adresse d'expédition validée dans Brevo.
 # La clé d'API est un secret GitHub : BREVO_API_KEY.
-brevo_liste: ""
+brevo_liste: "3"
 lettre_expediteur: "contact@jeuphorie.fr"
 # Mesure d'audience sans cookie (GoatCounter) : le code du compte, ex. « jeuphorie » pour jeuphorie.goatcounter.com. Vide : aucune mesure.
 goatcounter: ""
