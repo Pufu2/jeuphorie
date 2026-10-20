@@ -1115,7 +1115,8 @@ a.tampon { text-decoration: none; }
 .inscription { margin: 1.2rem 0 0.6rem; }
 .inscription label { display: block; font-weight: 700; margin-bottom: 0.4rem; }
 .inscription__ligne { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-.inscription input[type=email] { flex: 1 1 14rem; min-width: 0; font: inherit; padding: 0.7rem 0.9rem; border: 2px solid var(--encre); border-radius: 999px; background: #fff; }
+.inscription input[type=email] { flex: 1 1 14rem; min-width: 0; font: inherit; padding: 0.7rem 0.9rem; border: 2px solid var(--encre); border-radius: 999px; background: var(--fiche); color: var(--encre); -webkit-text-fill-color: var(--encre); caret-color: var(--encre); }
+.inscription input[type=email]::placeholder { color: var(--encre-douce); -webkit-text-fill-color: var(--encre-douce); opacity: 0.8; }
 .inscription__piege { position: absolute; left: -9999px; }
 
 /* témoignages */
