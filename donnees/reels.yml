@@ -1,0 +1,44 @@
+# Les Reels (vidéos courtes) d'Instagram et de Facebook.
+# La vidéo se fabrique avec : python3 outils/reel.py <id>   (elle est enregistrée dans statique/videos/<id>.mp4)
+# Elle se publie à la demande : onglet Actions > « Publier le site » > « Run workflow », champ « reel » = <id>.
+reels:
+  - id: ecureuils-reserve-hiver
+    url: /fetes/toussaint/ecureuils-reserve-hiver/
+    couleur: "#C2571A"
+    cartes:
+      - surtitre: Pour les vacances de la Toussaint
+        titre: Un grand jeu d'automne, prêt en 5 minutes
+        main: "Dès 4 ans · 8 à 30 joueurs · 25 min"
+      - surtitre: Le jeu
+        titre: Les écureuils et la réserve d'hiver
+        texte:
+          - Les jours raccourcissent. Chaque famille d'écureuils remplit son nid avant l'hiver… mais un renard rôde.
+      - surtitre: Le but
+        texte:
+          - Rapporter dans le nid de son équipe le plus de noisettes possible, sans se faire attraper par le renard.
+      - surtitre: Le matériel
+        texte:
+          - "- Des marrons, des glands ou des pommes de pin"
+          - "- Un nid par équipe : un cerceau, une caisse"
+          - "- Un foulard pour le renard"
+      - surtitre: Trois règles d'or
+        texte:
+          - "- Une seule noisette à la fois"
+          - "- Le nid est une maison sûre"
+          - "- Le renard touche le dos, il ne pousse pas"
+      - surtitre: Avec les 4-5 ans
+        texte:
+          - Pas d'élimination. Le renard fait le tour de la forêt en chantant, et les écureuils filent se cacher dans leur nid.
+      - surtitre: C'est gratuit
+        titre: Les règles complètes et la version à l'intérieur
+        main: Sur jeuphorie.fr, lien dans la bio
+    legende: |
+      Un grand jeu d'automne pour les vacances de la Toussaint : les écureuils et la réserve d'hiver 🐿️🍂
+
+      Chaque famille d'écureuils remplit son nid avant l'hiver, sous l'œil du renard. Des marrons, quelques cerceaux, un foulard : c'est prêt en cinq minutes, dans un jardin, une cour ou un parc.
+
+      Dès 4 ans · 8 à 30 joueurs · 25 minutes.
+
+      Les règles complètes, la version à l'intérieur et le schéma du terrain sont gratuits sur jeuphorie.fr (lien dans la bio).
+
+      #toussaint #automne #jeuxenfants #grandjeu #centredeloisirs #activitésautomne

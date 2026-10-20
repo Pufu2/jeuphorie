@@ -15,6 +15,10 @@ on:
         description: "Publier aussi le sujet du jour sur Facebook et Instagram"
         type: boolean
         default: false
+      reel:
+        description: "Publier un Reel de donnees/reels.yml (son identifiant), sinon laisser vide"
+        type: string
+        default: ""
 
 permissions:
   contents: read
@@ -93,3 +97,21 @@ jobs:
         run: |
           sleep 60
           python3 outils/publier_reseaux.py
+
+  reel:
+    # publie un Reel à la demande (Instagram et Facebook)
+    needs: publier
+    if: github.event_name == 'workflow_dispatch' && inputs.reel != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Publier le Reel
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+        run: |
+          sleep 60
+          python3 outils/publier_reel.py "${{ inputs.reel }}"
