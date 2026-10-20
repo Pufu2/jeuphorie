@@ -10,7 +10,7 @@ Le calendrier se nourrit des articles écrits chaque mois par la tâche automati
 
 Il reste trois réglages à faire **une seule fois**. Aucun mot de passe ni aucune clé ne doit être envoyé dans une conversation : les codes de vérification de Pinterest et de Google ne sont pas secrets (ils sont publiés dans les pages du site), mais les jetons Facebook, eux, se collent uniquement dans les secrets de GitHub.
 
-## 1. Pinterest (10 minutes, le plus utile)
+## 1. Pinterest (10 minutes, le plus utile) · réglé le 20 octobre 2026
 
 Pinterest est le premier moteur de recherche des parents et des animateurs qui cherchent des activités à imprimer.
 
@@ -30,10 +30,9 @@ C'est fini : Pinterest lit le flux tout seul et crée les nouvelles épingles.
 5. Transformer ce jeton en **jeton de longue durée** (Outils > Débogueur de jeton d'accès > « Prolonger le jeton d'accès »). Le copier.
 6. Dans l'explorateur, coller ce jeton et lancer la requête `me/accounts` : la réponse donne l'`id` de la page et son `access_token`. Ce jeton de page, obtenu à partir d'un jeton de longue durée, **n'expire pas**.
 7. Lancer la requête `<id de la page>?fields=instagram_business_account` : la réponse donne l'identifiant Instagram.
-8. Sur GitHub, dépôt `Pufu2/jeuphorie` > Settings > Secrets and variables > Actions > « New repository secret », créer :
-   - `META_PAGE_ID` : l'identifiant de la page ;
-   - `META_PAGE_TOKEN` : le jeton de la page ;
-   - `INSTAGRAM_ID` : l'identifiant Instagram.
+8. Sur GitHub, dépôt `Pufu2/jeuphorie` > Settings > Secrets and variables > Actions, créer le secret `META_PAGE_TOKEN` avec le jeton de la page (uniquement la suite qui commence par `EAA`, sans guillemets). Les identifiants de la page et du compte Instagram, qui ne sont pas secrets, sont déjà dans `config.yml` (`meta_page_id`, `instagram_id`).
+
+**État : réglé le 20 octobre 2026.** Une publication d'essai est partie sur Facebook et sur Instagram. Pour publier à la demande : onglet Actions > « Publier le site » > « Run workflow », en cochant « Publier aussi le sujet du jour sur Facebook et Instagram ».
 
 Dès le prochain mardi, jeudi ou samedi, la publication part toute seule à 6 h 15. Si un jour le jeton est révoqué (changement de mot de passe Facebook, par exemple), GitHub vous envoie un e-mail « Run failed » : il suffit de refaire les étapes 4 à 8.
 
