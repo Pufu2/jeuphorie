@@ -3,6 +3,7 @@
 La vidéo doit déjà être en ligne : statique/videos/<id>.mp4, publiée avec le site.
 Lancé à la demande par GitHub Actions : onglet Actions > « Publier le site » > « Run workflow », champ « reel ».
 Usage : python3 outils/publier_reel.py <id> [--essai]
+        python3 outils/publier_reel.py --auto [--essai]   (le Reel automatique du dimanche, voir outils/reseaux.py)
 """
 import json
 import os
@@ -34,13 +35,24 @@ def appel(chemin, methode="POST", **params):
 def main():
     ident = next((a for a in sys.argv[1:] if not a.startswith("--")), "")
     config = yaml.safe_load((RACINE / "config.yml").read_text(encoding="utf-8"))
-    reels = yaml.safe_load((RACINE / "donnees" / "reels.yml").read_text(encoding="utf-8"))["reels"]
-    r = next((x for x in reels if x["id"] == ident), None)
-    if not r:
-        print(f"Reel inconnu : « {ident} ». Reels disponibles : {', '.join(x['id'] for x in reels)}")
-        return 1
     base = config["url"].rstrip("/")
-    video = f"{base}/videos/{ident}.mp4"
+    if "--auto" in sys.argv:
+        sys.path.insert(0, str(RACINE / "outils"))
+        import datetime as dt
+        import reseaux
+        p = reseaux.reel_du_jour(dt.date.today())
+        if not p:
+            print("Pas de Reel automatique aujourd'hui.")
+            return 0
+        r = {"url": p["url"], "legende": reseaux.legende(p, "instagram", base)}
+        video = f"{base}/{reseaux.nom_video(p)}"
+    else:
+        reels = yaml.safe_load((RACINE / "donnees" / "reels.yml").read_text(encoding="utf-8"))["reels"]
+        r = next((x for x in reels if x["id"] == ident), None)
+        if not r:
+            print(f"Reel inconnu : « {ident} ». Reels disponibles : {', '.join(x['id'] for x in reels)}")
+            return 1
+        video = f"{base}/videos/{ident}.mp4"
     legende = r["legende"].strip()
     page_id, insta = str(config.get("meta_page_id") or ""), str(config.get("instagram_id") or "")
     jeton = os.environ.get("META_PAGE_TOKEN", "").strip()

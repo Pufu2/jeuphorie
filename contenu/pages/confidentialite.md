@@ -16,12 +16,14 @@ Le responsable du traitement est {{ site.editeur_nom }}, éditeur du site Jeupho
 | Vous achetez un produit ou vous abonnez | Nom, adresse mail, pays, détail de la commande ou de l'abonnement | Exécuter la vente, vous envoyer le lien de téléchargement ou de votre bibliothèque et ses nouveautés, répondre aux réclamations (le contrat) | 5 ans après l'achat |
 | Vous achetez un produit ou vous abonnez | Factures et pièces comptables | Obligations comptables et fiscales (la loi) | 10 ans |
 | Vous nous écrivez | Adresse mail et contenu du message | Vous répondre | 3 ans après le dernier échange |
+| Vous vous inscrivez à la lettre (3 jeux offerts) | Adresse mail, date d'inscription et de confirmation | Vous envoyer les jeux, puis la lettre mensuelle (votre consentement) | Jusqu'à votre désinscription, ou 3 ans sans ouverture d'aucun message |
 
 Vos données bancaires sont saisies sur les pages sécurisées de Stripe. Jeuphorie n'y a jamais accès.
 
 ## Qui reçoit vos données
 
 - **Stripe** ({{ site.plateforme_vente.nom }}, {{ site.plateforme_vente.adresse }}), qui traite les paiements, les abonnements et les reçus.
+- **Brevo** (Sendinblue SAS, 106 boulevard Haussmann, 75008 Paris), qui gère la lettre d'information et héberge la liste des inscrits dans l'Union européenne.
 - **Notre service de messagerie**, qui achemine les messages que nous vous envoyons : lien de votre bibliothèque, réponses à vos questions.
 - **GitHub** ({{ site.hebergeur.adresse }}), qui héberge le site. Comme tout hébergeur, GitHub peut enregistrer l'adresse IP des visiteurs pour la sécurité du service. GitHub adhère au cadre de protection des données UE–États-Unis (Data Privacy Framework), qui encadre ces transferts.
 
@@ -29,7 +31,7 @@ Vos données ne sont jamais vendues ni transmises à des fins publicitaires.
 
 ## Cookies
 
-Le site ne dépose aucun cookie de mesure d'audience ni de publicité. Les pages de paiement de Stripe peuvent utiliser des cookies nécessaires au paiement et à la lutte contre la fraude. Le fichier des 3 jeux offerts se télécharge sans inscription.
+Le site ne dépose aucun cookie, ni de mesure d'audience ni de publicité. {% if site.goatcounter %}Pour savoir quelles pages sont utiles, il compte les visites avec GoatCounter, un outil sans cookie qui n'enregistre ni votre adresse IP ni aucune donnée permettant de vous identifier : seulement la page vue, le site d'où vous venez, le pays et le type d'appareil. {% endif %}Les pages de paiement de Stripe peuvent utiliser des cookies nécessaires au paiement et à la lutte contre la fraude. Le fichier des 3 jeux offerts peut toujours se télécharger sans inscription.
 
 ## Vos droits
 

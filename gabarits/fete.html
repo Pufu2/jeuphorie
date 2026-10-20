@@ -19,7 +19,7 @@
   {% set offerts = jeux_fetes | selectattr('fete', 'equalto', f.slug) | list %}
   {% if offerts %}
   <section class="section section--serree" aria-labelledby="t-offerts">
-    <h2 id="t-offerts" class="section__titre">Deux jeux {{ f.de }} offerts</h2>
+    <h2 id="t-offerts" class="section__titre">{{ ["Un", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf", "Dix"][offerts | length - 1] if offerts | length <= 10 else offerts | length }} {{ "jeu" if offerts | length == 1 else "jeux" }} {{ f.de }} {{ "offert" if offerts | length == 1 else "offerts" }}</h2>
     <p class="chapo">Les règles complètes sont sur la page de chaque jeu, avec une version dehors et une version à l'intérieur. Vous pouvez les imprimer.</p>
     <div class="grille-jeux">{% for x in offerts %}{{ m.carte_jeu_fete(x) }}{% endfor %}</div>
   </section>

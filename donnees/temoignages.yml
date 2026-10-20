@@ -1,0 +1,10 @@
+# Les témoignages des clients, affichés sur la fiche du kit concerné (et sur l'accueil à partir de 3).
+# Ne publier qu'avec l'accord écrit de la personne (le mail qui envoie l'avis suffit), sans nom de famille
+# ni prénom d'enfant, et sans retoucher le sens du texte.
+#
+# Modèle :
+#  - kit: kit-noel                      # identifiant du kit (donnees/kits.yml)
+#    texte: "Les enfants ont adoré…"     # l'avis, tel quel ou raccourci avec son accord
+#    qui: "Claire, maman de deux enfants" # un prénom et un contexte, jamais de nom complet
+#    date: 2026-12-20
+temoignages: []

@@ -28,6 +28,15 @@ bing_site_verification: ""
 pinterest_site_verification: "bb418ec8ae71343ebbe6f62c69349df2"
 # IndexNow : prévient Bing, Qwant, DuckDuckGo, Yandex et Seznam à chaque publication
 # (clé publique, sans compte ; le fichier /<clé>.txt est créé automatiquement).
+# Liste d'e-mails (Brevo) : adresse « action » du formulaire Brevo (https://….sibforms.com/serve/…).
+# Vide : les 3 jeux offerts se téléchargent directement, sans inscription.
+brevo_formulaire: ""
+# Lettre mensuelle (outils/lettre.py) : numéro de la liste Brevo et adresse d'expédition validée dans Brevo.
+# La clé d'API est un secret GitHub : BREVO_API_KEY.
+brevo_liste: ""
+lettre_expediteur: "contact@jeuphorie.fr"
+# Mesure d'audience sans cookie (GoatCounter) : le code du compte, ex. « jeuphorie » pour jeuphorie.goatcounter.com. Vide : aucune mesure.
+goatcounter: ""
 # Réseaux sociaux (identifiants publics, pas des secrets ; le jeton, lui, est dans les secrets GitHub : META_PAGE_TOKEN)
 meta_page_id: "1420693194451781"
 instagram_id: "17841461657685341"

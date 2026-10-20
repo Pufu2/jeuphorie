@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent / "outils"))
 from schemas import schema_svg  # noqa: E402
 from schemas_fetes import schema_fete  # noqa: E402
 import reseaux  # noqa: E402
+import reel  # noqa: E402
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 RACINE = Path(__file__).resolve().parent
@@ -275,7 +276,13 @@ class Site:
             entete, corps = lire_markdown(f)
             self.ajouter(entete["url"], entete.get("gabarit", "page.html"),
                          titre=entete["titre"], description=entete.get("description", ""),
-                         corps_md=corps, page_entete=entete)
+                         indexer=entete.get("indexer", True), corps_md=corps, page_entete=entete)
+        # le dimanche, la vidéo du Reel de la semaine (publiée ensuite par outils/publier_reel.py --auto)
+        p = reseaux.reel_du_jour(dt.date.today())
+        if p and not self.apercu and shutil.which("ffmpeg"):
+            couleur = reseaux.COULEURS.get(p["couleur"], reseaux.COULEURS["pro"])[0]
+            reel.fabriquer_video({"cartes": reseaux.cartes_reel(p), "couleur": couleur},
+                                 SORTIE / reseaux.nom_video(p), reel.decor_saison(dt.date.today().month))
         self.ajouter("/reseaux/", "reseaux.html", titre="Nos dernières publications",
                      description="Les dernières publications de Jeuphorie sur Instagram, Facebook et Pinterest.",
                      indexer=False, publications=reseaux.fabriquer(SORTIE, self.config["url"]))

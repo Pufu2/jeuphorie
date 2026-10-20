@@ -94,13 +94,14 @@ def _tous():
         liste.append({"id": f"blog-{slug}", "type": "article", "date": date, "titre": e["titre"],
                       "texte": _propre(e.get("chapo") or e.get("description")), "url": f"/blog/{slug}/",
                       "surtitre": "Nouveau sur le blog", "couleur": univers.get(u, {}).get("couleur", "pro"),
-                      "mots": MOTS_CLES.get(fete) or MOTS_CLES.get(u, MOTS_CLES["fetes"]), "mois": MOIS_FETES.get(fete)})
+                      "mots": MOTS_CLES.get(fete) or MOTS_CLES.get(u, MOTS_CLES["fetes"]), "mois": MOIS_FETES.get(fete),
+                      "intertitres": re.findall(r"^## (.+)$", f.read_text(encoding="utf-8"), re.M)})
 
     for j in d.get("jeux-fetes", {}).get("jeux", []):
         liste.append({"id": f"fete-{j['id']}", "type": "jeu", "titre": j["nom"], "texte": _propre(j["accroche"]),
                       "url": f"/fetes/{j['fete']}/{j['id']}/", "surtitre": "Jeu offert, règles complètes",
                       "couleur": "saison", "mots": MOTS_CLES.get(j["fete"], MOTS_CLES["fetes"]),
-                      "mois": MOIS_FETES.get(j["fete"]),
+                      "mois": MOIS_FETES.get(j["fete"]), "brut": j,
                       "detail": (f"Dès {j['age_min']} ans" if j["age_max"] >= 18 else f"{j['age_min']} à {j['age_max']} ans")
                       + f" · {j['joueurs'][0]} à {j['joueurs'][1]} joueurs"})
 
@@ -109,7 +110,7 @@ def _tous():
             liste.append({"id": f"jeu-{j['id']}", "type": "jeu", "titre": j["nom"],
                           "texte": _propre(j.get("accroche") or ("Le but : " + j.get("but", "")[:1].lower() + j.get("but", "")[1:] + " " + " ".join(
                               re.split(r"(?<=[.!?]) ", _propre(j.get("organisation")))[:2]))),
-                          "url": f"/jeux/{j['id']}/",
+                          "url": f"/jeux/{j['id']}/", "brut": j,
                           "detail": f"Dès {j['age_min']} ans · {j['joueurs'][0]} à {j['joueurs'][1]} joueurs · {j['duree']} min",
                           "surtitre": "Grand jeu offert, règles complètes", "couleur": "plein-air",
                           "mots": MOTS_CLES["grands-jeux"], "mois": None})
@@ -167,6 +168,86 @@ def calendrier(jusqua, combien=60):
     """Les publications passées, de la plus récente à la plus ancienne."""
     histo = _historique(jusqua)
     return [histo[j] for j in sorted(histo, reverse=True)][:combien]
+
+
+# ---------------------------------------------------------------- le Reel de la semaine
+
+JOUR_REEL = 6  # dimanche
+NOMS_FETES = {"toussaint": "Pour les vacances de la Toussaint", "noel": "Pour Noël", "carnaval": "Pour le carnaval",
+              "paques": "Pour Pâques"}
+
+
+def _phrases(texte, n):
+    return " ".join(re.split(r"(?<=[.!?…]) ", _propre(texte))[:n])
+
+
+def _court(liste, n, maxi=60):
+    out = []
+    for x in liste or []:
+        x = _propre(x).split(" : ")[0].split(", ou")[0]
+        if len(x) <= maxi:
+            out.append("- " + x.rstrip("."))
+        if len(out) == n:
+            break
+    return out
+
+
+def cartes_reel(p):
+    """Les cartes d'un Reel, tirées des données du site (jeu offert ou article du blog)."""
+    j = p.get("brut")
+    if j:
+        detail = p.get("detail") or ""
+        cartes = [{"surtitre": NOMS_FETES.get(j.get("fete"), "Un grand jeu offert"), "titre": p["titre"], "main": detail}]
+        if j.get("histoire"):
+            cartes.append({"surtitre": "L'histoire", "texte": [_phrases(j["histoire"], 2)]})
+        cartes.append({"surtitre": "Le but", "texte": [_propre(j.get("but"))]})
+        mat = _court(j.get("materiel"), 3)
+        if mat:
+            cartes.append({"surtitre": "Le matériel", "texte": mat})
+        regles = _court(j.get("regles"), 3, 70)
+        if regles:
+            cartes.append({"surtitre": "Les règles d'or", "texte": regles})
+        if j.get("adapter"):
+            cartes.append({"surtitre": "Avec les plus jeunes", "texte": [_phrases(j["adapter"][0], 2)]})
+        cartes.append({"surtitre": "C'est gratuit", "titre": "Les règles complètes et le schéma du terrain",
+                       "main": "Sur jeuphorie.fr, lien dans la bio"})
+        return cartes
+    inter = [x for x in p.get("intertitres", []) if len(x) < 60][:4]
+    cartes = [{"surtitre": "Sur le blog", "titre": p["titre"]},
+              {"surtitre": "En deux mots", "texte": [_phrases(p["texte"], 2)]}]
+    if inter:
+        cartes.append({"surtitre": "Au sommaire", "texte": ["- " + x for x in inter]})
+    cartes.append({"surtitre": "À lire en entier", "titre": "L'article complet, gratuit",
+                   "main": "Sur jeuphorie.fr, lien dans la bio"})
+    return cartes
+
+
+def _historique_reels(jusqua):
+    histo, dernier, type_avant = {}, {}, "article"
+    jour = DEBUT
+    while jour <= jusqua:
+        if jour.weekday() == JOUR_REEL:
+            mois_suivant = jour.month % 12 + 1
+            candidats = [s for s in sujets(jour) if s["type"] in ("jeu", "article")
+                         and (not s["mois"] or jour.month in s["mois"] or mois_suivant in s["mois"])]
+            autre = [s for s in candidats if s["type"] != type_avant]  # un jeu, un article, à tour de rôle
+            candidats = autre or candidats
+            if candidats:
+                choix = min(candidats, key=lambda s: dernier.get(s["id"], DEBUT - dt.timedelta(days=9999)))
+                histo[jour] = {**choix, "jour": jour}
+                dernier[choix["id"]] = jour
+                type_avant = choix["type"]
+        jour += dt.timedelta(days=1)
+    return histo
+
+
+def reel_du_jour(jour):
+    """Le Reel du jour (le dimanche), ou None."""
+    return _historique_reels(jour).get(jour)
+
+
+def nom_video(p):
+    return f"videos/auto-{p['id']}-{p['jour'].isoformat()}.mp4"
 
 
 # ---------------------------------------------------------------- les légendes

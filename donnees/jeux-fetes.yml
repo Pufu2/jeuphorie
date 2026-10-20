@@ -4,6 +4,7 @@
 #
 # fete : slug d'une fête de donnees/fetes.yml (la page /fetes/<fete>/<id>/ est créée toute seule)
 # versions : une version « Dehors » et une version « À l'intérieur »
+# ajoute : date d'ajout du jeu (AAAA-MM-JJ) ; le plus récent devient « le jeu offert du mois » de la lettre.
 # Le schéma du terrain (facultatif) se dessine dans outils/schemas_fetes.py, avec le même id.
 
 jeux:
@@ -225,6 +226,55 @@ jeux:
       Dans la cachette, une lettre du père Noël remercie les enfants d'avoir sauvé la tournée,
       et la surprise se partage entre tous.
 
+
+  - id: grelots-du-pere-noel
+    fete: noel
+    ajoute: 2026-10-20
+    nom: Les grelots du père Noël
+    accroche: Un jeu de silence et d'adresse, où les lutins reprennent un à un les grelots du traîneau sans réveiller le père Noël.
+    age_min: 4
+    age_max: 11
+    ages: [3-5-ans, 6-8-ans, 9-12-ans]
+    joueurs: [5, 20]
+    duree: 20
+    but: Rapporter tous les grelots du traîneau dans la hotte des lutins sans réveiller le père Noël, qui somnole au milieu de la salle.
+    materiel:
+      - "6 à 10 grelots, clochettes ou petites boîtes remplies de riz, qui font du bruit quand on les bouge"
+      - Un foulard pour bander les yeux du père Noël, ou un bonnet enfoncé jusqu'au nez
+      - Une chaise ou un coussin pour le père Noël
+      - "Une hotte : un panier, un sac ou un carton"
+    histoire: >-
+      Après une nuit entière à préparer la tournée, le père Noël s'est endormi au pied de son traîneau. Mais les grelots
+      sont tombés tout autour de lui, et sans eux, les rennes ne sauront pas où aller dans le brouillard. Les lutins vont
+      les reprendre un par un, sur la pointe des pieds. S'il se réveille, il voudra savoir qui fait tout ce bruit.
+    versions:
+      - lieu: À l'intérieur
+        espace: "Une salle ou un salon dégagé, au calme : c'est le jeu idéal après le goûter ou avant le coucher"
+        mise_en_place: "Le père Noël s'assoit au centre, les yeux bandés. Posez les grelots en cercle autour de lui, à un ou deux pas. Les lutins s'assoient en grand cercle, à quatre ou cinq mètres, avec la hotte."
+        deroulement:
+          - "L'animateur désigne un lutin du doigt, sans un mot. Le lutin s'approche, prend un grelot et le rapporte dans la hotte."
+          - "Si le père Noël entend un bruit, il tend le bras dans sa direction en disant « Ho ho ho ! ». S'il montre bien le lutin, celui-ci repose le grelot et retourne s'asseoir."
+          - "Un lutin qui a rapporté un grelot dans la hotte devient le prochain père Noël, ou désigne le suivant."
+      - lieu: Dehors
+        espace: Un coin d'herbe ou de cour abrité du vent, où l'on s'entend bien
+        mise_en_place: "Même installation, avec un cercle plus grand et des grelots plus bruyants. Le père Noël peut se tenir debout, adossé à un arbre."
+        deroulement:
+          - "Deux lutins partent en même temps, de deux côtés opposés : le père Noël doit choisir lequel il a entendu."
+          - "Le père Noël a trois « Ho ho ho ! » par manche. Quand il les a utilisés, les lutins ont le champ libre."
+          - "La manche se termine quand tous les grelots sont dans la hotte, ou quand le père Noël a renvoyé trois lutins."
+    regles:
+      - On marche, on ne court jamais.
+      - "Le père Noël garde les yeux bandés et montre du bras, sans se lever."
+      - "Les lutins qui attendent ne font aucun bruit : c'est tout le groupe qui aide le lutin en mission."
+      - "Un grelot qui tinte n'est pas un échec : seul le bras du père Noël, bien pointé, renvoie un lutin."
+    adapter:
+      - "3-5 ans : un adulte joue le père Noël et se trompe souvent de direction. Les grelots sont gros et faciles à prendre."
+      - "6-8 ans : le jeu tel quel. Le lutin qui rapporte un grelot devient le père Noël."
+      - "9-12 ans : grelots à rapporter dans l'ordre (du plus petit au plus gros), ou deux grelots attachés ensemble par un fil, à ne pas faire tinter."
+    securite:
+      - "Rien par terre entre le cercle et le père Noël : on enlève chaises, sacs et jouets."
+      - Un enfant qui n'aime pas avoir les yeux bandés peut fermer les yeux, ou garder un bonnet sur les yeux sans foulard.
+    fin: "Quand la hotte est pleine, le père Noël « se réveille », compte les grelots avec les lutins et les remercie : grâce à eux, les rennes trouveront leur chemin. Un dernier « Ho ho ho ! » à voix basse, et c'est l'heure de l'histoire du soir."
   # ------------------------------------------------------------ Carnaval
   - id: defile-des-statues
     fete: carnaval

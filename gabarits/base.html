@@ -130,5 +130,6 @@
   <p class="cadre pied__bas">© {{ annee }} {{ site.nom }}. Les jeux sont à imprimer pour un usage privé ou au sein de la structure qui les achète.</p>
 </footer>
 {% block scripts %}{% endblock %}
+{% if site.goatcounter and not apercu %}<script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>{% endif %}
 </body>
 </html>

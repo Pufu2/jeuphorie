@@ -87,6 +87,20 @@
     </aside>
   </div>
 
+  {% set avis = (d.temoignages.temoignages or []) | selectattr('kit', 'equalto', k.id) | list %}
+  {% if avis or site.boutique.ventes_actives %}
+  <section class="section section--serree cadre--texte" aria-labelledby="t-avis">
+    <h2 id="t-avis" class="section__titre">{{ "Ils l'ont utilisé" if avis else "Votre avis compte" }}</h2>
+    {% for a in avis %}
+    <figure class="temoignage">
+      <blockquote><p>{{ a.texte }}</p></blockquote>
+      <figcaption>{{ a.qui }}</figcaption>
+    </figure>
+    {% endfor %}
+    <p class="petit">Vous avez utilisé ce kit ? <a href="mailto:{{ site.email }}?subject={{ ('Mon avis sur ' ~ (k.titre | titre_court)) | urlencode }}&amp;body={{ ('Bonjour,\n\nVoici comment ça s\'est passé :\n\n\nVotre prénom et le contexte (parent, animatrice, école…) :\n\nJ\'accepte que cet avis soit publié sur le site (oui / non) :\n\nMerci !') | urlencode }}">Racontez-moi comment ça s'est passé</a> : vos retours m'aident à améliorer les fichiers, et avec votre accord, ils aident d'autres familles et équipes à choisir.</p>
+  </section>
+  {% endif %}
+
   <section class="section section--serree cadre--texte" aria-labelledby="t-faq">
     <h2 id="t-faq" class="section__titre">Questions fréquentes</h2>
     <div class="questions">

@@ -79,7 +79,7 @@
   {% set voisins = jeux_fetes | rejectattr('id', 'equalto', j.id) | selectattr('fete', 'equalto', j.fete) | list %}
   {% if voisins %}
   <section class="section section--serree jeu-fete__voisins">
-    <h2 class="section__titre">Un autre jeu {{ f.de }}</h2>
+    <h2 class="section__titre">{{ ("Un autre jeu " ~ f.de) if voisins | length == 1 else ("D'autres jeux " ~ f.de) }}</h2>
     <div class="grille-jeux">{% for x in voisins %}{{ m.carte_jeu_fete(x) }}{% endfor %}</div>
   </section>
   {% endif %}
@@ -87,7 +87,7 @@
   <div class="bandeau-cadeau">
     <div>
       <h2 class="bandeau-cadeau__titre">3 grands jeux offerts</h2>
-      <p>Gendarmes et voleurs, Poules renards vipères et L'épervier gradé : les règles complètes et le schéma du terrain, à télécharger sans inscription, pour jouer toute l'année.</p>
+      <p>Gendarmes et voleurs, Poules renards vipères et L'épervier gradé : les règles complètes et le schéma du terrain, {{ 'à recevoir gratuitement par mail' if site.brevo_formulaire else 'à télécharger sans inscription' }}, pour jouer toute l'année.</p>
     </div>
     <a class="bouton bouton--encre" href="{{ lien('/jeux-gratuits/') }}">Télécharger les 3 jeux</a>
   </div>

@@ -120,6 +120,19 @@ def feuille(d, x, y, r, angle, c):
 def fabriquer(ident):
     reels = yaml.safe_load((RACINE / "donnees" / "reels.yml").read_text(encoding="utf-8"))["reels"]
     r = next(x for x in reels if x["id"] == ident)
+    fabriquer_video(r, RACINE / "statique" / "videos" / f"{ident}.mp4")
+
+
+def decor_saison(mois):
+    if mois in (9, 10):
+        return "feuilles"
+    if mois in (11, 12, 1, 2):
+        return "flocons"
+    return "confettis"
+
+
+def fabriquer_video(r, sortie, decor="feuilles"):
+    sortie = Path(sortie)
     couleur = r.get("couleur", "#C2571A")
     cartes = [carte(c, couleur) for c in r["cartes"]]
     duree_carte = r.get("duree_carte", 3.6)
@@ -129,7 +142,6 @@ def fabriquer(ident):
                  "a": rnd.uniform(0, 6.28), "va": rnd.uniform(-1.2, 1.2), "o": rnd.uniform(0.5, 1.6),
                  "c": rnd.choice(FEUILLES)} for _ in range(16)]
     total = int(len(cartes) * duree_carte * IPS)
-    sortie = RACINE / "statique" / "videos" / f"{ident}.mp4"
     sortie.parent.mkdir(parents=True, exist_ok=True)
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(IPS),
            "-i", "-", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-shortest",
@@ -141,10 +153,20 @@ def fabriquer(ident):
         t = n / IPS
         im = fond.copy()
         d = ImageDraw.Draw(im)
-        for f in feuilles:
+        for j, f in enumerate(feuilles):
             y = (f["y"] + f["v"] * t) % (H + 200) - 100
             x = f["x"] + 40 * math.sin(t * f["o"] + f["a"])
-            feuille(d, x, y, f["r"], f["a"] + f["va"] * t, f["c"])
+            if decor == "flocons":
+                rr = f["r"] * 0.55
+                d.ellipse([x - rr, y - rr, x + rr, y + rr], fill=["#A9C4EA", "#C9D9F2", "#8FB0E0"][j % 3])
+            elif decor == "confettis":
+                a = f["a"] + f["va"] * t * 2
+                w, h = f["r"] * 0.5, f["r"] * 0.22
+                pts = [(x + px * math.cos(a) - py * math.sin(a), y + px * math.sin(a) + py * math.cos(a))
+                       for px, py in [(-w, -h), (w, -h), (w, h), (-w, h)]]
+                d.polygon(pts, fill=["#CF3424", "#F2B21B", "#2D6A43", "#3D5BB8"][j % 4])
+            else:
+                feuille(d, x, y, f["r"], f["a"] + f["va"] * t, f["c"])
         i, k = divmod(n, int(duree_carte * IPS))
         i = min(i, len(cartes) - 1)
         alpha = min(1.0, k / fondu) if i > 0 or k < fondu else 1.0
@@ -161,7 +183,7 @@ def fabriquer(ident):
         p.stdin.write(im.tobytes())
     p.stdin.close()
     p.wait()
-    print(f"{sortie.relative_to(RACINE)} : {total / IPS:.1f} s, {sortie.stat().st_size // 1024} Ko")
+    print(f"{sortie.name} : {total / IPS:.1f} s, {sortie.stat().st_size // 1024} Ko")
 
 
 if __name__ == "__main__":

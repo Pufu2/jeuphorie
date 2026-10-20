@@ -46,6 +46,8 @@ jobs:
         run: |
           npm install --no-save --no-package-lock @fontsource/bricolage-grotesque@5 @fontsource/atkinson-hyperlegible@5 @fontsource/gochi-hand@5
           python3 outils/polices.py
+      - name: ffmpeg (vidéo du Reel du dimanche)
+        run: which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
       - name: Fabriquer le site
         run: python3 build.py
       - uses: actions/configure-pages@v5
@@ -79,7 +81,8 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ]; then python3 outils/indexnow.py; else python3 outils/indexnow.py --tout; fi
 
   reseaux:
-    # publie le sujet du jour sur Facebook et Instagram (mardi, jeudi, samedi), une seule fois par jour
+    # publie le sujet du jour sur Facebook et Instagram (mardi, jeudi, samedi) et le Reel du dimanche,
+    # une seule fois par jour
     needs: publier
     if: github.event_name == 'schedule' || inputs.publier_reseaux
     runs-on: ubuntu-latest
@@ -97,6 +100,7 @@ jobs:
         run: |
           sleep 60
           python3 outils/publier_reseaux.py
+          python3 outils/publier_reel.py --auto
 
   reel:
     # publie un Reel à la demande (Instagram et Facebook)

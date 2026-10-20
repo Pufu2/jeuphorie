@@ -1110,3 +1110,15 @@ a.tampon { text-decoration: none; }
 .grille-reseaux a { display: block; text-decoration: none; color: var(--encre); }
 .grille-reseaux img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 1px 4px rgba(26, 35, 64, 0.15); }
 .grille-reseaux span { display: block; font-size: 0.85rem; line-height: 1.3; margin-top: 0.35rem; }
+
+/* inscription à la lettre (3 jeux offerts) */
+.inscription { margin: 1.2rem 0 0.6rem; }
+.inscription label { display: block; font-weight: 700; margin-bottom: 0.4rem; }
+.inscription__ligne { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.inscription input[type=email] { flex: 1 1 14rem; min-width: 0; font: inherit; padding: 0.7rem 0.9rem; border: 2px solid var(--encre); border-radius: 999px; background: #fff; }
+.inscription__piege { position: absolute; left: -9999px; }
+
+/* témoignages */
+.temoignage { margin: 0 0 1rem; padding: 1rem 1.2rem; background: var(--fiche); border-left: 4px solid var(--fete); border-radius: 0 8px 8px 0; }
+.temoignage blockquote { margin: 0; font-style: italic; }
+.temoignage figcaption { margin-top: 0.4rem; font-size: 0.9rem; color: var(--encre-douce); }

@@ -45,7 +45,7 @@
       {% endif %}
       {% if j.offert %}
       <div class="encart encart--info encart--colonne">
-        <p><strong>Ce jeu est offert.</strong> Téléchargez sa fiche à imprimer, avec deux autres grands jeux, sans inscription.</p>
+        <p><strong>Ce jeu est offert.</strong> {{ 'Recevez gratuitement sa fiche à imprimer, avec deux autres grands jeux.' if site.brevo_formulaire else 'Téléchargez sa fiche à imprimer, avec deux autres grands jeux, sans inscription.' }}</p>
         <a class="bouton bouton--petit" href="{{ lien('/jeux-gratuits/') }}">Télécharger les 3 jeux</a>
       </div>
       {% else %}
