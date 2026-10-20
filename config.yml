@@ -28,6 +28,9 @@ bing_site_verification: ""
 pinterest_site_verification: "bb418ec8ae71343ebbe6f62c69349df2"
 # IndexNow : prévient Bing, Qwant, DuckDuckGo, Yandex et Seznam à chaque publication
 # (clé publique, sans compte ; le fichier /<clé>.txt est créé automatiquement).
+# Réseaux sociaux (identifiants publics, pas des secrets ; le jeton, lui, est dans les secrets GitHub : META_PAGE_TOKEN)
+meta_page_id: "1420693194451781"
+instagram_id: "17841461657685341"
 indexnow_cle: "90ce011ea2f1f93f7bd002bd10dc8adc"
 
 # Adresse de contact affichée sur le site.

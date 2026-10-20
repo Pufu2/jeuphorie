@@ -3,11 +3,10 @@
 Lancé chaque matin par GitHub Actions, après la mise en ligne du site (les visuels doivent être en ligne).
 Les jours de publication sont JOURS_META dans outils/reseaux.py (mardi, jeudi, samedi).
 
-Il lit trois secrets du dépôt (Settings > Secrets and variables > Actions) :
-  META_PAGE_ID     l'identifiant de la page Facebook
-  META_PAGE_TOKEN  le jeton d'accès de la page (jeton « permanent », voir docs/RESEAUX-SOCIAUX.md)
-  INSTAGRAM_ID     l'identifiant du compte Instagram professionnel relié à la page (facultatif)
-Sans ces secrets, il ne fait rien : Pinterest, lui, se nourrit tout seul du flux /flux/pinterest.xml.
+Les identifiants de la page et du compte Instagram sont dans config.yml (meta_page_id, instagram_id).
+Le jeton d'accès de la page, lui, est un secret du dépôt (Settings > Secrets and variables > Actions) :
+  META_PAGE_TOKEN  le jeton « permanent » de la page, voir docs/RESEAUX-SOCIAUX.md
+Sans ce secret, il ne fait rien : Pinterest, lui, se nourrit tout seul du flux /flux/pinterest.xml.
 
 Usage : python3 outils/publier_reseaux.py [--essai]   (--essai affiche sans rien publier)
 """
@@ -47,16 +46,19 @@ def main():
     if not p:
         print("Aucun sujet aujourd'hui.")
         return 0
-    base = yaml.safe_load((reseaux.RACINE / "config.yml").read_text(encoding="utf-8"))["url"].rstrip("/")
+    config = yaml.safe_load((reseaux.RACINE / "config.yml").read_text(encoding="utf-8"))
+    base = config["url"].rstrip("/")
     image = f"{base}/{reseaux.nom_visuel(p, 'post')}"
-    page_id, jeton, insta = (os.environ.get(k, "").strip() for k in ("META_PAGE_ID", "META_PAGE_TOKEN", "INSTAGRAM_ID"))
+    page_id = os.environ.get("META_PAGE_ID", "").strip() or str(config.get("meta_page_id") or "")
+    insta = os.environ.get("INSTAGRAM_ID", "").strip() or str(config.get("instagram_id") or "")
+    jeton = os.environ.get("META_PAGE_TOKEN", "").strip()
     print(f"Sujet du jour : {p['id']} ({image})")
     if essai:
         print("--- Facebook\n" + reseaux.legende(p, "facebook", base))
         print("--- Instagram\n" + reseaux.legende(p, "instagram", base))
         return 0
     if not (page_id and jeton):
-        print("Les secrets META_PAGE_ID et META_PAGE_TOKEN ne sont pas encore réglés : rien n'est publié.")
+        print("Le secret META_PAGE_TOKEN n'est pas encore réglé : rien n'est publié.")
         return 0
     erreurs = []
     try:
