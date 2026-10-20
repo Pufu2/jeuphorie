@@ -23,7 +23,7 @@ RACINE = Path(__file__).resolve().parents[1]
 POLICES = Path(__file__).resolve().parent / "polices-visuels"
 
 # premier jour du calendrier ; ne pas changer, sinon tout le calendrier se décale
-DEBUT = dt.date(2026, 10, 21)
+DEBUT = dt.date(2026, 10, 14)
 # jours de publication sur Facebook et Instagram (0 = lundi) ; Pinterest publie tous les jours
 JOURS_META = {1, 3, 5}
 
