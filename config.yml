@@ -25,7 +25,7 @@ langue: fr
 google_site_verification: ""
 bing_site_verification: ""
 # Pinterest : code de la balise « p:domain_verify » proposée pour « revendiquer » le site.
-pinterest_site_verification: ""
+pinterest_site_verification: "bb418ec8ae71343ebbe6f62c69349df2"
 # IndexNow : prévient Bing, Qwant, DuckDuckGo, Yandex et Seznam à chaque publication
 # (clé publique, sans compte ; le fichier /<clé>.txt est créé automatiquement).
 indexnow_cle: "90ce011ea2f1f93f7bd002bd10dc8adc"
