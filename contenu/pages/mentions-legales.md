@@ -10,6 +10,7 @@ description: "Mentions légales du site Jeuphorie : éditeur, hébergeur, platef
 
 ## Éditeur du site
 
+{% if site.editeur_ok %}
 Le site {{ site.url | replace('https://', '') }} est édité par :
 
 - **Nom :** {{ site.editeur.nom }}
@@ -20,6 +21,11 @@ Le site {{ site.url | replace('https://', '') }} est édité par :
 - **Contact :** {{ site.email }}
 
 **Directeur de la publication :** {{ site.editeur.nom }}.
+{% else %}
+Le site {{ site.url | replace('https://', '') }} est édité à titre non professionnel par Rafaël, créateur de Jeuphorie, joignable à {{ site.email }}. Conformément à l'article 6, III, 2 de la loi n° 2004-575 du 21 juin 2004, ses coordonnées ont été communiquées à l'hébergeur. Elles figureront ici à l'ouverture de la boutique.
+
+**Directeur de la publication :** Rafaël, créateur de Jeuphorie.
+{% endif %}
 
 ## Hébergeur
 
@@ -40,7 +46,7 @@ Les textes, jeux, règles, mises en page et illustrations de ce site et des kits
 
 Toute reproduction ou diffusion, même partielle, sans autorisation écrite est interdite. L'usage des kits achetés est précisé dans les [conditions de vente](/conditions-de-vente/).
 
-**Crédits des illustrations :** [[à compléter à chaque illustration sous licence : auteur, source, licence]]
+**Crédits des illustrations :** les illustrations du site et des kits sont créées pour Jeuphorie. Si une illustration sous licence est un jour utilisée, son auteur et sa licence seront indiqués ici.
 
 ## Données personnelles et cookies
 

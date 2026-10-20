@@ -144,12 +144,19 @@ class Site:
     def __init__(self, apercu=False):
         self.apercu = apercu
         self.config = lire_yaml(RACINE / "config.yml")
+        # identité de l'éditeur : renseignée quand aucune valeur ne commence par « [[ »
+        ed = self.config.get("editeur", {})
+        self.config["editeur_ok"] = all(not str(v).startswith("[[") for v in ed.values())
+        self.config["mediateur_ok"] = all(not str(v).startswith("[[") for v in self.config.get("mediateur", {}).values())
+        self.config["editeur_nom"] = ed.get("nom") if self.config["editeur_ok"] else "Rafaël, créateur de Jeuphorie"
         self.donnees = {f.stem: lire_yaml(f) for f in (RACINE / "donnees").glob("*.yml")}
         self.env = Environment(loader=FileSystemLoader(RACINE / "gabarits"),
                                autoescape=select_autoescape(["html", "xml"]),
                                trim_blocks=True, lstrip_blocks=True)
         self.env.filters["date_fr"] = date_fr
         self.env.filters["resume"] = resume
+        # « Armonia, … : un thème de séjour complet » devient « Armonia, … » sur les cartes et le fil d'Ariane
+        self.env.filters["titre_court"] = lambda t: t.split(" : ")[0] if re.search(r" : une? ", t) else t
         self.env.tests["contient"] = lambda liste, x: x in (liste or [])
         self.env.filters["fil_jsonld"] = lambda fil, base: [
             {"@type": "ListItem", "position": i, "name": nom, "item": base.rstrip("/") + url}

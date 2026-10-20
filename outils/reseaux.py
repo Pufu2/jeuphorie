@@ -319,7 +319,7 @@ def fabriquer(sortie, base, aujourdhui=None):
 <channel>
   <title>Jeuphorie : jeux et animations clés en main</title>
   <link>{base}/</link>
-  <description>Jeux pour enfants, fêtes, anniversaires et grands jeux, par un directeur d'accueil de loisirs.</description>
+  <description>Jeux pour enfants, fêtes, anniversaires et grands jeux, par un directeur adjoint d'accueil de loisirs.</description>
   <language>fr-FR</language>
 {chr(10).join(items)}
 </channel>

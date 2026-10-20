@@ -16,7 +16,7 @@
 {% set achetable = site.boutique.ventes_actives and k.etat == 'en_vente' and k.paiement %}
 {% set u = d.univers.univers | selectattr('id', 'equalto', k.univers) | first %}
 <article class="cadre produit produit--{{ u.couleur }}">
-  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien(u.url) }}">{{ u.nom }}</a>{% if k.fete %} <span aria-hidden="true">/</span> <a href="{{ lien('/fetes/' ~ k.fete ~ '/') }}">{% for f in d.fetes.fetes if f.slug == k.fete %}{{ f.nom }}{% endfor %}</a>{% endif %} <span aria-hidden="true">/</span> <span>{{ k.titre }}</span></nav>
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien(u.url) }}">{{ u.nom }}</a>{% if k.fete %} <span aria-hidden="true">/</span> <a href="{{ lien('/fetes/' ~ k.fete ~ '/') }}">{% for f in d.fetes.fetes if f.slug == k.fete %}{{ f.nom }}{% endfor %}</a>{% endif %} <span aria-hidden="true">/</span> <span>{{ k.titre | titre_court }}</span></nav>
   <div class="produit__haut">
     <div class="produit__visuel">
       <img class="produit__couverture" src="{{ statique('img/kits/' ~ k.id ~ '-couverture.jpg') }}" alt="Couverture du fichier : {{ k.titre }}" width="560" height="792">

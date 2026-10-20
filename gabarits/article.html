@@ -11,7 +11,7 @@
 <article class="cadre cadre--texte article">
   <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/blog/') }}">Blog</a></nav>
   <h1 class="titre-page">{{ a.titre }}</h1>
-  <p class="article__meta">Par {{ site.auteur.prenom }}, directeur d'animation. <time datetime="{{ a.date.isoformat() }}">{{ a.date | date_fr }}</time>, {{ a.lecture }} min de lecture.</p>
+  <p class="article__meta">Par {{ site.auteur.prenom }}, directeur adjoint d'accueil de loisirs. <time datetime="{{ a.date.isoformat() }}">{{ a.date | date_fr }}</time>, {{ a.lecture }} min de lecture.</p>
   {% if a.chapo %}<p class="chapo">{{ a.chapo }}</p>{% endif %}
   <div class="texte">
     {{ contenu | safe }}

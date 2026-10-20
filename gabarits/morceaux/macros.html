@@ -15,7 +15,7 @@
     {% if k.etat == 'en_preparation' %}<span class="fiche__badge">Bientôt</span>{% endif %}
   </a>
   <p class="fiche__univers-texte">{{ nom_univers(k.univers) }}</p>
-  <h{{ titre_niveau }} class="fiche__titre"><a href="{{ lien('/boutique/' ~ k.id ~ '/') }}">{{ k.titre }}</a></h{{ titre_niveau }}>
+  <h{{ titre_niveau }} class="fiche__titre"><a href="{{ lien('/boutique/' ~ k.id ~ '/') }}">{{ k.titre | titre_court }}</a></h{{ titre_niveau }}>
   <p class="fiche__accroche">{{ k.accroche }}</p>
   <dl class="fiche__tech">
     <div><dt>Âge</dt><dd>{{ k.age }}</dd></div>

@@ -7,7 +7,7 @@ chapo: Nous collectons le moins de données possible, et seulement pour vous liv
 
 ## Qui est responsable
 
-Le responsable du traitement est {{ site.editeur.nom }}, éditeur du site Jeuphorie, joignable à {{ site.email }}.
+Le responsable du traitement est {{ site.editeur_nom }}, éditeur du site Jeuphorie, joignable à {{ site.email }}.
 
 ## Quelles données, pourquoi, et combien de temps
 
@@ -23,7 +23,7 @@ Vos données bancaires sont saisies sur les pages sécurisées de Stripe. Jeupho
 
 - **Stripe** ({{ site.plateforme_vente.nom }}, {{ site.plateforme_vente.adresse }}), qui traite les paiements, les abonnements et les reçus.
 - **Notre service de messagerie**, qui achemine les messages que nous vous envoyons : lien de votre bibliothèque, réponses à vos questions.
-- **GitHub** ({{ site.hebergeur.adresse }}), qui héberge le site. Comme tout hébergeur, GitHub peut enregistrer l'adresse IP des visiteurs pour la sécurité du service. [[à vérifier : garanties de transfert vers les États-Unis annoncées par GitHub]]
+- **GitHub** ({{ site.hebergeur.adresse }}), qui héberge le site. Comme tout hébergeur, GitHub peut enregistrer l'adresse IP des visiteurs pour la sécurité du service. GitHub adhère au cadre de protection des données UE–États-Unis (Data Privacy Framework), qui encadre ces transferts.
 
 Vos données ne sont jamais vendues ni transmises à des fins publicitaires.
 

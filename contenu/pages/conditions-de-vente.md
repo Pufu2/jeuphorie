@@ -11,7 +11,7 @@ chapo: "Version du 18 octobre 2026. Ces conditions s'appliquent à tous les acha
 
 ## 1. Qui vend
 
-Les kits sont vendus par {{ site.editeur.nom }}, {{ site.editeur.statut }}, {{ site.editeur.adresse }}, SIREN {{ site.editeur.siren }}, joignable à {{ site.email }} (ci-après « Jeuphorie »).
+{% if site.editeur_ok %}Les kits sont vendus par {{ site.editeur.nom }}, {{ site.editeur.statut }}, {{ site.editeur.adresse }}, SIREN {{ site.editeur.siren }}, joignable à {{ site.email }} (ci-après « Jeuphorie »).{% else %}Les kits seront vendus par l'entreprise individuelle de Rafaël, créateur de Jeuphorie, joignable à {{ site.email }} (ci-après « Jeuphorie »). Son identité complète (nom, adresse, numéro SIREN) sera indiquée ici à l'ouverture des ventes.{% endif %}
 
 Les paiements sont traités par **{{ site.plateforme_vente.nom }}** ({{ site.plateforme_vente.adresse }}), prestataire de paiement agréé.
 
@@ -23,7 +23,7 @@ Chaque fiche produit indique le contenu du kit, l'âge conseillé, le nombre de 
 
 ## 3. Prix
 
-Les prix sont indiqués en euros, toutes taxes comprises. {{ site.editeur.tva }}
+Les prix sont indiqués en euros, toutes taxes comprises.{% if site.editeur_ok %} {{ site.editeur.tva }}{% endif %}
 
 Le prix payé est celui affiché au moment de la commande.
 
@@ -102,9 +102,13 @@ Pour toute réclamation, écrivez d'abord à {{ site.email }}. Nous répondons s
 
 Si le désaccord persiste, vous pouvez recourir gratuitement au médiateur de la consommation dont relève Jeuphorie (article L. 612-1 du Code de la consommation) :
 
+{% if site.mediateur_ok %}
 - **{{ site.mediateur.nom }}**
 - {{ site.mediateur.adresse }}
 - {{ site.mediateur.site }}
+{% else %}
+- Le nom et les coordonnées du médiateur seront indiqués ici à l'ouverture des ventes.
+{% endif %}
 
 ## 14. Droit applicable
 
@@ -114,7 +118,7 @@ Ces conditions sont soumises au droit français. En cas de litige, et à défaut
 
 À utiliser uniquement si le droit de rétractation s'applique (voir l'article 7). Envoyez-le à {{ site.email }}.
 
-> À l'attention de {{ site.editeur.nom }}, Jeuphorie, {{ site.email }} :
+> À l'attention de {{ site.editeur_nom }}, Jeuphorie, {{ site.email }} :
 >
 > Je vous notifie par la présente ma rétractation du contrat portant sur la vente du contenu numérique ci-dessous :
 >
