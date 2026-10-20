@@ -610,6 +610,7 @@ kits:
 
   - id: semaine-voyageurs-du-temps
     titre: 'Une semaine de vacances clé en main : les voyageurs du temps'
+    titre_seo: "Semaine de vacances clé en main : les voyageurs du temps"
     univers: professionnels
     rubrique: animation
     publics:
@@ -882,6 +883,7 @@ kits:
 
   - id: tournoi-des-nations
     titre: 'Le tournoi des nations : un grand événement multisport par équipes'
+    titre_seo: "Tournoi des nations : grand événement multisport enfants"
     univers: professionnels
     rubrique: animation
     publics:
@@ -940,6 +942,7 @@ kits:
 
   - id: armonia
     titre: 'Armonia, la légende des sept éléments : un thème de séjour complet'
+    titre_seo: "Armonia : thème de séjour clé en main pour colonie"
     univers: professionnels
     rubrique: sejours
     publics:
@@ -983,6 +986,7 @@ kits:
 
   - id: terres-oubliees
     titre: 'Les Terres Oubliées, la légende du Kraken : un thème de séjour pirates et marine'
+    titre_seo: "Thème de séjour pirates : Les Terres Oubliées"
     univers: professionnels
     rubrique: sejours
     publics:
@@ -1026,6 +1030,7 @@ kits:
 
   - id: dystopia
     titre: "Dystopia, la cité d'Omnix : un thème de séjour d'anticipation"
+    titre_seo: "Thème de séjour Dystopia : une cité gouvernée par une IA"
     univers: professionnels
     rubrique: sejours
     publics:

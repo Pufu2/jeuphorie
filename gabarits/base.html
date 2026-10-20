@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-{% set titre_complet = (page.titre ~ " | " ~ site.nom) if page.titre else (site.nom ~ " | " ~ site.signature) %}
+{% set titre_complet = ((page.titre ~ " | " ~ site.nom) if (page.titre | length) <= 52 else page.titre) if page.titre else (site.nom ~ " | " ~ site.signature) %}
 <title>{{ titre_complet }}</title>
-<meta name="description" content="{{ page.description | trim }}">
+<meta name="description" content="{{ page.description | trim | resume(158) }}">
 {% if not page.indexer %}<meta name="robots" content="noindex">{% endif %}
 <link rel="canonical" href="{{ url_complete }}">
 {% set image_partage = site.url.rstrip('/') ~ '/' ~ (page.image or 'img/partage.jpg') %}
@@ -21,6 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FBFAF7">
 {% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
+{% if site.pinterest_site_verification %}<meta name="p:domain_verify" content="{{ site.pinterest_site_verification }}">{% endif %}
 {% if site.bing_site_verification %}<meta name="msvalidate.01" content="{{ site.bing_site_verification }}">{% endif %}
 {% if page.fil %}
 <script type="application/ld+json">
@@ -114,6 +115,7 @@
       <p class="pied__titre">Jeuphorie</p>
       <a href="{{ lien('/qui-suis-je/') }}">Qui suis-je</a>
       <a href="{{ lien('/blog/') }}">Le blog</a>
+      <a href="{{ lien('/liens-utiles/') }}">Liens utiles</a>
       <a href="{{ lien('/contact/') }}">Contact et devis</a>
       <a href="{{ lien('/mentions-legales/') }}">Mentions légales</a>
       <a href="{{ lien('/conditions-de-vente/') }}">Conditions de vente</a>

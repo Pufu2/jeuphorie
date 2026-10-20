@@ -56,11 +56,18 @@ Google fait davantage confiance à un site cité par d'autres. Les pistes les pl
 3. **Les réseaux d'animation.** Groupes d'animateurs et de directeurs (forums, groupes Facebook, réseaux de formation BAFA et BAFD) : partager les jeux offerts et les articles utiles, jamais de publicité directe.
 4. **Les annuaires et sites de ressources éducatives** qui acceptent les ressources gratuites.
 
-## Ce qu'il reste à faire (une seule fois)
+## Ce qui est automatique
 
-1. **Google Search Console** (gratuit) : aller sur search.google.com/search-console, ajouter la propriété `jeuphorie.fr`. La vérification la plus simple pour un domaine OVHcloud est l'enregistrement DNS TXT (OVHcloud > Domaine > Zone DNS > Ajouter une entrée TXT). Sinon, choisir « balise HTML », copier la valeur `content` et la coller dans `config.yml` à la ligne `google_site_verification`.
-2. Dans Search Console, envoyer le plan du site : `https://jeuphorie.fr/sitemap.xml`.
-3. **Bing Webmaster Tools** (gratuit, alimente aussi Qwant et DuckDuckGo) : importer le site depuis Search Console en un clic, ou coller le code dans `bing_site_verification`.
+- **IndexNow** : à chaque publication, le site prévient Bing, Qwant, DuckDuckGo, Yandex et Seznam des pages nouvelles ou modifiées (`outils/indexnow.py`, clé publique `indexnow_cle` dans `config.yml`). Aucun compte n'est nécessaire.
+- **Google** découvre les nouvelles pages grâce au plan du site, une fois la Search Console réglée (ci-dessous).
+- **Les réseaux sociaux** : une épingle Pinterest par jour et trois publications par semaine sur Facebook et Instagram, qui ramènent des visiteurs et des liens vers le site. Voir `docs/RESEAUX-SOCIAUX.md`.
+- **La page « Liens utiles »** (`contenu/pages/liens-utiles.md`) renvoie vers les sites de référence de l'animation : elle sert les lecteurs et situe Jeuphorie dans son domaine aux yeux de Google.
+
+## Ce qu'il reste à faire (une seule fois, 5 minutes)
+
+1. **Google Search Console** : aller sur search.google.com/search-console, « Ajouter une propriété », choisir **Préfixe de l'URL** et saisir `https://jeuphorie.fr/`. Choisir la méthode **Balise HTML**, copier la valeur `content="…"` (ce n'est pas un mot de passe : elle est publiée dans la page d'accueil) et la coller dans `config.yml` à la ligne `google_site_verification`, ou l'envoyer à Claude. Une fois le site republié, cliquer sur « Valider ».
+2. Dans Search Console, menu **Sitemaps** : envoyer `sitemap.xml`.
+3. **Bing Webmaster Tools** : « Importer depuis Google Search Console », en un clic. Bing alimente aussi Qwant, DuckDuckGo et Ecosia.
 4. Un mois plus tard, regarder dans Search Console les recherches qui amènent des visiteurs : ce sont les meilleurs sujets pour les prochains articles.
 
 ## Les règles à garder

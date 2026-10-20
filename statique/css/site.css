@@ -1104,3 +1104,9 @@ a.tampon { text-decoration: none; }
 .calendrier-pro { display: grid; gap: 1.5rem; grid-template-columns: 1fr; align-items: center; background: var(--pro-clair); border-radius: var(--rayon); padding: 1.5rem; }
 .calendrier-pro img { width: 180px; height: auto; border-radius: 6px; box-shadow: 0 4px 12px rgba(26, 35, 64, 0.15); }
 @media (min-width: 700px) { .calendrier-pro { grid-template-columns: 200px 1fr; } }
+
+/* page « lien de la bio » des réseaux sociaux */
+.grille-reseaux { list-style: none; padding: 0; margin: 1.5rem 0 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.9rem; }
+.grille-reseaux a { display: block; text-decoration: none; color: var(--encre); }
+.grille-reseaux img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 1px 4px rgba(26, 35, 64, 0.15); }
+.grille-reseaux span { display: block; font-size: 0.85rem; line-height: 1.3; margin-top: 0.35rem; }

@@ -26,6 +26,7 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent / "outils"))
 from schemas import schema_svg  # noqa: E402
 from schemas_fetes import schema_fete  # noqa: E402
+import reseaux  # noqa: E402
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 RACINE = Path(__file__).resolve().parent
@@ -99,6 +100,15 @@ def date_fr(d):
     return f"{jour} {MOIS[d.month - 1]} {d.year}"
 
 
+def resume(texte, n=158):
+    """Coupe un texte au dernier mot complet avant n caractères (descriptions pour les moteurs)."""
+    texte = " ".join(str(texte).split())
+    if len(texte) <= n:
+        return texte
+    coupe = texte[:n - 1].rsplit(" ", 1)[0].rstrip(" ,;:.")
+    return coupe + "…"
+
+
 def temps_de_lecture(texte):
     mots = len(re.findall(r"\w+", texte))
     return max(1, round(mots / 220))
@@ -139,6 +149,7 @@ class Site:
                                autoescape=select_autoescape(["html", "xml"]),
                                trim_blocks=True, lstrip_blocks=True)
         self.env.filters["date_fr"] = date_fr
+        self.env.filters["resume"] = resume
         self.env.tests["contient"] = lambda liste, x: x in (liste or [])
         self.env.filters["fil_jsonld"] = lambda fil, base: [
             {"@type": "ListItem", "position": i, "name": nom, "item": base.rstrip("/") + url}
@@ -258,6 +269,9 @@ class Site:
             self.ajouter(entete["url"], entete.get("gabarit", "page.html"),
                          titre=entete["titre"], description=entete.get("description", ""),
                          corps_md=corps, page_entete=entete)
+        self.ajouter("/reseaux/", "reseaux.html", titre="Nos dernières publications",
+                     description="Les dernières publications de Jeuphorie sur Instagram, Facebook et Pinterest.",
+                     indexer=False, publications=reseaux.fabriquer(SORTIE, self.config["url"]))
         self.ajouter("/404.html", "404.html", titre="Page introuvable", indexer=False)
         for ancienne, nouvelle in REDIRECTIONS.items():
             self.ajouter(ancienne, "redirection.html", titre="Cette page a changé d'adresse",
@@ -344,6 +358,9 @@ class Site:
             lignes.append(f"  <url><loc>{html.escape(base + p['url'])}</loc>{lastmod}</url>")
         lignes.append("</urlset>")
         (SORTIE / "sitemap.xml").write_text("\n".join(lignes) + "\n", encoding="utf-8")
+        if self.config.get("indexnow_cle"):
+            cle = self.config["indexnow_cle"]
+            (SORTIE / f"{cle}.txt").write_text(cle, encoding="utf-8")
         (SORTIE / "robots.txt").write_text(
             f"User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n", encoding="utf-8")
         flux = self.env.get_template("flux.xml").render(

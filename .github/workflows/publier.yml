@@ -53,3 +53,38 @@ jobs:
     steps:
       - id: deploiement
         uses: actions/deploy-pages@v4
+
+  signaler:
+    # prévient les moteurs de recherche des pages publiées (IndexNow)
+    needs: publier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Prévenir Bing, Qwant, DuckDuckGo et les autres
+        run: |
+          sleep 60
+          if [ "${{ github.event_name }}" = "schedule" ]; then python3 outils/indexnow.py; else python3 outils/indexnow.py --tout; fi
+
+  reseaux:
+    # publie le sujet du jour sur Facebook et Instagram (mardi, jeudi, samedi), une seule fois par jour
+    needs: publier
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Publier sur Facebook et Instagram
+        env:
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          INSTAGRAM_ID: ${{ secrets.INSTAGRAM_ID }}
+        run: |
+          sleep 60
+          python3 outils/publier_reseaux.py

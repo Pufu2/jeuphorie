@@ -1,0 +1,346 @@
+"""Les réseaux sociaux de Jeuphorie, en automatique.
+
+Chaque jour, le calendrier choisit un sujet du site (un article du blog, un jeu offert, une page d'univers, et les kits
+quand les ventes sont ouvertes), en suivant les saisons. Pour chaque publication, ce module fabrique :
+- un visuel vertical pour Pinterest (1000 × 1500) et un visuel pour Facebook et Instagram (1080 × 1350) ;
+- la légende, écrite à partir des textes du site (titre, accroche) et de mots-clés choisis par thème ;
+- le flux /flux/pinterest.xml, que Pinterest lit tout seul pour créer les épingles ;
+- la page /reseaux/ (le « lien de la bio » d'Instagram), avec les dernières publications.
+
+La publication sur Facebook et Instagram se fait par outils/publier_reseaux.py, lancé chaque matin par GitHub Actions.
+Rien n'est à faire à la main : il suffit d'écrire des articles (déjà automatique) pour nourrir le calendrier.
+"""
+import datetime as dt
+import functools
+import html
+import re
+import textwrap
+from pathlib import Path
+
+import yaml
+
+RACINE = Path(__file__).resolve().parents[1]
+POLICES = Path(__file__).resolve().parent / "polices-visuels"
+
+# premier jour du calendrier ; ne pas changer, sinon tout le calendrier se décale
+DEBUT = dt.date(2026, 10, 21)
+# jours de publication sur Facebook et Instagram (0 = lundi) ; Pinterest publie tous les jours
+JOURS_META = {1, 3, 5}
+
+COULEURS = {
+    "fete": ("#CF3424", "#FDE6E1"),
+    "plein-air": ("#2D6A43", "#DDEEE2"),
+    "saison": ("#C2571A", "#FBEADF"),
+    "soleil": ("#F2B21B", "#FFF2CC"),
+    "pro": ("#1E2D5A", "#E2E8F6"),
+}
+ENCRE, PAPIER = "#1A2340", "#FBFAF7"
+
+MOIS_FETES = {"toussaint": {9, 10}, "noel": {11, 12}, "carnaval": {1, 2}, "paques": {3, 4}}
+
+MOTS_CLES = {
+    "anniversaires": "#anniversaireenfant #jeuxanniversaire #fetedanniversaire #jeuxenfants #idéesanniversaire",
+    "grands-jeux": "#grandjeu #jeuxcollectifs #animation #centredeloisirs #jeuxdecour",
+    "fetes": "#activitésenfants #jeuxenfants #fêtes #animation #enfants",
+    "kermesse": "#kermesse #fêtedécole #associationdeparents #apé #jeuxdekermesse",
+    "professionnels": "#animateur #bafa #bafd #accueildeloisirs #colonie",
+    "toussaint": "#toussaint #automne #vacancesdelatoussaint #activitésautomne #jeuxenfants",
+    "noel": "#noël #jeuxdenoël #activitésnoël #arbredenoël #jeuxenfants",
+    "carnaval": "#carnaval #carnavalenfants #déguisement #jeuxenfants #activitésenfants",
+    "paques": "#pâques #chasseauxoeufs #activitéspâques #jeuxenfants #printemps",
+}
+
+
+# ---------------------------------------------------------------- les sujets
+
+def _yaml(chemin):
+    return yaml.safe_load(Path(chemin).read_text(encoding="utf-8")) or {}
+
+
+def _entete(chemin):
+    texte = Path(chemin).read_text(encoding="utf-8")
+    if texte.startswith("---"):
+        _, entete, _ = texte.split("---", 2)
+        return yaml.safe_load(entete) or {}
+    return {}
+
+
+def _propre(texte):
+    return " ".join(str(texte or "").split())
+
+
+def sujets(jour):
+    """Tous les sujets publiables à la date donnée, dans un ordre stable."""
+    return [s for s in _tous() if s["type"] != "article" or s["date"] <= jour]
+
+
+@functools.lru_cache(maxsize=1)
+def _tous():
+    config = _yaml(RACINE / "config.yml")
+    d = {f.stem: _yaml(f) for f in (RACINE / "donnees").glob("*.yml")}
+    univers = {u["id"]: u for u in d["univers"]["univers"]}
+    liste = []
+
+    for f in sorted((RACINE / "contenu" / "blog").glob("*.md")):
+        e = _entete(f)
+        date = e.get("date")
+        if isinstance(date, str):
+            date = dt.date.fromisoformat(date)
+        if e.get("brouillon") or not date:
+            continue
+        slug = e.get("slug") or re.sub(r"^\d{4}-\d{2}-\d{2}-", "", f.stem)
+        u = (e.get("univers") or ["fetes"])[0]
+        fete = (e.get("fetes") or [None])[0]
+        liste.append({"id": f"blog-{slug}", "type": "article", "date": date, "titre": e["titre"],
+                      "texte": _propre(e.get("chapo") or e.get("description")), "url": f"/blog/{slug}/",
+                      "surtitre": "Nouveau sur le blog", "couleur": univers.get(u, {}).get("couleur", "pro"),
+                      "mots": MOTS_CLES.get(fete) or MOTS_CLES.get(u, MOTS_CLES["fetes"]), "mois": MOIS_FETES.get(fete)})
+
+    for j in d.get("jeux-fetes", {}).get("jeux", []):
+        liste.append({"id": f"fete-{j['id']}", "type": "jeu", "titre": j["nom"], "texte": _propre(j["accroche"]),
+                      "url": f"/fetes/{j['fete']}/{j['id']}/", "surtitre": "Jeu offert, règles complètes",
+                      "couleur": "saison", "mots": MOTS_CLES.get(j["fete"], MOTS_CLES["fetes"]),
+                      "mois": MOIS_FETES.get(j["fete"]),
+                      "detail": (f"Dès {j['age_min']} ans" if j["age_max"] >= 18 else f"{j['age_min']} à {j['age_max']} ans")
+                      + f" · {j['joueurs'][0]} à {j['joueurs'][1]} joueurs"})
+
+    for j in d.get("jeux", {}).get("jeux", []):
+        if j.get("offert"):
+            liste.append({"id": f"jeu-{j['id']}", "type": "jeu", "titre": j["nom"],
+                          "texte": _propre(j.get("accroche") or ("Le but : " + j.get("but", "")[:1].lower() + j.get("but", "")[1:] + " " + " ".join(
+                              re.split(r"(?<=[.!?]) ", _propre(j.get("organisation")))[:2]))),
+                          "url": f"/jeux/{j['id']}/",
+                          "detail": f"Dès {j['age_min']} ans · {j['joueurs'][0]} à {j['joueurs'][1]} joueurs · {j['duree']} min",
+                          "surtitre": "Grand jeu offert, règles complètes", "couleur": "plein-air",
+                          "mots": MOTS_CLES["grands-jeux"], "mois": None})
+
+    for u in univers.values():
+        liste.append({"id": f"univers-{u['id']}", "type": "univers", "titre": u["titre_page"],
+                      "texte": _propre(u["accroche"]), "url": u["url"], "surtitre": u.get("public", ""),
+                      "couleur": u["couleur"], "mots": MOTS_CLES.get(u["id"], MOTS_CLES["fetes"]),
+                      "mois": {2, 3, 4, 5, 6} if u["id"] == "kermesse" else None})
+
+    if config.get("boutique", {}).get("ventes_actives"):
+        for k in d["kits"]["kits"]:
+            if k.get("etat") != "pret":
+                continue
+            u = univers.get(k.get("univers"), {})
+            liste.append({"id": f"kit-{k['id']}", "type": "kit", "titre": k.get("titre_seo") or k["titre"],
+                          "texte": _propre(k["accroche"]), "url": f"/boutique/{k['id']}/",
+                          "surtitre": "Kit à imprimer", "couleur": u.get("couleur", "pro"),
+                          "mots": MOTS_CLES.get(k.get("univers"), MOTS_CLES["fetes"]), "mois": None,
+                          "couverture": f"img/kits/{k['id']}-couverture.jpg"})
+    return liste
+
+
+def _historique(jusqua):
+    """Le calendrier complet, du premier jour à la date donnée : {jour: publication}.
+
+    Le jour où un article paraît, c'est lui. Les autres jours, on prend parmi les sujets de saison celui qui attend
+    depuis le plus longtemps : chaque sujet revient à tour de rôle, et sous un visuel différent (3 variantes)."""
+    histo, dernier, fois = {}, {}, {}
+    jour = DEBUT
+    while jour <= jusqua:
+        tous = sujets(jour)
+        choix = next((s for s in tous if s["type"] == "article" and s["date"] == jour), None)
+        if not choix:
+            mois_suivant = jour.month % 12 + 1
+            candidats = [s for s in tous if (s["type"] != "article" or (jour - s["date"]).days > 21)
+                         and (not s["mois"] or jour.month in s["mois"] or mois_suivant in s["mois"])]
+            if candidats:
+                choix = min(candidats, key=lambda s: dernier.get(s["id"], DEBUT - dt.timedelta(days=9999)))
+        if choix:
+            n = fois.get(choix["id"], 0)
+            histo[jour] = {**choix, "variante": n % 3, "jour": jour}
+            fois[choix["id"]] = n + 1
+            dernier[choix["id"]] = jour
+        jour += dt.timedelta(days=1)
+    return histo
+
+
+def publication(jour):
+    """La publication du jour, ou None."""
+    return _historique(jour).get(jour)
+
+
+def calendrier(jusqua, combien=60):
+    """Les publications passées, de la plus récente à la plus ancienne."""
+    histo = _historique(jusqua)
+    return [histo[j] for j in sorted(histo, reverse=True)][:combien]
+
+
+# ---------------------------------------------------------------- les légendes
+
+def legende(p, reseau, base):
+    lien = base.rstrip("/") + p["url"]
+    debut = {"article": "", "jeu": "Un jeu à essayer cette semaine. ", "univers": "", "kit": ""}[p["type"]]
+    corps = f"{p['titre']}\n\n{debut}{p['texte']}"
+    if p.get("detail"):
+        corps += f"\n\n{p['detail']}"
+    if reseau == "instagram":
+        suite = {"article": "L'article complet est sur jeuphorie.fr (lien dans la bio).",
+                 "jeu": "Les règles complètes, gratuites, sont sur jeuphorie.fr (lien dans la bio).",
+                 "univers": "Tout est sur jeuphorie.fr (lien dans la bio).",
+                 "kit": "Le kit est sur jeuphorie.fr (lien dans la bio)."}[p["type"]]
+        return f"{corps}\n\n{suite}\n\n{p['mots']}"
+    if reseau == "pinterest":
+        sep = " " if p["titre"].rstrip()[-1:] in "?!." else ". "
+        return _propre(f"{p['titre']}{sep}{p['texte']}")[:480]
+    suite = {"article": "À lire ici :", "jeu": "Les règles complètes, gratuites :", "univers": "C'est par ici :",
+             "kit": "Le kit :"}[p["type"]]
+    return f"{corps}\n\n{suite} {lien}"
+
+
+# ---------------------------------------------------------------- les visuels
+
+def _police(nom, taille):
+    from PIL import ImageFont
+    return ImageFont.truetype(str(POLICES / nom), taille)
+
+
+def _lignes(dessin, texte, police, largeur):
+    mots, lignes, cour = texte.split(), [], ""
+    for m in mots:
+        essai = (cour + " " + m).strip()
+        if dessin.textlength(essai, font=police) <= largeur:
+            cour = essai
+        else:
+            if cour:
+                lignes.append(cour)
+            cour = m
+    if cour:
+        lignes.append(cour)
+    return lignes
+
+
+def visuel(p, largeur, hauteur, chemin):
+    from PIL import Image, ImageDraw
+    vif, clair = COULEURS.get(p["couleur"], COULEURS["pro"])
+    var = p.get("variante", 0)
+    fond = [PAPIER, clair, vif][var]
+    texte_c = "#FFFFFF" if var == 2 else ENCRE
+    accent = "#FFFFFF" if var == 2 else vif
+    im = Image.new("RGB", (largeur, hauteur), fond)
+    d = ImageDraw.Draw(im)
+    marge = int(largeur * 0.08)
+    # la guirlande de fanions du site
+    fanions = ["#CF3424", "#F2B21B", "#2D6A43", "#3D5BB8"]
+    pas = largeur / 14
+    d.line([(0, 18), (largeur, 18)], fill="#4B5675" if var != 2 else "#FFFFFF", width=2)
+    for i in range(15):
+        x = i * pas
+        d.polygon([(x + 6, 18), (x + pas - 6, 18), (x + pas / 2, 18 + pas * 0.75)], fill=fanions[i % 4])
+    y = int(hauteur * 0.13)
+    # surtitre
+    f_sur = _police("Atkinson-700.ttf", int(largeur * 0.034))
+    d.text((marge, y), p["surtitre"].upper(), font=f_sur, fill=accent)
+    y += int(largeur * 0.075)
+    # image de couverture d'un kit, sinon un grand titre
+    couverture = p.get("couverture") and (RACINE / "statique" / p["couverture"])
+    taille_titre = int(largeur * (0.1 if len(p["titre"]) < 45 else 0.085 if len(p["titre"]) < 70 else 0.072))
+    f_titre = _police("Bricolage-800.ttf", taille_titre)
+    for ligne in _lignes(d, p["titre"], f_titre, largeur - 2 * marge)[:5]:
+        d.text((marge, y), ligne, font=f_titre, fill=texte_c)
+        y += int(taille_titre * 1.12)
+    y += int(largeur * 0.03)
+    d.rectangle([marge, y, marge + int(largeur * 0.16), y + 8], fill=accent if var != 1 else vif)
+    y += int(largeur * 0.06)
+    reste = hauteur - y - int(hauteur * 0.24)
+    if couverture and couverture.exists():
+        c = Image.open(couverture).convert("RGB")
+        h = min(reste, int(c.height * (largeur * 0.62) / c.width))
+        w = int(c.width * h / c.height)
+        c = c.resize((w, h))
+        im.paste(c, ((largeur - w) // 2, y))
+    else:
+        f_txt = _police("Atkinson-400.ttf", int(largeur * 0.05))
+        interligne = int(largeur * 0.05 * 1.42)
+        lignes = _lignes(d, p["texte"], f_txt, largeur - 2 * marge)
+        maxi = max(1, (reste - (int(interligne * 1.8) if p.get("detail") else 0)) // interligne)
+        if len(lignes) > maxi:
+            lignes = lignes[:maxi]
+            lignes[-1] = lignes[-1].rstrip(" ,.;:") + "…"
+        for ligne in lignes:
+            d.text((marge, y), ligne, font=f_txt, fill=texte_c)
+            y += interligne
+        if p.get("detail"):
+            y += int(largeur * 0.02)
+            d.text((marge, y), p["detail"], font=_police("Atkinson-700.ttf", int(largeur * 0.038)), fill=accent)
+    # l'appel, écrit à la main
+    appel = {"article": "À lire sur le blog", "jeu": "Règles complètes, gratuites", "univers": "Tout est sur le site",
+             "kit": "Le kit à imprimer"}[p["type"]]
+    f_appel = _police("Gochi-400.ttf", int(largeur * 0.062))
+    bas = hauteur - int(hauteur * 0.1)
+    d.text((marge, bas - int(largeur * 0.16)), appel, font=f_appel, fill=accent if var != 1 else vif)
+    # signature
+    d.line([(marge, bas - 24), (largeur - marge, bas - 24)], fill=texte_c, width=2)
+    f_marque = _police("Bricolage-800.ttf", int(largeur * 0.06))
+    d.text((marge, bas), "Jeu", font=f_marque, fill="#CF3424" if var != 2 else "#FFE36E")
+    d.text((marge + d.textlength("Jeu", font=f_marque), bas), "phorie", font=f_marque, fill=texte_c)
+    f_main = _police("Gochi-400.ttf", int(largeur * 0.04))
+    site = "jeuphorie.fr"
+    d.text((largeur - marge - d.textlength(site, font=f_main), bas + int(largeur * 0.012)), site, font=f_main, fill=texte_c)
+    chemin.parent.mkdir(parents=True, exist_ok=True)
+    im.save(chemin, quality=86, optimize=True)
+
+
+def nom_visuel(p, format_):
+    return f"img/reseaux/{p['id']}-{p['variante']}-{format_}.jpg"
+
+
+# ---------------------------------------------------------------- fabrication (appelée par build.py)
+
+def fabriquer(sortie, base, aujourdhui=None):
+    """Fabrique les visuels, le flux Pinterest ; renvoie les publications récentes pour la page /reseaux/."""
+    aujourdhui = aujourdhui or dt.date.today()
+    pubs = calendrier(aujourdhui)
+    faits = set()
+    for p in pubs:
+        for fmt, (w, h) in {"pin": (1000, 1500), "post": (1080, 1350)}.items():
+            rel = nom_visuel(p, fmt)
+            if rel not in faits:
+                visuel(p, w, h, Path(sortie) / rel)
+                faits.add(rel)
+    base = base.rstrip("/")
+    items = []
+    for p in pubs:
+        image = f"{base}/{nom_visuel(p, 'pin')}"
+        items.append(f"""  <item>
+    <title>{html.escape(p['titre'])}</title>
+    <link>{base}{p['url']}</link>
+    <guid isPermaLink="false">{p['id']}-{p['jour'].isoformat()}</guid>
+    <pubDate>{p['jour'].strftime('%a, %d %b %Y 07:00:00 +0000')}</pubDate>
+    <description>{html.escape(legende(p, 'pinterest', base))}</description>
+    <enclosure url="{image}" length="0" type="image/jpeg"/>
+    <media:content url="{image}" medium="image" type="image/jpeg"/>
+  </item>""")
+    flux = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+  <title>Jeuphorie : jeux et animations clés en main</title>
+  <link>{base}/</link>
+  <description>Jeux pour enfants, fêtes, anniversaires et grands jeux, par un directeur d'accueil de loisirs.</description>
+  <language>fr-FR</language>
+{chr(10).join(items)}
+</channel>
+</rss>
+"""
+    (Path(sortie) / "flux").mkdir(parents=True, exist_ok=True)
+    (Path(sortie) / "flux" / "pinterest.xml").write_text(flux, encoding="utf-8")
+    vus, recentes = set(), []
+    for p in pubs:
+        if p["id"] not in vus:
+            vus.add(p["id"])
+            recentes.append({**p, "image": nom_visuel(p, "post")})
+    return recentes[:12]
+
+
+if __name__ == "__main__":
+    # aperçu du calendrier des 3 prochaines semaines
+    jour = dt.date.today()
+    histo = _historique(jour + dt.timedelta(days=40))
+    for i in range(40):
+        j = jour + dt.timedelta(days=i)
+        p = histo.get(j)
+        meta = "FB/IG" if j.weekday() in JOURS_META else "     "
+        print(j.isoformat(), meta, p["id"] if p else "-")
