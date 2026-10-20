@@ -30,7 +30,7 @@ pinterest_site_verification: "bb418ec8ae71343ebbe6f62c69349df2"
 # (clé publique, sans compte ; le fichier /<clé>.txt est créé automatiquement).
 # Liste d'e-mails (Brevo) : adresse « action » du formulaire Brevo (https://….sibforms.com/serve/…).
 # Vide : les 3 jeux offerts se téléchargent directement, sans inscription.
-brevo_formulaire: ""
+brevo_formulaire: "https://6aa67dd9.sibforms.com/serve/MUIFAALwFHFW1gpRlMArjyrYSmBdWkUeO6CYuSnjt6kBqj2yV8p0daJPCS08fXTT4o6ATTnEOOdI-6QYvnEhizJNLPFbj6OWNHF6lzBWF8FrP3zj8QvwPYkf3KieypbajDY3HFTArhivq90QP84DwBIyfdtQMju4I2WpTnE4iTm-r2LoT_DJ-9aNtNEXjiPReEW1tg-fh5FnMnxE9w=="
 # Lettre mensuelle (outils/lettre.py) : numéro de la liste Brevo et adresse d'expédition validée dans Brevo.
 # La clé d'API est un secret GitHub : BREVO_API_KEY.
 brevo_liste: "3"
