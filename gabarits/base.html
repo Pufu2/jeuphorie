@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-{% set titre_complet = ((page.titre ~ " | " ~ site.nom) if (page.titre | length) <= 52 else page.titre) if page.titre else (site.nom ~ " | " ~ site.signature) %}
+{% set titre_complet = ((page.titre ~ " | " ~ site.nom) if (page.titre | length) <= 54 and site.nom not in page.titre else page.titre) if page.titre else (site.nom ~ " | " ~ site.signature) %}
 <title>{{ titre_complet }}</title>
 <meta name="description" content="{{ page.description | trim | resume(158) }}">
 {% if not page.indexer %}<meta name="robots" content="noindex">{% endif %}
@@ -28,7 +28,11 @@
 {{ {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": page.fil | fil_jsonld(site.url)} | tojson }}
 </script>
 {% endif %}
+<link rel="icon" href="{{ statique('favicon.ico') }}" sizes="48x48">
+<link rel="icon" href="{{ statique('img/favicon-96.png') }}" type="image/png" sizes="96x96">
+<link rel="icon" href="{{ statique('img/favicon-192.png') }}" type="image/png" sizes="192x192">
 <link rel="icon" href="{{ statique('img/icone.svg') }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ statique('img/apple-touch-icon.png') }}">
 {% if not apercu %}<link rel="alternate" type="application/rss+xml" title="{{ site.nom }}, le carnet d'idées" href="{{ statique('flux.xml') }}">{% endif %}
 {% if apercu %}
 <link rel="preconnect" href="https://fonts.googleapis.com">

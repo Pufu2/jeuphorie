@@ -6,7 +6,7 @@
 {{ {"@context": "https://schema.org", "@graph": [
   {"@type": "Organization", "@id": site.url ~ "/#organisation", "name": site.nom, "url": site.url ~ "/", "logo": site.url ~ "/img/logo.png", "email": site.email, "slogan": site.signature,
    "description": site.description | trim, "founder": {"@type": "Person", "name": site.auteur.prenom, "jobTitle": "Directeur adjoint d'accueil de loisirs"}},
-  {"@type": "WebSite", "@id": site.url ~ "/#site", "name": site.nom, "url": site.url ~ "/", "inLanguage": "fr-FR", "publisher": {"@id": site.url ~ "/#organisation"}}
+  {"@type": "WebSite", "@id": site.url ~ "/#site", "name": site.nom, "alternateName": ["Jeuphorie.fr", "jeuphorie.fr"], "url": site.url ~ "/", "inLanguage": "fr-FR", "publisher": {"@id": site.url ~ "/#organisation"}}
 ]} | tojson }}
 </script>
 {% endblock %}

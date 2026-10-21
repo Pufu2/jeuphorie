@@ -219,9 +219,9 @@ class Site:
     # -- déclaration des pages
     def declarer(self):
         d = self.donnees
-        self.ajouter("/", "accueil.html", titre="Jeux et animations à imprimer pour enfants, clés en main",
+        self.ajouter("/", "accueil.html", titre="Jeuphorie : jeux et animations pour enfants à imprimer",
                      description="Kits de jeux à imprimer pour les anniversaires, les fêtes de l'année, la kermesse et les grands jeux, conçus par un directeur d'accueil de loisirs. Pour les familles, les écoles, les associations et les structures.")
-        self.ajouter("/boutique/", "boutique.html", titre="La boutique",
+        self.ajouter("/boutique/", "boutique.html", titre="Kits de jeux à imprimer pour enfants : la boutique",
                      description="Grands jeux et jeux collectifs à télécharger et imprimer, par âge de 6 à 17 ans, et kits d'animation pour les fêtes, les écoles et les accueils de loisirs.")
         for k in self.kits():
             self.ajouter(f"/boutique/{k['id']}/", "produit.html",
@@ -239,7 +239,7 @@ class Site:
                 self.ajouter(f"/jeux/{j['id']}/", "redirection.html", titre="Cette page a changé d'adresse",
                              indexer=False, vers="/jeux/", redirection=True)
                 continue
-            self.ajouter(f"/jeux/{j['id']}/", "jeu.html", titre=f"{j['nom']} : règles du jeu et organisation",
+            self.ajouter(f"/jeux/{j['id']}/", "jeu.html", titre=f"{j['nom']} : règles du jeu pour enfants",
                          description=f"{j['nom']}, jeu collectif dès {j['age_min']} ans, de {j['joueurs'][0]} à {j['joueurs'][1]} joueurs, {j['duree']} min. {j['but']}"[:300],
                          jeu=j, fil=[("Grands jeux", "/grands-jeux/"), ("Catalogue", "/jeux/"), (j["nom"], f"/jeux/{j['id']}/")])
         gabarits_univers = {"fetes": "fetes.html", "professionnels": "professionnels.html"}
@@ -261,7 +261,7 @@ class Site:
                          jeu=j, fete=fetes[j["fete"]],
                          fil=[("Fêtes de l'année", "/fetes/"), (fetes[j["fete"]]["nom"], f"/fetes/{j['fete']}/"),
                               (j["nom"], f"/fetes/{j['fete']}/{j['id']}/")])
-        self.ajouter("/jeux-gratuits/", "jeux-gratuits.html", titre="3 grands jeux offerts",
+        self.ajouter("/jeux-gratuits/", "jeux-gratuits.html", titre="3 grands jeux gratuits à imprimer pour enfants",
                      description="Recevez 3 grands jeux collectifs à imprimer, avec règles, variantes et schéma du terrain : Gendarmes et voleurs, Poules renards vipères, L'épervier gradé.")
         self.ajouter("/blog/", "blog.html", titre="Le blog : idées de jeux et conseils d'animateur",
                      description="Conseils et idées de jeux pour les anniversaires, les fêtes et les grands jeux, écrits par un directeur d'animation.")

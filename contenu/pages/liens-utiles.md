@@ -1,5 +1,5 @@
 ---
-titre: "Liens utiles pour l'animation : BAFA, encadrement, aides, parents d'élèves"
+titre: "Liens utiles pour animateurs : BAFA, encadrement, aides"
 url: /liens-utiles/
 description: "Les sites de référence que j'utilise comme animateur et directeur : BAFA et BAFD, encadrement des mineurs, aides au départ en colo, parents d'élèves, activité physique des enfants."
 chapo: "Les sites que je consulte moi-même quand je prépare un séjour, que je forme une équipe ou qu'un parent me pose une question. Aucun n'est un partenaire commercial de Jeuphorie : ce sont simplement les bonnes adresses."

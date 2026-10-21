@@ -15,6 +15,7 @@ kits:
   # ---------------------------------------------------------------- Anniversaires
   - id: defi-des-champions
     titre: Le défi des champions
+    titre_seo: "Olympiades d'anniversaire à imprimer, 6-12 ans"
     univers: anniversaires
     etat: pret
     prix: "12"
@@ -51,6 +52,7 @@ kits:
 
   - id: chasse-tresor-pirates
     titre: La chasse au trésor des pirates
+    titre_seo: "Chasse au trésor pirate à imprimer, 5-9 ans"
     univers: anniversaires
     etat: pret
     prix: "9,90"
@@ -87,6 +89,7 @@ kits:
 
   - id: enquete-gateau-disparu
     titre: L'enquête du gâteau disparu
+    titre_seo: "Jeu d'enquête d'anniversaire à imprimer, 8-12 ans"
     univers: anniversaires
     etat: pret
     prix: "12"
@@ -123,6 +126,7 @@ kits:
 
   - id: safari-petits-explorateurs
     titre: Le safari des petits explorateurs
+    titre_seo: "Jeux d'anniversaire 3-5 ans à imprimer : le safari"
     univers: anniversaires
     etat: pret
     prix: "9,90"
@@ -160,6 +164,7 @@ kits:
   # ---------------------------------------------------------------- Grands jeux
   - id: pack-6-9
     titre: Grands jeux 6-9 ans
+    titre_seo: "Grands jeux pour enfants de 6 à 9 ans à imprimer"
     univers: grands-jeux
     publics: [accueils, ecoles, clubs]
     etat: pret
@@ -188,6 +193,7 @@ kits:
 
   - id: pack-10-13
     titre: Grands jeux 10-13 ans
+    titre_seo: "Grands jeux pour les 10-13 ans à imprimer"
     univers: grands-jeux
     publics: [accueils, ecoles, clubs]
     etat: pret
@@ -216,6 +222,7 @@ kits:
 
   - id: pack-14-17
     titre: Grands jeux 14-17 ans
+    titre_seo: "Grands jeux pour ados de 14 à 17 ans à imprimer"
     univers: grands-jeux
     publics: [accueils, clubs]
     etat: pret
@@ -244,6 +251,7 @@ kits:
 
   - id: grand-fichier
     titre: Le grand fichier des jeux collectifs
+    titre_seo: "Fichier de jeux collectifs à imprimer, 6-17 ans"
     univers: grands-jeux
     publics: [accueils, ecoles, clubs]
     etat: pret
@@ -273,6 +281,7 @@ kits:
   # ---------------------------------------------------------------- Fêtes de l'année
   - id: kit-toussaint
     titre: Le grand jeu de la forêt d'automne
+    titre_seo: "Grand jeu d'automne à imprimer pour enfants"
     univers: fetes
     publics: [accueils, ecoles]
     fete: toussaint
@@ -311,6 +320,7 @@ kits:
 
   - id: kit-noel
     titre: L'atelier du père Noël
+    titre_seo: "Grand jeu de Noël à imprimer pour enfants"
     univers: fetes
     publics: [accueils, ecoles, associations, cse]
     fete: noel
@@ -349,6 +359,7 @@ kits:
 
   - id: kit-carnaval
     titre: Le grand bal du carnaval
+    titre_seo: "Jeux de carnaval à imprimer : le grand bal"
     univers: fetes
     publics: [accueils, ecoles, associations]
     fete: carnaval
@@ -387,6 +398,7 @@ kits:
 
   - id: kit-paques
     titre: La grande quête des cloches
+    titre_seo: "Chasse aux œufs à imprimer : la quête des cloches"
     univers: fetes
     publics: [accueils, ecoles, associations, cse]
     fete: paques
@@ -426,6 +438,7 @@ kits:
   # ---------------------------------------------------------------- Kermesse
   - id: kermesse-cle-en-main
     titre: La kermesse clé en main
+    titre_seo: "Kermesse clé en main : stands et jeux à imprimer"
     univers: kermesse
     publics: [associations, ecoles, accueils]
     etat: pret
@@ -464,6 +477,7 @@ kits:
   # ---------------------------------------------------------------- Pro
   - id: kit-du-directeur
     titre: Le kit du directeur d'accueil de loisirs
+    titre_seo: "Kit du directeur d'accueil de loisirs à imprimer"
     univers: professionnels
     rubrique: gestion
     publics: [accueils]
@@ -503,6 +517,7 @@ kits:
   # ---------------------------------------------------------------- Professionnels (suite)
   - id: kit-projet-pedagogique
     titre: Le kit du projet pédagogique
+    titre_seo: "Projet pédagogique d'accueil de loisirs : le kit"
     univers: professionnels
     rubrique: gestion
     publics:
@@ -556,6 +571,7 @@ kits:
 
   - id: livret-equipe-animation
     titre: Le livret d'accueil de l'équipe d'animation
+    titre_seo: "Livret d'accueil de l'équipe d'animation : modèle"
     univers: professionnels
     rubrique: gestion
     publics:
@@ -666,6 +682,7 @@ kits:
 
   - id: recreation-apaisee
     titre: Le kit de la récréation apaisée
+    titre_seo: "Récréation apaisée : jeux et outils pour la cour"
     univers: professionnels
     rubrique: animation
     publics:
@@ -719,6 +736,7 @@ kits:
 
   - id: kit-association-parents
     titre: Le kit de l'association de parents d'élèves
+    titre_seo: "Kit APE : animations pour parents d'élèves"
     univers: professionnels
     rubrique: gestion
     publics:
@@ -775,6 +793,7 @@ kits:
 
   - id: stage-multisport-vacances
     titre: Le stage multisport de vacances clé en main
+    titre_seo: "Stage multisport de vacances clé en main"
     univers: professionnels
     rubrique: animation
     publics:
@@ -829,6 +848,7 @@ kits:
 
   - id: journee-familles-cse
     titre: La journée familles du CSE clé en main
+    titre_seo: "Journée familles CSE clé en main : programme et jeux"
     univers: professionnels
     rubrique: animation
     publics:
