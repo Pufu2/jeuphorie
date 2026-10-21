@@ -4,7 +4,8 @@ Chaque jour, le calendrier choisit un sujet du site (un article du blog, un jeu 
 quand les ventes sont ouvertes), en suivant les saisons. Pour chaque publication, ce module fabrique :
 - un visuel vertical pour Pinterest (1000 × 1500) et un visuel pour Facebook et Instagram (1080 × 1350) ;
 - la légende, écrite à partir des textes du site (titre, accroche) et de mots-clés choisis par thème ;
-- le flux /flux/pinterest.xml, que Pinterest lit tout seul pour créer les épingles ;
+- les flux Pinterest (/flux/pinterest.xml et un flux par tableau thématique), que Pinterest lit tout seul ;
+- le visuel de la Story Instagram (1080 × 1920) des jours de publication ;
 - la page /reseaux/ (le « lien de la bio » d'Instagram), avec les dernières publications.
 
 La publication sur Facebook et Instagram se fait par outils/publier_reseaux.py, lancé chaque matin par GitHub Actions.
@@ -38,16 +39,42 @@ ENCRE, PAPIER = "#1A2340", "#FBFAF7"
 
 MOIS_FETES = {"toussaint": {9, 10}, "noel": {11, 12}, "carnaval": {1, 2}, "paques": {3, 4}}
 
+# hashtags d'Instagram : des mots que les parents et les animateurs tapent vraiment, sans accent (les plus suivis),
+# en mêlant des mots très suivis et des mots plus précis, où une publication reste visible plus longtemps
+COMMUNS = "#activiteenfant #jeuxenfants #ideeactivite #animationenfant"
 MOTS_CLES = {
-    "anniversaires": "#anniversaireenfant #jeuxanniversaire #fetedanniversaire #jeuxenfants #idéesanniversaire",
-    "grands-jeux": "#grandjeu #jeuxcollectifs #animation #centredeloisirs #jeuxdecour",
-    "fetes": "#activitésenfants #jeuxenfants #fêtes #animation #enfants",
-    "kermesse": "#kermesse #fêtedécole #associationdeparents #apé #jeuxdekermesse",
-    "professionnels": "#animateur #bafa #bafd #accueildeloisirs #colonie",
-    "toussaint": "#toussaint #automne #vacancesdelatoussaint #activitésautomne #jeuxenfants",
-    "noel": "#noël #jeuxdenoël #activitésnoël #arbredenoël #jeuxenfants",
-    "carnaval": "#carnaval #carnavalenfants #déguisement #jeuxenfants #activitésenfants",
-    "paques": "#pâques #chasseauxoeufs #activitéspâques #jeuxenfants #printemps",
+    "anniversaires": "#anniversaireenfant #anniversaire #jeuxanniversaire #ideeanniversaire #gouteranniversaire",
+    "grands-jeux": "#grandjeu #jeuxcollectifs #jeuxdexterieur #centredeloisirs #animateur",
+    "fetes": "#fetes #activitemanuelle #mercredi #vacancesscolaires #centredeloisirs",
+    "kermesse": "#kermesse #fetedecole #jeuxdekermesse #ape #ecole",
+    "professionnels": "#animateur #bafa #bafd #accueildeloisirs #colo #directeuraccueil",
+    "toussaint": "#toussaint #automne #vacancesdelatoussaint #activiteautomne #jeuxdautomne",
+    "noel": "#noel #activitenoel #jeuxdenoel #noelenfants #animationnoel",
+    "carnaval": "#carnaval #carnavalenfants #deguisement #mardigras #activitecarnaval",
+    "paques": "#paques #chasseauxoeufs #activitepaques #printemps #jeuxdepaques",
+}
+for _k in MOTS_CLES:
+    MOTS_CLES[_k] += " " + COMMUNS
+
+# Pinterest : un tableau par thème, chacun nourri par son flux /flux/pinterest-<tableau>.xml ;
+# les autres sujets restent dans le flux général /flux/pinterest.xml
+TABLEAUX = {
+    "noel": ("noel", "Jeux et activités de Noël pour enfants"),
+    "toussaint": ("automne", "Activités d'automne et de la Toussaint"),
+    "anniversaires": ("anniversaires", "Anniversaire enfant : jeux et idées"),
+    "grands-jeux": ("grands-jeux", "Grands jeux et jeux collectifs"),
+    "professionnels": ("animateurs", "Animateurs : BAFA, BAFD, accueil de loisirs"),
+}
+# ce que cherchent les gens sur Pinterest, ajouté au titre et à la description des épingles
+RECHERCHES = {
+    "noel": ("jeu de Noël pour enfants", "Activité de Noël pour enfants, à la maison, à l'école ou en centre de loisirs."),
+    "toussaint": ("jeu d'automne pour enfants", "Activité d'automne pour les vacances de la Toussaint, dehors ou à l'intérieur."),
+    "carnaval": ("jeu de carnaval pour enfants", "Activité de carnaval et de mardi gras pour enfants."),
+    "paques": ("jeu de Pâques pour enfants", "Activité de Pâques pour enfants, avec ou sans chasse aux œufs."),
+    "anniversaires": ("jeu d'anniversaire enfant", "Idée d'animation pour un anniversaire d'enfant à la maison."),
+    "grands-jeux": ("grand jeu pour enfants", "Grand jeu collectif pour enfants, en centre de loisirs, en colo ou à l'école."),
+    "kermesse": ("jeu de kermesse", "Idée de stand et de jeu pour la kermesse ou la fête de l'école."),
+    "professionnels": ("animation enfants", "Pour les animateurs et directeurs d'accueil de loisirs, BAFA et BAFD."),
 }
 
 
@@ -95,13 +122,14 @@ def _tous():
                       "texte": _propre(e.get("chapo") or e.get("description")), "url": f"/blog/{slug}/",
                       "surtitre": "Nouveau sur le blog", "couleur": univers.get(u, {}).get("couleur", "pro"),
                       "mots": MOTS_CLES.get(fete) or MOTS_CLES.get(u, MOTS_CLES["fetes"]), "mois": MOIS_FETES.get(fete),
+                      "theme": fete if fete in MOIS_FETES else u,
                       "intertitres": re.findall(r"^## (.+)$", f.read_text(encoding="utf-8"), re.M)})
 
     for j in d.get("jeux-fetes", {}).get("jeux", []):
         liste.append({"id": f"fete-{j['id']}", "type": "jeu", "titre": j["nom"], "texte": _propre(j["accroche"]),
                       "url": f"/fetes/{j['fete']}/{j['id']}/", "surtitre": "Jeu offert, règles complètes",
                       "couleur": "saison", "mots": MOTS_CLES.get(j["fete"], MOTS_CLES["fetes"]),
-                      "mois": MOIS_FETES.get(j["fete"]), "brut": j,
+                      "mois": MOIS_FETES.get(j["fete"]), "brut": j, "theme": j["fete"],
                       "detail": (f"Dès {j['age_min']} ans" if j["age_max"] >= 18 else f"{j['age_min']} à {j['age_max']} ans")
                       + f" · {j['joueurs'][0]} à {j['joueurs'][1]} joueurs"})
 
@@ -113,13 +141,13 @@ def _tous():
                           "url": f"/jeux/{j['id']}/", "brut": j,
                           "detail": f"Dès {j['age_min']} ans · {j['joueurs'][0]} à {j['joueurs'][1]} joueurs · {j['duree']} min",
                           "surtitre": "Grand jeu offert, règles complètes", "couleur": "plein-air",
-                          "mots": MOTS_CLES["grands-jeux"], "mois": None})
+                          "mots": MOTS_CLES["grands-jeux"], "mois": None, "theme": "grands-jeux"})
 
     for u in univers.values():
         liste.append({"id": f"univers-{u['id']}", "type": "univers", "titre": u["titre_page"],
                       "texte": _propre(u["accroche"]), "url": u["url"], "surtitre": u.get("public", ""),
                       "couleur": u["couleur"], "mots": MOTS_CLES.get(u["id"], MOTS_CLES["fetes"]),
-                      "mois": {2, 3, 4, 5, 6} if u["id"] == "kermesse" else None})
+                      "mois": {2, 3, 4, 5, 6} if u["id"] == "kermesse" else None, "theme": u["id"]})
 
     if config.get("boutique", {}).get("ventes_actives"):
         for k in d["kits"]["kits"]:
@@ -130,6 +158,7 @@ def _tous():
                           "texte": _propre(k["accroche"]), "url": f"/boutique/{k['id']}/",
                           "surtitre": "Kit à imprimer", "couleur": u.get("couleur", "pro"),
                           "mots": MOTS_CLES.get(k.get("univers"), MOTS_CLES["fetes"]), "mois": None,
+                          "theme": k.get("univers"),
                           "couverture": f"img/kits/{k['id']}-couverture.jpg"})
     return liste
 
@@ -266,7 +295,9 @@ def legende(p, reseau, base):
         return f"{corps}\n\n{suite}\n\n{p['mots']}"
     if reseau == "pinterest":
         sep = " " if p["titre"].rstrip()[-1:] in "?!." else ". "
-        return _propre(f"{p['titre']}{sep}{p['texte']}")[:480]
+        phrase = RECHERCHES.get(p.get("theme"), ("", ""))[1]
+        detail = f" {p['detail']}." if p.get("detail") else ""
+        return _propre(f"{p['titre']}{sep}{p['texte']}{detail} {phrase}")[:490]
     suite = {"article": "À lire ici :", "jeu": "Les règles complètes, gratuites :", "univers": "C'est par ici :",
              "kit": "Le kit :"}[p["type"]]
     return f"{corps}\n\n{suite} {lien}"
@@ -365,6 +396,28 @@ def visuel(p, largeur, hauteur, chemin):
     im.save(chemin, quality=86, optimize=True)
 
 
+def titre_epingle(p):
+    """Le titre de l'épingle : le titre du site, complété par ce que les gens cherchent (100 caractères au plus)."""
+    cle = RECHERCHES.get(p.get("theme"), ("", ""))[0]
+    titre = p["titre"]
+    if p["type"] == "jeu" and cle and cle.split(" ")[0].lower() not in titre.lower():
+        titre = f"{titre} : {cle}"
+    return titre if len(titre) <= 100 else p["titre"][:100]
+
+
+def visuel_story(p, chemin):
+    """Le visuel d'une Story Instagram (1080 × 1920) : le visuel du post, centré, loin des bords que l'appli recouvre."""
+    from PIL import Image
+    tmp = Path(chemin).with_suffix(".tmp.jpg")
+    visuel(p, 1080, 1440, tmp)
+    post = Image.open(tmp).convert("RGB")
+    im = Image.new("RGB", (1080, 1920), post.getpixel((5, 700)))
+    im.paste(post, (0, 240))
+    tmp.unlink()
+    chemin.parent.mkdir(parents=True, exist_ok=True)
+    im.save(chemin, quality=86, optimize=True)
+
+
 def nom_visuel(p, format_):
     return f"img/reseaux/{p['id']}-{p['variante']}-{format_}.jpg"
 
@@ -382,12 +435,38 @@ def fabriquer(sortie, base, aujourdhui=None):
             if rel not in faits:
                 visuel(p, w, h, Path(sortie) / rel)
                 faits.add(rel)
+    for p in pubs[:3]:  # la Story ne sert que le jour même
+        if p["jour"].weekday() in JOURS_META:
+            visuel_story(p, Path(sortie) / nom_visuel(p, "story"))
     base = base.rstrip("/")
+    flux = {"": []}  # le flux général, déjà relié à Pinterest, existe toujours
+    for p in pubs:
+        tableau = TABLEAUX.get(p.get("theme"), ("", ""))[0]
+        flux.setdefault(tableau, []).append(p)
+    (Path(sortie) / "flux").mkdir(parents=True, exist_ok=True)
+    for tableau, liste in flux.items():
+        nom = f"pinterest-{tableau}.xml" if tableau else "pinterest.xml"
+        (Path(sortie) / "flux" / nom).write_text(_flux(liste, base), encoding="utf-8")
+    for theme, (tableau, _) in TABLEAUX.items():  # un tableau pas encore servi : ses sujets, pour démarrer
+        if tableau not in flux:
+            depart = [{**s, "variante": 0, "jour": DEBUT} for s in sujets(aujourdhui) if s.get("theme") == theme][:3]
+            for p in depart:
+                visuel(p, 1000, 1500, Path(sortie) / nom_visuel(p, "pin"))
+            (Path(sortie) / "flux" / f"pinterest-{tableau}.xml").write_text(_flux(depart, base), encoding="utf-8")
+    vus, recentes = set(), []
+    for p in pubs:
+        if p["id"] not in vus:
+            vus.add(p["id"])
+            recentes.append({**p, "image": nom_visuel(p, "post")})
+    return recentes[:12]
+
+
+def _flux(pubs, base):
     items = []
     for p in pubs:
         image = f"{base}/{nom_visuel(p, 'pin')}"
         items.append(f"""  <item>
-    <title>{html.escape(p['titre'])}</title>
+    <title>{html.escape(titre_epingle(p))}</title>
     <link>{base}{p['url']}</link>
     <guid isPermaLink="false">{p['id']}-{p['jour'].isoformat()}</guid>
     <pubDate>{p['jour'].strftime('%a, %d %b %Y 07:00:00 +0000')}</pubDate>
@@ -395,7 +474,7 @@ def fabriquer(sortie, base, aujourdhui=None):
     <enclosure url="{image}" length="0" type="image/jpeg"/>
     <media:content url="{image}" medium="image" type="image/jpeg"/>
   </item>""")
-    flux = f"""<?xml version="1.0" encoding="UTF-8"?>
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
 <channel>
   <title>Jeuphorie : jeux et animations clés en main</title>
@@ -406,14 +485,6 @@ def fabriquer(sortie, base, aujourdhui=None):
 </channel>
 </rss>
 """
-    (Path(sortie) / "flux").mkdir(parents=True, exist_ok=True)
-    (Path(sortie) / "flux" / "pinterest.xml").write_text(flux, encoding="utf-8")
-    vus, recentes = set(), []
-    for p in pubs:
-        if p["id"] not in vus:
-            vus.add(p["id"])
-            recentes.append({**p, "image": nom_visuel(p, "post")})
-    return recentes[:12]
 
 
 if __name__ == "__main__":

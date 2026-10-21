@@ -1,0 +1,26 @@
+name: Réseaux sociaux
+
+# Facebook et Instagram publient à l'heure où parents et animateurs regardent leur téléphone
+# (le site, mis en ligne chaque matin, a déjà fabriqué les visuels et la vidéo du jour).
+# Heures en UTC : + 1 h en hiver, + 2 h en été pour l'heure de Paris. GitHub peut avoir quelques minutes de retard.
+on:
+  schedule:
+    - cron: "17 11 * * 2,4"   # mardi et jeudi, vers 12 h 15 : la pause de midi
+    - cron: "47 8 * * 6"      # samedi, vers 9 h 45 : les parents préparent le week-end
+    - cron: "33 18 * * 0"     # dimanche, vers 19 h 30 : le Reel, quand on prépare la semaine
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Publier sur Facebook et Instagram
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+        run: |
+          python3 outils/publier_reseaux.py
+          python3 outils/publier_reel.py --auto

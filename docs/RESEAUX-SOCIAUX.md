@@ -2,8 +2,8 @@
 
 Tout est automatique. Chaque matin, le site choisit un sujet (le nouvel article du blog s'il en paraît un, sinon un jeu offert, une page d'univers et, quand les ventes seront ouvertes, un kit), en suivant les saisons. Il fabrique le visuel et la légende à partir des textes du site, puis :
 
-- **Pinterest** : une épingle par jour, lue automatiquement dans le flux `https://jeuphorie.fr/flux/pinterest.xml` ;
-- **Facebook et Instagram** : une publication le mardi, le jeudi et le samedi, envoyée par GitHub Actions ;
+- **Pinterest** : une épingle par jour, rangée dans le tableau de son thème (voir plus bas), avec un titre et une description écrits avec les mots que les gens cherchent ;
+- **Facebook et Instagram** : une publication le mardi et le jeudi vers 12 h 15, le samedi vers 9 h 45, chacune reprise en Story Instagram ; un Reel le dimanche vers 19 h 30, lui aussi repris en Story. Les heures sont dans `.github/workflows/reseaux.yml` ;
 - **la page `https://jeuphorie.fr/reseaux/`** : les dernières publications, à mettre en lien dans la bio Instagram.
 
 Le calendrier se nourrit des articles écrits chaque mois par la tâche automatique : vous n'avez rien à écrire. Pour voir les trois prochaines semaines : `python3 outils/reseaux.py`.
@@ -34,7 +34,21 @@ C'est fini : Pinterest lit le flux tout seul et crée les nouvelles épingles.
 
 **État : réglé le 20 octobre 2026.** Une publication d'essai est partie sur Facebook et sur Instagram. Pour publier à la demande : onglet Actions > « Publier le site » > « Run workflow », en cochant « Publier aussi le sujet du jour sur Facebook et Instagram ».
 
-Dès le prochain mardi, jeudi ou samedi, la publication part toute seule à 6 h 15. Si un jour le jeton est révoqué (changement de mot de passe Facebook, par exemple), GitHub vous envoie un e-mail « Run failed » : il suffit de refaire les étapes 4 à 8.
+Dès le prochain mardi, jeudi ou samedi, la publication part toute seule. Si un jour le jeton est révoqué (changement de mot de passe Facebook, par exemple), GitHub vous envoie un e-mail « Run failed » : il suffit de refaire les étapes 4 à 8.
+
+## Les tableaux Pinterest
+
+Chaque thème a son tableau, nourri par son propre flux. À ajouter une fois dans Pinterest : Paramètres > Créer des épingles en masse > Publier automatiquement > « Ajouter un flux RSS », en créant le tableau au passage.
+
+| Tableau | Flux |
+|---|---|
+| Jeux et activités de Noël pour enfants | `https://jeuphorie.fr/flux/pinterest-noel.xml` |
+| Activités d'automne et de la Toussaint | `https://jeuphorie.fr/flux/pinterest-automne.xml` |
+| Anniversaire enfant : jeux et idées | `https://jeuphorie.fr/flux/pinterest-anniversaires.xml` |
+| Grands jeux et jeux collectifs | `https://jeuphorie.fr/flux/pinterest-grands-jeux.xml` |
+| Animateurs : BAFA, BAFD, accueil de loisirs | `https://jeuphorie.fr/flux/pinterest-animateurs.xml` |
+
+Le premier flux, `https://jeuphorie.fr/flux/pinterest.xml`, reste relié au tableau « Jeux et animations pour enfants » : il reçoit les autres sujets (carnaval, Pâques, kermesse, fêtes de l'année). Les thèmes et les tableaux sont dans `TABLEAUX` (outils/reseaux.py).
 
 ## 3. Ce qui n'est pas automatisé, volontairement
 

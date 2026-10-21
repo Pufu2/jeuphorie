@@ -81,6 +81,16 @@ def main():
             print(f"Instagram : Reel publié ({pub.get('id')}).")
         except Exception as e:
             erreurs.append(f"Instagram : {e}")
+        try:  # le Reel repris en Story, pour les abonnés
+            c = appel(f"{insta}/media", media_type="STORIES", video_url=video, access_token=jeton)
+            for _ in range(40):
+                time.sleep(15)
+                if appel(c["id"], "GET", fields="status_code", access_token=jeton).get("status_code") in ("FINISHED", "ERROR"):
+                    break
+            pub = appel(f"{insta}/media_publish", creation_id=c["id"], access_token=jeton)
+            print(f"Instagram : Story publiée ({pub.get('id')}).")
+        except Exception as e:
+            print(f"Instagram : Story non publiée ({e}).")  # sans gravité : le Reel est parti
     if page_id:
         try:
             pub = appel(f"{page_id}/videos", file_url=video, description=legende.replace("(lien dans la bio)", base + r["url"]),

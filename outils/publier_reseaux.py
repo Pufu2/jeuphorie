@@ -1,6 +1,7 @@
 """Publie la publication du jour sur la page Facebook et le compte Instagram de Jeuphorie.
 
-Lancé chaque matin par GitHub Actions, après la mise en ligne du site (les visuels doivent être en ligne).
+Lancé par GitHub Actions (.github/workflows/reseaux.yml) à l'heure où le public regarde son téléphone.
+Publie aussi une Story Instagram qui renvoie vers la publication.
 Les jours de publication sont JOURS_META dans outils/reseaux.py (mardi, jeudi, samedi).
 
 Les identifiants de la page et du compte Instagram sont dans config.yml (meta_page_id, instagram_id).
@@ -75,6 +76,14 @@ def main():
             print(f"Instagram : publié ({r.get('id')}).")
         except Exception as e:
             erreurs.append(f"Instagram : {e}")
+        try:  # la Story renvoie les abonnés vers la publication
+            story = appel(f"{insta}/media", media_type="STORIES", image_url=f"{base}/{reseaux.nom_visuel(p, 'story')}",
+                          access_token=jeton)
+            time.sleep(20)
+            r = appel(f"{insta}/media_publish", creation_id=story["id"], access_token=jeton)
+            print(f"Instagram : Story publiée ({r.get('id')}).")
+        except Exception as e:
+            print(f"Instagram : Story non publiée ({e}).")  # sans gravité : la publication est partie
     if erreurs:
         print("\n".join(erreurs))
         print("Le plus souvent, le jeton a expiré ou a été révoqué : voir docs/RESEAUX-SOCIAUX.md.")
