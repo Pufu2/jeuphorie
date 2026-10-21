@@ -38,7 +38,7 @@ Dès le prochain mardi, jeudi ou samedi, la publication part toute seule. Si un 
 
 ## Les tableaux Pinterest
 
-Chaque thème a son tableau, nourri par son propre flux. À ajouter une fois dans Pinterest : Paramètres > Créer des épingles en masse > Publier automatiquement > « Ajouter un flux RSS », en créant le tableau au passage.
+Chaque thème a son tableau, nourri par son propre flux (réglé le 21 octobre 2026). À ajouter une fois dans Pinterest : Paramètres > Créer des épingles en masse > Publier automatiquement > « Ajouter un flux RSS », en créant le tableau au passage.
 
 | Tableau | Flux |
 |---|---|
