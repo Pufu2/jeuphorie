@@ -4,7 +4,8 @@
 #
 # fete : slug d'une fête de donnees/fetes.yml (la page /fetes/<fete>/<id>/ est créée toute seule)
 # versions : une version « Dehors » et une version « À l'intérieur »
-# ajoute : date d'ajout du jeu (AAAA-MM-JJ) ; le plus récent devient « le jeu offert du mois » de la lettre.
+# ajoute : date de parution du jeu (AAAA-MM-JJ) ; le plus récent paru devient « le jeu offert du mois » de la lettre.
+#          Un jeu dont la date est à venir reste caché sur le site et les réseaux jusqu'à ce jour-là.
 # Le schéma du terrain (facultatif) se dessine dans outils/schemas_fetes.py, avec le même id.
 
 jeux:
@@ -275,6 +276,68 @@ jeux:
       - "Rien par terre entre le cercle et le père Noël : on enlève chaises, sacs et jouets."
       - Un enfant qui n'aime pas avoir les yeux bandés peut fermer les yeux, ou garder un bonnet sur les yeux sans foulard.
     fin: "Quand la hotte est pleine, le père Noël « se réveille », compte les grelots avec les lutins et les remercie : grâce à eux, les rennes trouveront leur chemin. Un dernier « Ho ho ho ! » à voix basse, et c'est l'heure de l'histoire du soir."
+
+  - id: attelage-du-pere-noel
+    fete: noel
+    ajoute: 2026-11-20
+    nom: L'attelage du père Noël
+    accroche: Un jeu de rassemblement pour les petits, où les rennes rejoignent le père Noël un par un, jusqu'à ce que tout l'attelage puisse partir en tournée.
+    age_min: 3
+    age_max: 7
+    ages: [3-5-ans, 6-8-ans]
+    joueurs: [6, 25]
+    duree: 15
+    but: Former tous ensemble l'attelage du père Noël, renne après renne, puis faire la tournée des toits sans que l'attelage se coupe.
+    materiel:
+      - Une clochette, un grelot ou un tambourin pour le père Noël
+      - Un bonnet de père Noël
+      - "5 à 8 « toits » : des cerceaux, des tapis ou des doubles pages de journal posés au sol"
+      - "Facultatif : des bois de renne en carton, agrafés sur une bande de papier autour de la tête"
+    histoire: >-
+      Le soir de Noël, les rennes broutent tranquillement dans la grande prairie du pôle Nord. Quand la clochette sonne,
+      ils savent que l'heure est venue : le père Noël les appelle un par un pour les atteler au traîneau. Mais un attelage
+      ne décolle que si tous les rennes sont là, bien accrochés les uns aux autres.
+    versions:
+      - lieu: Dehors
+        espace: Une cour ou une pelouse plate, 15 m sur 15 m environ
+        mise_en_place: >-
+          Délimitez la prairie avec des plots et posez les toits un peu partout, bien espacés. Le père Noël (un adulte
+          au premier tour) se tient au bord, avec son bonnet et sa clochette. Les rennes se dispersent et broutent, à quatre
+          pattes ou debout en mâchonnant. Appelez les plus timides en premier : ils seront juste derrière le père Noël,
+          et ce sont les plus remuants qui fermeront la marche.
+        deroulement:
+          - "Le père Noël sonne la clochette et appelle : « Les rennes qui ont des chaussures à scratch ! » Ces rennes trottent jusqu'à lui et s'accrochent derrière, les mains sur les épaules de celui de devant."
+          - "Entre deux appels, l'attelage fait un petit tour au pas dans la prairie, en contournant les rennes qui broutent encore. À chaque coup de clochette, tout l'attelage répond « Ding ding ! »."
+          - "Le père Noël continue avec des indices que tout le monde peut voir : un pull rouge, une écharpe, des cheveux attachés, des chaussettes qui dépassent."
+          - "Le dernier appel est toujours « Tous les rennes qui restent ! », pour que personne n'attende seul au milieu de la prairie."
+          - "L'attelage complet fait la tournée. À chaque toit, il s'arrête, tape trois fois des pieds et crie « Ho ho ho ! » pour déposer un cadeau imaginaire. S'il se coupe, il attend le renne décroché avant de repartir."
+          - Après le dernier toit, le père Noël dételle les rennes un par un en les remerciant. Le premier renne dételé devient le père Noël de la partie suivante.
+      - lieu: À l'intérieur
+        espace: Une salle de motricité ou un grand salon débarrassé
+        mise_en_place: >-
+          Les toits sont des tapis ou des coussins posés au sol, à au moins un mètre des murs. Les rennes broutent assis ou
+          à quatre pattes. Au-delà de huit rennes, un attelage tourne mal dans une pièce : faites deux traîneaux, avec deux pères Noël.
+        deroulement:
+          - Même jeu que dehors, au pas de renne, en levant bien les genoux.
+          - "Pendant la tournée, le père Noël annonce la météo : « Du vent ! » (on avance penché), « Du brouillard ! » (tout petits pas), « Un toit glissant ! » (on s'arrête sans se lâcher)."
+          - "Avec deux traîneaux, les deux attelages se croisent sans se toucher et se saluent d'un « Joyeux Noël ! »."
+    regles:
+      - On ne rejoint l'attelage que quand on est appelé.
+      - Les mains restent sur les épaules du renne de devant, sans tirer ni pousser.
+      - L'attelage avance au pas, à la vitesse du plus petit renne.
+      - "Personne n'est éliminé : tous les rennes finissent attelés."
+    adapter:
+      - "3-4 ans : le père Noël appelle chaque renne par son prénom, et l'attelage se fait en se donnant la main plutôt qu'en se tenant par les épaules. Trois toits suffisent."
+      - "5-6 ans : le jeu tel quel, avec les appels par indice et la météo pendant la tournée."
+      - "6-7 ans : une variante de poursuite douce. Les rennes qui broutent s'échappent en marchant vite, et seul le père Noël, en tête de l'attelage, peut les toucher. Un renne touché s'accroche en queue. La partie finit quand tout le monde est attelé."
+    securite:
+      - "Un attelage trop long fait le fouet : dans les virages, les derniers sont tirés et tombent. Au-delà de huit ou dix enfants, coupez en deux traîneaux et tournez large."
+      - Pas de bois de renne qui glissent sur les yeux. À l'intérieur, retirez les toits en papier qui glissent sur le carrelage.
+    fin: >-
+      Les rennes dételés rentrent à l'étable : un grand tapis ou le coin du goûter. Ils s'allongent, les yeux fermés, pendant
+      que le père Noël passe de l'un à l'autre en les remerciant pour la tournée. Il fait tinter sa clochette une dernière fois,
+      de plus en plus doucement, et l'on se relève quand on ne l'entend plus.
+
   # ------------------------------------------------------------ Carnaval
   - id: defile-des-statues
     fete: carnaval
@@ -375,6 +438,126 @@ jeux:
     fin: >-
       Les mannequins habillés défilent devant tout le monde, et chaque équipe présente son personnage
       en une phrase : « Voici Lady Paillette, reine du carnaval ! »
+
+  - id: marche-des-masques
+    fete: carnaval
+    ajoute: 2026-12-20
+    nom: Le marché des masques
+    accroche: Un jeu de ramassage et d'échange par équipes, où chaque morceau trouvé rapproche du masque complet, à condition de savoir troquer au bon moment.
+    age_min: 6
+    age_max: 12
+    ages: [6-8-ans, 9-12-ans]
+    joueurs: [8, 32]
+    duree: 30
+    but: Assembler avec son équipe le plus de masques complets possible, chacun fait d'yeux, d'un nez, d'une bouche et d'un chapeau de la même couleur.
+    materiel:
+      - "64 cartes « morceau de masque » : 4 couleurs, et pour chaque couleur 4 yeux, 4 nez, 4 bouches et 4 chapeaux, dessinés au feutre. Le carton des boîtes de céréales tient bien sous la pluie et dans les poches."
+      - "Le marché : une table, un banc ou un carton retourné, au centre"
+      - "Un camp par équipe : un cerceau, une caisse ou une nappe posée au sol"
+      - Des foulards ou des chasubles pour reconnaître les équipes
+      - Un sifflet ou un tambourin
+    histoire: >-
+      La veille du carnaval, un coup de vent a renversé l'atelier du fabricant de masques. Les morceaux se sont envolés
+      dans toute la ville : des yeux dans les buissons, des nez sur les bancs, des chapeaux partout. Chaque équipe de costumiers
+      récupère ce qu'elle peut, et au marché, on échange ce qui ne sert pas.
+    versions:
+      - lieu: Dehors
+        espace: Une cour ou un jardin avec des recoins, 20 m sur 20 m environ
+        mise_en_place: >-
+          Posez le marché au centre, avec 4 cartes faces visibles. Placez un camp dans chaque coin. Dispersez les autres cartes
+          face cachée dans tout l'espace : au pied d'un arbre, sous un plot, contre un mur. Gardez une quinzaine de cartes
+          dans votre poche, pour relancer la partie en cours de route.
+        deroulement:
+          - Au signal, les joueurs partent chercher les cartes. On en ramasse une seule à la fois, sans la regarder, et on la rapporte au camp avant de la retourner.
+          - "Au camp, l'équipe range ses morceaux par couleur. Dès que quatre morceaux différents de la même couleur sont réunis, elle les empile : c'est un masque complet, et il ne bouge plus."
+          - "Un morceau en double peut partir au marché. Le joueur y dépose sa carte face visible et repart avec une des cartes posées. Un seul échange par voyage."
+          - "Toutes les cinq minutes environ, le meneur siffle « Coup de vent ! » : il cache quelques cartes neuves dans la ville et en ajoute deux au marché."
+          - Au bout de 20 minutes, ou quand il ne reste plus de cartes à trouver, le meneur siffle la fin. On compte les masques complets de chaque équipe.
+      - lieu: À l'intérieur
+        espace: Deux ou trois pièces, ou une grande salle avec du mobilier
+        mise_en_place: >-
+          Cachez les cartes à hauteur d'enfant : sous un coussin, entre deux livres, derrière un rideau. Le marché est sur une
+          table au milieu de la pièce principale, et chaque équipe s'installe autour d'une chaise ou d'un coin de table.
+        deroulement:
+          - "On se déplace en marchant. Un joueur qui court rapporte sa carte au marché sans rien prendre en échange."
+          - "Pour éviter les embouteillages, un seul joueur par équipe va au marché à la fois : c'est le marchand, et il change à chaque échange."
+          - Dans une petite salle, jouez à deux équipes avec deux couleurs seulement, soit 32 cartes.
+    regles:
+      - Une carte à la fois, et on ne la regarde qu'une fois arrivé au camp.
+      - On ne prend jamais de carte dans le camp d'une autre équipe.
+      - Au marché, on dépose d'abord et on prend ensuite. On ne reprend pas la carte qu'on vient de poser.
+      - Un masque complet compte quatre morceaux différents (yeux, nez, bouche, chapeau) de la même couleur.
+    adapter:
+      - "6-7 ans : on oublie les couleurs. Un masque, ce sont simplement quatre morceaux différents, et le marché sert à échanger un deuxième nez contre une bouche."
+      - "8-9 ans : le jeu tel quel."
+      - "10-12 ans : les équipes peuvent troquer entre elles, au marché seulement, carte contre carte, si les deux sont d'accord. Un masque d'une seule couleur vaut 2 points, un masque arc-en-ciel (quatre morceaux de quatre couleurs) vaut 1 point."
+    securite:
+      - Rien de caché près de la rue, d'un point d'eau, en hauteur ou derrière une porte qui claque.
+      - "Tout le monde se croise au marché : demandez de ralentir à deux pas de la table."
+    fin: >-
+      Chaque équipe pose ses masques complets à plat devant elle, et l'on compte ensemble à voix haute. L'équipe qui en a le plus
+      choisit la première chanson du bal, les autres choisissent les suivantes, dans l'ordre. Rangez les cartes dans une enveloppe
+      par couleur : le jeu ressert d'une année sur l'autre.
+
+  - id: cape-du-roi-carnaval
+    fete: carnaval
+    ajoute: 2027-01-20
+    nom: La cape du roi Carnaval
+    accroche: Un jeu coopératif autour d'un grand drap, pour les petits. On fait danser les confettis, on change de place en dessous, et personne n'attend sur le côté.
+    age_min: 3
+    age_max: 7
+    ages: [3-5-ans, 6-8-ans]
+    joueurs: [4, 16]
+    duree: 20
+    but: Tenir tous ensemble la grande cape du roi Carnaval et réussir, sans la lâcher, les défis qu'il propose, jusqu'à se retrouver tous assis sous la tente du carnaval.
+    materiel:
+      - "Un grand drap, une nappe ou une couverture légère d'au moins 2 m sur 2 m : c'est la cape. Un vieux drap de lit à deux places convient pour une douzaine d'enfants."
+      - "Une vingtaine de boules de papier froissé de toutes les couleurs (papier de soie, crépon, journal peint) : ce sont les confettis"
+      - Un ballon de baudruche gonflé à moitié, ou une balle légère en mousse
+      - Une couronne en carton pour le roi Carnaval, l'adulte qui mène le jeu
+      - Une musique et de quoi l'arrêter
+    histoire: >-
+      Pour le défilé, le roi Carnaval s'est fait coudre une cape immense, si grande qu'il ne peut pas la porter tout seul.
+      Il lui faut tout un cortège pour la tenir. Et quand le cortège la secoue, les confettis posés dessus se mettent à danser.
+    versions:
+      - lieu: Dehors
+        espace: Une pelouse ou une cour à l'abri du vent, 6 m sur 6 m suffisent
+        mise_en_place: >-
+          Étalez la cape au sol. Les enfants se placent tout autour et attrapent le bord à deux mains, en le serrant dans les
+          poings. Le roi Carnaval tient un coin, comme les autres, et annonce les défis. Les confettis attendent dans un panier.
+        deroulement:
+          - "Pour commencer, la cape fait la mer calme (petites vagues), puis la tempête (grandes vagues), puis elle s'envole : tout le monde lève les bras en même temps et la laisse redescendre doucement."
+          - "Le roi jette les confettis sur la cape. En musique, on les fait danser sans qu'ils tombent. Quand la musique s'arrête, on compte ensemble ceux qui sont restés dessus."
+          - "Le défi inverse : on secoue pour faire tomber tous les confettis, puis on les ramasse et on les remet dans le panier avant que le roi ait compté jusqu'à 10."
+          - "Le changement de place : la cape monte bien haut et le roi annonce « Tous ceux qui ont des chaussettes bleues ! ». Ces enfants passent dessous en marchant et vont prendre une autre place autour de la cape, avant qu'elle redescende."
+          - Le ballon du roi fait le tour de la cape, en roulant le long du bord, sans tomber. Pour cela, chacun lève et baisse la cape au bon moment.
+          - "Pour finir, la tente du carnaval : on lève la cape, on fait trois pas en avant ensemble, on la ramène derrière son dos et on s'assoit sur le bord. Tout le monde se retrouve à l'intérieur."
+      - lieu: À l'intérieur
+        espace: Une salle de motricité ou un salon débarrassé, sans lustre ni objet fragile à hauteur des bras
+        mise_en_place: >-
+          Même installation. Si le plafond est bas ou la pièce étroite, prenez une nappe plus petite et jouez à six ou huit.
+          À l'intérieur, les boules de papier de soie valent mieux que les balles, qui rebondissent partout.
+        deroulement:
+          - Même jeu que dehors, à genoux pour les vagues et les confettis.
+          - "La surprise du roi : tout le monde ferme les yeux, et le roi glisse un enfant sous la cape. On ouvre les yeux et on regarde qui manque autour. Celui qui trouve le premier passe dessous au tour suivant."
+          - "Le retour au calme : les enfants s'allongent sur le dos, et deux adultes font onduler la cape bien au-dessus d'eux, comme un vent tiède. On compte les vagues à voix basse."
+    regles:
+      - On tient la cape à deux mains, sauf pour passer dessous.
+      - On ne lâche jamais la cape d'un coup. On la pose d'abord au sol.
+      - Sous la cape, on marche, on ne court pas et on ne s'allonge pas.
+      - "Personne n'est éliminé. Un confetti tombé n'est pas une faute : c'est un confetti à remettre."
+    adapter:
+      - "3-4 ans : les vagues, les confettis et le changement de place, avec un seul enfant à la fois, appelé par son prénom. Pas plus de 10 minutes : arrêtez avant que les bras se fatiguent."
+      - "5-6 ans : le jeu tel quel, avec le ballon."
+      - "7 ans : deux ballons de deux couleurs, qui font le tour dans les deux sens sans se toucher. Ou un défi chronométré : combien de confettis restent sur la cape après une minute de tempête ?"
+    securite:
+      - "Personne ne s'enroule dans la cape, et elle ne se pose jamais sur la tête ou le visage d'un enfant. Sous la tente, les bords restent soulevés."
+      - "Rien à moins d'un mètre derrière les enfants (chaise, table, radiateur) : quand la cape monte, ils reculent sans regarder."
+      - Si le ballon de baudruche éclate, ramassez tous les morceaux, que les petits pourraient mettre à la bouche.
+    fin: >-
+      Assis sous la tente, le roi Carnaval raconte à voix basse où passera le défilé cette année. Puis on soulève la cape une
+      dernière fois, tout le monde sort en saluant, et on la plie à plusieurs, deux enfants par coin : c'est encore un jeu,
+      et le rangement est fait.
 
   # ------------------------------------------------------------ Pâques
   - id: chasse-aux-oeufs-des-couleurs
@@ -478,3 +661,125 @@ jeux:
       - Les joueurs se croisent au centre. Demandez de regarder devant soi et de ralentir près du panier.
     fin: >-
       Jouez en 3 manches gagnantes. L'équipe gagnante choisit le nom de la poule de l'année.
+
+  - id: piste-du-lapin
+    fete: paques
+    ajoute: 2027-02-20
+    nom: La piste du lapin
+    accroche: Un vrai jeu de piste, avec des signes à lire, des fausses routes et des messages cachés, pour remonter jusqu'au terrier où le lapin a rangé ses œufs.
+    age_min: 6
+    age_max: 12
+    ages: [6-8-ans, 9-12-ans]
+    joueurs: [4, 24]
+    duree: 45
+    but: Suivre les signes laissés par le lapin, trouver les messages cachés le long de la piste et reconstituer le plan du terrier où sont rangés les œufs.
+    materiel:
+      - "Pour tracer la piste dehors : une craie, des bâtons et des cailloux. À l'intérieur : des flèches et des croix en papier, de la pâte adhésive et des gommettes."
+      - Une fiche des signes par équipe, recopiée à la main sur une carte
+      - "4 à 6 enveloppes, qui contiennent chacune un morceau du plan du terrier et une petite épreuve"
+      - "Le trésor du terrier : un panier d'œufs à partager, en chocolat ou en plastique"
+      - Un crayon par équipe
+    histoire: >-
+      Le lapin a fini sa distribution avant tout le monde. Fatigué, il a rangé ses derniers œufs dans son terrier secret
+      et il est parti faire la sieste. Mais il a laissé des traces derrière lui : des flèches, des croix, des petits tas de
+      cailloux. Ceux qui savent lire la piste du lapin trouveront le terrier.
+    versions:
+      - lieu: Dehors
+        espace: Un grand jardin, un parc ou un bois que vous connaissez bien, sur un parcours de 200 à 500 m aux limites claires
+        mise_en_place: >-
+          Un adulte trace la piste juste avant le jeu, sans être vu. Tous les 10 à 20 m, un signe : une flèche à la craie,
+          ou faite de deux bâtons. Ajoutez deux ou trois fausses routes, fermées un peu plus loin par une croix. Là où un message
+          attend, posez un petit tas de trois cailloux et cachez l'enveloppe à trois pas, dans la direction de la dernière flèche.
+          Le terrier est marqué d'un rond avec un point au milieu. Avec plusieurs équipes, prévoyez une couleur de craie
+          par équipe ou des départs décalés de 5 minutes.
+        deroulement:
+          - "Avant le départ, chaque équipe apprend les signes avec sa fiche : la flèche (on suit), la croix (pas par là, on revient au dernier signe), le tas de cailloux (un message est caché à trois pas), le rond avec un point (le terrier est ici)."
+          - "L'équipe suit la piste en marchant groupée. Celui qui repère le signe suivant ne crie pas : il lève la main, et l'équipe s'arrête pour le lire ensemble."
+          - "À chaque message, l'équipe réussit la petite épreuve écrite dans l'enveloppe avant de prendre le morceau de plan : dix sauts de lapin, une devinette, trois fleurs de couleurs différentes à montrer sans les cueillir."
+          - "Après une croix, on revient au dernier signe et on cherche une autre direction. Les fausses routes font partie du jeu : c'est là que l'équipe apprend à s'écouter."
+          - Avec tous les morceaux, l'équipe assemble le plan du terrier et part chercher les œufs. Le rond avec un point lui confirme qu'elle est au bon endroit.
+      - lieu: À l'intérieur
+        espace: Une maison entière ou un bâtiment d'accueil, couloirs compris, avec l'accord des personnes qui occupent les pièces traversées
+        mise_en_place: >-
+          Les flèches et les croix en papier se collent à la pâte adhésive sur les portes, les pieds de table et les plinthes.
+          Le tas de cailloux devient trois gommettes en triangle. Les enveloppes se cachent dans une chaussure, sous une chaise,
+          au fond d'une boîte à jouets.
+        deroulement:
+          - Même jeu que dehors, en marchant, et à voix basse dans les couloirs.
+          - "Pour les grands, ajoutez le signe du nombre : une flèche qui porte un chiffre veut dire « faites ce nombre de pas dans cette direction ». Le message est caché à l'endroit exact où l'on s'arrête."
+          - "Si deux équipes jouent, chacune a sa couleur de flèches, et les deux pistes se croisent au moins une fois : il faut bien regarder la couleur avant de suivre."
+    regles:
+      - L'équipe reste groupée et ne court pas. C'est le plus lent qui donne le rythme.
+      - On n'arrache pas les signes et on ne les déplace pas, même ceux des autres équipes.
+      - Un message trouvé est remis en place pour l'équipe suivante, sauf si chaque équipe a ses propres enveloppes.
+      - Une équipe perdue depuis plus de cinq minutes peut demander un indice à l'adulte, une seule fois.
+    adapter:
+      - "6-7 ans : une piste courte (100 à 200 m), sans fausse route, avec des flèches bien visibles et 3 messages. Un adulte marche avec l'équipe sans jamais montrer le chemin."
+      - "8-9 ans : le jeu tel quel, avec deux fausses routes."
+      - "10-12 ans : des messages codés (chaque lettre remplacée par la suivante dans l'alphabet, ou des mots écrits à l'envers) et le signe du nombre de pas. Dans un jardin fermé, la piste peut se séparer en deux branches : l'équipe se partage et doit se retrouver au terrier."
+    securite:
+      - Repérez le parcours la veille. Pas de piste le long d'une route, d'un bassin ou d'un fossé, et des limites que l'on annonce au départ.
+      - Dans un parc ouvert, un adulte accompagne chaque équipe. Dans un jardin fermé, un adulte au départ et un au terrier suffisent.
+      - "Allergies : vérifiez la composition des œufs en chocolat (lait, fruits à coque) avant le partage."
+    fin: >-
+      Au terrier, on n'ouvre pas le panier tout de suite : on attend que toutes les équipes soient arrivées. Chacune raconte
+      la fausse route où elle s'est fait avoir, et le détail qui l'a remise sur la bonne piste. Les œufs se partagent à parts
+      égales. Pendant ce temps, un adulte repasse sur le parcours pour effacer la craie et ramasser les flèches oubliées.
+
+  - id: petanque-des-oeufs
+    fete: paques
+    ajoute: 2027-03-20
+    nom: La pétanque des œufs
+    accroche: Un jeu calme d'adresse, où l'on fait rouler des œufs en plastique au plus près du poussin. Ils ne vont jamais tout droit, et c'est tout le plaisir.
+    age_min: 4
+    age_max: 10
+    ages: [3-5-ans, 6-8-ans, 9-12-ans]
+    joueurs: [2, 12]
+    duree: 20
+    but: Faire rouler ses œufs le plus près possible du poussin, en jouant avec leur forme, puisqu'un œuf ne roule jamais en ligne droite.
+    materiel:
+      - "6 à 12 œufs en plastique de deux ou trois couleurs, une couleur par équipe. Remplissez-les à moitié de riz ou de lentilles et fermez-les d'un tour d'adhésif : ils roulent moins vite et ne s'ouvrent pas."
+      - "Le poussin : une balle de ping-pong jaune, un pompon ou un gros bouchon"
+      - Une ficelle ou une craie pour la ligne de lancer
+      - Un bout de ficelle pour mesurer les égalités
+    histoire: >-
+      Au printemps, le premier poussin de la ferme est sorti de sa coquille et il a filé dans l'herbe. Les poules organisent
+      un concours : quelle famille d'œufs saura rouler jusqu'à lui ? Le problème, c'est qu'un œuf ne va jamais où l'on veut.
+    versions:
+      - lieu: Dehors
+        espace: Une allée de terre, un chemin de sable ou une pelouse tondue court, sur 4 à 6 m de long
+        mise_en_place: >-
+          Tracez la ligne de lancer. Un joueur lance le poussin à 3 ou 4 m devant lui, ou l'adulte le pose pour les petits.
+          Les équipes se partagent les œufs, deux ou trois par joueur selon le nombre. Dans l'herbe haute, les œufs s'arrêtent
+          aussitôt : choisissez le sol le plus plat et le plus ras.
+        deroulement:
+          - Le premier joueur, accroupi derrière la ligne, fait rouler un œuf vers le poussin, par en dessous, sans le lancer en l'air.
+          - "Un joueur de l'autre équipe fait rouler le sien. Ensuite, c'est toujours l'équipe la plus loin du poussin qui rejoue, jusqu'à ce qu'elle reprenne la meilleure place ou qu'elle n'ait plus d'œufs."
+          - "Un œuf peut pousser un autre œuf, ou même le poussin : on joue là où tout s'est arrêté."
+          - "Quand tous les œufs ont roulé, on compte : l'équipe la plus proche marque un point pour chacun de ses œufs plus près du poussin que le meilleur œuf adverse."
+          - Le gagnant de la manche lance le poussin pour la suivante. La partie se joue en 7 points.
+      - lieu: À l'intérieur
+        espace: Un couloir, un grand tapis ou un parquet, 3 m suffisent
+        mise_en_place: >-
+          Sur un sol lisse, les œufs filent loin : jouez à genoux et réduisez la distance à 2 m. Posez des coussins ou des livres
+          sur les côtés pour faire des bords, comme une piste de billes.
+        deroulement:
+          - Même jeu que dehors, à genoux.
+          - "Le nid : remplacez le poussin par une assiette en carton ou un couvercle de boîte à chaussures. Un œuf qui s'arrête dans le nid vaut 3 points, un œuf qui touche le bord vaut 1 point."
+          - "Le jardin à obstacles : placez deux ou trois rouleaux de papier toilette debout entre la ligne et le poussin. Il faut les contourner en profitant de la courbe de l'œuf."
+    regles:
+      - On fait rouler l'œuf, on ne le lance pas.
+      - Les pieds, ou les genoux, restent derrière la ligne jusqu'à ce que l'œuf s'arrête.
+      - On ne touche aucun œuf avant la fin de la manche.
+      - En cas d'égalité, on mesure avec la ficelle. Si c'est vraiment pareil, personne ne marque.
+    adapter:
+      - "4-5 ans : un nid à la place du poussin, posé à 1,50 m. Chacun fait rouler ses trois œufs à la suite, et l'on compte ensemble ceux qui sont dans le nid. Pas d'équipes ni de points."
+      - "6-8 ans : le jeu tel quel, à deux équipes."
+      - "9-10 ans : chaque œuf est rempli autrement (vide, plein de riz, une boulette de pâte à modeler collée d'un seul côté), et chacun choisit son œuf selon le terrain. Laissez-les découvrir seuls que l'œuf lesté d'un côté tourne toujours dans le même sens, et qu'il faut viser à côté du poussin."
+    securite:
+      - Fermez bien les œufs remplis. Riz, lentilles et pâte à modeler restent hors de portée des tout-petits qui passent par là.
+      - On attend que tout le monde soit derrière la ligne avant de faire rouler.
+    fin: >-
+      Pour finir, une manche tous ensemble, sans équipes : chacun fait rouler un seul œuf, et l'on regarde où s'est arrêtée la
+      couvée autour du poussin. Le plus proche choisit qui range. Les œufs remplis et le poussin vont dans une boîte à chaussures :
+      le jeu est prêt pour le prochain après-midi de printemps.
