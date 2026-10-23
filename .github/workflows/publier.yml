@@ -47,7 +47,12 @@ jobs:
           npm install --no-save --no-package-lock @fontsource/bricolage-grotesque@5 @fontsource/atkinson-hyperlegible@5 @fontsource/gochi-hand@5
           python3 outils/polices.py
       - name: ffmpeg (vidéo du Reel du dimanche)
-        run: which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+        # seulement le dimanche, et sans bloquer le site si l'installation traîne
+        timeout-minutes: 6
+        continue-on-error: true
+        run: |
+          [ "$(date -u +%u)" = 7 ] || exit 0
+          which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg)
       - name: Fabriquer le site
         run: python3 build.py
       - uses: actions/configure-pages@v5
