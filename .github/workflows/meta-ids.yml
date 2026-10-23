@@ -1,0 +1,19 @@
+name: Identifiant Instagram
+
+# à la demande : affiche le compte Instagram relié à la page Facebook
+on:
+  workflow_dispatch:
+
+jobs:
+  lire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Lire l'identifiant
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+        run: python3 outils/meta_ids.py
