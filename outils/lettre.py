@@ -47,7 +47,8 @@ def composer(jour):
     base = config["url"].rstrip("/")
     jeux = lire("jeux-fetes").get("jeux", [])
     fetes = {f["slug"]: f for f in lire("fetes").get("fetes", [])}
-    recents = sorted([j for j in jeux if j.get("ajoute")], key=lambda j: str(j["ajoute"]), reverse=True)
+    recents = sorted([j for j in jeux if j.get("ajoute") and str(j["ajoute"]) <= jour.isoformat()],
+                     key=lambda j: str(j["ajoute"]), reverse=True)
     jeu = recents[0] if recents else None
     articles = articles_depuis(jour - dt.timedelta(days=35), jour)
     saison = next((s for s in lire("saisons").get("saisons", []) if jour.month in s["mois"]), None)

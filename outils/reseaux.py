@@ -126,6 +126,8 @@ def _tous():
                       "intertitres": re.findall(r"^## (.+)$", f.read_text(encoding="utf-8"), re.M)})
 
     for j in d.get("jeux-fetes", {}).get("jeux", []):
+        if j.get("ajoute") and dt.date.fromisoformat(str(j["ajoute"])) > dt.date.today():
+            continue  # pas encore paru
         liste.append({"id": f"fete-{j['id']}", "type": "jeu", "titre": j["nom"], "texte": _propre(j["accroche"]),
                       "url": f"/fetes/{j['fete']}/{j['id']}/", "surtitre": "Jeu offert, règles complètes",
                       "couleur": "saison", "mots": MOTS_CLES.get(j["fete"], MOTS_CLES["fetes"]),

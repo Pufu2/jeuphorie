@@ -214,7 +214,10 @@ class Site:
         return None
 
     def jeux_fetes(self):
-        return self.donnees.get("jeux-fetes", {}).get("jeux", [])
+        """Les jeux de fêtes déjà parus : un jeu dont la date « ajoute » est à venir reste caché jusqu'à ce jour-là."""
+        jour = dt.date.today()
+        return [j for j in self.donnees.get("jeux-fetes", {}).get("jeux", [])
+                if not j.get("ajoute") or dt.date.fromisoformat(str(j["ajoute"])) <= jour]
 
     # -- déclaration des pages
     def declarer(self):

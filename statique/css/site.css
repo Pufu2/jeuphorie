@@ -1069,6 +1069,7 @@ a.tampon { text-decoration: none; }
 .valeur__tableau table { width: 100%; border-collapse: collapse; }
 .valeur__tableau td { padding: 0.55rem 0; border-bottom: 1px solid var(--filet); vertical-align: top; }
 .valeur__prix { text-align: right; font-family: var(--f-titre); font-weight: 700; white-space: nowrap; padding-left: 1rem !important; }
+@media (max-width: 480px) { .valeur__tableau { padding: 1rem; } .valeur__prix { white-space: normal; } }
 .valeur__total { margin-top: 0.9rem; font-weight: 700; color: var(--pro-texte); }
 .calendrier-dossiers { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); margin-bottom: 0.8rem; }
 .dossier { background: var(--fiche); border: 1px solid var(--filet); border-left: 5px solid var(--pro-vif); border-radius: var(--rayon); padding: 0.8rem 1rem; display: grid; gap: 0.2rem; }
