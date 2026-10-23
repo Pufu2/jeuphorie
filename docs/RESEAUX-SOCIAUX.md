@@ -1,5 +1,7 @@
 # Les réseaux sociaux de Jeuphorie
 
+> **Instagram** : le compte a été désactivé définitivement par Instagram le 23 octobre 2026, après un appel refusé. `instagram_id` est vide dans `config.yml` : plus rien n'y est envoyé. Les conditions d'Instagram interdisent de recréer un compte après une désactivation : ne pas en ouvrir un nouveau.
+
 Tout est automatique. Chaque matin, le site choisit un sujet (le nouvel article du blog s'il en paraît un, sinon un jeu offert, une page d'univers et, quand les ventes seront ouvertes, un kit), en suivant les saisons. Il fabrique le visuel et la légende à partir des textes du site, puis :
 
 - **Pinterest** : une épingle par jour, rangée dans le tableau de son thème (voir plus bas), avec un titre et une description écrits avec les mots que les gens cherchent ;
