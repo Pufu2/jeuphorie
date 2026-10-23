@@ -39,7 +39,8 @@ lettre_expediteur: "contact@jeuphorie.fr"
 goatcounter: "jeuphorie"
 # Réseaux sociaux (identifiants publics, pas des secrets ; le jeton, lui, est dans les secrets GitHub : META_PAGE_TOKEN)
 meta_page_id: "1420693194451781"
-instagram_id: "17841461657685341"
+# Instagram en pause pendant l'examen du compte par Instagram (23 octobre 2026). Pour reprendre : instagram_id: "17841461657685341"
+instagram_id: ""
 indexnow_cle: "90ce011ea2f1f93f7bd002bd10dc8adc"
 
 # Adresse de contact affichée sur le site.
