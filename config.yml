@@ -39,8 +39,8 @@ lettre_expediteur: "contact@jeuphorie.fr"
 goatcounter: "jeuphorie"
 # Réseaux sociaux (identifiants publics, pas des secrets ; le jeton, lui, est dans les secrets GitHub : META_PAGE_TOKEN)
 meta_page_id: "1420693194451781"
-# Instagram : compte désactivé par Instagram le 23 octobre 2026 ; plus aucune publication n'y part. Laisser vide.
-instagram_id: ""
+# Instagram : nouveau compte _jeuphorie_ (l'ancien jeuphorie_ a été désactivé par Instagram le 23 octobre 2026).
+instagram_id: "17841416765013533"
 indexnow_cle: "90ce011ea2f1f93f7bd002bd10dc8adc"
 
 # Adresse de contact affichée sur le site.

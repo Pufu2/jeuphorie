@@ -287,7 +287,7 @@ class Site:
             reel.fabriquer_video({"cartes": reseaux.cartes_reel(p), "couleur": couleur},
                                  SORTIE / reseaux.nom_video(p), reel.decor_saison(dt.date.today().month))
         self.ajouter("/reseaux/", "reseaux.html", titre="Nos dernières publications",
-                     description="Les dernières publications de Jeuphorie sur Facebook et Pinterest.",
+                     description="Les dernières publications de Jeuphorie sur Instagram, Facebook et Pinterest.",
                      indexer=False, publications=reseaux.fabriquer(SORTIE, self.config["url"]))
         self.ajouter("/404.html", "404.html", titre="Page introuvable", indexer=False)
         for ancienne, nouvelle in REDIRECTIONS.items():

@@ -1,6 +1,6 @@
 # Les réseaux sociaux de Jeuphorie
 
-> **Instagram** : le compte a été désactivé définitivement par Instagram le 23 octobre 2026, après un appel refusé. `instagram_id` est vide dans `config.yml` : plus rien n'y est envoyé. Les conditions d'Instagram interdisent de recréer un compte après une désactivation : ne pas en ouvrir un nouveau.
+> **Instagram** : le premier compte (jeuphorie_) a été désactivé par Instagram le 23 octobre 2026. Le nouveau compte `_jeuphorie_` est relié à la page depuis le même jour (`instagram_id` dans `config.yml`). Le lien de sa bio : `https://jeuphorie.fr/reseaux/`.
 
 Tout est automatique. Chaque matin, le site choisit un sujet (le nouvel article du blog s'il en paraît un, sinon un jeu offert, une page d'univers et, quand les ventes seront ouvertes, un kit), en suivant les saisons. Il fabrique le visuel et la légende à partir des textes du site, puis :
 
