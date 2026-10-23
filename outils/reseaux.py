@@ -299,7 +299,8 @@ def legende(p, reseau, base):
         sep = " " if p["titre"].rstrip()[-1:] in "?!." else ". "
         phrase = RECHERCHES.get(p.get("theme"), ("", ""))[1]
         detail = f" {p['detail']}." if p.get("detail") else ""
-        return _propre(f"{p['titre']}{sep}{p['texte']}{detail} {phrase}")[:490]
+        signature = " Par Jeuphorie, jeux et animations pour enfants à imprimer."  # le nom, pour qu'on trouve les épingles
+        return _propre(f"{p['titre']}{sep}{p['texte']}{detail} {phrase}")[:490 - len(signature)].rstrip() + signature
     suite = {"article": "À lire ici :", "jeu": "Les règles complètes, gratuites :", "univers": "C'est par ici :",
              "kit": "Le kit :"}[p["type"]]
     return f"{corps}\n\n{suite} {lien}"
