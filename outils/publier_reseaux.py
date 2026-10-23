@@ -9,7 +9,8 @@ Le jeton d'accès de la page, lui, est un secret du dépôt (Settings > Secrets 
   META_PAGE_TOKEN  le jeton « permanent » de la page, voir docs/RESEAUX-SOCIAUX.md
 Sans ce secret, il ne fait rien : Pinterest, lui, se nourrit tout seul du flux /flux/pinterest.xml.
 
-Usage : python3 outils/publier_reseaux.py [--essai]   (--essai affiche sans rien publier)
+Usage : python3 outils/publier_reseaux.py [--essai] [--forcer]
+  --essai affiche sans rien publier ; --forcer publie le sujet du dernier jour de publication (lancement à la main)
 """
 import datetime as dt
 import json
@@ -40,6 +41,9 @@ def appel(chemin, **params):
 def main():
     essai = "--essai" in sys.argv
     jour = dt.date.today()
+    if "--forcer" in sys.argv:  # à la demande : le sujet du dernier jour de publication
+        while jour.weekday() not in reseaux.JOURS_META:
+            jour -= dt.timedelta(days=1)
     if jour.weekday() not in reseaux.JOURS_META:
         print("Pas de publication Facebook ni Instagram aujourd'hui.")
         return 0
