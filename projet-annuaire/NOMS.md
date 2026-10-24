@@ -1,19 +1,16 @@
 # Étape A — Le nom du site (proposition, rien n'est acheté ni publié)
 
-## Décision proposée (25 octobre 2026)
+## Décision (25 octobre 2026)
 
-**Fil Rouge Anim**, domaine **filrougeanim.fr** (tout attaché, plus simple à dicter
-qu'avec un tiret). Si ce domaine est pris chez OVHcloud : **filrouge-anim.fr** ; si les
-deux sont pris : **Animarelle** (animarelle.fr). Aucune page « filrougeanim » trouvée
-sur le web le 25/10/2026 ; disponibilité du .fr et marque INPI à vérifier.
+**Fil Roug'Anim**, domaine **filrouganim.fr** (choisi par Pufu2).
+- Accroche : « Ne perds pas le fil de ton anim ».
+- Identité visuelle : un fil rouge qui part du « F » du logo et relie les étapes
+  (formation générale → stage pratique → approfondissement → premier job) sur toutes les pages.
+- Si filrouganim.fr est pris : filrougeanim.fr, puis filroug-anim.fr.
+- À faire par Pufu2 : vérifier le .fr chez OVHcloud et la marque sur data.inpi.fr.
 
-État du 24 octobre 2026.
-
-**Limite de la vérification :** le réseau de l'espace de travail refuse rdap.nic.fr,
-rdap.org et afnic.fr, et l'outil de lecture web ne joint aucun site. La disponibilité
-des .fr n'est donc **pas vérifiée** : à contrôler chez OVHcloud. Le « coup d'œil web »
-s'est fait par moteur de recherche (index surtout anglophone) : « rien trouvé » veut
-dire « pas de collision évidente », pas « libre ». La vérification INPI reste à faire.
+Autres noms étudiés ensuite : Chemin d'Anim, Sac à Dos Anim, Sésame Anim, Clés de l'Anim,
+Étap'Anim, Fil d'Anim, Tiss'Anim, Fil'Anim, Pelot'Anim, ProFil Rouge, Anim'Fil Rouge.
 
 | # | Nom | Domaine visé | Idée | Coup d'œil web |
 |---|-----|--------------|------|----------------|
