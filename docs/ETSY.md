@@ -64,6 +64,20 @@ Ces informations viennent des pages officielles d'Etsy, lues à travers un moteu
 - Etsy vérifie votre identité : pièce d'identité et selfie, puis Kbis ou avis de situation SIRENE ([aide](https://help.etsy.com/hc/en-us/articles/22481159004567-How-to-Verify-Your-Identity-on-Etsy)).
 - Etsy déclare vos ventes aux impôts au-delà de 30 ventes ou 2 000 € par an (DAC7, [aide](https://help.etsy.com/hc/en-us/articles/360048262494-What-Are-Sales-Reporting-Requirements-for-French-Sellers)).
 
+## La stratégie retenue (24 octobre 2026)
+
+- **Mêmes prix que sur jeuphorie.fr.** Aucune règle d'Etsy trouvée n'impose un prix identique ailleurs, mais garder le même prix évite de pénaliser l'un ou l'autre canal. On ne mentionne jamais le site dans les annonces.
+- **Offsite Ads refusées** au départ.
+- **Première vague, prête** : les 8 kits terminés.
+  - Anniversaires : défi des champions, chasse au trésor des pirates, enquête du gâteau disparu, safari des petits explorateurs.
+  - Fêtes : forêt d'automne, atelier du père Noël, bal du carnaval, quête des cloches.
+  - Leurs PDF Etsy n'ont pas l'adresse du site, et le kit de Noël passe en premier pour la saison.
+- **Deuxième vague, dès que les fiches complètes des grands jeux seront retrouvées** :
+  - les 4 fichiers de grands jeux ;
+  - 3 petits lots à thème vers 5,90 € : jeux de ballon, poursuite et drapeaux, sports collectifs adaptés ;
+  - un fichier d'appel à 2,90 € : 3 jeux tirés des packs, pas les 3 jeux offerts sur le site.
+- **Plus tard, si les ventes suivent** : les outils pour les structures (kit du directeur, projet pédagogique, thèmes de séjour…).
+
 ## 2. Créer la boutique : votre pas-à-pas
 
 **Quand** : dès que vous avez votre numéro SIRET. Etsy demande le statut professionnel, et l'ouverture de la boutique met les annonces en vente.
