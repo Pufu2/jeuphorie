@@ -1,0 +1,20 @@
+# Modèle d'une session (étape B). Faits seulement : jamais les textes des organismes.
+# Les valeurs ci-dessous sont un EXEMPLE FICTIF, à remplacer par la récolte.
+sessions:
+  - id: exemple-2027-02-paris-fg          # identifiant unique, stable
+    organisme: exemple                      # clé dans organismes.yml
+    diplome: BAFA                           # BAFA | BAFD
+    type: formation-generale                # formation-generale | approfondissement | qualification | bafd-formation-generale | bafd-perfectionnement
+    theme: null                             # thème d'approfondissement ou de qualification (ex. « petite enfance », « surveillant de baignade »)
+    debut: 2027-02-13                       # AAAA-MM-JJ
+    fin: 2027-02-20
+    periode: hiver-2027                     # hiver-2027 | printemps-2027 | ete-2027 | toussaint-2026...
+    ville: Paris
+    departement: "75"
+    formule: demi-pension                   # internat | demi-pension | externat
+    prix: 450                               # en euros, tel qu'affiché ; null si non affiché
+    prix_note: null                         # ex. « hors adhésion 15 € »
+    aides: []                               # aides citées par l'organisme : caf, departement, commune, employeur...
+    url: https://exemple.invalid/session    # page de la session chez l'organisme
+    verifie_le: 2026-10-24
+    statut: ouverte                         # ouverte | complete | annulee | a-verifier
