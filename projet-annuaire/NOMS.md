@@ -1,5 +1,12 @@
 # Étape A — Le nom du site (proposition, rien n'est acheté ni publié)
 
+## Décision proposée (25 octobre 2026)
+
+**Fil Rouge Anim**, domaine **filrougeanim.fr** (tout attaché, plus simple à dicter
+qu'avec un tiret). Si ce domaine est pris chez OVHcloud : **filrouge-anim.fr** ; si les
+deux sont pris : **Animarelle** (animarelle.fr). Aucune page « filrougeanim » trouvée
+sur le web le 25/10/2026 ; disponibilité du .fr et marque INPI à vérifier.
+
 État du 24 octobre 2026.
 
 **Limite de la vérification :** le réseau de l'espace de travail refuse rdap.nic.fr,
