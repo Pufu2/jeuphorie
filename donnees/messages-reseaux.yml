@@ -1,0 +1,173 @@
+# Les messages du samedi sur Facebook et Instagram : des mots de Rafaël, sans produit à vendre.
+# Publiés dans l'ordre, un par samedi à partir du 31 octobre 2026 (outils/reseaux.py, MESSAGES_DEBUT).
+# titre : le texte court du visuel ; texte : la légende. Jamais d'anecdote inventée : des conseils, des questions,
+# des explications sur Jeuphorie, qui restent vrais. url : la page vers laquelle renvoie le message (lien dans la bio).
+
+messages:
+  - id: presentation
+    surtitre: Bonjour !
+    titre: "Je m'appelle Rafaël, et voici pourquoi j'ai créé Jeuphorie"
+    url: /qui-suis-je/
+    texte: |
+      Bonjour à toutes et à tous !
+
+      Je m'appelle Rafaël, je suis directeur adjoint d'accueil de loisirs. Mon métier, c'est de faire jouer des groupes d'enfants, toute l'année : les mercredis, les vacances, les fêtes.
+
+      J'ai créé Jeuphorie pour partager ce qui marche vraiment sur le terrain : des jeux aux règles claires, avec le matériel qu'on a sous la main, prêts en quelques minutes. Pour les animateurs, les enseignants, et les parents qui préparent un anniversaire.
+
+      Ici, je publie des idées de jeux, des conseils, et de temps en temps une question pour vous.
+
+      Et vous, vous animez des enfants à quelle occasion ? Dites-le-moi en commentaire, ça m'aidera à publier ce qui vous sert.
+
+  - id: question-jeu-enfance
+    surtitre: Une question pour vous
+    titre: "Quel jeu de votre enfance faites-vous encore jouer aujourd'hui ?"
+    url: /jeux/
+    texte: |
+      Petite question du samedi.
+
+      Quel est le jeu de cour de votre enfance que vous faites encore jouer aux enfants aujourd'hui ? Le béret, l'épervier, le loup, la balle aux prisonniers, autre chose ?
+
+      Ce qui me frappe, c'est que les meilleurs jeux traversent les générations sans prendre une ride. Il suffit souvent de les expliquer clairement.
+
+      Je lis toutes vos réponses en commentaire.
+
+  - id: conseil-expliquer
+    surtitre: Le conseil du samedi
+    titre: "Expliquer un jeu en moins d'une minute"
+    url: /grands-jeux/
+    texte: |
+      Le conseil du samedi : comment expliquer un jeu sans perdre le groupe.
+
+      1. Le but en une seule phrase. « Les poules attrapent les vipères, les vipères attrapent les renards, les renards attrapent les poules. »
+      2. Montrez le terrain plutôt que de le décrire.
+      3. Deux ou trois règles, pas plus. Le reste viendra en jouant.
+      4. Une manche d'essai, sans compter les points.
+
+      Si les enfants commencent à bouger pendant l'explication, c'est qu'elle est trop longue.
+
+      Vous avez une astuce à ajouter ?
+
+  - id: question-pluie
+    surtitre: Une question pour vous
+    titre: "Il pleut, la cour est fermée : vous faites quoi ?"
+    url: /blog/jeux-interieur-enfants-quand-il-pleut/
+    texte: |
+      Question du samedi, saison oblige.
+
+      Il pleut, la cour est fermée, vous avez quinze enfants dans une salle. Quel est votre jeu de secours, celui qui marche à tous les coups ?
+
+      J'ai rassemblé mes idées dans un article du blog (lien dans la bio), mais je suis sûr que vous en avez d'autres. Partagez-les en commentaire, ça servira à tout le monde.
+
+  - id: conseil-elimination
+    surtitre: Le conseil du samedi
+    titre: "Moins d'élimination, plus de jeu"
+    url: /blog/jeux-cooperatifs-enfants/
+    texte: |
+      Le conseil du samedi : faire attention à l'élimination.
+
+      Dans beaucoup de jeux classiques, les enfants éliminés attendent sur le côté. Et ce sont souvent les mêmes : les plus petits, les plus timides, ceux qui en auraient le plus besoin.
+
+      Quelques idées simples :
+      - l'éliminé revient au bout de dix secondes ;
+      - il change d'équipe au lieu de sortir ;
+      - il devient arbitre ou aide du meneur ;
+      - on joue en temps limité plutôt que « jusqu'au dernier ».
+
+      Et vous, vous gardez l'élimination ou vous l'avez abandonnée ?
+
+  - id: jeux-offerts
+    surtitre: Pour vous
+    titre: "3 grands jeux offerts, avec les règles et le terrain"
+    url: /jeux-gratuits/
+    texte: |
+      Un petit rappel, pour ceux qui viennent d'arriver ici.
+
+      Sur le site, trois grands jeux sont offerts en entier : gendarmes et voleurs, poules renards vipères et l'épervier gradé. Règles complètes, variantes, schéma du terrain, à imprimer gratuitement.
+
+      Ce sont trois jeux qui fonctionnent avec presque tous les groupes, de 6 à 13 ans. Le lien est dans la bio.
+
+      Si vous les essayez, dites-moi comment ça s'est passé !
+
+  - id: question-age
+    surtitre: Une question pour vous
+    titre: "Avec quel âge préférez-vous jouer ?"
+    url: /
+    texte: |
+      Question du samedi : avec quel âge préférez-vous animer ?
+
+      Les 3-5 ans, pour qui chaque jeu est une découverte ? Les 6-9 ans, qui veulent toujours rejouer ? Les 10-13 ans, qui négocient chaque règle ? Les ados, qu'il faut convaincre ?
+
+      Chaque âge a ses défis. Répondez en commentaire, et dites-moi ce qui vous manque pour votre tranche d'âge : je m'en servirai pour les prochaines idées.
+
+  - id: conseil-materiel
+    surtitre: Le conseil du samedi
+    titre: "Le sac de l'animateur : ce qu'il faut toujours avoir"
+    url: /jeux-sans-materiel/
+    texte: |
+      Le conseil du samedi : le sac qui sauve une après-midi.
+
+      Avec ces quelques objets, vous pouvez lancer presque n'importe quel grand jeu :
+      - une dizaine de plots ;
+      - des chasubles ou des foulards de deux ou trois couleurs ;
+      - deux ballons en mousse ;
+      - une craie ;
+      - un sifflet et un chronomètre ;
+      - quelques cerceaux.
+
+      Et pour les jours où vous n'avez vraiment rien, il reste tous les jeux sans matériel (lien dans la bio).
+
+      Il manque quelque chose dans ma liste ?
+
+  - id: question-fetes
+    surtitre: Une question pour vous
+    titre: "Vous fêtez Noël avec les enfants ?"
+    url: /fetes/noel/
+    texte: |
+      Question du samedi, à l'approche des fêtes.
+
+      Vous préparez quelque chose pour Noël avec votre groupe ou votre famille ? Un goûter, un spectacle, un grand jeu, un atelier ?
+
+      J'ai mis en ligne des jeux de Noël complets et gratuits sur le site (lien dans la bio). Dites-moi en commentaire ce que vous organisez cette année, ça donnera des idées aux autres.
+
+  - id: conseil-fin-de-jeu
+    surtitre: Le conseil du samedi
+    titre: "Bien finir un jeu, c'est aussi important que bien le commencer"
+    url: /grands-jeux/
+    texte: |
+      Le conseil du samedi : soigner la fin du jeu.
+
+      On pense beaucoup au lancement, rarement à la fin. Pourtant, c'est elle que les enfants retiennent.
+
+      - Annoncez la dernière manche avant qu'elle commence.
+      - Arrêtez le jeu quand il plaît encore, pas quand tout le monde est épuisé.
+      - Prenez deux minutes pour en parler : ce qui était bien, ce qu'on changerait.
+      - Faites applaudir les deux équipes.
+
+      Un jeu qui finit bien, les enfants le redemandent.
+
+  - id: question-site
+    surtitre: Une question pour vous
+    titre: "Qu'aimeriez-vous trouver sur Jeuphorie ?"
+    url: /contact/
+    texte: |
+      Question du samedi, un peu particulière.
+
+      Jeuphorie grandit doucement, et je veux qu'il serve vraiment. Alors je vous pose la question : qu'aimeriez-vous y trouver ? Des jeux pour un âge précis, pour une fête, pour un grand groupe, pour la maison ?
+
+      Toutes les idées sont bonnes à prendre. Répondez en commentaire ou écrivez-moi (le lien est dans la bio).
+
+  - id: conseil-securite
+    surtitre: Le conseil du samedi
+    titre: "Avant chaque grand jeu, un tour du terrain"
+    url: /jeux-exterieur-enfants/
+    texte: |
+      Le conseil du samedi : deux minutes de vérification avant de jouer.
+
+      Avant un grand jeu dehors, faites toujours le tour du terrain :
+      - les limites sont-elles bien visibles ?
+      - y a-t-il des trous, des flaques, des racines, des bancs mal placés ?
+      - où sont l'eau et la trousse de secours ?
+      - tout le monde voit-il l'adulte qui arbitre ?
+
+      Deux minutes qui évitent bien des bobos. Et vous, quel est votre réflexe avant de lancer un jeu ?

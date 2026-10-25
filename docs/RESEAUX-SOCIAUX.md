@@ -38,6 +38,14 @@ C'est fini : Pinterest lit le flux tout seul et crée les nouvelles épingles.
 
 Dès le prochain mardi, jeudi ou samedi, la publication part toute seule. Si un jour le jeton est révoqué (changement de mot de passe Facebook, par exemple), GitHub vous envoie un e-mail « Run failed » : il suffit de refaire les étapes 4 à 8.
 
+## Le ton des publications (réglé le 25 octobre 2026)
+
+- **Mardi et jeudi** : le sujet du jour (jeu, article, page du site), avec une phrase d'introduction et une question de fin qui changent d'une publication à l'autre, et, pour les jeux de fêtes, une astuce d'adaptation à l'âge. Les phrases sont dans `INTROS` et `QUESTIONS` (outils/reseaux.py).
+- **Samedi** : un message de Rafaël, sans rien à vendre : présentation, conseil d'animateur ou question aux abonnés. Douze messages, un par samedi à partir du 31 octobre 2026, dans `donnees/messages-reseaux.yml`. Une fois la liste épuisée (après le 16 janvier 2027), le samedi reprend le sujet du jour normal ; il suffit d'ajouter des messages à la fin du fichier pour continuer.
+- **Pinterest** ne change pas : les épingles restent des fiches pratiques, c'est ce qui y marche.
+- Jamais d'anecdote inventée : les messages restent vrais quelle que soit la semaine.
+- **Le plus important reste à faire à la main : répondre aux commentaires**, surtout le samedi, puisque chaque message pose une question.
+
 ## Les tableaux Pinterest
 
 Chaque thème a son tableau, nourri par son propre flux (réglé le 21 octobre 2026). À ajouter une fois dans Pinterest : Paramètres > Créer des épingles en masse > Publier automatiquement > « Ajouter un flux RSS », en créant le tableau au passage.

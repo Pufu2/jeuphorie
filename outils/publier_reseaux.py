@@ -47,7 +47,7 @@ def main():
     if jour.weekday() not in reseaux.JOURS_META:
         print("Pas de publication Facebook ni Instagram aujourd'hui.")
         return 0
-    p = reseaux.publication(jour)
+    p = reseaux.publication_meta(jour)
     if not p:
         print("Aucun sujet aujourd'hui.")
         return 0

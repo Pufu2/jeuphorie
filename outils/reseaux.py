@@ -16,6 +16,7 @@ import functools
 import html
 import re
 import textwrap
+import zlib
 from pathlib import Path
 
 import yaml
@@ -190,6 +191,32 @@ def _historique(jusqua):
     return histo
 
 
+# ---------------------------------------------------------------- les messages du samedi (Facebook et Instagram)
+
+MESSAGES_DEBUT = dt.date(2026, 10, 31)  # premier samedi des messages ; ne pas changer
+MOTS_MESSAGES = "#animateur #animatrice #jeuxenfants #centredeloisirs #activiteenfant #bafa"
+
+
+def message_du_jour(jour):
+    """Le samedi, un message de Rafaël (donnees/messages-reseaux.yml), dans l'ordre ; None une fois la liste épuisée."""
+    if jour.weekday() != 5 or jour < MESSAGES_DEBUT:
+        return None
+    n = (jour - MESSAGES_DEBUT).days // 7
+    messages = _yaml(RACINE / "donnees" / "messages-reseaux.yml").get("messages", [])
+    if n >= len(messages):
+        return None
+    m = messages[n]
+    return {"id": f"message-{m['id']}", "type": "message", "titre": m["titre"], "surtitre": m["surtitre"],
+            "texte": "", "url": m["url"], "couleur": ["fete", "plein-air", "pro", "saison"][n % 4],
+            "variante": n % 3, "jour": jour, "mots": MOTS_MESSAGES, "mois": None, "theme": None,
+            "message": m["texte"].strip()}
+
+
+def publication_meta(jour):
+    """Ce qui part sur Facebook et Instagram ce jour-là : le message du samedi, sinon le sujet du jour."""
+    return message_du_jour(jour) or publication(jour)
+
+
 def publication(jour):
     """La publication du jour, ou None."""
     return _historique(jour).get(jour)
@@ -283,18 +310,63 @@ def nom_video(p):
 
 # ---------------------------------------------------------------- les légendes
 
+INTROS = {
+    "jeu": ["Une idée de jeu pour vos prochaines animations.", "Un jeu à ressortir cette semaine.",
+            "Si vous cherchez un jeu qui fait bouger tout le monde, celui-ci est fait pour ça.",
+            "Voici un jeu qui marche avec presque tous les groupes."],
+    "article": ["Sur le blog cette semaine.", "Un article à garder sous le coude.", "À lire avant votre prochaine animation."],
+    "univers": ["Un coin du site que vous ne connaissez peut-être pas encore.", "Si vous préparez une animation, c'est par ici."],
+    "kit": ["Un kit prêt à imprimer.", "Pour ceux qui veulent tout avoir sous la main."],
+}
+QUESTIONS = {
+    "jeu": ["Vous l'avez déjà essayé ?", "Vous le connaissiez sous un autre nom ?",
+            "Si vous le testez, racontez-moi comment ça s'est passé.", "Vous le joueriez avec quel âge ?"],
+    "article": ["Et chez vous, comment ça se passe ?", "Vous avez d'autres astuces ? Partagez-les en commentaire.",
+                "Dites-moi si cet article vous a servi."],
+    "univers": ["Dites-moi en commentaire ce que vous préparez en ce moment.", "Qu'aimeriez-vous y trouver d'autre ?"],
+    "kit": ["Une question sur le kit ? Posez-la en commentaire."],
+}
+
+
+def _choisir(liste, p, sel=""):
+    """Un choix qui varie d'une publication à l'autre, mais toujours le même pour une publication donnée."""
+    return liste[zlib.crc32(f"{p['id']}{p.get('jour')}{sel}".encode()) % len(liste)]
+
+
+def _lien_bio(texte, lien):
+    """Sur Facebook, le lien est cliquable : « lien dans la bio » devient l'adresse."""
+    texte = re.sub(r"\s*\((le )?lien (est )?dans la bio\)", f" ({lien})", texte)
+    return re.sub(r"Le lien est dans la bio\.", f"Le lien : {lien}", texte)
+
+
 def legende(p, reseau, base):
     lien = base.rstrip("/") + p["url"]
-    debut = {"article": "", "jeu": "Un jeu à essayer cette semaine. ", "univers": "", "kit": ""}[p["type"]]
-    corps = f"{p['titre']}\n\n{debut}{p['texte']}"
-    if p.get("detail"):
-        corps += f"\n\n{p['detail']}"
+    if p["type"] == "message":
+        if reseau == "instagram":
+            return f"{p['message']}\n\n{p['mots']}"
+        if reseau == "facebook":
+            return _lien_bio(p["message"], lien)
+        return _propre(f"{p['titre']}. {p['message']}")[:490]
+    if reseau in ("facebook", "instagram"):
+        intro = _choisir(INTROS[p["type"]], p, "intro")
+        if p["type"] == "article" and p.get("date") == p.get("jour"):
+            intro = "Nouvel article sur le blog."
+        corps = f"{p['titre']}\n\n{intro} {p['texte']}"
+        if p.get("detail"):
+            corps += f"\n\n{p['detail']}"
+        astuce = (p.get("brut") or {}).get("adapter")
+        if astuce:  # les jeux de fêtes ont une adaptation par âge : un vrai conseil d'animateur
+            a = _choisir(astuce, p, "astuce")
+            corps += ("\n\nPetite astuce pour les " + a if re.match(r"\d", a) else "\n\nPetite astuce : " + a[:1].lower() + a[1:])
+        question = _choisir(QUESTIONS[p["type"]], p, "question")
+    else:
+        corps = f"{p['titre']}\n\n{p['texte']}"
     if reseau == "instagram":
         suite = {"article": "L'article complet est sur jeuphorie.fr (lien dans la bio).",
                  "jeu": "Les règles complètes, gratuites, sont sur jeuphorie.fr (lien dans la bio).",
                  "univers": "Tout est sur jeuphorie.fr (lien dans la bio).",
                  "kit": "Le kit est sur jeuphorie.fr (lien dans la bio)."}[p["type"]]
-        return f"{corps}\n\n{suite}\n\n{p['mots']}"
+        return f"{corps}\n\n{suite}\n\n{question}\n\n{p['mots']}"
     if reseau == "pinterest":
         sep = " " if p["titre"].rstrip()[-1:] in "?!." else ". "
         phrase = RECHERCHES.get(p.get("theme"), ("", ""))[1]
@@ -303,7 +375,7 @@ def legende(p, reseau, base):
         return _propre(f"{p['titre']}{sep}{p['texte']}{detail} {phrase}")[:490 - len(signature)].rstrip() + signature
     suite = {"article": "À lire ici :", "jeu": "Les règles complètes, gratuites :", "univers": "C'est par ici :",
              "kit": "Le kit :"}[p["type"]]
-    return f"{corps}\n\n{suite} {lien}"
+    return f"{corps}\n\n{suite} {lien}\n\n{question}"
 
 
 # ---------------------------------------------------------------- les visuels
@@ -383,7 +455,7 @@ def visuel(p, largeur, hauteur, chemin):
             d.text((marge, y), p["detail"], font=_police("Atkinson-700.ttf", int(largeur * 0.038)), fill=accent)
     # l'appel, écrit à la main
     appel = {"article": "À lire sur le blog", "jeu": "Règles complètes, gratuites", "univers": "Tout est sur le site",
-             "kit": "Le kit à imprimer"}[p["type"]]
+             "kit": "Le kit à imprimer", "message": "Rafaël, de Jeuphorie"}[p["type"]]
     f_appel = _police("Gochi-400.ttf", int(largeur * 0.062))
     bas = hauteur - int(hauteur * 0.1)
     d.text((marge, bas - int(largeur * 0.16)), appel, font=f_appel, fill=accent if var != 1 else vif)
@@ -441,6 +513,11 @@ def fabriquer(sortie, base, aujourdhui=None):
     for p in pubs[:3]:  # la Story ne sert que le jour même
         if p["jour"].weekday() in JOURS_META:
             visuel_story(p, Path(sortie) / nom_visuel(p, "story"))
+    for i in range(3):  # le message du samedi : son visuel et sa Story
+        m = message_du_jour(aujourdhui - dt.timedelta(days=i))
+        if m:
+            visuel(m, 1080, 1350, Path(sortie) / nom_visuel(m, "post"))
+            visuel_story(m, Path(sortie) / nom_visuel(m, "story"))
     base = base.rstrip("/")
     flux = {"": []}  # le flux général, déjà relié à Pinterest, existe toujours
     for p in pubs:
