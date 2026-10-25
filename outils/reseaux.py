@@ -206,8 +206,11 @@ def message_du_jour(jour):
     if n >= len(messages):
         return None
     m = messages[n]
+    # sur le visuel, une phrase du message : le premier paragraphe qui n'est ni une salutation ni une liste
+    paras = [x.strip() for x in m["texte"].strip().split("\n\n")]
+    extrait = next((x for x in paras[1:] if not re.match(r"(\d\.|-) ", x)), paras[0])
     return {"id": f"message-{m['id']}", "type": "message", "titre": m["titre"], "surtitre": m["surtitre"],
-            "texte": "", "url": m["url"], "couleur": ["fete", "plein-air", "pro", "saison"][n % 4],
+            "texte": extrait, "url": m["url"], "couleur": ["fete", "plein-air", "pro", "saison"][n % 4],
             "variante": n % 3, "jour": jour, "mots": MOTS_MESSAGES, "mois": None, "theme": None,
             "message": m["texte"].strip()}
 
@@ -400,73 +403,203 @@ def _lignes(dessin, texte, police, largeur):
     return lignes
 
 
+FANIONS = ["#CF3424", "#F2B21B", "#2D6A43", "#3D5BB8"]
+# les mises en page : toutes gardent la guirlande, les polices et la signature du site, mais pas la même composition
+MISES = ["classique", "bandeau", "carte", "pastille"]
+PASTILLES = {"jeu": "Gratuit", "article": "Blog", "univers": "À découvrir", "kit": "À imprimer"}
+
+
+def mise_en_page(p):
+    """La composition du visuel : elle tourne d'une publication à l'autre (jamais deux fois la même à la suite)."""
+    jour = p.get("jour") or DEBUT
+    if jour.weekday() in JOURS_META:  # Facebook et Instagram : on compte les jours de publication
+        rang = sum(1 for k in range((jour - DEBUT).days + 1) if (DEBUT + dt.timedelta(days=k)).weekday() in JOURS_META)
+    else:
+        rang = jour.toordinal()
+    mise = MISES[rang % len(MISES)]
+    if p["type"] == "message" and mise in ("classique", "pastille"):  # les messages de Rafaël : de grands guillemets
+        mise = "citation"
+    return mise
+
+
+def _guirlande(d, largeur, y, fil, taille=14):
+    pas = largeur / taille
+    d.line([(0, y), (largeur, y)], fill=fil, width=2)
+    for i in range(taille + 1):
+        x = i * pas
+        d.polygon([(x + 6, y), (x + pas - 6, y), (x + pas / 2, y + pas * 0.75)], fill=FANIONS[i % 4])
+
+
+def _signature(d, largeur, hauteur, marge, couleur, jeu="#CF3424"):
+    bas = hauteur - int(hauteur * 0.1)
+    d.line([(marge, bas - 24), (largeur - marge, bas - 24)], fill=couleur, width=2)
+    f_marque = _police("Bricolage-800.ttf", int(largeur * 0.06))
+    d.text((marge, bas), "Jeu", font=f_marque, fill=jeu)
+    d.text((marge + d.textlength("Jeu", font=f_marque), bas), "phorie", font=f_marque, fill=couleur)
+    f_main = _police("Gochi-400.ttf", int(largeur * 0.04))
+    d.text((largeur - marge - d.textlength("jeuphorie.fr", font=f_main), bas + int(largeur * 0.012)), "jeuphorie.fr",
+           font=f_main, fill=couleur)
+    return bas
+
+
+def _appel(d, p, largeur, x, y, couleur):
+    appel = {"article": "À lire sur le blog", "jeu": "Règles complètes, gratuites", "univers": "Tout est sur le site",
+             "kit": "Le kit à imprimer", "message": "Rafaël, de Jeuphorie"}[p["type"]]
+    d.text((x, y), appel, font=_police("Gochi-400.ttf", int(largeur * 0.062)), fill=couleur)
+
+
+def _titre(d, p, x, y, largeur_utile, largeur, couleur, echelle=1.0):
+    taille = int(largeur * echelle * (0.1 if len(p["titre"]) < 45 else 0.085 if len(p["titre"]) < 70 else 0.072))
+    f = _police("Bricolage-800.ttf", taille)
+    for ligne in _lignes(d, p["titre"], f, largeur_utile)[:5]:
+        d.text((x, y), ligne, font=f, fill=couleur)
+        y += int(taille * 1.12)
+    return y
+
+
+def _corps(im, d, p, x, y, largeur_utile, bas, largeur, couleur, accent, main=False):
+    """Le texte (ou la couverture d'un kit) et le détail, entre y et bas."""
+    from PIL import Image
+    couverture = p.get("couverture") and (RACINE / "statique" / p["couverture"])
+    if couverture and couverture.exists():
+        c = Image.open(couverture).convert("RGB")
+        h = min(bas - y, int(c.height * (largeur * 0.62) / c.width))
+        w = int(c.width * h / c.height)
+        im.paste(c.resize((w, h)), (x + (largeur_utile - w) // 2, y))
+        return y + h
+    taille = int(largeur * (0.056 if main else 0.05))
+    f_txt = _police("Gochi-400.ttf" if main else "Atkinson-400.ttf", taille)
+    interligne = int(taille * (1.3 if main else 1.42))
+    detail = p.get("detail")
+    lignes = _lignes(d, p["texte"], f_txt, largeur_utile)
+    maxi = max(0, (bas - y - (int(interligne * 1.8) if detail else 0)) // interligne)
+    if len(lignes) > maxi:
+        lignes = lignes[:maxi]
+        if lignes:
+            lignes[-1] = lignes[-1].rstrip(" ,.;:") + "…"
+    for ligne in lignes:
+        d.text((x, y), ligne, font=f_txt, fill=couleur)
+        y += interligne
+    if detail:
+        y += int(largeur * 0.02)
+        d.text((x, y), detail, font=_police("Atkinson-700.ttf", int(largeur * 0.038)), fill=accent)
+        y += int(largeur * 0.05)
+    return y
+
+
 def visuel(p, largeur, hauteur, chemin):
     from PIL import Image, ImageDraw
     vif, clair = COULEURS.get(p["couleur"], COULEURS["pro"])
+    sombre_sur_vif = p["couleur"] == "soleil"  # le jaune est trop clair pour du texte blanc
+    sur_vif = ENCRE if sombre_sur_vif else "#FFFFFF"
     var = p.get("variante", 0)
-    fond = [PAPIER, clair, vif][var]
-    texte_c = "#FFFFFF" if var == 2 else ENCRE
-    accent = "#FFFFFF" if var == 2 else vif
-    im = Image.new("RGB", (largeur, hauteur), fond)
-    d = ImageDraw.Draw(im)
+    mise = mise_en_page(p)
     marge = int(largeur * 0.08)
-    # la guirlande de fanions du site
-    fanions = ["#CF3424", "#F2B21B", "#2D6A43", "#3D5BB8"]
-    pas = largeur / 14
-    d.line([(0, 18), (largeur, 18)], fill="#4B5675" if var != 2 else "#FFFFFF", width=2)
-    for i in range(15):
-        x = i * pas
-        d.polygon([(x + 6, 18), (x + pas - 6, 18), (x + pas / 2, 18 + pas * 0.75)], fill=fanions[i % 4])
-    y = int(hauteur * 0.13)
-    # surtitre
+    utile = largeur - 2 * marge
     f_sur = _police("Atkinson-700.ttf", int(largeur * 0.034))
-    d.text((marge, y), p["surtitre"].upper(), font=f_sur, fill=accent)
-    y += int(largeur * 0.075)
-    # image de couverture d'un kit, sinon un grand titre
-    couverture = p.get("couverture") and (RACINE / "statique" / p["couverture"])
-    taille_titre = int(largeur * (0.1 if len(p["titre"]) < 45 else 0.085 if len(p["titre"]) < 70 else 0.072))
-    f_titre = _police("Bricolage-800.ttf", taille_titre)
-    for ligne in _lignes(d, p["titre"], f_titre, largeur - 2 * marge)[:5]:
-        d.text((marge, y), ligne, font=f_titre, fill=texte_c)
-        y += int(taille_titre * 1.12)
-    y += int(largeur * 0.03)
-    d.rectangle([marge, y, marge + int(largeur * 0.16), y + 8], fill=accent if var != 1 else vif)
-    y += int(largeur * 0.06)
-    reste = hauteur - y - int(hauteur * 0.24)
-    if couverture and couverture.exists():
-        c = Image.open(couverture).convert("RGB")
-        h = min(reste, int(c.height * (largeur * 0.62) / c.width))
-        w = int(c.width * h / c.height)
-        c = c.resize((w, h))
-        im.paste(c, ((largeur - w) // 2, y))
-    else:
-        f_txt = _police("Atkinson-400.ttf", int(largeur * 0.05))
-        interligne = int(largeur * 0.05 * 1.42)
-        lignes = _lignes(d, p["texte"], f_txt, largeur - 2 * marge)
-        maxi = max(1, (reste - (int(interligne * 1.8) if p.get("detail") else 0)) // interligne)
-        if len(lignes) > maxi:
-            lignes = lignes[:maxi]
-            lignes[-1] = lignes[-1].rstrip(" ,.;:") + "…"
-        for ligne in lignes:
-            d.text((marge, y), ligne, font=f_txt, fill=texte_c)
-            y += interligne
-        if p.get("detail"):
-            y += int(largeur * 0.02)
-            d.text((marge, y), p["detail"], font=_police("Atkinson-700.ttf", int(largeur * 0.038)), fill=accent)
-    # l'appel, écrit à la main
-    appel = {"article": "À lire sur le blog", "jeu": "Règles complètes, gratuites", "univers": "Tout est sur le site",
-             "kit": "Le kit à imprimer", "message": "Rafaël, de Jeuphorie"}[p["type"]]
-    f_appel = _police("Gochi-400.ttf", int(largeur * 0.062))
-    bas = hauteur - int(hauteur * 0.1)
-    d.text((marge, bas - int(largeur * 0.16)), appel, font=f_appel, fill=accent if var != 1 else vif)
-    # signature
-    d.line([(marge, bas - 24), (largeur - marge, bas - 24)], fill=texte_c, width=2)
-    f_marque = _police("Bricolage-800.ttf", int(largeur * 0.06))
-    d.text((marge, bas), "Jeu", font=f_marque, fill="#CF3424" if var != 2 else "#FFE36E")
-    d.text((marge + d.textlength("Jeu", font=f_marque), bas), "phorie", font=f_marque, fill=texte_c)
-    f_main = _police("Gochi-400.ttf", int(largeur * 0.04))
-    site = "jeuphorie.fr"
-    d.text((largeur - marge - d.textlength(site, font=f_main), bas + int(largeur * 0.012)), site, font=f_main, fill=texte_c)
+    pied = hauteur - int(hauteur * 0.1) - int(largeur * 0.16)  # là où commence l'appel écrit à la main
+
+    if mise == "bandeau":
+        # un grand bandeau de couleur en haut avec le titre, le texte sur fond clair en dessous
+        haut_c = [vif, ENCRE, vif][var]
+        texte_haut = "#FFFFFF" if haut_c == ENCRE else sur_vif
+        fond = [PAPIER, clair, PAPIER][var]
+        im = Image.new("RGB", (largeur, hauteur), fond)
+        d = ImageDraw.Draw(im)
+        essai = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+        y_t = _titre(essai, p, marge, int(hauteur * 0.06) + int(largeur * 0.13), utile, largeur, texte_haut)
+        limite = y_t + int(largeur * 0.06)
+        d.rectangle([0, 0, largeur, limite], fill=haut_c)
+        y = int(hauteur * 0.06)
+        d.text((marge, y + int(largeur * 0.05)), p["surtitre"].upper(), font=f_sur,
+               fill="#FFE36E" if haut_c == ENCRE else texte_haut)
+        _titre(d, p, marge, int(hauteur * 0.06) + int(largeur * 0.13), utile, largeur, texte_haut)
+        _guirlande(d, largeur, limite, texte_haut)
+        y = limite + int(largeur * 0.13)
+        _corps(im, d, p, marge, y, utile, pied - int(largeur * 0.03), largeur, ENCRE, vif if not sombre_sur_vif else ENCRE)
+        _appel(d, p, largeur, marge, pied, vif if not sombre_sur_vif else ENCRE)
+        _signature(d, largeur, hauteur, marge, ENCRE)
+
+    elif mise == "carte":
+        # une fiche claire posée sur un fond de couleur, comme une fiche de jeu sur une table
+        fond = [vif, clair, ENCRE][var]
+        autour = ENCRE if fond == clair else ("#FFFFFF" if fond == ENCRE else sur_vif)
+        im = Image.new("RGB", (largeur, hauteur), fond)
+        d = ImageDraw.Draw(im)
+        _guirlande(d, largeur, 18, autour)
+        x0, y0 = int(largeur * 0.06), int(hauteur * 0.1)
+        x1, y1 = largeur - x0, pied - int(largeur * 0.04)
+        d.rounded_rectangle([x0 + 10, y0 + 12, x1 + 10, y1 + 12], radius=34, fill=tuple(max(0, int(fond.lstrip("#")[i:i + 2], 16) - 28) for i in (0, 2, 4)))
+        d.rounded_rectangle([x0, y0, x1, y1], radius=34, fill=PAPIER)
+        dedans = int(largeur * 0.07)
+        y = y0 + dedans
+        accent = vif if not sombre_sur_vif else ENCRE
+        d.text((x0 + dedans, y), p["surtitre"].upper(), font=f_sur, fill=accent)
+        y = _titre(d, p, x0 + dedans, y + int(largeur * 0.07), x1 - x0 - 2 * dedans, largeur, ENCRE, 0.85)
+        y += int(largeur * 0.025)
+        d.rectangle([x0 + dedans, y, x0 + dedans + int(largeur * 0.14), y + 8], fill=accent)
+        y += int(largeur * 0.055)
+        _corps(im, d, p, x0 + dedans, y, x1 - x0 - 2 * dedans, y1 - dedans // 2, largeur, ENCRE, accent)
+        _appel(d, p, largeur, marge, pied + int(largeur * 0.01), autour)
+        _signature(d, largeur, hauteur, marge, autour, "#FFE36E" if autour == "#FFFFFF" else "#CF3424")
+
+    elif mise in ("pastille", "citation"):
+        # fond uni, une pastille ronde (ou de grands guillemets pour les messages) qui attire l'œil
+        fond = [PAPIER, clair, PAPIER][var] if mise == "pastille" else [clair, PAPIER, clair][var]
+        im = Image.new("RGB", (largeur, hauteur), fond)
+        d = ImageDraw.Draw(im)
+        _guirlande(d, largeur, 18, "#4B5675")
+        accent = vif if not sombre_sur_vif else ENCRE
+        y = int(hauteur * 0.13)
+        if mise == "pastille":
+            r = int(largeur * 0.1)
+            cx, cy = largeur - marge - int(r * 0.6), int(hauteur * 0.09) + int(r * 0.4)
+            pastille = Image.new("RGBA", (2 * r + 4, 2 * r + 4), (0, 0, 0, 0))
+            dp = ImageDraw.Draw(pastille)
+            dp.ellipse([2, 2, 2 * r, 2 * r], fill=vif)
+            mot = PASTILLES[p["type"]]
+            fp = _police("Gochi-400.ttf", int(r * (0.52 if len(mot) < 8 else 0.36)))
+            dp.text((r + 1 - dp.textlength(mot, font=fp) / 2, r - fp.size * 0.62), mot, font=fp, fill=sur_vif)
+            pastille = pastille.rotate(12, resample=Image.BICUBIC)
+            im.paste(pastille, (cx - r, cy - r), pastille)
+            place, f = cx - r * 1.15 - marge, f_sur  # le surtitre s'arrête avant la pastille
+            while d.textlength(p["surtitre"].upper(), font=f) > place and f.size > 18:
+                f = _police("Atkinson-700.ttf", f.size - 2)
+            d.text((marge, y), p["surtitre"].upper(), font=f, fill=accent)
+            y += int(largeur * 0.125)
+        else:
+            d.text((marge - int(largeur * 0.015), y - int(largeur * 0.07)), "«",
+                   font=_police("Bricolage-800.ttf", int(largeur * 0.24)), fill=vif)
+            d.text((marge + int(largeur * 0.2), y + int(largeur * 0.035)), p["surtitre"].upper(), font=f_sur, fill=accent)
+            y += int(largeur * 0.165)
+        y = _titre(d, p, marge, y, utile, largeur, ENCRE)
+        y += int(largeur * 0.03)
+        _guirlande_petite = [(marge + i * 34, y) for i in range(4)]
+        for i, (x, yy) in enumerate(_guirlande_petite):  # quatre petits points aux couleurs des fanions
+            d.ellipse([x, yy, x + 18, yy + 18], fill=FANIONS[i])
+        y += int(largeur * 0.07)
+        _corps(im, d, p, marge, y, utile, pied - int(largeur * 0.03), largeur, ENCRE, accent, main=mise == "citation")
+        _appel(d, p, largeur, marge, pied, accent)
+        _signature(d, largeur, hauteur, marge, ENCRE)
+
+    else:  # classique : la composition d'origine
+        fond = [PAPIER, clair, vif][var]
+        texte_c = sur_vif if var == 2 else ENCRE
+        accent = sur_vif if var == 2 else (vif if not sombre_sur_vif else ENCRE)
+        im = Image.new("RGB", (largeur, hauteur), fond)
+        d = ImageDraw.Draw(im)
+        _guirlande(d, largeur, 18, "#4B5675" if var != 2 else texte_c)
+        y = int(hauteur * 0.13)
+        d.text((marge, y), p["surtitre"].upper(), font=f_sur, fill=accent)
+        y = _titre(d, p, marge, y + int(largeur * 0.075), utile, largeur, texte_c)
+        y += int(largeur * 0.03)
+        d.rectangle([marge, y, marge + int(largeur * 0.16), y + 8], fill=accent if var != 1 else vif)
+        y += int(largeur * 0.06)
+        _corps(im, d, p, marge, y, utile, pied - int(largeur * 0.03), largeur, texte_c, accent)
+        _appel(d, p, largeur, marge, pied, accent if var != 1 else vif)
+        _signature(d, largeur, hauteur, marge, texte_c, "#CF3424" if var != 2 else "#FFE36E")
+
+    chemin = Path(chemin)
     chemin.parent.mkdir(parents=True, exist_ok=True)
     im.save(chemin, quality=86, optimize=True)
 
@@ -486,7 +619,7 @@ def visuel_story(p, chemin):
     tmp = Path(chemin).with_suffix(".tmp.jpg")
     visuel(p, 1080, 1440, tmp)
     post = Image.open(tmp).convert("RGB")
-    im = Image.new("RGB", (1080, 1920), post.getpixel((5, 700)))
+    im = Image.new("RGB", (1080, 1920), post.getpixel((5, 1430)))
     im.paste(post, (0, 240))
     tmp.unlink()
     chemin.parent.mkdir(parents=True, exist_ok=True)

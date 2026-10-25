@@ -1,4 +1,5 @@
-"""Fabrique un Reel (vidéo verticale 1080 × 1920) à partir d'une suite de cartes de texte, avec des feuilles qui tombent.
+"""Fabrique un Reel (vidéo verticale 1080 × 1920) à partir d'une suite de cartes de texte, avec des feuilles qui tombent
+et une musique de fond composée pour lui (outils/musique.py, sans droits d'auteur).
 
 Les Reels sont décrits dans donnees/reels.yml ; la vidéo est enregistrée dans statique/videos/<id>.mp4.
 Usage : python3 outils/reel.py <id>      (ffmpeg doit être installé)
@@ -7,6 +8,7 @@ import math
 import random
 import subprocess
 import sys
+import zlib
 from pathlib import Path
 
 import yaml
@@ -16,6 +18,7 @@ RACINE = Path(__file__).resolve().parents[1]
 POLICES = Path(__file__).resolve().parent / "polices-visuels"
 W, H, IPS = 1080, 1920, 30
 ENCRE, PAPIER = "#1A2340", "#FBF3EA"
+MUSIQUES = {"feuilles": "feuilles", "flocons": "flocons", "confettis": "confettis"}
 FEUILLES = ["#C2571A", "#E08A1E", "#B23A1E", "#D9A21B", "#8C5A2B"]
 
 
@@ -143,10 +146,16 @@ def fabriquer_video(r, sortie, decor="feuilles"):
                  "c": rnd.choice(FEUILLES)} for _ in range(16)]
     total = int(len(cartes) * duree_carte * IPS)
     sortie.parent.mkdir(parents=True, exist_ok=True)
+    # la musique de fond, composée pour ce Reel (outils/musique.py), selon le décor
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import musique
+    son = sortie.with_suffix(".wav")
+    musique.enregistrer(musique.composer(MUSIQUES.get(decor, "confettis"), total / IPS,
+                                         zlib.crc32(sortie.name.encode())), son)
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(IPS),
-           "-i", "-", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-shortest",
+           "-i", "-", "-i", str(son), "-shortest", "-af", "lowpass=f=9000,loudnorm=I=-18:TP=-2",
            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-profile:v", "high", "-crf", "23", "-preset", "medium",
-           "-c:a", "aac", "-b:a", "64k", "-movflags", "+faststart", str(sortie)]
+           "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-movflags", "+faststart", str(sortie)]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     fondu = int(0.35 * IPS)
     for n in range(total):
@@ -183,6 +192,7 @@ def fabriquer_video(r, sortie, decor="feuilles"):
         p.stdin.write(im.tobytes())
     p.stdin.close()
     p.wait()
+    son.unlink(missing_ok=True)
     print(f"{sortie.name} : {total / IPS:.1f} s, {sortie.stat().st_size // 1024} Ko")
 
 
