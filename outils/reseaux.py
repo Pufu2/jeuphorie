@@ -21,6 +21,10 @@ from pathlib import Path
 
 import yaml
 
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import styles  # noqa: E402
+
 RACINE = Path(__file__).resolve().parents[1]
 POLICES = Path(__file__).resolve().parent / "polices-visuels"
 
@@ -389,7 +393,7 @@ def _police(nom, taille):
 
 
 def _lignes(dessin, texte, police, largeur):
-    mots, lignes, cour = texte.split(), [], ""
+    mots, lignes, cour = [x for x in styles.insecables(texte).split(" ") if x], [], ""
     for m in mots:
         essai = (cour + " " + m).strip()
         if dessin.textlength(essai, font=police) <= largeur:
@@ -405,7 +409,8 @@ def _lignes(dessin, texte, police, largeur):
 
 FANIONS = ["#CF3424", "#F2B21B", "#2D6A43", "#3D5BB8"]
 # les mises en page : toutes gardent la guirlande, les polices et la signature du site, mais pas la même composition
-MISES = ["classique", "bandeau", "carte", "pastille"]
+# (les autres compositions, plus libres, sont dans outils/styles.py)
+MISES = ["classique", "tableau", "rayons", "carnet", "geante", "terrain", "bandeau", "ticket", "confettis", "pastille"]
 PASTILLES = {"jeu": "Gratuit", "article": "Blog", "univers": "À découvrir", "kit": "À imprimer"}
 
 
@@ -442,10 +447,13 @@ def _signature(d, largeur, hauteur, marge, couleur, jeu="#CF3424"):
     return bas
 
 
+def _mot_appel(p):
+    return {"article": "À lire sur le blog", "jeu": "Règles complètes, gratuites", "univers": "Tout est sur le site",
+            "kit": "Le kit à imprimer", "message": "Rafaël, de Jeuphorie"}[p["type"]]
+
+
 def _appel(d, p, largeur, x, y, couleur):
-    appel = {"article": "À lire sur le blog", "jeu": "Règles complètes, gratuites", "univers": "Tout est sur le site",
-             "kit": "Le kit à imprimer", "message": "Rafaël, de Jeuphorie"}[p["type"]]
-    d.text((x, y), appel, font=_police("Gochi-400.ttf", int(largeur * 0.062)), fill=couleur)
+    d.text((x, y), _mot_appel(p), font=_police("Gochi-400.ttf", int(largeur * 0.062)), fill=couleur)
 
 
 def _titre(d, p, x, y, largeur_utile, largeur, couleur, echelle=1.0):
@@ -494,6 +502,11 @@ def visuel(p, largeur, hauteur, chemin):
     sur_vif = ENCRE if sombre_sur_vif else "#FFFFFF"
     var = p.get("variante", 0)
     mise = mise_en_page(p)
+    if mise in styles.STYLES and not p.get("couverture"):
+        chemin = Path(chemin)
+        chemin.parent.mkdir(parents=True, exist_ok=True)
+        styles.STYLES[mise](p, largeur, hauteur, vif, clair, _mot_appel(p)).save(chemin, quality=86, optimize=True)
+        return
     marge = int(largeur * 0.08)
     utile = largeur - 2 * marge
     f_sur = _police("Atkinson-700.ttf", int(largeur * 0.034))
