@@ -460,11 +460,11 @@ mark.a-completer {
 }
 
 /* univers */
-.grille-univers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-  gap: 1.1rem;
-}
+/* les univers sur deux lignes de trois au plus, la dernière ligne centrée */
+.grille-univers { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; }
+.grille-univers > .univers { flex: 0 1 calc((100% - 2 * 1.25rem) / 3); }
+@media (max-width: 900px) { .grille-univers > .univers { flex-basis: calc((100% - 1.25rem) / 2); } }
+@media (max-width: 520px) { .grille-univers > .univers { flex-basis: 100%; } }
 .univers {
   position: relative;
   display: grid;
