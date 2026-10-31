@@ -353,7 +353,7 @@ class Site:
                         groupes.append((kits[ident]["titre"], [copier(f["chemin"], url) for f in liste]))
             nom = next((f["nom"] for f in self.donnees["abonnement"]["formules"] if f["id"] == formule), formule)
             self.ajouter(url, "bibliotheque.html", titre=f"Votre bibliothèque {nom}", indexer=False,
-                         formule=nom, groupes=groupes)
+                         formule=nom, groupes=groupes, code_reduction=liv.get("codes_reduction", {}).get(formule))
 
     def ajouter(self, url, gabarit, titre=None, description=None, indexer=True, **extra):
         self.pages.append({"url": url, "gabarit": gabarit, "titre": titre,

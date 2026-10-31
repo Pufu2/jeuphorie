@@ -1136,3 +1136,6 @@ a.tampon { text-decoration: none; }
   .telechargement { grid-template-columns: 1fr; }
   .telechargement .bouton { grid-column: 1; grid-row: auto; justify-self: start; }
 }
+.encadre-code { margin: 1.5rem 0; padding: 1.25rem 1.5rem; border-radius: 12px; background: var(--fete-clair, #fde6e1); }
+.encadre-code p { margin: 0 0 .5rem; }
+.encadre-code__code { font-family: var(--f-titre); font-size: 1.6rem; font-weight: 800; letter-spacing: .08em; }

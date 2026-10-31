@@ -30,6 +30,7 @@ POLICES = Path(__file__).resolve().parent / "polices-visuels"
 
 # premier jour du calendrier ; ne pas changer, sinon tout le calendrier se décale
 DEBUT = dt.date(2026, 10, 14)
+VENTES_DEBUT = dt.date(2026, 11, 1)  # ouverture de la boutique : les kits entrent dans le calendrier à partir de ce jour
 # jours de publication sur Facebook et Instagram (0 = lundi) ; Pinterest publie tous les jours
 JOURS_META = {1, 3, 5}
 
@@ -103,7 +104,8 @@ def _propre(texte):
 
 def sujets(jour):
     """Tous les sujets publiables à la date donnée, dans un ordre stable."""
-    return [s for s in _tous() if s["type"] != "article" or s["date"] <= jour]
+    return [s for s in _tous() if (s["type"] != "article" or s["date"] <= jour)
+            and (s["type"] != "kit" or jour >= VENTES_DEBUT)]
 
 
 @functools.lru_cache(maxsize=1)
@@ -158,7 +160,7 @@ def _tous():
 
     if config.get("boutique", {}).get("ventes_actives"):
         for k in d["kits"]["kits"]:
-            if k.get("etat") != "pret":
+            if k.get("etat") not in ("pret", "en_vente"):
                 continue
             u = univers.get(k.get("univers"), {})
             liste.append({"id": f"kit-{k['id']}", "type": "kit", "titre": k.get("titre_seo") or k["titre"],

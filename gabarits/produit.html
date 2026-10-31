@@ -43,7 +43,7 @@
         <p class="produit__prix">{{ k.prix }} €</p>
         {% if achetable %}
         <a class="bouton" href="{{ k.paiement }}">Acheter et télécharger</a>
-        <p class="petit">Paiement sécurisé par carte bancaire. Le fichier se télécharge aussitôt, et le lien arrive aussi par mail.</p>
+        <p class="petit">Paiement sécurisé par carte bancaire. Le fichier se télécharge aussitôt, et un reçu vous est envoyé par mail.</p>
         {% elif k.etat == 'en_preparation' %}
         <p class="produit__etat">En préparation</p>
         {% else %}
@@ -104,7 +104,7 @@
   <section class="section section--serree cadre--texte" aria-labelledby="t-faq">
     <h2 id="t-faq" class="section__titre">Questions fréquentes</h2>
     <div class="questions">
-      <details class="question"><summary>Comment je reçois le fichier ?</summary><p>Juste après le paiement, un lien de téléchargement s'affiche et arrive aussi par mail. Vous pouvez télécharger le fichier plusieurs fois.</p></details>
+      <details class="question"><summary>Comment je reçois le fichier ?</summary><p>Juste après le paiement, vous arrivez sur votre page de téléchargement : enregistrez le fichier et gardez la page dans vos favoris. Vous pouvez télécharger le fichier plusieurs fois, et si vous perdez la page, il suffit de m'écrire.</p></details>
       <details class="question"><summary>Faut-il une imprimante couleur ?</summary><p>Non. Les fichiers sont au format A4 et restent lisibles en noir et blanc. La couleur rend seulement les pièces à imprimer (affiches, cartes, diplômes) plus jolies.</p></details>
       <details class="question"><summary>Puis-je l'utiliser plusieurs fois ?</summary><p>Oui, autant de fois que vous le souhaitez, pour votre famille, ou pour toutes les animations de l'association ou de la structure qui l'achète. Le partage en ligne et la revente ne sont pas autorisés.</p></details>
       <details class="question"><summary>Mon association ou ma structure peut-elle payer par virement ?</summary><p>Oui. <a href="{{ lien('/contact/') }}">Écrivez-moi</a> avec le nom de la structure : je vous envoie un devis, puis une facture. Pour une équipe entière, l'abonnement <a href="{{ lien('/pro/') }}">Jeuphorie Pro Structure</a> est souvent plus avantageux.</p></details>

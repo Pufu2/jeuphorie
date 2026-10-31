@@ -4,6 +4,13 @@
   <p class="surtitre">Jeuphorie Pro</p>
   <h1 class="titre-page">{{ page.titre }}</h1>
   <p class="chapo">Bienvenue ! Voici tous les fichiers inclus dans votre formule. Chaque nouveau dossier arrive ici, et je vous préviens par mail quand il est en ligne.</p>
+  {% if page.code_reduction %}
+  <div class="encadre-code">
+    <p><strong>Votre réduction de 30 %</strong> sur les kits d'anniversaire, de fêtes, de kermesse et de grands jeux : au moment de payer, cliquez sur « Ajouter un code promotionnel » et tapez</p>
+    <p class="encadre-code__code">{{ page.code_reduction }}</p>
+    <p class="petit">Ce code est réservé aux abonnés : merci de ne pas le partager.</p>
+  </div>
+  {% endif %}
   {% for titre, fichiers in page.groupes %}
   <h2>{{ titre }}</h2>
   <ul class="telechargements">

@@ -17,9 +17,9 @@ kits:
     titre: Le défi des champions
     titre_seo: "Olympiades d'anniversaire à imprimer, 6-12 ans"
     univers: anniversaires
-    etat: pret
+    etat: en_vente
     prix: "12"
-    paiement: "https://buy.stripe.com/test_4gMcN55K57Zlf5SgMTbMQ00"
+    paiement: "https://buy.stripe.com/4gMcN55K57Zlf5SgMTbMQ00"
     accroche: Des équipes, un défilé, huit épreuves et une remise de médailles, avec le matériel de la maison.
     age: 6 à 12 ans
     joueurs: 6 à 16 enfants
@@ -54,9 +54,9 @@ kits:
     titre: La chasse au trésor des pirates
     titre_seo: "Chasse au trésor pirate à imprimer, 5-9 ans"
     univers: anniversaires
-    etat: pret
+    etat: en_vente
     prix: "9,90"
-    paiement: "https://buy.stripe.com/test_14A14nb4p2F18Hu9krbMQ01"
+    paiement: "https://buy.stripe.com/14A14nb4p2F18Hu9krbMQ01"
     accroche: Six épreuves pour reconstituer la carte du capitaine Barbe-Grise et retrouver son coffre.
     age: 5 à 9 ans
     joueurs: 5 à 14 enfants
@@ -91,9 +91,9 @@ kits:
     titre: L'enquête du gâteau disparu
     titre_seo: "Jeu d'enquête d'anniversaire à imprimer, 8-12 ans"
     univers: anniversaires
-    etat: pret
+    etat: en_vente
     prix: "12"
-    paiement: "https://buy.stripe.com/test_eVq00j6O9bbx2j6dAHbMQ02"
+    paiement: "https://buy.stripe.com/eVq00j6O9bbx2j6dAHbMQ02"
     accroche: Le gâteau d'anniversaire a disparu. Six suspects, six épreuves de détective, une seule vérité.
     age: 8 à 12 ans
     joueurs: 6 à 12 enfants
@@ -128,9 +128,9 @@ kits:
     titre: Le safari des petits explorateurs
     titre_seo: "Jeux d'anniversaire 3-5 ans à imprimer : le safari"
     univers: anniversaires
-    etat: pret
+    etat: en_vente
     prix: "9,90"
-    paiement: "https://buy.stripe.com/test_9B6aEX0pL4N95vidAHbMQ03"
+    paiement: "https://buy.stripe.com/9B6aEX0pL4N95vidAHbMQ03"
     accroche: Un anniversaire d'une heure pour les 3-5 ans, avec six ateliers courts, sans perdant ni temps mort.
     age: 3 à 5 ans
     joueurs: 4 à 10 enfants
@@ -167,9 +167,9 @@ kits:
     titre_seo: "Grands jeux pour enfants de 6 à 9 ans à imprimer"
     univers: grands-jeux
     publics: [accueils, ecoles, clubs]
-    etat: pret
+    etat: en_vente
     prix: "9,90"
-    paiement: "https://buy.stripe.com/test_3cIcN5goJ5Rde1OgMTbMQ04"
+    paiement: "https://buy.stripe.com/3cIcN5goJ5Rde1OgMTbMQ04"
     pack: 6-9
     accroche: 17 jeux collectifs pour la cour, le parc ou le jardin, du jeu du béret aux six planètes.
     age: 6 à 9 ans
@@ -196,9 +196,9 @@ kits:
     titre_seo: "Grands jeux pour les 10-13 ans à imprimer"
     univers: grands-jeux
     publics: [accueils, ecoles, clubs]
-    etat: pret
+    etat: en_vente
     prix: "9,90"
-    paiement: "https://buy.stripe.com/test_dRm28r7Sd2F18Hu1RZbMQ05"
+    paiement: "https://buy.stripe.com/dRm28r7Sd2F18Hu1RZbMQ05"
     pack: 10-13
     accroche: 19 jeux d'équipe plus stratégiques, de la barre à l'épervier gradé.
     age: 10 à 13 ans
@@ -225,9 +225,9 @@ kits:
     titre_seo: "Grands jeux pour ados de 14 à 17 ans à imprimer"
     univers: grands-jeux
     publics: [accueils, clubs]
-    etat: pret
+    etat: en_vente
     prix: "9,90"
-    paiement: "https://buy.stripe.com/test_aFaeVda0la7tbTG407bMQ06"
+    paiement: "https://buy.stripe.com/aFaeVda0la7tbTG407bMQ06"
     pack: 14-17
     accroche: 18 jeux et sports adaptés pour les ados, de l'ultimate à la thèque.
     age: 14 à 17 ans
@@ -254,9 +254,9 @@ kits:
     titre_seo: "Fichier de jeux collectifs à imprimer, 6-17 ans"
     univers: grands-jeux
     publics: [accueils, ecoles, clubs]
-    etat: pret
+    etat: en_vente
     prix: "19,90"
-    paiement: "https://buy.stripe.com/test_3cI8wP2xTdjFf5S0NVbMQ07"
+    paiement: "https://buy.stripe.com/3cI8wP2xTdjFf5S0NVbMQ07"
     pack: tout
     accroche: Les 34 grands jeux de Jeuphorie en un seul fichier, de 6 à 17 ans, classés par âge.
     age: 6 à 17 ans
@@ -285,9 +285,9 @@ kits:
     univers: fetes
     publics: [accueils, ecoles]
     fete: toussaint
-    etat: pret
+    etat: en_vente
     prix: "12"
-    paiement: "https://buy.stripe.com/test_5kQ8wPa0lfrN0aYbszbMQ08"
+    paiement: "https://buy.stripe.com/5kQ8wPa0lfrN0aYbszbMQ08"
     accroche: Un après-midi pour les vacances de la Toussaint. Six animaux de la forêt, six ateliers, et des terriers à remplir avant l'hiver.
     age: 4 à 11 ans
     joueurs: 6 à 40 enfants
@@ -324,9 +324,9 @@ kits:
     univers: fetes
     publics: [accueils, ecoles, associations, cse]
     fete: noel
-    etat: pret
+    etat: en_vente
     prix: "12"
-    paiement: "https://buy.stripe.com/test_bJecN5a0la7t4re407bMQ09"
+    paiement: "https://buy.stripe.com/bJecN5a0la7t4re407bMQ09"
     accroche: Les lutins sont malades et la tournée part ce soir. Six ateliers pour remplir la hotte avant minuit.
     age: 4 à 11 ans
     joueurs: 6 à 120 enfants
@@ -363,9 +363,9 @@ kits:
     univers: fetes
     publics: [accueils, ecoles, associations]
     fete: carnaval
-    etat: pret
+    etat: en_vente
     prix: "12"
-    paiement: "https://buy.stripe.com/test_bJeeVd7SdenJ6zm0NVbMQ0a"
+    paiement: "https://buy.stripe.com/bJeeVd7SdenJ6zm0NVbMQ0a"
     accroche: Monsieur Carnaval a perdu ses couleurs. Six ateliers pour les retrouver, puis le défilé, le bal et le procès de Monsieur Carnaval.
     age: 4 à 11 ans
     joueurs: 6 à 40 enfants
@@ -402,9 +402,9 @@ kits:
     univers: fetes
     publics: [accueils, ecoles, associations, cse]
     fete: paques
-    etat: pret
+    etat: en_vente
     prix: "12"
-    paiement: "https://buy.stripe.com/test_bJe9ATfkF6Vh3nacwDbMQ0b"
+    paiement: "https://buy.stripe.com/bJe9ATfkF6Vh3nacwDbMQ0b"
     accroche: Six ateliers pour gagner les indices des cloches, puis une chasse aux œufs juste, organisée par âge.
     age: 3 à 11 ans
     joueurs: 6 à 40 enfants
@@ -441,9 +441,9 @@ kits:
     titre_seo: "Kermesse clé en main : stands et jeux à imprimer"
     univers: kermesse
     publics: [associations, ecoles, accueils]
-    etat: pret
+    etat: en_vente
     prix: "25"
-    paiement: "https://buy.stripe.com/test_cNi6oH6O9bbx6zmeELbMQ0c"
+    paiement: "https://buy.stripe.com/cNi6oH6O9bbx6zmeELbMQ0c"
     accroche: 16 stands prêts à monter, les affiches, les tickets, la tombola et le planning des bénévoles.
     age: 2 à 11 ans
     joueurs: 100 à 300 enfants et plus
@@ -481,9 +481,9 @@ kits:
     univers: professionnels
     rubrique: gestion
     publics: [accueils]
-    etat: pret
+    etat: en_vente
     prix: "29"
-    paiement: "https://buy.stripe.com/test_14A14nfkF0wT8HufIPbMQ0d"
+    paiement: "https://buy.stripe.com/14A14nfkF0wT8HufIPbMQ0d"
     accroche: Un classeur qui calcule tout seul l'encadrement, le planning et le budget, et six modèles de documents.
     age: Accueils de loisirs
     joueurs: Équipes de 2 à 30 personnes
@@ -522,9 +522,9 @@ kits:
     rubrique: gestion
     publics:
     - accueils
-    etat: pret
+    etat: en_vente
     prix: '19'
-    paiement: "https://buy.stripe.com/test_14AdR9goJenJ5vidAHbMQ0e"
+    paiement: "https://buy.stripe.com/14AdR9goJenJ5vidAHbMQ0e"
     accroche: Construire avec votre équipe un projet pédagogique court, clair et vivant, de l'écriture au bilan.
     age: Accueils de loisirs, périscolaire, séjours
     joueurs: Équipes de 3 à 20 animateurs
@@ -577,9 +577,9 @@ kits:
     publics:
     - accueils
     - clubs
-    etat: pret
+    etat: en_vente
     prix: '19'
-    paiement: "https://buy.stripe.com/test_dRmcN5b4pbbx8Hu0NVbMQ0f"
+    paiement: "https://buy.stripe.com/dRmcN5b4pbbx8Hu0NVbMQ0f"
     accroche: Un livret Word prêt à personnaliser et un guide pour accueillir les nouveaux animateurs et les stagiaires
       BAFA, et sécuriser leurs premiers jours.
     age: Accueils de loisirs, périscolaire, séjours
@@ -633,9 +633,9 @@ kits:
     - accueils
     - ecoles
     - clubs
-    etat: pret
+    etat: en_vente
     prix: '19'
-    paiement: "https://buy.stripe.com/test_eVqaEXb4p5Rd1f28gnbMQ0g"
+    paiement: "https://buy.stripe.com/eVqaEXb4p5Rd1f28gnbMQ0g"
     accroche: 'Une machine à voyager dans le temps en panne, cinq époques à visiter et une pièce à rapporter chaque
       jour : toute votre semaine de vacances est prête.'
     age: Accueils de loisirs, 3-5 ans et 6-11 ans
@@ -688,9 +688,9 @@ kits:
     publics:
     - ecoles
     - accueils
-    etat: pret
+    etat: en_vente
     prix: '15'
-    paiement: "https://buy.stripe.com/test_14A28r4G193p1f20NVbMQ0h"
+    paiement: "https://buy.stripe.com/14A28r4G193p1f20NVbMQ0h"
     accroche: Une méthode sur un trimestre pour partager la cour, prévenir les conflits et donner à chaque enfant
       un jeu à sa mesure.
     age: Écoles maternelles et élémentaires, périscolaire, accueils de loisirs
@@ -742,9 +742,9 @@ kits:
     publics:
     - associations
     - ecoles
-    etat: pret
+    etat: en_vente
     prix: '15'
-    paiement: "https://buy.stripe.com/test_6oUcN56O9a7te1O7cjbMQ0i"
+    paiement: "https://buy.stripe.com/6oUcN56O9a7te1O7cjbMQ0i"
     accroche: 'Une année d''association prête à suivre : le bureau, l''assemblée générale, la trésorerie, les actions
       qui rapportent et tous les courriers.'
     age: Associations de parents d'élèves
@@ -799,9 +799,9 @@ kits:
     publics:
     - clubs
     - accueils
-    etat: pret
+    etat: en_vente
     prix: '15'
-    paiement: "https://buy.stripe.com/test_7sY5kD3BXenJaPCfIPbMQ0j"
+    paiement: "https://buy.stripe.com/7sY5kD3BXenJaPCfIPbMQ0j"
     accroche: Cinq jours de jeux sportifs pour 16 à 32 enfants de 6 à 12 ans, avec le programme, les fiches, l'organisation
       et tous les documents.
     age: Clubs sportifs, offices des sports, accueils de loisirs
@@ -854,9 +854,9 @@ kits:
     publics:
     - cse
     - associations
-    etat: pret
+    etat: en_vente
     prix: '19'
-    paiement: "https://buy.stripe.com/test_bJefZh8Whbbx3na9krbMQ0k"
+    paiement: "https://buy.stripe.com/bJefZh8Whbbx3na9krbMQ0k"
     accroche: Un après-midi de jeux pour les salariés et leurs familles, organisé en douze semaines par des élus et
       des bénévoles, du premier devis au compte rendu au CSE.
     age: CSE, amicales du personnel, associations
@@ -910,9 +910,9 @@ kits:
     - accueils
     - ecoles
     - clubs
-    etat: pret
+    etat: en_vente
     prix: '29'
-    paiement: "https://buy.stripe.com/test_bJe00j5K53J5cXK1RZbMQ0l"
+    paiement: "https://buy.stripe.com/bJe00j5K53J5cXK1RZbMQ0l"
     accroche: Une ou deux journées de compétition multisport où chaque équipe défend la nation qu'elle a inventée,
       avec le programme, les grilles de rotation, les épreuves, les cérémonies et un classeur qui calcule le classement.
     age: Accueils de loisirs, écoles, clubs, de 6 à 15 ans
@@ -967,9 +967,9 @@ kits:
     rubrique: sejours
     publics:
     - accueils
-    etat: pret
+    etat: en_vente
     prix: '39'
-    paiement: "https://buy.stripe.com/test_9B64gz0pLenJcXK7cjbMQ0m"
+    paiement: "https://buy.stripe.com/9B64gz0pLenJcXK7cjbMQ0m"
     accroche: Un fil rouge pour tout un séjour, avec un monde de légende, sept peuples, une histoire en onze épisodes, trois veillées écrites scène par scène et cinq grands jeux qui font avancer le récit.
     age: Séjours de vacances et accueils de loisirs, de 8 à 14 ans
     joueurs: 24 à 120 enfants, en 4 à 6 peuples
@@ -1011,9 +1011,9 @@ kits:
     rubrique: sejours
     publics:
     - accueils
-    etat: pret
+    etat: en_vente
     prix: '39'
-    paiement: "https://buy.stripe.com/test_9B614ndcxenJ7Dq1RZbMQ0n"
+    paiement: "https://buy.stripe.com/9B614ndcxenJ7Dq1RZbMQ0n"
     accroche: Un fil rouge pirates et marine pour tout un séjour, avec la carte, cinq camps, l'histoire de Luc en douze épisodes, trois veillées écrites scène par scène et sept grands jeux, dont un plateau géant.
     age: Séjours de vacances et accueils de loisirs, de 8 à 14 ans
     joueurs: 24 à 120 enfants, en 4 à 6 équipages
@@ -1055,9 +1055,9 @@ kits:
     rubrique: sejours
     publics:
     - accueils
-    etat: pret
+    etat: en_vente
     prix: '39'
-    paiement: "https://buy.stripe.com/test_dRmeVd8WhfrN4reeELbMQ0o"
+    paiement: "https://buy.stripe.com/dRmeVd8WhfrN4reeELbMQ0o"
     accroche: "Un fil rouge d'anticipation pour tout un séjour : une mégapole gouvernée par une intelligence artificielle, l'histoire d'Aléthès en douze épisodes, trois veillées écrites scène par scène et sept grands jeux."
     age: Séjours de vacances et accueils de loisirs, de 10 à 14 ans
     joueurs: 24 à 120 enfants, en 4 à 6 secteurs
