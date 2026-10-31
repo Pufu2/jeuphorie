@@ -32,6 +32,8 @@ concurrency:
 jobs:
   fabriquer:
     runs-on: ubuntu-latest
+    env:
+      PRODUITS_TOKEN: ${{ secrets.PRODUITS_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -53,7 +55,17 @@ jobs:
         run: |
           [ "$(date -u +%u)" = 7 ] || exit 0
           which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg)
+      - name: Fichiers vendus (dépôt privé), pour les pages de téléchargement
+        # seulement si le secret PRODUITS_TOKEN existe (jeton en lecture seule sur jeuphorie-produits)
+        if: env.PRODUITS_TOKEN != ''
+        uses: actions/checkout@v4
+        with:
+          repository: Pufu2/jeuphorie-produits
+          token: ${{ secrets.PRODUITS_TOKEN }}
+          path: produits
       - name: Fabriquer le site
+        env:
+          JEUPHORIE_PRODUITS: ${{ github.workspace }}/produits
         run: python3 build.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

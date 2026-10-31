@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block contenu %}
+<div class="cadre cadre--texte">
+  <p class="surtitre">Merci pour votre achat</p>
+  <h1 class="titre-page">{{ page.produit.titre }}</h1>
+  <p class="chapo">Votre paiement est validé. Téléchargez vos fichiers ci-dessous, puis enregistrez-les sur votre ordinateur : ils sont à vous, imprimez-les autant de fois que vous le voulez.</p>
+  <ul class="telechargements">
+    {% for f in page.fichiers %}
+    <li class="telechargement">
+      <span class="telechargement__nom">{{ f.nom }}</span>
+      <span class="telechargement__info">{{ f.nature }} · {{ f.taille }}</span>
+      <a class="bouton" href="{{ f.fichier }}" download>Télécharger</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class="texte">
+    <p>Gardez cette page dans vos favoris : son adresse vous est aussi envoyée avec le reçu de Stripe. Elle est personnelle, merci de ne pas la partager.</p>
+    <p>Un fichier ne s'ouvre pas, ou vous avez une question sur le kit ? Écrivez à <a href="mailto:{{ site.email }}">{{ site.email }}</a>, je vous réponds rapidement.</p>
+    <p>Rafaël, de Jeuphorie</p>
+  </div>
+</div>
+{% endblock %}

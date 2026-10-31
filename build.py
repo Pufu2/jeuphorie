@@ -32,6 +32,8 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 RACINE = Path(__file__).resolve().parent
 SORTIE = RACINE / "_site"
+# le dépôt privé des produits : sert seulement à fabriquer les pages de téléchargement (adresses secrètes)
+PRODUITS = Path(os.environ.get("JEUPHORIE_PRODUITS") or RACINE.parent / "jeuphorie-produits")
 
 # Anciennes adresses -> nouvelles (une page de redirection est créée pour chacune)
 REDIRECTIONS = {
@@ -290,9 +292,68 @@ class Site:
                      description="Les dernières publications de Jeuphorie sur Instagram, Facebook et Pinterest.",
                      indexer=False, publications=reseaux.fabriquer(SORTIE, self.config["url"]))
         self.ajouter("/404.html", "404.html", titre="Page introuvable", indexer=False)
+        self.livraisons()
         for ancienne, nouvelle in REDIRECTIONS.items():
             self.ajouter(ancienne, "redirection.html", titre="Cette page a changé d'adresse",
                          indexer=False, vers=nouvelle, redirection=True)
+
+    def livraisons(self):
+        """Les pages de téléchargement des kits et les bibliothèques des abonnés, à des adresses secrètes.
+
+        Les fichiers et les adresses viennent du dépôt privé (livraison.yml) : sans lui, rien n'est fabriqué."""
+        source = PRODUITS / "livraison.yml"
+        if not source.exists():
+            return
+        liv = lire_yaml(source)
+        kits = {k["id"]: k for k in self.kits()}
+
+        def copier(chemin, dossier):
+            origine = PRODUITS / chemin
+            cible = SORTIE / dossier.strip("/") / origine.name
+            cible.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(origine, cible)
+            nature = {".pdf": "PDF à imprimer", ".docx": "document Word à modifier",
+                      ".xlsx": "classeur à remplir"}.get(origine.suffix, origine.suffix[1:].upper())
+            nom = liv.get("titres", {}).get(origine.name) or re.sub(r"^(Jeuphorie|Kermesse)-", "", origine.stem).replace("-", " ")
+            return {"nom": nom[:1].upper() + nom[1:], "nature": nature, "fichier": origine.name,
+                    "taille": f"{max(1, origine.stat().st_size // 1024 // 1024)} Mo" if origine.stat().st_size > 1024 * 1024
+                    else f"{max(1, origine.stat().st_size // 1024)} Ko"}
+
+        for ident, code in liv.get("kits", {}).items():
+            if ident not in kits or ident not in liv.get("fichiers", {}):
+                continue
+            url = f"/telechargement/{code}/"
+            fichiers = [copier(f["chemin"], url) for f in liv["fichiers"][ident]]
+            self.ajouter(url, "telechargement.html", titre=f"Votre kit : {kits[ident]['titre']}", indexer=False,
+                         produit=kits[ident], fichiers=fichiers)
+
+        mois = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre",
+                "Novembre", "Decembre"]
+
+        def date_dossier(f):  # « Jeuphorie-Pro-Decembre-2026-… » : le plus récent en premier
+            m = re.search(r"-(\w+)-(\d{4})-", f.name)
+            return (int(m.group(2)), mois.index(m.group(1)) if m.group(1) in mois else 0) if m else (0, 0)
+        dossiers = sorted(PRODUITS.glob(liv.get("dossiers", "pro/sortie/*.pdf")), key=date_dossier, reverse=True)
+        for formule, contenu in liv.get("bibliotheques", {}).items():
+            code = liv.get("formules", {}).get(formule)
+            if not code:
+                continue
+            url = f"/bibliotheque/{code}/"
+            groupes = []
+            if "dossiers" in contenu:
+                groupes.append(("Les dossiers du mois", [copier(f.relative_to(PRODUITS), url) for f in dossiers]))
+            if "calendrier" in contenu and liv.get("calendrier"):
+                groupes.append(("Le calendrier d'animation", [copier(liv["calendrier"], url)]))
+            if "grand-fichier" in contenu:
+                groupes.append(("Le grand fichier des jeux collectifs",
+                                [copier(f["chemin"], url) for f in liv["fichiers"]["grand-fichier"]]))
+            if "tous-les-kits" in contenu:
+                for ident, liste in liv["fichiers"].items():
+                    if ident in kits:
+                        groupes.append((kits[ident]["titre"], [copier(f["chemin"], url) for f in liste]))
+            nom = next((f["nom"] for f in self.donnees["abonnement"]["formules"] if f["id"] == formule), formule)
+            self.ajouter(url, "bibliotheque.html", titre=f"Votre bibliothèque {nom}", indexer=False,
+                         formule=nom, groupes=groupes)
 
     def ajouter(self, url, gabarit, titre=None, description=None, indexer=True, **extra):
         self.pages.append({"url": url, "gabarit": gabarit, "titre": titre,
@@ -379,7 +440,7 @@ class Site:
             cle = self.config["indexnow_cle"]
             (SORTIE / f"{cle}.txt").write_text(cle, encoding="utf-8")
         (SORTIE / "robots.txt").write_text(
-            f"User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n", encoding="utf-8")
+            f"User-agent: *\nAllow: /\nDisallow: /telechargement/\nDisallow: /bibliotheque/\n\nSitemap: {base}/sitemap.xml\n", encoding="utf-8")
         flux = self.env.get_template("flux.xml").render(
             site=self.config, articles=self.articles[:20],
             maintenant=dt.datetime.now(dt.timezone.utc))

@@ -31,7 +31,7 @@ formules:
     prix: "4,90 €"
     periode: par mois
     detail: Sans engagement, résiliable en ligne
-    paiement: ""
+    paiement: "https://buy.stripe.com/test_aFa8wPc8tenJ4rebszbMQ0p"
     bouton: S'abonner au mois
     inclus:
       - Le dossier du mois, avec 8 nouvelles fiches d'animation
@@ -44,7 +44,7 @@ formules:
     prix: "39 €"
     periode: par an
     detail: Soit 3,25 € par mois
-    paiement: ""
+    paiement: "https://buy.stripe.com/test_fZucN55K50wT8HufIPbMQ0q"
     bouton: S'abonner à l'année
     inclus:
       - Le grand fichier des 34 grands jeux, dès le premier jour
@@ -60,7 +60,7 @@ formules:
     detail: Toute l'équipe, sans limite de personnes. Facture, virement ou mandat
     mis_en_avant: true
     ruban: Tout le site inclus
-    paiement: ""
+    paiement: "https://buy.stripe.com/test_cNi00jc8t93p0aYcwDbMQ0r"
     bouton: Abonner ma structure
     inclus:
       - Tous les kits et tous les outils professionnels, pour toute l'équipe

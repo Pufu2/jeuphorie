@@ -1124,3 +1124,15 @@ a.tampon { text-decoration: none; }
 .temoignage { margin: 0 0 1rem; padding: 1rem 1.2rem; background: var(--fiche); border-left: 4px solid var(--fete); border-radius: 0 8px 8px 0; }
 .temoignage blockquote { margin: 0; font-style: italic; }
 .temoignage figcaption { margin-top: 0.4rem; font-size: 0.9rem; color: var(--encre-douce); }
+
+/* pages de téléchargement après achat */
+.telechargements { list-style: none; padding: 0; margin: 1.5rem 0 2rem; display: grid; gap: .75rem; }
+.telechargement { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; align-items: center;
+  padding: 1rem 1.25rem; border: 1px solid var(--ligne, #d9dce6); border-radius: 12px; background: #fff; }
+.telechargement__nom { font-weight: 700; }
+.telechargement__info { grid-column: 1; color: var(--gris, #5b6378); font-size: .95rem; }
+.telechargement .bouton { grid-column: 2; grid-row: 1 / span 2; }
+@media (max-width: 520px) {
+  .telechargement { grid-template-columns: 1fr; }
+  .telechargement .bouton { grid-column: 1; grid-row: auto; justify-self: start; }
+}

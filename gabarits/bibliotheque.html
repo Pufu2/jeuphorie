@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block contenu %}
+<div class="cadre cadre--texte">
+  <p class="surtitre">Jeuphorie Pro</p>
+  <h1 class="titre-page">{{ page.titre }}</h1>
+  <p class="chapo">Bienvenue ! Voici tous les fichiers inclus dans votre formule. Chaque nouveau dossier arrive ici, et je vous préviens par mail quand il est en ligne.</p>
+  {% for titre, fichiers in page.groupes %}
+  <h2>{{ titre }}</h2>
+  <ul class="telechargements">
+    {% for f in fichiers %}
+    <li class="telechargement">
+      <span class="telechargement__nom">{{ f.nom }}</span>
+      <span class="telechargement__info">{{ f.nature }} · {{ f.taille }}</span>
+      <a class="bouton" href="{{ f.fichier }}" download>Télécharger</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+  <div class="texte">
+    <p>Gardez cette page dans vos favoris. Son adresse est personnelle : merci de ne pas la partager en dehors de {% if page.formule == "Pro Structure" %}votre équipe{% else %}votre usage{% endif %}.</p>
+    {% if site.boutique.portail_abonnes %}<p>Pour changer de carte, retrouver vos reçus ou résilier, en quelques clics : <a href="{{ site.boutique.portail_abonnes }}">gérer mon abonnement</a>.</p>{% endif %}
+    <p>Une question, une idée de thème pour les prochains dossiers ? Écrivez à <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+    <p>Rafaël, de Jeuphorie</p>
+  </div>
+</div>
+{% endblock %}
