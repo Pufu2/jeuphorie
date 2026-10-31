@@ -59,11 +59,11 @@ boutique:
 
 # Informations légales (mentions légales et conditions de vente)
 editeur:
-  nom: "[[Prénom NOM]]"
-  statut: "[[Entrepreneur individuel (EI), micro-entreprise : après la déclaration]]"
+  nom: "Rafael Marinho"
+  statut: "Entrepreneur individuel (EI), micro-entreprise, nom commercial Jeuphorie"
   adresse: "[[Adresse postale]]"
-  siren: "[[Numéro SIREN : après la déclaration]]"
-  tva: "[[Mention de TVA à confirmer avec l'Urssaf ou le service des impôts]]"
+  siren: "843 506 015"
+  tva: "TVA non applicable, article 293 B du CGI"
 
 mediateur:
   nom: "[[Nom du médiateur de la consommation]]"
