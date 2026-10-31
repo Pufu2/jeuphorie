@@ -31,7 +31,8 @@
 <link rel="icon" href="{{ statique('favicon.ico') }}" sizes="48x48">
 <link rel="icon" href="{{ statique('img/favicon-96.png') }}" type="image/png" sizes="96x96">
 <link rel="icon" href="{{ statique('img/favicon-192.png') }}" type="image/png" sizes="192x192">
-<link rel="icon" href="{{ statique('img/icone.svg') }}" type="image/svg+xml">
+<link rel="manifest" href="{{ statique('site.webmanifest') }}">
+<meta name="theme-color" content="#CF3424">
 <link rel="apple-touch-icon" href="{{ statique('img/apple-touch-icon.png') }}">
 {% if not apercu %}<link rel="alternate" type="application/rss+xml" title="{{ site.nom }}, le carnet d'idées" href="{{ statique('flux.xml') }}">{% endif %}
 {% if apercu %}

@@ -80,7 +80,7 @@ Les fichiers inclus dans une formule sont mis à disposition dans une bibliothè
 
 **Durée et renouvellement.** L'abonnement mensuel est conclu pour un mois, l'abonnement annuel pour un an. Chacun se renouvelle automatiquement pour la même durée, au prix payé à la souscription, jusqu'à sa résiliation : tant que l'abonnement est renouvelé sans interruption, son prix n'augmente pas. Pour les abonnements annuels, Jeuphorie vous prévient par mail, entre un et trois mois avant l'échéance, de la date de renouvellement et de la façon d'y mettre fin (article L. 215-1 du Code de la consommation).
 
-**Résiliation.** Vous pouvez résilier à tout moment, gratuitement, en quelques clics, depuis l'espace abonné (lien « gérer mon abonnement » de votre bibliothèque, ou {{ site.boutique.portail_abonnes }}), ou par mail à {{ site.email }} (article L. 215-1-1 du Code de la consommation). La résiliation arrête le renouvellement : vous gardez l'accès à votre bibliothèque jusqu'à la fin de la période payée, qui n'est pas remboursée.
+**Résiliation.** Vous pouvez résilier à tout moment, gratuitement, en quelques clics, depuis [l'espace abonné]({{ site.boutique.portail_abonnes }}) (lien « gérer mon abonnement » de votre bibliothèque), ou par mail à {{ site.email }} (article L. 215-1-1 du Code de la consommation). La résiliation arrête le renouvellement : vous gardez l'accès à votre bibliothèque jusqu'à la fin de la période payée, qui n'est pas remboursée.
 
 **Après la fin de l'abonnement.** Les fiches que vous avez téléchargées ou imprimées pendant l'abonnement restent utilisables selon l'article 9. Les codes de réduction ne sont plus valables, et les nouveautés et mises à jour ne sont plus accessibles.
 
