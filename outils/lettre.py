@@ -56,10 +56,23 @@ def composer(jour):
     if config.get("boutique", {}).get("ventes_actives") and saison and saison.get("kit"):
         kit = next((k for k in lire("kits").get("kits", []) if k["id"] == saison["kit"]), None)
 
+    # la première lettre après l'ouverture de la boutique l'annonce (config.yml > boutique > ouverture)
+    ouverture = config.get("boutique", {}).get("ouverture")
+    annonce = bool(ouverture and config["boutique"].get("ventes_actives")
+                   and 0 <= (jour - dt.date.fromisoformat(str(ouverture))).days <= 20)
+
     e = html.escape
     bouton = ('<a href="{u}" style="display:inline-block;background:#CF3424;color:#fff;text-decoration:none;'
               'font-weight:bold;padding:12px 22px;border-radius:999px">{t}</a>')
     blocs = []
+    if annonce:
+        blocs.append('<h2 style="font-size:20px;margin:28px 0 6px">Une nouvelle : la boutique est ouverte</h2>'
+                     '<p style="margin:0 0 8px">Depuis le 1er novembre, les kits complets de Jeuphorie sont en vente : '
+                     "anniversaires clés en main, grands jeux par âge, fêtes de l'année, kermesse, et des outils pour "
+                     "les structures. Tout est prêt à imprimer, conçu avec mon expérience d'animateur.</p>"
+                     '<p style="margin:0 0 14px">Les jeux offerts restent gratuits, et il y en aura toujours un nouveau '
+                     'chaque mois dans cette lettre.</p>'
+                     + bouton.format(u=f"{base}/boutique/", t="Découvrir la boutique"))
     if jeu:
         url = f"{base}/fetes/{jeu['fete']}/{jeu['id']}/"
         blocs.append(f'<h2 style="font-size:20px;margin:28px 0 6px">Le jeu offert du mois : {e(jeu["nom"])}</h2>'
@@ -78,13 +91,17 @@ def composer(jour):
     if not blocs:
         return None
     mois = f"{MOIS[jour.month - 1]} {jour.year}"
-    sujet = f"Jeuphorie, {MOIS[jour.month - 1]} : " + (jeu["nom"] if jeu else articles[0]["titre"])
+    intro = ("Ce mois-ci, une grande nouvelle pour Jeuphorie, et comme toujours un jeu offert et quelques lectures utiles."
+             if annonce else "Voici ce que je vous ai préparé ce mois-ci : de quoi animer un groupe d'enfants sans rien "
+             "acheter, et quelques lectures utiles.")
+    sujet = f"Jeuphorie, {MOIS[jour.month - 1]} : " + ("la boutique est ouverte" if annonce
+                                                       else jeu["nom"] if jeu else articles[0]["titre"])
     corps = f"""<!doctype html><html lang="fr"><body style="margin:0;background:#FBFAF7">
 <div style="max-width:600px;margin:0 auto;padding:24px 20px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#1A2340">
 <p style="font-size:26px;font-weight:bold;margin:0"><span style="color:#CF3424">Jeu</span>phorie</p>
 <p style="margin:2px 0 22px;color:#4B5675">La lettre de {mois}</p>
 <p style="margin:0">Bonjour,</p>
-<p style="margin:10px 0 0">Voici ce que je vous ai préparé ce mois-ci : de quoi animer un groupe d'enfants sans rien acheter, et quelques lectures utiles.</p>
+<p style="margin:10px 0 0">{intro}</p>
 {''.join(blocs)}
 <p style="margin:30px 0 0">Bonnes animations !<br>Rafaël, de Jeuphorie</p>
 <hr style="border:none;border-top:1px solid #E2DED5;margin:28px 0 14px">

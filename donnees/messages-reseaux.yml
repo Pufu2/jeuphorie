@@ -19,6 +19,21 @@ messages:
 
       Et vous, vous animez des enfants à quelle occasion ? Dites-le-moi en commentaire, ça m'aidera à publier ce qui vous sert.
 
+  - id: ouverture-boutique
+    surtitre: Une nouvelle
+    titre: "La boutique Jeuphorie est ouverte"
+    url: /boutique/
+    texte: |
+      Une petite nouvelle ce samedi : la boutique Jeuphorie est ouverte.
+
+      Vous y trouverez des kits complets, prêts à imprimer : des anniversaires clés en main, des grands jeux classés par âge, les fêtes de l'année, la kermesse, et des outils pour les accueils de loisirs et les écoles.
+
+      Rien ne change pour le reste : les jeux offerts restent gratuits, un nouveau chaque mois, et je continue à partager ici des idées et des conseils.
+
+      Merci à celles et ceux qui suivent Jeuphorie depuis le début. Si vous avez une question sur un kit, posez-la en commentaire, je réponds à tout le monde.
+
+      Pour la découvrir (lien dans la bio).
+
   - id: question-jeu-enfance
     surtitre: Une question pour vous
     titre: "Quel jeu de votre enfance faites-vous encore jouer aujourd'hui ?"

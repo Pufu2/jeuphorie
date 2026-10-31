@@ -54,6 +54,7 @@ boutique:
   # Passer à true seulement quand la micro-entreprise est déclarée
   # et que les mentions légales et les conditions de vente sont complétées.
   ventes_actives: true
+  ouverture: 2026-11-01
   # Espace des abonnés (Stripe) : changer de carte, voir les reçus, résilier. Ouvert le 1er novembre 2026.
   portail_abonnes: https://billing.stripe.com/p/login/4gMcN55K57Zlf5SgMTbMQ00
   # Les liens de paiement Stripe sont dans donnees/kits.yml et donnees/abonnement.yml (champ paiement).
