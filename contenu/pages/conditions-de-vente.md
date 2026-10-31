@@ -39,7 +39,7 @@ Le paiement se fait par carte bancaire, sur les pages sécurisées de Stripe. Je
 
 ## 6. Téléchargement
 
-Dès le paiement validé, vous arrivez sur la page de téléchargement de votre achat, dont le lien vous est aussi envoyé par mail. Pour un abonnement, vous recevez par mail le lien de votre bibliothèque. Si vous ne le recevez pas, vérifiez vos courriers indésirables puis écrivez à {{ site.email }} : nous vous renvoyons le kit.
+Dès le paiement validé, vous arrivez sur la page de téléchargement de votre achat (pour un abonnement, sur votre bibliothèque) ; un reçu vous est envoyé par mail. Enregistrez vos fichiers et gardez cette page dans vos favoris. Si vous l'avez perdue ou si un fichier ne s'ouvre pas, écrivez à {{ site.email }} depuis l'adresse utilisée lors de l'achat : nous vous renvoyons le lien.
 
 ## 7. Droit de rétractation
 
@@ -76,7 +76,7 @@ Il est interdit de revendre un fichier, de le partager en ligne (site, réseau s
 - **Pro Animateur annuel**, 39 € par an : le grand fichier des grands jeux et tous les dossiers du mois, y compris ceux déjà parus, dès la souscription, puis les nouveaux dossiers, et un code de réduction de 30 % sur les kits d'anniversaire, de fêtes et de kermesse. Les outils pour les structures ne bénéficient pas de cette réduction ;
 - **Pro Structure**, 149 € par an : pour une structure (un établissement ou une association, voir l'article 9), tous les produits de la boutique, tous les dossiers du mois, le calendrier d'animation de l'année et les produits publiés pendant l'abonnement, pour toute l'équipe de la structure, sans limite de nombre de personnes.
 
-Les fichiers inclus dans une formule sont mis à disposition dans une bibliothèque en ligne, dont le lien est envoyé par mail à la souscription, puis à chaque nouveauté.
+Les fichiers inclus dans une formule sont mis à disposition dans une bibliothèque en ligne, ouverte dès la souscription ; chaque nouveauté y est ajoutée et annoncée par mail.
 
 **Durée et renouvellement.** L'abonnement mensuel est conclu pour un mois, l'abonnement annuel pour un an. Chacun se renouvelle automatiquement pour la même durée, au prix payé à la souscription, jusqu'à sa résiliation : tant que l'abonnement est renouvelé sans interruption, son prix n'augmente pas. Pour les abonnements annuels, Jeuphorie vous prévient par mail, entre un et trois mois avant l'échéance, de la date de renouvellement et de la façon d'y mettre fin (article L. 215-1 du Code de la consommation).
 
