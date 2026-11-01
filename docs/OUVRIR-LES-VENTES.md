@@ -12,6 +12,12 @@ Rien ne s'affiche à l'achat tant que `ventes_actives` reste à `false` dans `co
 - Pages de téléchargement : fabriquées à des adresses secrètes à partir du dépôt privé (`jeuphorie-produits/livraison.yml`), dès que le secret `PRODUITS_TOKEN` existe (étape 2.4 ci-dessous).
 - Reste : le médiateur (CM2C), le secret `PRODUITS_TOKEN`, un achat d'essai avec la carte de test 4242 4242 4242 4242, puis le passage des liens en mode réel et `ventes_actives: true`.
 
+## Le mail de livraison
+
+Après chaque achat, le client reçoit en quelques minutes un mail avec le lien de son kit (ou de sa bibliothèque Pro), même s'il a fermé la page trop vite : `outils/livrer_mails.py`, lancé toutes les 10 minutes par `.github/workflows/livraison.yml`, envoyé par Brevo depuis contact@jeuphorie.fr.
+
+Il faut une fois le secret GitHub `STRIPE_LIVRAISON_KEY` : dans Stripe, Développeurs > Clés API > « Créer une clé restreinte », nom « Livraison Jeuphorie », une seule permission **Checkout Sessions : Écriture** (le reste sur « Aucun »), puis la clé `rk_live_…` dans GitHub > Settings > Secrets and variables > Actions.
+
 ## 1. La micro-entreprise
 
 Tout est expliqué, réponse par réponse, dans `docs/CREER-LA-MICRO-ENTREPRISE.md` : l'autorisation de cumul si vous êtes agent public, la déclaration en ligne, le SIREN, le médiateur de la consommation et le compte bancaire.

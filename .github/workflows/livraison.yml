@@ -1,0 +1,27 @@
+name: Mails de livraison
+
+on:
+  # toutes les 10 minutes : le client reçoit le lien de son achat par mail
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: livraison
+  cancel-in-progress: false
+
+jobs:
+  envoyer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Envoyer les liens des nouveaux achats
+        env:
+          STRIPE_LIVRAISON_KEY: ${{ secrets.STRIPE_LIVRAISON_KEY }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: python3 outils/livrer_mails.py
