@@ -62,7 +62,7 @@ def mail(nom_produit, lien, abonnement, portail):
 <p style="font-size:26px;font-weight:bold;margin:0"><span style="color:#CF3424">Jeu</span>phorie</p>
 <p style="margin:18px 0 0">Bonjour,</p>
 <p>{intro}</p>
-<p style="margin:22px 0"><a href="{e(lien)}" style="display:inline-block;background:#CF3424;color:#fff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:999px">{bouton}</a></p>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:22px 0"><tr><td bgcolor="#CF3424" style="background:#CF3424;border-radius:24px;padding:12px 24px"><a href="{e(lien)}" style="color:#ffffff;text-decoration:none;font-weight:bold;font-family:Arial,Helvetica,sans-serif;font-size:16px">{bouton}</a></td></tr></table>
 <p>{suite}</p>
 <p>Une question ? Répondez simplement à ce mail, je vous réponds rapidement.</p>
 <p style="margin-top:26px">Bonnes animations !<br>Rafaël, de Jeuphorie</p>

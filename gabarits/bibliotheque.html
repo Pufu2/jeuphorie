@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "morceaux/achat.html" import carte_achat %}
 {% block contenu %}
 <div class="cadre cadre--texte">
   <p class="surtitre">Jeuphorie Pro</p>
@@ -11,17 +12,11 @@
     <p class="petit">Ce code est réservé aux abonnés : merci de ne pas le partager.</p>
   </div>
   {% endif %}
-  {% for titre, fichiers in page.groupes %}
-  <h2>{{ titre }}</h2>
-  <ul class="telechargements">
-    {% for f in fichiers %}
-    <li class="telechargement">
-      <span class="telechargement__nom">{{ f.nom }}</span>
-      <span class="telechargement__info">{{ f.nature }} · {{ f.taille }}</span>
-      <a class="bouton" href="{{ f.fichier }}" download>Télécharger</a>
-    </li>
-    {% endfor %}
-  </ul>
+  {% for g in page.groupes %}
+  <h2 class="achats__titre{% if g.couleur %} achats__titre--{{ g.couleur }}{% endif %}">{{ g.titre }}</h2>
+  <div class="achats">
+    {% for c in g.cartes %}{{ carte_achat(c) }}{% endfor %}
+  </div>
   {% endfor %}
   <div class="texte">
     <p>Gardez cette page dans vos favoris. Son adresse est personnelle : merci de ne pas la partager en dehors de {% if page.formule == "Pro Structure" %}votre équipe{% else %}votre usage{% endif %}.</p>

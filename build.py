@@ -307,6 +307,18 @@ class Site:
         liv = lire_yaml(source)
         kits = {k["id"]: k for k in self.kits()}
 
+        def apercu(origine, dossier):
+            """La première page du PDF en vignette, pour voir à quoi correspond le fichier."""
+            try:
+                import pypdfium2
+                page = pypdfium2.PdfDocument(str(origine))[0]
+                image = page.render(scale=320 / page.get_width()).to_pil().convert("RGB")
+                nom = origine.stem + "-apercu.jpg"
+                image.save(SORTIE / dossier.strip("/") / nom, quality=80)
+                return nom
+            except Exception:
+                return None
+
         def copier(chemin, dossier):
             origine = PRODUITS / chemin
             cible = SORTIE / dossier.strip("/") / origine.name
@@ -315,17 +327,26 @@ class Site:
             nature = {".pdf": "PDF à imprimer", ".docx": "document Word à modifier",
                       ".xlsx": "classeur à remplir"}.get(origine.suffix, origine.suffix[1:].upper())
             nom = liv.get("titres", {}).get(origine.name) or re.sub(r"^(Jeuphorie|Kermesse)-", "", origine.stem).replace("-", " ")
+            taille = origine.stat().st_size
             return {"nom": nom[:1].upper() + nom[1:], "nature": nature, "fichier": origine.name,
-                    "taille": f"{max(1, origine.stat().st_size // 1024 // 1024)} Mo" if origine.stat().st_size > 1024 * 1024
-                    else f"{max(1, origine.stat().st_size // 1024)} Ko"}
+                    "apercu": apercu(origine, dossier) if origine.suffix == ".pdf" else None,
+                    "taille": f"{max(1, taille // 1024 // 1024)} Mo" if taille > 1024 * 1024 else f"{max(1, taille // 1024)} Ko"}
+
+        def carte_kit(ident, dossier):
+            """Un kit : sa couverture, sa description et ses fichiers."""
+            k = kits[ident]
+            fichiers = [copier(f["chemin"], dossier) for f in liv["fichiers"][ident]]
+            couverture = f"/img/kits/{ident}-couverture.jpg"
+            if not (RACINE / "statique" / couverture.lstrip("/")).exists():
+                couverture = next((f["apercu"] for f in fichiers if f["apercu"]), None)
+            return {"titre": k["titre"], "image": couverture, "description": k["accroche"], "fichiers": fichiers}
 
         for ident, code in liv.get("kits", {}).items():
             if ident not in kits or ident not in liv.get("fichiers", {}):
                 continue
             url = f"/telechargement/{code}/"
-            fichiers = [copier(f["chemin"], url) for f in liv["fichiers"][ident]]
             self.ajouter(url, "telechargement.html", titre=f"Votre kit : {kits[ident]['titre']}", indexer=False,
-                         produit=kits[ident], fichiers=fichiers)
+                         produit=kits[ident], carte=carte_kit(ident, url))
 
         mois = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre",
                 "Novembre", "Decembre"]
@@ -334,6 +355,11 @@ class Site:
             m = re.search(r"-(\w+)-(\d{4})-", f.name)
             return (int(m.group(2)), mois.index(m.group(1)) if m.group(1) in mois else 0) if m else (0, 0)
         dossiers = sorted(PRODUITS.glob(liv.get("dossiers", "pro/sortie/*.pdf")), key=date_dossier, reverse=True)
+
+        def carte_fichier(chemin, dossier, description):
+            f = copier(chemin, dossier)
+            return {"titre": f["nom"], "image": f["apercu"], "description": description, "fichiers": [f]}
+
         for formule, contenu in liv.get("bibliotheques", {}).items():
             code = liv.get("formules", {}).get(formule)
             if not code:
@@ -341,16 +367,19 @@ class Site:
             url = f"/bibliotheque/{code}/"
             groupes = []
             if "dossiers" in contenu:
-                groupes.append(("Les dossiers du mois", [copier(f.relative_to(PRODUITS), url) for f in dossiers]))
+                groupes.append({"titre": "Les dossiers du mois", "cartes": [carte_fichier(
+                    f.relative_to(PRODUITS), url, "De nouvelles fiches d'animation sur un thème de saison, prêtes à imprimer.")
+                    for f in dossiers]})
             if "calendrier" in contenu and liv.get("calendrier"):
-                groupes.append(("Le calendrier d'animation", [copier(liv["calendrier"], url)]))
+                groupes.append({"titre": "Le calendrier d'animation", "cartes": [carte_fichier(
+                    liv["calendrier"], url, "Les dates de l'année, des idées de thèmes et les temps forts, mois par mois.")]})
             if "grand-fichier" in contenu:
-                groupes.append(("Le grand fichier des jeux collectifs",
-                                [copier(f["chemin"], url) for f in liv["fichiers"]["grand-fichier"]]))
-            if "tous-les-kits" in contenu:
-                for ident, liste in liv["fichiers"].items():
-                    if ident in kits:
-                        groupes.append((kits[ident]["titre"], [copier(f["chemin"], url) for f in liste]))
+                groupes.append({"titre": "Le grand fichier des jeux collectifs", "cartes": [carte_kit("grand-fichier", url)]})
+            if "tous-les-kits" in contenu:  # rangés par univers, comme sur le site
+                for u in self.donnees["univers"]["univers"]:
+                    cartes = [carte_kit(i, url) for i in liv["fichiers"] if i in kits and kits[i].get("univers") == u["id"]]
+                    if cartes:
+                        groupes.append({"titre": u["nom"], "couleur": u.get("couleur"), "cartes": cartes})
             nom = next((f["nom"] for f in self.donnees["abonnement"]["formules"] if f["id"] == formule), formule)
             self.ajouter(url, "bibliotheque.html", titre=f"Votre bibliothèque {nom}", indexer=False,
                          formule=nom, groupes=groupes, code_reduction=liv.get("codes_reduction", {}).get(formule))

@@ -1125,16 +1125,27 @@ a.tampon { text-decoration: none; }
 .temoignage blockquote { margin: 0; font-style: italic; }
 .temoignage figcaption { margin-top: 0.4rem; font-size: 0.9rem; color: var(--encre-douce); }
 
-/* pages de téléchargement après achat */
-.telechargements { list-style: none; padding: 0; margin: 1.5rem 0 2rem; display: grid; gap: .75rem; }
-.telechargement { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; align-items: center;
-  padding: 1rem 1.25rem; border: 1px solid var(--ligne, #d9dce6); border-radius: 12px; background: #fff; }
-.telechargement__nom { font-weight: 700; }
-.telechargement__info { grid-column: 1; color: var(--gris, #5b6378); font-size: .95rem; }
-.telechargement .bouton { grid-column: 2; grid-row: 1 / span 2; }
-@media (max-width: 520px) {
-  .telechargement { grid-template-columns: 1fr; }
-  .telechargement .bouton { grid-column: 1; grid-row: auto; justify-self: start; }
+/* pages de téléchargement après achat et bibliothèques des abonnés */
+.achats { display: grid; gap: 1rem; margin: 1rem 0 2.25rem; }
+.achats__titre { margin-top: 2rem; padding-left: .75rem; border-left: 6px solid var(--fete); }
+.achats__titre--plein-air { border-left-color: var(--plein-air); }
+.achats__titre--saison { border-left-color: var(--saison, #C2571A); }
+.achats__titre--soleil { border-left-color: var(--soleil); }
+.achats__titre--pro { border-left-color: var(--pro-vif); }
+.achat { display: grid; grid-template-columns: 120px 1fr; gap: 1.1rem; align-items: start; padding: 1.1rem 1.25rem;
+  border: 1px solid var(--filet); border-radius: 12px; background: var(--fiche); color: var(--encre); }
+.achat:not(:has(.achat__image)) { grid-template-columns: 1fr; }
+.achat__image { width: 120px; height: auto; border-radius: 6px; border: 1px solid var(--filet); background: #fff; }
+.achat__titre { margin: 0; font-size: 1.15rem; color: var(--encre); }
+.achat__description { margin: .3rem 0 .6rem; color: var(--encre-douce); }
+.achat__fichiers { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+.achat__fichier { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem 1rem;
+  padding-top: .5rem; border-top: 1px solid var(--filet); }
+.achat__nom { font-weight: 700; color: var(--encre); }
+.achat__info { font-weight: 400; color: var(--encre-douce); font-size: .9rem; }
+@media (max-width: 560px) {
+  .achat { grid-template-columns: 80px 1fr; gap: .8rem; padding: .9rem; }
+  .achat__image { width: 80px; }
 }
 .encadre-code { margin: 1.5rem 0; padding: 1.25rem 1.5rem; border-radius: 12px; background: var(--fete-clair, #fde6e1); }
 .encadre-code p { margin: 0 0 .5rem; }

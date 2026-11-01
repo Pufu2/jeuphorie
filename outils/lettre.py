@@ -62,8 +62,11 @@ def composer(jour):
                    and 0 <= (jour - dt.date.fromisoformat(str(ouverture))).days <= 20)
 
     e = html.escape
-    bouton = ('<a href="{u}" style="display:inline-block;background:#CF3424;color:#fff;text-decoration:none;'
-              'font-weight:bold;padding:12px 22px;border-radius:999px">{t}</a>')
+    # un bouton en tableau : c'est la seule forme que toutes les messageries affichent (Gmail, Outlook…)
+    bouton = ('<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:14px 0"><tr>'
+              '<td bgcolor="#CF3424" style="background:#CF3424;border-radius:24px;padding:12px 24px">'
+              '<a href="{u}" style="color:#ffffff;text-decoration:none;font-weight:bold;font-family:Arial,Helvetica,'
+              'sans-serif;font-size:16px">{t}</a></td></tr></table>')
     blocs = []
     if annonce:
         blocs.append('<h2 style="font-size:20px;margin:28px 0 6px">Une nouvelle : la boutique est ouverte</h2>'

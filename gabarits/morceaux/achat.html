@@ -1,0 +1,18 @@
+{# Une carte de la page de téléchargement ou de la bibliothèque : image, titre, description, fichiers #}
+{% macro carte_achat(c) %}
+<article class="achat">
+  {% if c.image %}<img class="achat__image" src="{{ c.image }}" alt="" loading="lazy" width="120">{% endif %}
+  <div class="achat__texte">
+    <h3 class="achat__titre">{{ c.titre }}</h3>
+    {% if c.description %}<p class="achat__description">{{ c.description }}</p>{% endif %}
+    <ul class="achat__fichiers">
+      {% for f in c.fichiers %}
+      <li class="achat__fichier">
+        <span class="achat__nom">{% if c.fichiers | length > 1 %}{{ f.nom }}<br>{% endif %}<span class="achat__info">{{ f.nature }} · {{ f.taille }}</span></span>
+        <a class="bouton bouton--petit" href="{{ f.fichier }}" download>Télécharger</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</article>
+{% endmacro %}
