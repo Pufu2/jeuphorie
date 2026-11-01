@@ -11,6 +11,7 @@ import base64
 import html
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
@@ -32,7 +33,18 @@ def stripe(methode, chemin, cle, **params):
         return json.loads(r.read().decode("utf-8"))
 
 
+def texte(page):
+    """La version texte du mail (sans elle, les messageries le jugent plus volontiers indésirable)."""
+    page = re.sub(r'<a [^>]*href="([^"]+)"[^>]*>(.*?)</a>', lambda m: f"{m.group(2)} : {html.unescape(m.group(1))}", page, flags=re.S)
+    page = re.sub(r"<br\s*/?>", "\n", page)
+    page = re.sub(r"</(p|tr|div)>", "\n\n", page)
+    page = html.unescape(re.sub(r"<[^>]+>", "", page))
+    return re.sub(r"\n\s*\n+", "\n\n", "\n".join(l.strip() for l in page.splitlines())).strip() + "\n"
+
+
 def brevo(cle, corps):
+    if corps.get("htmlContent") and not corps.get("textContent"):
+        corps = {**corps, "textContent": texte(corps["htmlContent"])}
     req = urllib.request.Request("https://api.brevo.com/v3/smtp/email", data=json.dumps(corps).encode("utf-8"),
                                  headers={"api-key": cle, "Content-Type": "application/json", "Accept": "application/json"})
     try:
