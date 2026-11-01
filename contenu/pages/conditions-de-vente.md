@@ -39,7 +39,7 @@ Le paiement se fait par carte bancaire, sur les pages sécurisées de Stripe. Je
 
 ## 6. Téléchargement
 
-Dès le paiement validé, vous arrivez sur la page de téléchargement de votre achat (pour un abonnement, sur votre bibliothèque) ; un reçu vous est envoyé par mail. Enregistrez vos fichiers et gardez cette page dans vos favoris. Si vous l'avez perdue ou si un fichier ne s'ouvre pas, écrivez à {{ site.email }} depuis l'adresse utilisée lors de l'achat : nous vous renvoyons le lien.
+Dès le paiement validé, vous arrivez sur la page de téléchargement de votre achat (pour un abonnement, sur votre bibliothèque). Son lien vous est aussi envoyé par mail dans les minutes qui suivent, avec le reçu du paiement. Si vous ne le recevez pas, vérifiez vos courriers indésirables puis écrivez à {{ site.email }} depuis l'adresse utilisée lors de l'achat : nous vous renvoyons le lien.
 
 ## 7. Droit de rétractation
 
