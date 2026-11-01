@@ -159,7 +159,7 @@ def _tous():
                       "mois": {2, 3, 4, 5, 6} if u["id"] == "kermesse" else None, "theme": u["id"]})
 
     if config.get("boutique", {}).get("ventes_actives"):
-        for k in d["kits"]["kits"]:
+        for k in [k for k in d["kits"]["kits"] if str(k.get("sortie", "")) <= dt.date.today().isoformat()]:
             if k.get("etat") not in ("pret", "en_vente"):
                 continue
             u = univers.get(k.get("univers"), {})

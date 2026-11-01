@@ -198,7 +198,9 @@ class Site:
         return articles
 
     def kits(self):
-        return self.donnees.get("kits", {}).get("kits", [])
+        """Les produits ; un nouveau kit reste caché jusqu'à sa date de sortie (champ sortie, AAAA-MM-JJ)."""
+        aujourdhui = dt.date.today().isoformat()
+        return [k for k in self.donnees.get("kits", {}).get("kits", []) if str(k.get("sortie", "")) <= aujourdhui]
 
     def kit(self, ident):
         return next((k for k in self.kits() if k["id"] == ident), None)
@@ -358,7 +360,10 @@ class Site:
         def date_dossier(f):  # « Jeuphorie-Pro-Decembre-2026-… » : le plus récent en premier
             m = re.search(r"-(\w+)-(\d{4})-", f.name)
             return (int(m.group(2)), mois.index(m.group(1)) if m.group(1) in mois else 0) if m else (0, 0)
-        dossiers = sorted(PRODUITS.glob(liv.get("dossiers", "pro/sortie/*.pdf")), key=date_dossier, reverse=True)
+        # un dossier du mois n'apparaît dans les bibliothèques qu'à partir du 1er de son mois
+        ce_mois = (dt.date.today().year, dt.date.today().month - 1)
+        dossiers = sorted([f for f in PRODUITS.glob(liv.get("dossiers", "pro/sortie/*.pdf")) if date_dossier(f) <= ce_mois],
+                          key=date_dossier, reverse=True)
 
         def carte_fichier(chemin, dossier, description):
             f = copier(chemin, dossier)

@@ -1,0 +1,30 @@
+name: Dossier du mois
+
+on:
+  # le 1er de chaque mois, vers 8 h (heure de Paris) : le dossier apparaît dans les bibliothèques (publication du matin)
+  # et chaque abonné reçoit un mail
+  schedule:
+    - cron: "42 6 1 * *"
+  workflow_dispatch:
+
+jobs:
+  annoncer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: Pufu2/jeuphorie-produits
+          token: ${{ secrets.PRODUITS_TOKEN }}
+          path: produits
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Prévenir les abonnés
+        env:
+          STRIPE_LIVRAISON_KEY: ${{ secrets.STRIPE_LIVRAISON_KEY }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          JEUPHORIE_PRODUITS: ${{ github.workspace }}/produits
+        run: python3 outils/annoncer_dossier.py
