@@ -13,6 +13,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -34,8 +35,11 @@ def stripe(methode, chemin, cle, **params):
 def brevo(cle, corps):
     req = urllib.request.Request("https://api.brevo.com/v3/smtp/email", data=json.dumps(corps).encode("utf-8"),
                                  headers={"api-key": cle, "Content-Type": "application/json", "Accept": "application/json"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.loads(r.read().decode("utf-8") or "{}")
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.loads(r.read().decode("utf-8") or "{}")
+    except urllib.error.HTTPError as err:
+        raise RuntimeError(f"Brevo : {err.code} {err.read().decode('utf-8', 'replace')}") from None
 
 
 def mail(nom_produit, lien, abonnement, portail):
