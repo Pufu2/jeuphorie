@@ -32,7 +32,7 @@
   <section class="biblio__rubrique" id="{{ g.id }}" data-rubrique="{{ g.id }}">
     <h2 class="achats__titre achats__titre--{{ g.couleur }}">{{ g.titre }}</h2>
     <div class="achats achats--grille">
-      {% for c in g.cartes %}{{ carte_achat(c) }}{% endfor %}
+      {% for c in g.cartes %}{{ carte_achat(c, true) }}{% endfor %}
     </div>
   </section>
   {% endfor %}

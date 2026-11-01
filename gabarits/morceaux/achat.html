@@ -1,7 +1,8 @@
 {# Une carte de la page de téléchargement ou de la bibliothèque : image, titre, description, fichiers #}
-{% macro carte_achat(c) %}
+{% macro carte_achat(c, grille=false) %}
 <article class="achat">
-  {% if c.image %}<img class="achat__image" src="{{ c.image }}" alt="" loading="lazy" width="240">{% endif %}
+  {% set image = (c.vignette or c.image) if grille else c.image %}
+  {% if image %}<img class="achat__image{% if grille and c.vignette %} achat__image--visuel{% endif %}" src="{{ image }}" alt="" loading="lazy" width="240">{% endif %}
   <div class="achat__texte">
     <h3 class="achat__titre">{{ c.titre }}</h3>
     {% if c.description %}<p class="achat__description">{{ c.description }}</p>{% endif %}

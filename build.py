@@ -340,7 +340,10 @@ class Site:
             couverture = f"/img/kits/{ident}-couverture.jpg"
             if not (RACINE / "statique" / couverture.lstrip("/")).exists():
                 couverture = next((f["apercu"] for f in fichiers if f["apercu"]), None)
-            return {"titre": k["titre"], "image": couverture, "description": k["accroche"], "fichiers": fichiers}
+            # en grille, le visuel en largeur des fiches du site remplit tout le cadre
+            vignette = f"/img/kits/{ident}.jpg" if (RACINE / "statique" / "img" / "kits" / f"{ident}.jpg").exists() else couverture
+            return {"titre": k["titre"], "image": couverture, "vignette": vignette, "description": k["accroche"],
+                    "fichiers": fichiers}
 
         for ident, code in liv.get("kits", {}).items():
             if ident not in kits or ident not in liv.get("fichiers", {}):

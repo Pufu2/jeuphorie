@@ -1165,10 +1165,12 @@ a.tampon { text-decoration: none; }
 .onglet--pro { border-top-color: var(--pro-vif); }
 .onglet.est-actif { border-color: var(--encre); border-top-width: 6px; box-shadow: 0 6px 18px rgba(0, 0, 0, .08); }
 .achats--grille { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); align-items: stretch; }
-.achats--grille .achat { display: flex; flex-direction: column; gap: .8rem; padding: 1rem; }
+.achats--grille .achat { display: flex; flex-direction: column; gap: .8rem; padding: 0 1rem 1rem; overflow: hidden; }
 .achats--grille .achat__texte { display: flex; flex-direction: column; flex: 1; }
 .achats--grille .achat__fichiers { margin-top: auto; }
-.achats--grille .achat__image { width: 100%; height: 170px; object-fit: contain; padding: .4rem; box-sizing: border-box; }
+/* l'image remplit tout le haut de la carte : le visuel du kit, ou le haut de la première page du PDF */
+.achats--grille .achat__image { width: calc(100% + 2rem); max-width: none; margin: 0 -1rem; height: auto; aspect-ratio: 720 / 463;
+  object-fit: cover; object-position: top center; border: 0; border-bottom: 1px solid var(--filet); border-radius: 0; padding: 0; }
 .achats--grille .achat__titre { font-size: 1.05rem; }
 .achats--grille .achat__description { font-size: .95rem; }
 .achats--grille .achat__description { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
