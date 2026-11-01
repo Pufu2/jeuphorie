@@ -1,28 +1,62 @@
 {% extends "base.html" %}
 {% from "morceaux/achat.html" import carte_achat %}
 {% block contenu %}
-<div class="cadre cadre--texte">
-  <p class="surtitre">Jeuphorie Pro</p>
-  <h1 class="titre-page">{{ page.titre }}</h1>
-  <p class="chapo">Bienvenue ! Voici tous les fichiers inclus dans votre formule. Chaque nouveau dossier arrive ici, et je vous préviens par mail quand il est en ligne.</p>
-  {% if page.code_reduction %}
-  <div class="encadre-code">
-    <p><strong>Votre réduction de 30 %</strong> sur les kits d'anniversaire, de fêtes, de kermesse et de grands jeux : au moment de payer, cliquez sur « Ajouter un code promotionnel » et tapez</p>
-    <p class="encadre-code__code">{{ page.code_reduction }}</p>
-    <p class="petit">Ce code est réservé aux abonnés : merci de ne pas le partager.</p>
-  </div>
+<div class="cadre biblio">
+  <header class="biblio__tete">
+    <div>
+      <p class="surtitre">Jeuphorie Pro</p>
+      <h1 class="titre-page">{{ page.titre }}</h1>
+      <p class="chapo">Tous les fichiers de votre formule. Chaque nouveau dossier arrive ici, et je vous préviens par mail.</p>
+    </div>
+    {% if page.code_reduction %}
+    <aside class="encadre-code">
+      <p><strong>Votre réduction de 30 %</strong> sur les kits d'anniversaire, de fêtes, de kermesse et de grands jeux. Au moment de payer, « Ajouter un code promotionnel » :</p>
+      <p class="encadre-code__code">{{ page.code_reduction }}</p>
+      <p class="petit">Réservé aux abonnés, merci de ne pas le partager.</p>
+    </aside>
+    {% endif %}
+  </header>
+
+  {% if page.groupes | length > 1 %}
+  <nav class="biblio__onglets" aria-label="Rubriques de la bibliothèque">
+    {% for g in page.groupes %}
+    <a class="onglet onglet--{{ g.couleur }}{% if loop.first %} est-actif{% endif %}" href="#{{ g.id }}" data-onglet="{{ g.id }}">
+      <span class="onglet__nom">{{ g.titre }}</span>
+      <span class="onglet__nombre">{{ g.cartes | length }} {{ "fichier" if g.id == "dossiers" and g.cartes | length < 2 else ("fichiers" if g.id == "dossiers" else ("kit" if g.cartes | length < 2 else "kits")) }}</span>
+    </a>
+    {% endfor %}
+  </nav>
   {% endif %}
+
   {% for g in page.groupes %}
-  <h2 class="achats__titre{% if g.couleur %} achats__titre--{{ g.couleur }}{% endif %}">{{ g.titre }}</h2>
-  <div class="achats">
-    {% for c in g.cartes %}{{ carte_achat(c) }}{% endfor %}
-  </div>
+  <section class="biblio__rubrique" id="{{ g.id }}" data-rubrique="{{ g.id }}">
+    <h2 class="achats__titre achats__titre--{{ g.couleur }}">{{ g.titre }}</h2>
+    <div class="achats achats--grille">
+      {% for c in g.cartes %}{{ carte_achat(c) }}{% endfor %}
+    </div>
+  </section>
   {% endfor %}
-  <div class="texte">
-    <p>Gardez cette page dans vos favoris. Son adresse est personnelle : merci de ne pas la partager en dehors de {% if page.formule == "Pro Structure" %}votre équipe{% else %}votre usage{% endif %}.</p>
-    {% if site.boutique.portail_abonnes %}<p>Pour changer de carte, retrouver vos reçus ou résilier, en quelques clics : <a href="{{ site.boutique.portail_abonnes }}">gérer mon abonnement</a>.</p>{% endif %}
-    <p>Une question, une idée de thème pour les prochains dossiers ? Écrivez à <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
-    <p>Rafaël, de Jeuphorie</p>
-  </div>
+
+  <footer class="biblio__pied">
+    <p>Gardez cette page dans vos favoris : son adresse est personnelle, merci de ne pas la partager en dehors de {% if page.formule == "Pro Structure" %}votre équipe{% else %}votre usage{% endif %}.</p>
+    <p>{% if site.boutique.portail_abonnes %}<a href="{{ site.boutique.portail_abonnes }}">Gérer mon abonnement</a> (carte, reçus, résiliation) · {% endif %}Une question, une idée de thème ? <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  </footer>
 </div>
+<script>
+// une rubrique à la fois ; sans JavaScript, tout reste affiché à la suite
+(function () {
+  var onglets = document.querySelectorAll('[data-onglet]');
+  if (!onglets.length) return;
+  var rubriques = document.querySelectorAll('[data-rubrique]');
+  function montrer(id) {
+    rubriques.forEach(function (r) { r.hidden = r.dataset.rubrique !== id; });
+    onglets.forEach(function (o) { o.classList.toggle('est-actif', o.dataset.onglet === id); o.setAttribute('aria-current', o.dataset.onglet === id ? 'true' : 'false'); });
+  }
+  onglets.forEach(function (o) {
+    o.addEventListener('click', function (e) { e.preventDefault(); montrer(o.dataset.onglet); history.replaceState(null, '', '#' + o.dataset.onglet); });
+  });
+  var depart = location.hash.slice(1);
+  montrer(document.querySelector('[data-rubrique="' + depart + '"]') ? depart : onglets[0].dataset.onglet);
+})();
+</script>
 {% endblock %}

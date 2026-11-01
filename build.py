@@ -328,7 +328,8 @@ class Site:
                       ".xlsx": "classeur à remplir"}.get(origine.suffix, origine.suffix[1:].upper())
             nom = liv.get("titres", {}).get(origine.name) or re.sub(r"^(Jeuphorie|Kermesse)-", "", origine.stem).replace("-", " ")
             taille = origine.stat().st_size
-            return {"nom": nom[:1].upper() + nom[1:], "nature": nature, "fichier": origine.name,
+            format_court = {".pdf": "PDF", ".docx": "Word", ".xlsx": "Excel"}.get(origine.suffix, origine.suffix[1:].upper())
+            return {"nom": nom[:1].upper() + nom[1:], "nature": nature, "format": format_court, "fichier": origine.name,
                     "apercu": apercu(origine, dossier) if origine.suffix == ".pdf" else None,
                     "taille": f"{max(1, taille // 1024 // 1024)} Mo" if taille > 1024 * 1024 else f"{max(1, taille // 1024)} Ko"}
 
@@ -365,21 +366,26 @@ class Site:
             if not code:
                 continue
             url = f"/bibliotheque/{code}/"
+            # un onglet pour les dossiers du mois, puis un par univers, comme sur le site
             groupes = []
             if "dossiers" in contenu:
-                groupes.append({"titre": "Les dossiers du mois", "cartes": [carte_fichier(
-                    f.relative_to(PRODUITS), url, "De nouvelles fiches d'animation sur un thème de saison, prêtes à imprimer.")
-                    for f in dossiers]})
-            if "calendrier" in contenu and liv.get("calendrier"):
-                groupes.append({"titre": "Le calendrier d'animation", "cartes": [carte_fichier(
-                    liv["calendrier"], url, "Les dates de l'année, des idées de thèmes et les temps forts, mois par mois.")]})
-            if "grand-fichier" in contenu:
-                groupes.append({"titre": "Le grand fichier des jeux collectifs", "cartes": [carte_kit("grand-fichier", url)]})
-            if "tous-les-kits" in contenu:  # rangés par univers, comme sur le site
-                for u in self.donnees["univers"]["univers"]:
-                    cartes = [carte_kit(i, url) for i in liv["fichiers"] if i in kits and kits[i].get("univers") == u["id"]]
-                    if cartes:
-                        groupes.append({"titre": u["nom"], "couleur": u.get("couleur"), "cartes": cartes})
+                cartes = [carte_fichier(f.relative_to(PRODUITS), url,
+                                        "De nouvelles fiches d'animation sur un thème de saison, prêtes à imprimer.")
+                          for f in dossiers]
+                if "calendrier" in contenu and liv.get("calendrier"):
+                    cartes.append(carte_fichier(liv["calendrier"], url,
+                                                "Les dates de l'année, des idées de thèmes et les temps forts, mois par mois."))
+                groupes.append({"id": "dossiers", "titre": "Dossiers du mois", "couleur": "fete", "cartes": cartes})
+            for u in self.donnees["univers"]["univers"]:
+                if "tous-les-kits" in contenu:
+                    idents = [i for i in liv["fichiers"] if i in kits and kits[i].get("univers") == u["id"]]
+                elif "grand-fichier" in contenu and u["id"] == "grands-jeux":
+                    idents = ["grand-fichier"]
+                else:
+                    idents = []
+                if idents:
+                    groupes.append({"id": u["id"], "titre": u["nom"], "couleur": u.get("couleur"),
+                                    "cartes": [carte_kit(i, url) for i in idents]})
             nom = next((f["nom"] for f in self.donnees["abonnement"]["formules"] if f["id"] == formule), formule)
             self.ajouter(url, "bibliotheque.html", titre=f"Votre bibliothèque {nom}", indexer=False,
                          formule=nom, groupes=groupes, code_reduction=liv.get("codes_reduction", {}).get(formule))

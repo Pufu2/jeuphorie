@@ -1,14 +1,16 @@
 {# Une carte de la page de téléchargement ou de la bibliothèque : image, titre, description, fichiers #}
 {% macro carte_achat(c) %}
 <article class="achat">
-  {% if c.image %}<img class="achat__image" src="{{ c.image }}" alt="" loading="lazy" width="120">{% endif %}
+  {% if c.image %}<img class="achat__image" src="{{ c.image }}" alt="" loading="lazy" width="240">{% endif %}
   <div class="achat__texte">
     <h3 class="achat__titre">{{ c.titre }}</h3>
     {% if c.description %}<p class="achat__description">{{ c.description }}</p>{% endif %}
     <ul class="achat__fichiers">
       {% for f in c.fichiers %}
+      {# plusieurs fichiers : on nomme chacun en peu de mots (« le guide », « les planches »), sans répéter le titre du kit #}
+      {% set court = f.nom.split(' : ')[-1] if ' : ' in f.nom and f.nom != c.titre else ('le guide' if f.nom == c.titre else f.nom) %}
       <li class="achat__fichier">
-        <span class="achat__nom">{% if c.fichiers | length > 1 %}{{ f.nom }}<br>{% endif %}<span class="achat__info">{{ f.nature }} · {{ f.taille }}</span></span>
+        <span class="achat__nom">{% if c.fichiers | length > 1 and court %}{{ court[:1] | upper }}{{ court[1:] }}<br>{% endif %}<span class="achat__info">{% if c.fichiers | length > 1 %}{{ f.format }}{% else %}{{ f.nature[:1] | upper }}{{ f.nature[1:] }}{% endif %} · {{ f.taille }}</span></span>
         <a class="bouton bouton--petit" href="{{ f.fichier }}" download>Télécharger</a>
       </li>
       {% endfor %}
