@@ -134,7 +134,7 @@ Le script `jeuphorie-produits/etsy/etsy_publier.py` crée **uniquement des broui
 - **Le proxy remplace l'en-tête `Authorization` envoyé par Claude.** Un jeton passé par le script ou par `ETSY_ACCESS_TOKEN` n'arrive jamais chez Etsy, qui répond « Access token is required » (le proxy ajoute `X-Proxy-Error: upstream auth failed`). Le jeton doit donc être mis **dans le secret**, en deuxième en-tête, comme ci-dessus. Le script se lance alors avec des valeurs factices : `ETSY_API_KEY=x ETSY_ACCESS_TOKEN=x ETSY_SHOP_ID=68890707`.
 - **Obtenir le jeton (OAuth avec PKCE)** : Claude prépare un lien `https://www.etsy.com/oauth/connect?...` avec le keystring `oteg8smq48j2cl0pnc7js6q7` et l'adresse de retour `https://jeuphorie.fr/` (enregistrée dans l'application). Vous l'ouvrez, Etsy vous renvoie sur jeuphorie.fr : copiez **l'adresse complète de la barre du navigateur** (`https://jeuphorie.fr/?code=…&state=…`) et collez-la à Claude dans les minutes qui suivent. Claude l'échange contre le jeton sur `api.etsy.com/v3/public/oauth/token`.
 - **Le jeton dure 1 heure.** Claude peut le renouveler sans nouvelle autorisation (jeton de renouvellement valable 90 jours) tant que la session est ouverte ; il le dépose dans un fichier à copier, jamais dans la conversation. Après la séance, la ligne `Authorization` peut rester : expirée, elle ne gêne pas.
-- **Droits demandés** : `listings_r listings_w shops_r`. Pour modifier les réglages de la boutique (annonce, message après achat, règles), il faudrait aussi `shops_w`.
+- **Droits accordés** : `listings_r listings_w shops_r shops_w transactions_r` (le dernier pour lire les commandes et tenir le livre des recettes).
 - **Publier** une annonce : `PATCH /shops/68890707/listings/{id}` avec `state=active`, **uniquement après accord écrit**. Renouvellement automatique : `should_auto_renew=true`.
 
 ### Si l'application n'est pas validée assez vite
@@ -167,7 +167,9 @@ Etsy a annoncé en mai 2026 revoir l'attribution des clés, et certains dévelop
 - **Informations légales et fiscales** (Gestionnaire de boutique > Finances) : type de vendeur **Entreprise individuelle**. Le formulaire d'identifiant fiscal ne propose **que « N° de TVA »** : on n'y met rien (franchise de TVA, pas de numéro), et surtout **pas le SIRET**. « VAT : Non enregistré » est la bonne réponse. Si Etsy demande le numéro fiscal personnel (DAC7), il le fera lui-même.
 - **Coordonnées du vendeur** (Canaux de vente > crayon à côté d'Etsy / Jeuphorie > bas de page) : statut **Commerçant** ; dans « Autres détails » : nom, « entrepreneur individuel (Jeuphorie) », SIRET, « TVA non applicable, art. 293 B du CGI », contact@jeuphorie.fr.
 - **Règles de la boutique** (Paramètres > Paramètres des conditions) : retours et échanges fixés par Etsy pour le numérique (aucun) ; annulations non acceptées ; mention du droit de rétractation (article L221-28 13° du Code de la consommation) ; règles de confidentialité RGPD rédigées le 2 novembre ; « Conditions fixes » non modifiables (téléchargement instantané).
-- **Encore vide** : la phrase d'accroche de la boutique, l'annonce de la boutique, le message envoyé après un achat de fichier, la localisation de la boutique.
+- **Remplis par l'API le 2 novembre** : l'accroche (« Grands jeux et kits de fête à imprimer pour enfants »), l'annonce de la boutique, le message après achat et celui après achat d'un fichier (où télécharger, réponse sous 48 h, sans lien vers le site).
+- **Rubriques** : « Grands jeux par âge » (3 packs et le grand fichier), « Anniversaires » (4 kits), « Fêtes de l'année » (4 kits).
+- **À faire à la main** (l'API ne le permet pas) : les annonces mises en avant (l'API ignore `featured_rank`), la page « À propos » et la localisation de la boutique.
 
 ## 5. Après la déclaration de la micro-entreprise
 
