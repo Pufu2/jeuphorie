@@ -67,7 +67,8 @@ Ces informations viennent des pages officielles d'Etsy, lues à travers un moteu
 ## La stratégie retenue (24 octobre 2026)
 
 - **Mêmes prix que sur jeuphorie.fr.** Aucune règle d'Etsy trouvée n'impose un prix identique ailleurs, mais garder le même prix évite de pénaliser l'un ou l'autre canal. On ne mentionne jamais le site dans les annonces.
-- **Offsite Ads refusées** au départ.
+- **Offsite Ads acceptées** (décision du 2 novembre 2026, au lieu du refus prévu) : rien n'est payé d'avance, Etsy prélève 15 % seulement sur une vente venue de ses publicités. Désactivables tant que la boutique n'a pas dépassé 10 000 USD sur 12 mois (Gestionnaire de boutique > Marketing > Offsite Ads ; le chemin « Paramètres > Offsite Ads » de l'aide d'Etsy n'existe plus).
+- **Fait le 2 novembre 2026** : les 8 kits et les 4 fichiers de grands jeux sont publiés ensemble (voir la partie 4). Les petits lots à thème et le fichier d'appel restent à faire.
 - **Première vague, prête** : les 8 kits terminés.
   - Anniversaires : défi des champions, chasse au trésor des pirates, enquête du gâteau disparu, safari des petits explorateurs.
   - Fêtes : forêt d'automne, atelier du père Noël, bal du carnaval, quête des cloches.
@@ -120,11 +121,21 @@ Le script `jeuphorie-produits/etsy/etsy_publier.py` crée **uniquement des broui
    - description : « Création de brouillons d'annonces pour ma propre boutique ».
    Etsy indique une validation en général en quelques minutes, mais une boutique active est nécessaire.
 3. Dans **Your apps**, notez le **keystring** et le **shared secret**. Ne les envoyez jamais dans la conversation.
-4. Mettez-les dans les **réglages de l'environnement Claude** : menu de l'environnement dans la barre de titre de la session > **Edit** > **Network secrets** (ou variables d'environnement) :
-   - `ETSY_API_KEY` : la clé, sous la forme demandée par Etsy (keystring seul, ou `keystring:shared_secret`) ;
-   - `ETSY_ACCESS_TOKEN` : le jeton de connexion de votre boutique. Claude vous guidera pour l'obtenir : Etsy l'affiche une fois que vous avez autorisé l'application, avec les droits `listings_r` et `listings_w`.
-5. Dans le même menu, **Network access** : ajoutez **openapi.etsy.com** aux domaines autorisés, sinon l'environnement ne peut pas joindre Etsy ([documentation](https://code.claude.com/docs/en/cloud-environments#network-access)).
+4. Dans les **réglages de l'environnement Claude** (menu de l'environnement dans la barre de titre > **Edit** > **Network secrets** > Ajouter un secret), créez **un seul secret** :
+   - type : **Bearer** (aucun type ne permet d'injecter seulement des en-têtes personnalisés) ;
+   - sites web autorisés : `openapi.etsy.com` ;
+   - en-tête 1 : nom `x-api-key`, préfixe vide, valeur `keystring:shared_secret` ;
+   - en-tête 2, **seulement le temps d'une séance de travail** : nom `Authorization`, préfixe `Bearer`, valeur = le jeton de connexion de la boutique (voir plus bas).
+5. Network access : openapi.etsy.com doit être autorisé (c'est le cas avec ce secret).
 6. Ouvrez une nouvelle session et dites à Claude « crée les brouillons Etsy ».
+
+### Ce qu'on a appris le 2 novembre 2026 (à lire avant chaque séance)
+
+- **Le proxy remplace l'en-tête `Authorization` envoyé par Claude.** Un jeton passé par le script ou par `ETSY_ACCESS_TOKEN` n'arrive jamais chez Etsy, qui répond « Access token is required » (le proxy ajoute `X-Proxy-Error: upstream auth failed`). Le jeton doit donc être mis **dans le secret**, en deuxième en-tête, comme ci-dessus. Le script se lance alors avec des valeurs factices : `ETSY_API_KEY=x ETSY_ACCESS_TOKEN=x ETSY_SHOP_ID=68890707`.
+- **Obtenir le jeton (OAuth avec PKCE)** : Claude prépare un lien `https://www.etsy.com/oauth/connect?...` avec le keystring `oteg8smq48j2cl0pnc7js6q7` et l'adresse de retour `https://jeuphorie.fr/` (enregistrée dans l'application). Vous l'ouvrez, Etsy vous renvoie sur jeuphorie.fr : copiez **l'adresse complète de la barre du navigateur** (`https://jeuphorie.fr/?code=…&state=…`) et collez-la à Claude dans les minutes qui suivent. Claude l'échange contre le jeton sur `api.etsy.com/v3/public/oauth/token`.
+- **Le jeton dure 1 heure.** Claude peut le renouveler sans nouvelle autorisation (jeton de renouvellement valable 90 jours) tant que la session est ouverte ; il le dépose dans un fichier à copier, jamais dans la conversation. Après la séance, la ligne `Authorization` peut rester : expirée, elle ne gêne pas.
+- **Droits demandés** : `listings_r listings_w shops_r`. Pour modifier les réglages de la boutique (annonce, message après achat, règles), il faudrait aussi `shops_w`.
+- **Publier** une annonce : `PATCH /shops/68890707/listings/{id}` avec `state=active`, **uniquement après accord écrit**. Renouvellement automatique : `should_auto_renew=true`.
 
 ### Si l'application n'est pas validée assez vite
 
@@ -133,7 +144,32 @@ Etsy a annoncé en mai 2026 revoir l'attribution des clés, et certains dévelop
 - Claude remplit les annonces dans le navigateur, à partir de `annonces.yml`, et les enregistre en **brouillon** ;
 - vous relisez et vous publiez vous-même.
 
-## 4. Après la déclaration de la micro-entreprise
+## 4. État de la boutique au 2 novembre 2026
+
+- **Boutique** : https://www.etsy.com/shop/Jeuphorie (identifiant 68890707, euros, français).
+- **12 annonces publiées le 2 novembre 2026**, avec votre accord écrit et après confirmation du SIRET, **renouvellement automatique activé** (0,20 USD par annonce tous les 4 mois et après chaque vente). Vérifiées par l'API : prix, titres, tags, description avec la déclaration IA, 4 images, le bon PDF, catégorie 1350, aucun lien vers le site ; les PDF ne citent pas jeuphorie.fr.
+
+| Annonce (`annonces.yml`) | Prix | N° Etsy |
+|---|---|---|
+| pack-6-9 | 9,90 € | 4608165745 |
+| pack-10-13 | 9,90 € | 4608185986 |
+| pack-14-17 | 9,90 € | 4608165899 |
+| grand-fichier | 19,90 € | 4608186102 |
+| defi-des-champions | 12 € | 4608186142 |
+| chasse-tresor-pirates | 9,90 € | 4608186184 |
+| enquete-gateau-disparu | 12 € | 4608186220 |
+| safari-petits-explorateurs | 9,90 € | 4608186264 |
+| kit-toussaint | 12 € | 4608166201 |
+| kit-noel | 12 € | 4608166255 |
+| kit-carnaval | 12 € | 4608166333 |
+| kit-paques | 12 € | 4608186490 |
+
+- **Informations légales et fiscales** (Gestionnaire de boutique > Finances) : type de vendeur **Entreprise individuelle**. Le formulaire d'identifiant fiscal ne propose **que « N° de TVA »** : on n'y met rien (franchise de TVA, pas de numéro), et surtout **pas le SIRET**. « VAT : Non enregistré » est la bonne réponse. Si Etsy demande le numéro fiscal personnel (DAC7), il le fera lui-même.
+- **Coordonnées du vendeur** (Canaux de vente > crayon à côté d'Etsy / Jeuphorie > bas de page) : statut **Commerçant** ; dans « Autres détails » : nom, « entrepreneur individuel (Jeuphorie) », SIRET, « TVA non applicable, art. 293 B du CGI », contact@jeuphorie.fr.
+- **Règles de la boutique** (Paramètres > Paramètres des conditions) : retours et échanges fixés par Etsy pour le numérique (aucun) ; annulations non acceptées ; mention du droit de rétractation (article L221-28 13° du Code de la consommation) ; règles de confidentialité RGPD rédigées le 2 novembre ; « Conditions fixes » non modifiables (téléchargement instantané).
+- **Encore vide** : la phrase d'accroche de la boutique, l'annonce de la boutique, le message envoyé après un achat de fichier, la localisation de la boutique.
+
+## 5. Après la déclaration de la micro-entreprise
 
 1. Vérifier avec Claude les mentions légales de la boutique Etsy : statut, SIRET, adresse, mention TVA.
 2. Chaque mois, télécharger le relevé des ventes : Gestionnaire de boutique > Paramètres > Options > Télécharger les données > Commandes, en CSV. Claude l'ajoute au livre des recettes, avec une colonne « canal » (`jeuphorie.fr` ou `Etsy`).
