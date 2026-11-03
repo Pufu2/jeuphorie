@@ -18,6 +18,26 @@
     {{ m.grille_kits(kits | selectattr('univers', 'equalto', u.id) | list, "Les premiers kits de cette catégorie arrivent bientôt.") }}
   </section>
 
+  {% if u.sections %}
+  <section class="section section--serree tete-univers--{{ u.couleur }}" aria-label="L'esprit de ces kits">
+    <div class="univers-textes">
+      {% for s in u.sections %}<div class="encadre-texte"><h3>{{ s.titre }}</h3>
+        {% if s.texte %}<p>{{ s.texte }}</p>{% endif %}
+        {% if s.liste %}<ul>{% for x in s.liste %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}</div>{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if u.ressources %}
+  <section class="section section--serree" aria-labelledby="t-ressources">
+    <h2 id="t-ressources" class="section__titre">{{ u.ressources_titre or "Pour aller plus loin" }}</h2>
+    {% if u.ressources_intro %}<p class="chapo">{{ u.ressources_intro }}</p>{% endif %}
+    <ul class="ressources">
+      {% for r in u.ressources %}<li><a href="{{ r.url }}" rel="noopener" target="_blank">{{ r.nom }}</a><p>{{ r.texte }}</p></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
   {% if u.id == 'grands-jeux' %}
   <section class="section section--serree" aria-labelledby="t-jeux">
     <h2 id="t-jeux" class="section__titre">Trois jeux offerts, en entier</h2>

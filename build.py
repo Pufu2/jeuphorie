@@ -35,6 +35,11 @@ SORTIE = RACINE / "_site"
 # le dépôt privé des produits : sert seulement à fabriquer les pages de téléchargement (adresses secrètes)
 PRODUITS = Path(os.environ.get("JEUPHORIE_PRODUITS") or RACINE.parent / "jeuphorie-produits")
 
+
+def aujourdhui():
+    """La date du jour (AAAA-MM-JJ). JEUPHORIE_DATE permet de voir le site tel qu'il sera à une date future."""
+    return os.environ.get("JEUPHORIE_DATE") or dt.date.today().isoformat()
+
 # Anciennes adresses -> nouvelles (une page de redirection est créée pour chacune)
 REDIRECTIONS = {
     "/a-propos/": "/qui-suis-je/",
@@ -153,6 +158,9 @@ class Site:
         self.config["mediateur_ok"] = all(not str(v).startswith("[[") for v in self.config.get("mediateur", {}).values())
         self.config["editeur_nom"] = ed.get("nom") if self.config["editeur_ok"] else "Rafaël, créateur de Jeuphorie"
         self.donnees = {f.stem: lire_yaml(f) for f in (RACINE / "donnees").glob("*.yml")}
+        # un nouvel univers reste caché jusqu'à sa date de sortie, comme un kit (champ sortie, AAAA-MM-JJ)
+        self.donnees["univers"]["univers"] = [u for u in self.donnees["univers"]["univers"]
+                                              if str(u.get("sortie", "")) <= aujourdhui()]
         self.env = Environment(loader=FileSystemLoader(RACINE / "gabarits"),
                                autoescape=select_autoescape(["html", "xml"]),
                                trim_blocks=True, lstrip_blocks=True)
@@ -199,8 +207,7 @@ class Site:
 
     def kits(self):
         """Les produits ; un nouveau kit reste caché jusqu'à sa date de sortie (champ sortie, AAAA-MM-JJ)."""
-        aujourdhui = dt.date.today().isoformat()
-        return [k for k in self.donnees.get("kits", {}).get("kits", []) if str(k.get("sortie", "")) <= aujourdhui]
+        return [k for k in self.donnees.get("kits", {}).get("kits", []) if str(k.get("sortie", "")) <= aujourdhui()]
 
     def kit(self, ident):
         return next((k for k in self.kits() if k["id"] == ident), None)
@@ -386,7 +393,7 @@ class Site:
                 groupes.append({"id": "dossiers", "titre": "Dossiers du mois", "couleur": "fete", "cartes": cartes})
             for u in self.donnees["univers"]["univers"]:
                 if "tous-les-kits" in contenu:
-                    idents = [i for i in liv["fichiers"] if i in kits and kits[i].get("univers") == u["id"]]
+                    idents = [i for i in liv["fichiers"] if i in kits and kits[i].get("univers") == u["id"] and i != "pour-tous-complet"]
                 elif "grand-fichier" in contenu and u["id"] == "grands-jeux":
                     idents = ["grand-fichier"]
                 else:

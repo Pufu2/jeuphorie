@@ -73,6 +73,77 @@ univers:
       - Affiches, tickets et lots à imprimer.
       - Planning des bénévoles et liste de matériel à partager.
 
+  - id: pour-tous
+    # Caché jusqu'à la validation de Rafaël : la date de sortie est fixée ce jour-là (ici et dans donnees/kits.yml).
+    sortie: "2099-01-01"
+    nom: Jeux pour tous
+    nom_court: Jeux pour tous
+    url: /jeux-pour-tous/
+    couleur: inclusif
+    titre_page: "Jeux inclusifs : jouer ensemble avec un enfant en situation de handicap"
+    public: Familles, écoles, accueils de loisirs
+    accroche: "Des jeux que tout le groupe joue ensemble, adaptés à un enfant aveugle, sourd, en fauteuil, autiste, avec une déficience intellectuelle, un TDAH ou un trouble dys."
+    description: "Jeux inclusifs à imprimer pour jouer avec un enfant en situation de handicap : déficience visuelle, auditive, motrice, autisme, déficience intellectuelle, TDAH et troubles dys. 8 jeux adaptés par kit, à petit prix."
+    intro: >-
+      Un enfant en situation de handicap n'a pas besoin de jeux à part. Il a besoin que les jeux du groupe
+      soient pensés pour lui aussi : une règle que l'on voit autant qu'on l'entend, un ballon qui sonne, un
+      terrain à sa hauteur, un programme affiché. Chaque kit propose 8 jeux complets que tout le groupe joue
+      ensemble, avec les adaptations pour que chacun ait une vraie place.
+    points:
+      - "Six kits, un par situation : vue, audition, motricité, autisme, déficience intellectuelle, TDAH et troubles dys."
+      - Le même jeu pour tous, jamais une version à part pour un seul enfant.
+      - "4,90 € le kit, 14,90 € les six : un prix volontairement bas, pour que ces jeux arrivent partout."
+    sections:
+      - titre: L'esprit de ces jeux
+        liste:
+          - "L'enfant d'abord : il a un prénom, des goûts et un âge, et c'est d'abord avec eux que l'on joue."
+          - "Chaque enfant est différent : l'enfant et sa famille savent ce qui l'aide. Les kits commencent par une fiche à remplir avec eux."
+          - "Une vraie difficulté pour chacun : un enfant qu'on laisse gagner le sent."
+          - "Le droit de regarder et de faire une pause, toujours."
+      - titre: Ce que ces kits ne sont pas
+        texte: >-
+          Ces kits sont écrits pour des animateurs, des enseignants et des parents, pas par des soignants. Ils ne donnent
+          aucun conseil médical et ne remplacent ni l'avis des professionnels qui suivent l'enfant, ni son projet d'accueil
+          individualisé. En cas de doute sur ce qu'un enfant peut faire, demandez toujours à sa famille.
+    ressources_titre: Pour être accompagné
+    ressources_intro: >-
+      Ces services publics et ces associations informent, accompagnent les familles et aident les structures à accueillir
+      un enfant en situation de handicap. Leurs sites sont gratuits à consulter.
+    ressources:
+      - nom: Mon Parcours Handicap
+        url: https://www.monparcourshandicap.gouv.fr/
+        texte: Le site public d'information pour les personnes handicapées et leurs proches.
+      - nom: Les Pôles ressources handicap de la Caf
+        url: https://www.caf.fr/
+        texte: "Dans de nombreux départements, ils aident les familles et les accueils de loisirs. Renseignez-vous auprès de votre Caf."
+      - nom: Fédération Française Handisport
+        url: https://www.handisport.org/
+        texte: Le sport pour les personnes ayant un handicap physique ou sensoriel.
+      - nom: Fédération Française du Sport Adapté
+        url: https://sportadapte.fr/
+        texte: Le sport pour les personnes ayant un handicap mental ou psychique.
+      - nom: Fédération des Aveugles et Amblyopes de France
+        url: https://aveuglesdefrance.org/
+        texte: Pour les personnes aveugles et malvoyantes et leurs proches.
+      - nom: Fédération Nationale des Sourds de France
+        url: https://www.fnsf.org/
+        texte: Pour les personnes sourdes et la langue des signes française.
+      - nom: APF France handicap
+        url: https://www.apf-francehandicap.org/
+        texte: Pour les personnes en situation de handicap moteur et leurs familles.
+      - nom: Autisme Info Service
+        url: https://www.autismeinfoservice.fr/
+        texte: Écoute, information et orientation gratuites sur l'autisme.
+      - nom: Unapei
+        url: https://www.unapei.org/
+        texte: Pour les personnes ayant une déficience intellectuelle et leurs familles.
+      - nom: HyperSupers TDAH France
+        url: https://www.tdah-france.fr/
+        texte: Pour les familles d'enfants ayant un TDAH.
+      - nom: Fédération Française des DYS
+        url: https://www.ffdys.com/
+        texte: Pour les personnes ayant un trouble dys et leurs familles.
+
   - id: professionnels
     nom: Professionnels
     nom_court: Professionnels

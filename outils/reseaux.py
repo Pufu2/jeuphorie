@@ -38,6 +38,7 @@ COULEURS = {
     "fete": ("#CF3424", "#FDE6E1"),
     "plein-air": ("#2D6A43", "#DDEEE2"),
     "saison": ("#C2571A", "#FBEADF"),
+    "inclusif": ("#6A4C9C", "#EFE9F7"),
     "soleil": ("#F2B21B", "#FFF2CC"),
     "pro": ("#1E2D5A", "#E2E8F6"),
 }
@@ -112,7 +113,7 @@ def sujets(jour):
 def _tous():
     config = _yaml(RACINE / "config.yml")
     d = {f.stem: _yaml(f) for f in (RACINE / "donnees").glob("*.yml")}
-    univers = {u["id"]: u for u in d["univers"]["univers"]}
+    univers = {u["id"]: u for u in d["univers"]["univers"] if str(u.get("sortie", "")) <= dt.date.today().isoformat()}
     liste = []
 
     for f in sorted((RACINE / "contenu" / "blog").glob("*.md")):

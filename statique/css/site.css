@@ -32,6 +32,9 @@
   --saison: #C2571A;
   --saison-clair: #FBEADF;
   --saison-texte: #9A4210;
+  --inclusif: #6A4C9C;
+  --inclusif-clair: #EFE9F7;
+  --inclusif-texte: #5A3E8A;
   --sur-accent: #FFFFFF;
   --sur-soleil: #1A2340;
 
@@ -77,6 +80,9 @@
     --saison: #F08A4B;
     --saison-clair: #3A2A20;
     --saison-texte: #F5A06A;
+    --inclusif: #B9A3E3;
+    --inclusif-clair: #2E2640;
+    --inclusif-texte: #C7B5EC;
     --sur-accent: #141D20;
     --sur-soleil: #141D20;
     --pied-fond: #121A1C;
@@ -112,6 +118,9 @@
   --saison: #F08A4B;
   --saison-clair: #3A2A20;
   --saison-texte: #F5A06A;
+  --inclusif: #B9A3E3;
+  --inclusif-clair: #2E2640;
+  --inclusif-texte: #C7B5EC;
   --sur-accent: #141D20;
   --sur-soleil: #141D20;
   --pied-fond: #121A1C;
@@ -127,6 +136,7 @@
 .fiche--plein-air, .univers--plein-air, .tete-univers--plein-air, .section__titre--plein-air { --c: var(--plein-air); --c-clair: var(--plein-air-clair); --c-texte: var(--plein-air-texte); --c-sur: var(--sur-accent); }
 .fiche--pro, .univers--pro, .tete-univers--pro, .section__titre--pro { --c: var(--pro); --c-clair: var(--pro-clair); --c-texte: var(--pro-texte); --c-sur: var(--sur-accent); }
 .fiche--saison, .univers--saison, .tete-univers--saison, .section__titre--saison { --c: var(--saison); --c-clair: var(--saison-clair); --c-texte: var(--saison-texte); --c-sur: var(--sur-accent); }
+.fiche--inclusif, .univers--inclusif, .tete-univers--inclusif, .section__titre--inclusif { --c: var(--inclusif); --c-clair: var(--inclusif-clair); --c-texte: var(--inclusif-texte); --c-sur: var(--sur-accent); }
 
 /* ------------------------------------------------------------ base */
 
@@ -226,8 +236,8 @@ mark.a-completer {
 
 .nav-large { display: none; }
 
-@media (min-width: 1180px) {
-  .nav-large { display: flex; align-items: center; gap: 0.25rem 1.1rem; flex-wrap: wrap; justify-content: flex-end; }
+@media (min-width: 1380px) {
+  .nav-large { display: flex; align-items: center; gap: 0.25rem 0.95rem; flex-wrap: wrap; justify-content: flex-end; }
   .menu { display: none; }
 }
 
@@ -245,11 +255,12 @@ mark.a-completer {
 .nav-large__lien--soleil:hover, .nav-large__lien--soleil[aria-current="page"] { border-bottom-color: var(--soleil); }
 .nav-large__lien--pro:hover, .nav-large__lien--pro[aria-current="page"] { border-bottom-color: var(--pro-vif); }
 .nav-large__lien--saison:hover, .nav-large__lien--saison[aria-current="page"] { border-bottom-color: var(--saison); }
+.nav-large__lien--inclusif:hover, .nav-large__lien--inclusif[aria-current="page"] { border-bottom-color: var(--inclusif); }
 .nav-large__lien--abonnement { background: var(--pro-vif); color: #fff; border: 2px solid var(--pro-vif); border-radius: 999px; padding: 0.3rem 1rem; }
 .nav-large__lien--abonnement:hover, .nav-large__lien--abonnement[aria-current="page"] { background: var(--pro); border-color: var(--pro); color: #fff; }
 .nav-zone { display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; }
 .nav-petite { display: none; }
-@media (min-width: 1180px) { .nav-petite { display: flex; gap: 1.1rem; } }
+@media (min-width: 1380px) { .nav-petite { display: flex; gap: 1.1rem; } }
 .nav-petite__lien { font-size: 0.85rem; color: var(--encre-douce); text-decoration: none; }
 .nav-petite__lien:hover, .nav-petite__lien[aria-current="page"] { color: var(--encre); text-decoration: underline; }
 .menu__lien--secondaire { font-size: 0.95em; color: var(--encre-douce); }
@@ -306,6 +317,7 @@ mark.a-completer {
 .menu__lien--soleil { box-shadow: inset 4px 0 0 var(--soleil); }
 .menu__lien--pro { box-shadow: inset 4px 0 0 var(--pro-vif); }
 .menu__lien--saison { box-shadow: inset 4px 0 0 var(--saison); }
+.menu__lien--inclusif { box-shadow: inset 4px 0 0 var(--inclusif); }
 
 /* ------------------------------------------------------------ boutons */
 
@@ -1030,6 +1042,7 @@ a.tampon { text-decoration: none; }
 .produit--soleil { --c: var(--soleil); --c-clair: var(--soleil-clair); --c-texte: var(--soleil-texte); }
 .produit--pro { --c: var(--pro); --c-clair: var(--pro-clair); --c-texte: var(--pro-texte); }
 .produit--saison { --c: var(--saison); --c-clair: var(--saison-clair); --c-texte: var(--saison-texte); }
+.produit--inclusif { --c: var(--inclusif); --c-clair: var(--inclusif-clair); --c-texte: var(--inclusif-texte); }
 .produit .surtitre { color: var(--c-texte); }
 .produit__haut { display: grid; gap: 2rem 3.5rem; align-items: start; margin-bottom: 2.5rem; }
 @media (min-width: 900px) { .produit__haut { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); } }
@@ -1182,3 +1195,15 @@ a.tampon { text-decoration: none; }
 /* les adresses longues (sites, e-mails) passent à la ligne sur téléphone */
 .texte { overflow-wrap: break-word; }
 .texte a { overflow-wrap: anywhere; }
+
+/* ------------------------------------------------------------ univers : textes et ressources */
+.univers-textes { display: grid; gap: 1.25rem; }
+@media (min-width: 800px) { .univers-textes { grid-template-columns: 1fr 1fr; } }
+.univers-textes .encadre-texte { background: var(--fiche); border: 1px solid var(--filet); border-radius: var(--rayon); padding: 1.25rem 1.4rem; }
+.univers-textes h3 { margin: 0 0 .6rem; font-family: var(--f-titre); color: var(--c-texte, var(--encre)); }
+.univers-textes ul { margin: 0; padding-left: 1.2rem; }
+.univers-textes li + li { margin-top: .4rem; }
+.ressources { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); list-style: none; padding: 0; margin: 1rem 0 0; }
+.ressources li { background: var(--fiche); border: 1px solid var(--filet); border-radius: var(--rayon); padding: 1rem 1.1rem; }
+.ressources a { font-family: var(--f-titre); font-weight: 700; overflow-wrap: anywhere; }
+.ressources p { margin: .35rem 0 0; color: var(--encre-douce); font-size: .95rem; }

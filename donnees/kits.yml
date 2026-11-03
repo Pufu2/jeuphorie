@@ -1087,3 +1087,287 @@ kits:
     pour_qui:
     - Séjours de vacances, colonies, camps et séjours d'ados
     - Accueils de loisirs qui veulent un fil rouge sur deux semaines
+  # ---------------------------------------------------------------- Jeux pour tous
+  # Cachés jusqu'à la validation de Rafaël : la date de sortie est fixée ce jour-là (ici et dans donnees/univers.yml).
+  - id: pour-tous-visuel
+    sortie: "2099-01-01"
+    titre: "Jeux pour tous : aveugles et malvoyants"
+    titre_seo: "Jeux pour enfants aveugles ou malvoyants, à jouer avec tout le groupe"
+    univers: pour-tous
+    publics: [accueils, ecoles]
+    etat: en_vente
+    prix: "4,90"
+    paiement: "https://buy.stripe.com/cNibJ17Sd1AX9Ly407bMQ0s"
+    accroche: 8 jeux à partager avec un enfant aveugle ou malvoyant, où tout le groupe joue ensemble, au même jeu.
+    age: 4 à 12 ans
+    joueurs: 6 à 20
+    duree: 10 à 40 min par jeu
+    lieu: Salle, gymnase, cour
+    preparation: Aucune à 20 minutes
+    pages: 18
+    contenu:
+      - "Aveugle ou malvoyant : ce que cela change dans un jeu"
+      - Parler à l'enfant, le guider, installer l'espace
+      - Le matériel qui aide, et comment le fabriquer
+      - 8 jeux complets, avec les adaptations pour chacun
+      - La fiche famille et la visite de la salle à imprimer
+    description: |
+      La plupart des jeux d'enfants reposent sur la vue : on regarde le ballon, on voit le loup arriver, on lit une carte. Pour un enfant qui voit peu ou pas, ce n'est pas le jeu qui est difficile, c'est l'information qui manque. Ce kit la remplace par le son, le toucher et la parole.
+
+      Les 8 jeux se jouent avec tout le groupe : un ballon qui sonne, des balises sonores, un gardien qui écoute. L'enfant aveugle n'y est pas spectateur, et il y est souvent le meilleur joueur. Chaque jeu donne les adaptations pour un enfant aveugle, pour un enfant malvoyant et pour tout le groupe, et les consignes de sécurité.
+
+      Le kit commence par l'essentiel pour l'équipe : ce qu'il faut demander à la famille, comment guider sans tirer, comment décrire, comment installer la salle, et quel matériel acheter ou fabriquer.
+    deroule:
+      - "La balle qui chante : on appelle avant de faire rouler la balle."
+      - "Les boîtes à sons : un memory pour les oreilles."
+      - "Le sac aux trésors : toucher, retenir, trouver ce qui manque."
+      - "Le chef d'orchestre : trouver qui mène le rythme, à l'oreille."
+      - "Le gardien des clés : un jeu de silence et d'écoute."
+      - "Le chat et le grelot : une poursuite en marchant."
+      - "Les balises sonores : un grand jeu d'orientation par équipes."
+      - "Le relais en cordée : courir en duo, relié à son guide."
+    pour_qui:
+      - Accueils de loisirs, écoles, familles
+      - Un groupe qui accueille un enfant aveugle ou malvoyant
+      - Inclus dans l'abonnement Pro Structure
+
+  - id: pour-tous-auditif
+    sortie: "2099-01-01"
+    titre: "Jeux pour tous : sourds et malentendants"
+    titre_seo: "Jeux pour enfants sourds ou malentendants, à jouer avec tout le groupe"
+    univers: pour-tous
+    publics: [accueils, ecoles]
+    etat: en_vente
+    prix: "4,90"
+    paiement: "https://buy.stripe.com/bJe3cv2xT5Rd0aYfIPbMQ0t"
+    accroche: 8 jeux à partager avec un enfant sourd ou malentendant, où tout le groupe joue avec les yeux et les gestes.
+    age: 3 à 12 ans
+    joueurs: 6 à 24
+    duree: 10 à 30 min par jeu
+    lieu: Salle, gymnase, cour
+    preparation: Aucune à 15 minutes
+    pages: 18
+    contenu:
+      - "Sourd ou malentendant : ce que cela change dans un jeu"
+      - Se faire comprendre, sans crier ni sur-articuler
+      - Les appareils auditifs et les implants pendant les jeux
+      - 8 jeux complets, avec les adaptations pour chacun
+      - La fiche famille et le tableau des signaux à imprimer
+    description: |
+      Dans un jeu, presque tout passe par la voix : la règle, le coup de sifflet, le « stop ! », les encouragements. Un enfant qui entend peu ou pas manque une partie de ces informations, et c'est souvent ce qui le met à l'écart. Ce kit les donne aussi aux yeux.
+
+      Les 8 jeux remplacent le sifflet par des signaux visuels que tout le groupe adopte, et jouent sur le regard, le mime et le dessin. Le premier jour, le groupe invente son propre code de signes, qui sert ensuite dans tous les jeux. Chaque jeu donne les adaptations pour l'enfant sourd, pour l'enfant malentendant et pour tout le groupe.
+
+      Le kit explique aussi comment expliquer un jeu face à l'enfant, comment parler pour être compris, et les précautions à demander à la famille pour les appareils auditifs et les implants.
+    deroule:
+      - "Les statues au drapeau : la musique s'arrête, le drapeau se lève."
+      - "1 2 3 soleil des gestes : le compte à rebours se voit."
+      - "Le miroir : bouger ensemble, sans un mot."
+      - "Le chef d'orchestre muet : trouver qui mène, en silence."
+      - "Le code secret du groupe : inventer ensemble ses signaux."
+      - "Le béret des couleurs : des cartons au lieu des numéros."
+      - "Le mime voyageur : un mime qui se transforme de joueur en joueur."
+      - "Le relais des dessins : faire deviner sans parler."
+    pour_qui:
+      - Accueils de loisirs, écoles, familles
+      - Un groupe qui accueille un enfant sourd ou malentendant
+      - Inclus dans l'abonnement Pro Structure
+
+  - id: pour-tous-moteur
+    sortie: "2099-01-01"
+    titre: "Jeux pour tous : handicap moteur"
+    titre_seo: "Jeux pour enfants en fauteuil ou en situation de handicap moteur"
+    univers: pour-tous
+    publics: [accueils, ecoles, clubs]
+    etat: en_vente
+    prix: "4,90"
+    paiement: "https://buy.stripe.com/fZu28r6O9frNf5ScwDbMQ0u"
+    accroche: 8 jeux à partager avec un enfant en fauteuil, qui marche difficilement ou qui se sert peu de ses mains.
+    age: 4 à 12 ans
+    joueurs: 4 à 20
+    duree: 15 à 20 min par jeu
+    lieu: Salle, gymnase, cour plane
+    preparation: Aucune à 20 minutes
+    pages: 17
+    contenu:
+      - "Handicap moteur : ce que cela change dans un jeu"
+      - Les quatre leviers pour adapter n'importe quel jeu
+      - Le fauteuil, les aides et les gestes à ne pas faire
+      - 8 jeux complets, avec les adaptations pour chacun
+      - La fiche famille et la vérification du lieu à imprimer
+    description: |
+      Courir, attraper, lancer, se baisser, tenir un objet : les jeux d'enfants demandent beaucoup au corps. Pour un enfant qui a un handicap moteur, ce n'est presque jamais le jeu entier qui est impossible, c'est un geste. Ce kit change ce geste pour tout le groupe.
+
+      Les 8 jeux se jouent assis, à la rampe, avec des frites de piscine ou des sacs lestés, et se gagnent à l'adresse et à la stratégie plutôt qu'à la vitesse. Chaque jeu donne les adaptations pour un enfant en fauteuil, pour un enfant qui marche difficilement ou qui saisit mal, et pour tout le groupe.
+
+      Le kit présente quatre leviers pour adapter n'importe quel jeu, les gestes à ne jamais faire avec un fauteuil, les précautions à demander à la famille, et une liste pour vérifier un lieu avant d'accueillir l'enfant.
+    deroule:
+      - "La boccia du salon : viser, avec ou sans rampe."
+      - "Le volley-ballon assis : tout le monde à la même hauteur."
+      - "Les paniers à la carte : chacun choisit son défi."
+      - "Le parcours aux trois chemins : tous les chemins sont bons."
+      - "Le chamboule-tout de l'équipe : on gagne ensemble ou pas du tout."
+      - "La chasse aux couleurs : des cachettes toutes à portée de main."
+      - "La chaîne des pompiers : un record de groupe, assis en ligne."
+      - "Le hockey des frites : un vrai jeu d'équipe, sans contact."
+    pour_qui:
+      - Accueils de loisirs, écoles, clubs, familles
+      - Un groupe qui accueille un enfant en situation de handicap moteur
+      - Inclus dans l'abonnement Pro Structure
+
+  - id: pour-tous-autisme
+    sortie: "2099-01-01"
+    titre: "Jeux pour tous : autisme"
+    titre_seo: "Jeux pour enfants autistes, à jouer avec tout le groupe"
+    univers: pour-tous
+    publics: [accueils, ecoles]
+    etat: en_vente
+    prix: "4,90"
+    paiement: "https://buy.stripe.com/14A7sL5K56VhaPC407bMQ0v"
+    accroche: 8 jeux à partager avec un enfant autiste, avec un programme clair, des règles dites simplement et le droit de faire une pause.
+    age: 3 à 12 ans
+    joueurs: 4 à 16
+    duree: 10 à 30 min par jeu
+    lieu: Salle calme, jardin
+    preparation: Aucune à 20 minutes
+    pages: 19
+    contenu:
+      - "L'autisme : ce que cela change dans un jeu"
+      - Annoncer, montrer, prévenir avant de changer
+      - Les sons, les lumières, le toucher, et le coin calme
+      - Que faire en cas de crise
+      - 8 jeux complets, avec les adaptations pour chacun
+      - Le programme en images et les cartes à découper
+    description: |
+      Un jeu de groupe est plein de choses que personne n'explique : quand il commence, combien de temps il dure, ce qui se passe si l'on perd. Un enfant autiste a souvent besoin qu'on les lui dise clairement. Avec des repères visibles et un environnement calme, il peut profiter du jeu comme les autres, et souvent y briller.
+
+      Les 8 jeux sont sans élimination, avec un début et une fin annoncés, des tours visibles et des rôles précis. On attrape un foulard plutôt qu'un camarade, et la musique reste douce. Chaque jeu donne les adaptations pour l'enfant autiste et pour tout le groupe.
+
+      Le kit explique comment annoncer et montrer, comment réduire les bruits et les lumières, comment installer un coin calme et comment réagir en cas de crise. Il contient un programme en images et six grandes cartes à découper : pause, à mon tour, fini, encore, stop, aide.
+    deroule:
+      - "Les maisons musicales : les chaises musicales, sans élimination."
+      - "Le bowling des bouteilles : chacun son tour, avec une carte."
+      - "Le parcours en images : on suit les images dans l'ordre."
+      - "Qu'est-ce qui a disparu ? : un jeu de mémoire visuelle."
+      - "Le parachute tranquille : bouger tous ensemble, sans surprise."
+      - "Le grand tri : ranger, vérifier, trier autrement."
+      - "Le loup aux foulards : une poursuite sans contact."
+      - "La mission des agents secrets : cinq étapes, dans l'ordre."
+    pour_qui:
+      - Accueils de loisirs, écoles, familles
+      - Un groupe qui accueille un enfant autiste
+      - Inclus dans l'abonnement Pro Structure
+
+  - id: pour-tous-intellectuel
+    sortie: "2099-01-01"
+    titre: "Jeux pour tous : déficience intellectuelle"
+    titre_seo: "Jeux pour enfants avec une déficience intellectuelle ou une trisomie 21"
+    univers: pour-tous
+    publics: [accueils, ecoles]
+    etat: en_vente
+    prix: "4,90"
+    paiement: "https://buy.stripe.com/5kQ00jegB1AXbTGgMTbMQ0w"
+    accroche: 8 jeux à partager avec un enfant qui a une déficience intellectuelle, qui s'apprennent pas à pas et que tout le groupe aime.
+    age: 4 à 12 ans
+    joueurs: 4 à 20
+    duree: 10 à 30 min par jeu
+    lieu: Salle, cour, jardin
+    preparation: Aucune à 20 minutes
+    pages: 17
+    contenu:
+      - "La déficience intellectuelle : ce que cela change dans un jeu"
+      - Dire la règle simplement, sans infantiliser
+      - Apprendre un jeu par étapes
+      - 8 jeux complets, avec les adaptations pour chacun
+      - La fiche famille et la règle en images à imprimer
+    description: |
+      Un enfant qui a une déficience intellectuelle a envie de jouer, de gagner, de rire et d'avoir des copains, comme tous les enfants. Ce qui le met en difficulté, c'est souvent la règle : trop longue, trop abstraite, expliquée trop vite. Ce kit la simplifie, et l'apprend en jouant.
+
+      Les 8 jeux s'apprennent par étapes, sans élimination, avec des couleurs et des images plutôt que des chiffres et des mots. On y retrouve des jeux que tous les enfants aiment, comme le béret ou le jeu de l'oie, découpés pour être compris par tous, sans jamais devenir des jeux de tout-petits.
+
+      Le kit explique comment dire une règle simplement, comment respecter l'âge de l'enfant, comment l'aider à réussir et comment préparer la défaite. Il contient un modèle de règle en images à préparer pour n'importe quel jeu.
+    deroule:
+      - "Le chef a dit : un jeu d'imitation où personne n'est éliminé."
+      - "Les déménageurs : une course aux couleurs, en équipes."
+      - "Le loto géant : reconnaître, montrer, gagner."
+      - "Le jeu de l'oie géant : un plateau grandeur nature."
+      - "Le memory géant : des cartes au sol, en équipes."
+      - "La chasse au trésor en photos : des lieux à reconnaître."
+      - "Le béret en trois étapes : le vrai béret, appris pas à pas."
+      - "La tournée des facteurs : livrer chaque lettre à la bonne boîte."
+    pour_qui:
+      - Accueils de loisirs, écoles, familles
+      - Un groupe qui accueille un enfant ayant une déficience intellectuelle
+      - Inclus dans l'abonnement Pro Structure
+
+  - id: pour-tous-attention-dys
+    sortie: "2099-01-01"
+    titre: "Jeux pour tous : TDAH et troubles dys"
+    titre_seo: "Jeux pour enfants avec un TDAH, une dyslexie ou une dyspraxie"
+    univers: pour-tous
+    publics: [accueils, ecoles, clubs]
+    etat: en_vente
+    prix: "4,90"
+    paiement: "https://buy.stripe.com/8x24gz0pL2F11f2eELbMQ0x"
+    accroche: 8 jeux à partager avec un enfant qui a un TDAH ou un trouble dys, avec des règles courtes, de l'action et aucune lecture obligatoire.
+    age: 4 à 12 ans
+    joueurs: 6 à 24
+    duree: 10 à 30 min par jeu
+    lieu: Salle, cour, jardin
+    preparation: Aucune à 20 minutes
+    pages: 19
+    contenu:
+      - "TDAH et troubles dys : ce que cela change dans un jeu"
+      - Expliquer en trente secondes, et laisser bouger
+      - Lire, compter, attraper, parler, les pièges des jeux habituels
+      - 8 jeux complets, avec les adaptations pour chacun
+      - La fiche famille, la règle en images et le tableau des défis
+    description: |
+      L'enfant qui ne tient pas en place pendant l'explication, celui qui bute sur chaque mot d'une carte, celui qui rate toujours le ballon : ils sont dans tous les groupes. Ce n'est ni de la mauvaise volonté, ni un manque d'intelligence. Ce sont souvent des enfants qui ont un TDAH ou un trouble dys, et un jeu bien pensé peut être le moment où ils réussissent devant les autres.
+
+      Les 8 jeux s'expliquent en trente secondes, font jouer tout le monde en même temps, et ne demandent ni de lire, ni de compter de tête, ni de distinguer la droite de la gauche. Chaque jeu donne les adaptations pour un enfant qui a un TDAH, pour un enfant dyslexique, dyspraxique ou dysphasique, et pour tout le groupe.
+
+      Le kit présente chaque trouble en quelques lignes, avec ce qui le gêne dans un jeu, et donne les règles simples pour ne jamais mettre un enfant en difficulté devant le groupe.
+    deroule:
+      - "Feu rouge feu vert : apprendre à s'arrêter net, en jouant."
+      - "Les statues du musée : tenir une minute sans bouger."
+      - "La balle qui compte : un record de passes pour tout le groupe."
+      - "Le loup glacé : une poursuite où l'on s'entraide."
+      - "Les ateliers express : six défis de trois minutes."
+      - "Le relais des énigmes en images : aucune lecture."
+      - "La course aux balises de couleur : une orientation sans plan compliqué."
+      - "Les mots en trois manches : faire deviner, puis mimer."
+    pour_qui:
+      - Accueils de loisirs, écoles, clubs, familles
+      - Tous les groupes, où ces enfants sont souvent présents
+      - Inclus dans l'abonnement Pro Structure
+
+  - id: pour-tous-complet
+    sortie: "2099-01-01"
+    titre: "Jeux pour tous : les 6 kits"
+    titre_seo: "Jeux inclusifs à imprimer : les 6 kits Jeux pour tous"
+    univers: pour-tous
+    publics: [accueils, ecoles, clubs]
+    etat: en_vente
+    prix: "14,90"
+    paiement: "https://buy.stripe.com/bJe8wP5K5bbxg9WaovbMQ0y"
+    accroche: Les 6 kits Jeux pour tous en une fois, 48 jeux inclusifs pour accueillir chaque enfant, quelle que soit sa situation.
+    age: 3 à 12 ans
+    joueurs: 4 à 24
+    duree: 10 à 40 min par jeu
+    lieu: Salle, gymnase, cour, jardin
+    preparation: Aucune à 20 minutes
+    contenu:
+      - Les 6 kits, en 6 fichiers PDF
+      - 48 jeux complets, avec leurs adaptations
+      - "Aveugles et malvoyants, sourds et malentendants, handicap moteur"
+      - "Autisme, déficience intellectuelle, TDAH et troubles dys"
+      - Toutes les fiches famille et les fiches à imprimer
+    description: |
+      Une structure ne sait pas toujours à l'avance quels enfants elle accueillera. Avec les six kits, l'équipe a de quoi préparer l'arrivée de chacun : 48 jeux que tout le groupe joue ensemble, et les adaptations pour un enfant aveugle ou malvoyant, sourd ou malentendant, en situation de handicap moteur, autiste, ayant une déficience intellectuelle, un TDAH ou un trouble dys.
+
+      Chaque kit commence par le même chapitre sur l'esprit des Jeux pour tous et la rencontre avec la famille, puis donne tout ce qu'il faut savoir sur la situation de l'enfant pour jouer, avant les 8 jeux. Les six kits pour 14,90 €, au lieu de 29,40 € séparément.
+    pour_qui:
+      - Accueils de loisirs, écoles, associations
+      - Les équipes qui veulent être prêtes pour chaque enfant
+      - Inclus dans l'abonnement Pro Structure

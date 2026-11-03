@@ -52,6 +52,7 @@
         {% endif %}
         {% if k.univers == 'professionnels' %}<p class="produit__pro">Inclus dans <a href="{{ lien('/pro/') }}">Jeuphorie Pro Structure</a>, pour toute l'équipe.</p>
         {% elif k.id == 'grand-fichier' %}<p class="produit__pro">Inclus dans <a href="{{ lien('/pro/') }}">Jeuphorie Pro</a> Animateur annuel et Pro Structure.</p>
+        {% elif k.univers == 'pour-tous' %}<p class="produit__pro">Inclus dans <a href="{{ lien('/pro/') }}">Jeuphorie Pro Structure</a>. Un prix volontairement bas, le même pour tous, sans code à saisir.</p>
         {% else %}<p class="produit__pro">Inclus dans <a href="{{ lien('/pro/') }}">Jeuphorie Pro Structure</a>. Abonnés Pro Animateur : 30 % de réduction.</p>{% endif %}
       </div>
     </div>
@@ -65,7 +66,7 @@
       <figure class="produit__capture"><img src="{{ statique('img/kits/kit-du-directeur-classeur.jpg') }}" alt="L'onglet Présences et taux du classeur, avec le calcul automatique de l'encadrement" width="900" height="222" loading="lazy"><figcaption>L'onglet « Présences et taux » : le classeur signale tout de suite le jour où il manque un animateur.</figcaption></figure>
       {% endif %}
       {% if k.deroule %}
-      <h2>{% if k.univers == 'kermesse' %}De la préparation au jour J{% elif k.univers == 'professionnels' %}Comment s'en servir{% else %}Comment se passe la fête{% endif %}</h2>
+      <h2>{% if k.univers == 'kermesse' %}De la préparation au jour J{% elif k.univers == 'professionnels' %}Comment s'en servir{% elif k.univers == 'pour-tous' %}Les jeux du kit{% else %}Comment se passe la fête{% endif %}</h2>
       <ol>{% for x in k.deroule %}<li>{{ x }}</li>{% endfor %}</ol>
       {% endif %}
       {% if k.pack %}
