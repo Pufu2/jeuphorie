@@ -119,42 +119,70 @@ univers:
       joue ensemble.
     situations:
       - id: vue
+        titre_page: "Jeux pour enfants aveugles ou malvoyants, à jouer avec tout le groupe"
+        description: "Jeux adaptés pour jouer avec un enfant aveugle ou malvoyant : ballon sonore, balises, jeux d'écoute et de toucher, que tout le groupe joue ensemble."
+        intro: "Pour un enfant qui voit peu ou pas, ce n'est pas le jeu qui est difficile, c'est l'information qui manque. Remplacez-la par le son, le toucher et la parole, et il joue comme les autres, souvent mieux qu'eux."
+        conseil: "Avant le premier jeu, faites le tour de la salle avec l'enfant, en marchant le long des murs. Et ne déplacez jamais une chaise sans le dire : pour lui, c'est un obstacle invisible."
         nom: La vue
         pour: Un enfant aveugle ou malvoyant.
         detail: Vision floue, champ de vision réduit, gêne à la lumière, ou aucune vision.
         couleur: "#6A4C9C"
         icone: oeil
       - id: audition
+        titre_page: "Jeux pour enfants sourds ou malentendants, à jouer avec tout le groupe"
+        description: "Jeux adaptés pour jouer avec un enfant sourd ou malentendant : signaux visuels, mime, dessin et jeux d'observation, que tout le groupe joue ensemble."
+        intro: "Dans un jeu, presque tout passe par la voix : la règle, le coup de sifflet, le « stop ! ». Donnez aussi ces informations aux yeux, et l'enfant qui entend peu ou pas joue avec les autres, à égalité."
+        conseil: "Remplacez le sifflet par un bras levé que tout le groupe reproduit. Il arrête quarante enfants plus vite qu'un coup de sifflet, et personne n'est laissé de côté."
         nom: L'audition
         pour: Un enfant sourd ou malentendant.
         detail: Avec ou sans appareils auditifs ou implant, qui parle, signe ou fait les deux.
         couleur: "#1F7A8C"
         icone: oreille
       - id: motricite
+        titre_page: "Jeux pour enfants en fauteuil ou en situation de handicap moteur"
+        description: "Jeux adaptés pour jouer avec un enfant en fauteuil, qui marche ou saisit difficilement : jeux assis, de précision et d'équipe, pour tout le groupe."
+        intro: "Pour un enfant qui a un handicap moteur, ce n'est presque jamais le jeu entier qui est impossible, c'est un geste. Changez ce geste pour tout le groupe, et le jeu redevient le sien."
+        conseil: "Ne poussez jamais un fauteuil sans le demander, et mettez-vous à la hauteur de l'enfant pour lui parler. Pour lui, le fauteuil fait partie de son espace."
         nom: La motricité
         pour: Un enfant en fauteuil, qui marche ou saisit difficilement.
         detail: Fauteuil roulant, béquilles, déambulateur, difficultés à se servir de ses mains.
         couleur: "#B5541C"
         icone: roue
       - id: autisme
+        titre_page: "Jeux pour enfants autistes, à jouer avec tout le groupe"
+        description: "Jeux adaptés pour jouer avec un enfant autiste : un programme en images, des règles claires, sans élimination et sans contact, pour tout le groupe."
+        intro: "Un jeu de groupe est plein de choses que personne n'explique : quand il commence, combien de temps il dure, ce qui se passe si l'on perd. Dites-les clairement, montrez-les, et l'enfant autiste peut profiter du jeu comme les autres."
+        conseil: "Prévenez toujours avant de changer : « Dans deux minutes, le jeu est fini. » Un changement annoncé passe beaucoup mieux qu'une surprise."
         nom: L'autisme
         pour: Un enfant autiste.
         detail: Besoin de repères clairs, de prévisibilité et d'un environnement calme.
         couleur: "#2E6E4F"
         icone: repere
       - id: comprehension
+        titre_page: "Jeux pour enfants avec une déficience intellectuelle ou une trisomie 21"
+        description: "Jeux adaptés pour jouer avec un enfant qui a une déficience intellectuelle : des règles simples, apprises par étapes, sans élimination, pour tout le groupe."
+        intro: "Ce qui met en difficulté un enfant qui a une déficience intellectuelle, c'est souvent la règle : trop longue, trop abstraite, expliquée trop vite. Simplifiez-la et apprenez-la en jouant, sans jamais en faire un jeu de tout-petits."
+        conseil: "Gardez le même jeu plusieurs séances de suite. C'est en le retrouvant que l'enfant le maîtrise, et qu'il prend plaisir à y gagner."
         nom: La compréhension
         pour: Un enfant qui a une déficience intellectuelle.
         detail: Par exemple avec une trisomie 21. Il apprend à son rythme, avec des règles simples.
         couleur: "#8A3B7A"
         icone: etoile
       - id: attention
+        titre_page: "Jeux pour enfants avec un TDAH ou un trouble dys"
+        description: "Jeux adaptés pour jouer avec un enfant qui a un TDAH, une dyslexie, une dyspraxie ou une dysphasie : règles courtes, action, aucune lecture obligatoire."
+        intro: "L'enfant qui ne tient pas en place pendant l'explication, celui qui bute sur chaque mot d'une carte, celui qui rate toujours le ballon : un jeu bien pensé peut être le moment où il réussit enfin devant les autres."
+        conseil: "Expliquez en trente secondes, montrez, et faites jouer tout de suite. Les détails viendront en jouant."
         nom: L'attention et les dys
         pour: Un enfant qui a un TDAH ou un trouble dys.
         detail: Dyslexie, dyscalculie, dyspraxie, dysphasie, troubles de l'attention.
         couleur: "#C0392B"
         icone: cible
       - id: toutes
+        titre_page: "Jeux inclusifs à imprimer : les 6 kits Jeux pour tous"
+        description: "Les 6 kits Jeux pour tous en une fois : 48 jeux inclusifs pour accueillir un enfant aveugle, sourd, en fauteuil, autiste, avec une déficience intellectuelle, un TDAH ou un trouble dys."
+        intro: "Une structure ne sait pas toujours à l'avance quels enfants elle accueillera. Avec les six kits, l'équipe a de quoi préparer l'arrivée de chacun."
+        conseil: "Commencez par le chapitre commun, le même dans les six kits : il explique l'esprit des jeux et la rencontre avec la famille, quelle que soit la situation de l'enfant."
         nom: Toutes les situations
         pour: Les six kits en une fois.
         detail: Pour être prêt à accueillir chaque enfant, quelle que soit sa situation.

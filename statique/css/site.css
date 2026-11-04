@@ -1237,3 +1237,9 @@ a.tampon { text-decoration: none; }
   .carte-situation__pour { font-size: .88rem; }
   .situation__tete { min-height: 0; }
 }
+.tete-situation { --s-texte: var(--s); border-top: 6px solid var(--s); background: color-mix(in srgb, var(--s) 9%, var(--papier)); }
+.tete-situation .tete-univers__public { color: var(--s-texte); }
+.tete-situation__icone { margin-bottom: .6rem; background: var(--fiche); }
+.situation__rappel { margin: 1.5rem 0 0; color: var(--encre-douce); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tete-situation { --s-texte: color-mix(in srgb, var(--s) 45%, white); } }
+:root[data-theme="dark"] .tete-situation { --s-texte: color-mix(in srgb, var(--s) 45%, white); }

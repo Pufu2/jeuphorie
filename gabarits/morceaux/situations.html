@@ -1,0 +1,11 @@
+{# Les icônes des situations (univers Jeux pour tous) #}
+{% set icones = {
+    "oeil": '<path d="M4 24c5-8 12-12 20-12s15 4 20 12c-5 8-12 12-20 12S9 32 4 24z"/><circle cx="24" cy="24" r="6"/>',
+    "oreille": '<path d="M16 18a10 10 0 0 1 20 0c0 6-5 8-6 13-1 5-4 7-7 7s-5-2-5-5"/><path d="M21 19a4 4 0 0 1 8 0c0 3-3 4-3 6"/>',
+    "roue": '<circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="3"/><path d="M24 8v13M24 27v13M8 24h13M27 24h13"/>',
+    "repere": '<rect x="8" y="10" width="32" height="30" rx="4"/><path d="M8 18h32M16 6v8M32 6v8M15 26h4M22 26h4M29 26h4M15 33h4M22 33h4"/>',
+    "etoile": '<path d="M24 6l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z"/>',
+    "cible": '<circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="2"/>',
+    "coeur": '<path d="M24 40C12 31 6 25 6 17a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 8-6 14-18 23z"/>'
+  } %}
+{% macro icone(nom) %}<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">{{ icones[nom] | safe }}</svg>{% endmacro %}

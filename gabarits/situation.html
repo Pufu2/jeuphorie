@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% import "morceaux/situations.html" as sit %}
+{% block contenu %}
+{% set u = page.univers %}{% set s = page.situation %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien(u.url) }}">{{ u.nom }}</a> <span aria-hidden="true">/</span> <span>{{ s.nom }}</span></nav>
+  <header class="tete-univers tete-situation" style="--s: {{ s.couleur }}">
+    <span class="carte-situation__icone tete-situation__icone">{{ sit.icone(s.icone) }}</span>
+    <p class="tete-univers__public">{{ s.pour }}</p>
+    <h1 class="titre-page">{{ s.titre_page }}</h1>
+    <p class="chapo">{{ s.intro }}</p>
+  </header>
+
+  {% set liste = kits | selectattr('univers', 'equalto', u.id) | selectattr('situation', 'equalto', s.id) | list %}
+  <section class="section section--serree" aria-labelledby="t-kit">
+    <h2 id="t-kit" class="section__titre">{{ "Le kit" if liste | length == 1 else "Les kits" }}</h2>
+    {{ m.grille_kits(liste, "Le kit de cette situation est en cours d'écriture.") }}
+  </section>
+
+  {% if s.conseil %}<aside class="conseil">
+    <p class="conseil__signature">Le conseil de l'animateur</p>
+    <p>{{ s.conseil }}</p>
+  </aside>{% endif %}
+
+  <p class="petit situation__rappel">Ces jeux sont une base à adapter à chaque enfant et à chaque groupe. Ils sont écrits par un animateur, pas par un professionnel de santé, et ne donnent aucun conseil médical. <a href="{{ lien(u.url) }}">En savoir plus et trouver de l'aide</a>.</p>
+
+  <nav class="autres-fetes" aria-label="Les autres situations">
+    <p class="autres-fetes__titre">Les autres situations</p>
+    <ul class="pastilles">{% for x in u.situations if x.id != s.id and x.id in page.situations_actives %}<li><a class="pastille" href="{{ lien(u.url ~ x.id ~ '/') }}">{{ x.nom }}</a></li>{% endfor %}</ul>
+  </nav>
+</div>
+{% endblock %}

@@ -260,6 +260,15 @@ class Site:
         for u in d["univers"]["univers"]:
             self.ajouter(u["url"], gabarits_univers.get(u["id"], "univers.html"),
                          titre=u["titre_page"], description=u["description"], univers=u, fil=[(u["nom"], u["url"])])
+        # univers rangé par situation (Jeux pour tous) : une page par situation qui a au moins un kit, comme les fêtes
+        for u in d["univers"]["univers"]:
+            actives = [s["id"] for s in u.get("situations", [])
+                       if any(k.get("univers") == u["id"] and k.get("situation") == s["id"] for k in self.kits())]
+            for s in u.get("situations", []):
+                if s["id"] in actives:
+                    self.ajouter(f"{u['url']}{s['id']}/", "situation.html", titre=s.get("titre_page", s["nom"]),
+                                 description=s.get("description", s["pour"]), univers=u, situation=s,
+                                 situations_actives=actives, fil=[(u["nom"], u["url"]), (s["nom"], f"{u['url']}{s['id']}/")])
         ab = d["abonnement"]["page"]
         self.ajouter("/pro/", "pro.html", titre=ab["titre_page"], description=ab["description"],
                      fil=[("Jeuphorie Pro", "/pro/")])
