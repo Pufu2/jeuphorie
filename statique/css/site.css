@@ -1198,7 +1198,7 @@ a.tampon { text-decoration: none; }
 
 /* ------------------------------------------------------------ univers : textes et ressources */
 .univers-textes { display: grid; gap: 1.25rem; }
-@media (min-width: 800px) { .univers-textes { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 800px) { .univers-textes { grid-template-columns: repeat(3, 1fr); } }
 .univers-textes .encadre-texte { background: var(--fiche); border: 1px solid var(--filet); border-radius: var(--rayon); padding: 1.25rem 1.4rem; }
 .univers-textes h3 { margin: 0 0 .6rem; font-family: var(--f-titre); color: var(--c-texte, var(--encre)); }
 .univers-textes ul { margin: 0; padding-left: 1.2rem; }

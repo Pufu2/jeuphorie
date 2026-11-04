@@ -74,8 +74,7 @@ univers:
       - Planning des bénévoles et liste de matériel à partager.
 
   - id: pour-tous
-    # Caché jusqu'à la validation de Rafaël : la date de sortie est fixée ce jour-là (ici et dans donnees/kits.yml).
-    sortie: "2099-01-01"
+    sortie: "2026-11-04"
     nom: Jeux pour tous
     nom_court: Jeux pour tous
     url: /jeux-pour-tous/
@@ -100,11 +99,19 @@ univers:
           - "Chaque enfant est différent : l'enfant et sa famille savent ce qui l'aide. Les kits commencent par une fiche à remplir avec eux."
           - "Une vraie difficulté pour chacun : un enfant qu'on laisse gagner le sent."
           - "Le droit de regarder et de faire une pause, toujours."
-      - titre: Ce que ces kits ne sont pas
+      - titre: Qui les a écrits
         texte: >-
-          Ces kits sont écrits pour des animateurs, des enseignants et des parents, pas par des soignants. Ils ne donnent
-          aucun conseil médical et ne remplacent ni l'avis des professionnels qui suivent l'enfant, ni son projet d'accueil
-          individualisé. En cas de doute sur ce qu'un enfant peut faire, demandez toujours à sa famille.
+          Ces kits sont écrits par un animateur, pas par un professionnel de santé. J'ai suivi le BPJEPS « Activités
+          physiques pour tous », une formation de l'animation sportive qui comprend une initiation au handisport, mais je
+          n'ai pas de diplôme dans le domaine du handicap ou de la santé. Les kits ne donnent donc aucun conseil médical, et
+          ne remplacent ni l'avis des professionnels qui suivent l'enfant, ni son projet d'accueil individualisé. En cas de
+          doute sur ce qu'un enfant peut faire, demandez toujours à sa famille.
+      - titre: Des jeux à adapter
+        texte: >-
+          Ces jeux sont une base, pas une recette. Chaque enfant est différent, et un jeu pensé pour un enfant aveugle ou
+          autiste ne conviendra pas forcément tel quel à celui que vous accueillez. N'hésitez pas à changer une règle, la
+          durée, le terrain ou le matériel : c'est cette souplesse qui fait un bon jeu inclusif, et chaque kit vous aide à
+          trouver les bonnes adaptations avec l'enfant et sa famille.
     ressources_titre: Pour être accompagné
     ressources_intro: >-
       Ces services publics et ces associations informent, accompagnent les familles et aident les structures à accueillir

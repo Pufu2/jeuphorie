@@ -1088,9 +1088,8 @@ kits:
     - Séjours de vacances, colonies, camps et séjours d'ados
     - Accueils de loisirs qui veulent un fil rouge sur deux semaines
   # ---------------------------------------------------------------- Jeux pour tous
-  # Cachés jusqu'à la validation de Rafaël : la date de sortie est fixée ce jour-là (ici et dans donnees/univers.yml).
   - id: pour-tous-visuel
-    sortie: "2099-01-01"
+    sortie: "2026-11-04"
     titre: "Jeux pour tous : aveugles et malvoyants"
     titre_seo: "Jeux pour enfants aveugles ou malvoyants, à jouer avec tout le groupe"
     univers: pour-tous
@@ -1132,7 +1131,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-auditif
-    sortie: "2099-01-01"
+    sortie: "2026-11-04"
     titre: "Jeux pour tous : sourds et malentendants"
     titre_seo: "Jeux pour enfants sourds ou malentendants, à jouer avec tout le groupe"
     univers: pour-tous
@@ -1174,7 +1173,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-moteur
-    sortie: "2099-01-01"
+    sortie: "2026-11-04"
     titre: "Jeux pour tous : handicap moteur"
     titre_seo: "Jeux pour enfants en fauteuil ou en situation de handicap moteur"
     univers: pour-tous
@@ -1216,7 +1215,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-autisme
-    sortie: "2099-01-01"
+    sortie: "2026-11-04"
     titre: "Jeux pour tous : autisme"
     titre_seo: "Jeux pour enfants autistes, à jouer avec tout le groupe"
     univers: pour-tous
@@ -1259,7 +1258,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-intellectuel
-    sortie: "2099-01-01"
+    sortie: "2026-11-04"
     titre: "Jeux pour tous : déficience intellectuelle"
     titre_seo: "Jeux pour enfants avec une déficience intellectuelle ou une trisomie 21"
     univers: pour-tous
@@ -1301,7 +1300,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-attention-dys
-    sortie: "2099-01-01"
+    sortie: "2026-11-04"
     titre: "Jeux pour tous : TDAH et troubles dys"
     titre_seo: "Jeux pour enfants avec un TDAH, une dyslexie ou une dyspraxie"
     univers: pour-tous
@@ -1343,7 +1342,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-complet
-    sortie: "2099-01-01"
+    sortie: "2026-11-04"
     titre: "Jeux pour tous : les 6 kits"
     titre_seo: "Jeux inclusifs à imprimer : les 6 kits Jeux pour tous"
     univers: pour-tous
