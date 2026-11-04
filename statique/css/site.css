@@ -1204,6 +1204,16 @@ a.tampon { text-decoration: none; }
 .univers-textes ul { margin: 0; padding-left: 1.2rem; }
 .univers-textes li + li { margin-top: .4rem; }
 .ressources { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); list-style: none; padding: 0; margin: 1rem 0 0; }
-.ressources li { background: var(--fiche); border: 1px solid var(--filet); border-radius: var(--rayon); padding: 1rem 1.1rem; }
+.ressources li { background: var(--fiche); border: 1px solid var(--filet); border-radius: var(--rayon); padding: 1rem 1.1rem; display: flex; gap: .85rem; align-items: flex-start; }
+.ressources img { flex: none; width: 32px; height: 32px; border-radius: 6px; background: #fff; }
 .ressources a { font-family: var(--f-titre); font-weight: 700; overflow-wrap: anywhere; }
 .ressources p { margin: .35rem 0 0; color: var(--encre-douce); font-size: .95rem; }
+.familles__menu { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 1.5rem; }
+.familles__menu a { font-family: var(--f-titre); font-weight: 600; text-decoration: none; padding: .4rem .9rem; border-radius: 999px; border: 2px solid var(--inclusif); color: var(--inclusif-texte); }
+.familles__menu a:hover, .familles__menu a:focus-visible { background: var(--inclusif-clair); }
+.familles { display: grid; gap: 2rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
+.famille { display: flex; flex-direction: column; gap: .75rem; scroll-margin-top: 1rem; }
+.famille__texte { flex: 1; }
+.famille__texte h3 { font-family: var(--f-titre); font-size: 1.3rem; margin: 0 0 .35rem; color: var(--inclusif-texte); }
+.famille__texte p { margin: 0; color: var(--encre-douce); }
+.famille__kit .grille-fiches { grid-template-columns: 1fr; }

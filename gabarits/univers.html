@@ -13,10 +13,28 @@
     </ul>
   </header>
 
+  {% if u.familles %}
+  <section class="section section--serree" aria-labelledby="t-kits">
+    <h2 id="t-kits" class="section__titre">{{ u.familles_titre }}</h2>
+    {% if u.familles_intro %}<p class="chapo">{{ u.familles_intro }}</p>{% endif %}
+    <nav class="familles__menu" aria-label="Aller à une situation">
+      {% for f in u.familles %}<a href="#{{ f.id }}">{{ f.titre }}</a>{% endfor %}
+    </nav>
+    <div class="familles">
+    {% for f in u.familles %}{% set k = kits | selectattr('id', 'equalto', f.kit) | first %}{% if k %}
+    <div class="famille" id="{{ f.id }}">
+      <div class="famille__texte"><h3>{{ f.titre }}</h3><p><strong>Pour :</strong> {{ f.pour }}</p></div>
+      <div class="famille__kit">{{ m.grille_kits([k], "") }}</div>
+    </div>
+    {% endif %}{% endfor %}
+    </div>
+  </section>
+  {% else %}
   <section class="section section--serree" aria-labelledby="t-kits">
     <h2 id="t-kits" class="section__titre">Les kits</h2>
     {{ m.grille_kits(kits | selectattr('univers', 'equalto', u.id) | list, "Les premiers kits de cette catégorie arrivent bientôt.") }}
   </section>
+  {% endif %}
 
   {% if u.sections %}
   <section class="section section--serree tete-univers--{{ u.couleur }}" aria-label="L'esprit de ces kits">
@@ -33,7 +51,7 @@
     <h2 id="t-ressources" class="section__titre">{{ u.ressources_titre or "Pour aller plus loin" }}</h2>
     {% if u.ressources_intro %}<p class="chapo">{{ u.ressources_intro }}</p>{% endif %}
     <ul class="ressources">
-      {% for r in u.ressources %}<li><a href="{{ r.url }}" rel="noopener" target="_blank">{{ r.nom }}</a><p>{{ r.texte }}</p></li>{% endfor %}
+      {% for r in u.ressources %}<li>{% if r.icone %}<img src="{{ statique('img/liens/' ~ r.icone ~ '.png') }}" alt="" width="32" height="32" loading="lazy">{% endif %}<div><a href="{{ r.url }}" rel="noopener" target="_blank">{{ r.nom }}</a><p>{{ r.texte }}</p></div></li>{% endfor %}
     </ul>
   </section>
   {% endif %}

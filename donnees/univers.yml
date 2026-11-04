@@ -112,6 +112,39 @@ univers:
           autiste ne conviendra pas forcément tel quel à celui que vous accueillez. N'hésitez pas à changer une règle, la
           durée, le terrain ou le matériel : c'est cette souplesse qui fait un bon jeu inclusif, et chaque kit vous aide à
           trouver les bonnes adaptations avec l'enfant et sa famille.
+    familles_titre: Les kits, par situation
+    familles_intro: >-
+      Choisissez le kit qui correspond à l'enfant que vous accueillez. Chaque kit commence par expliquer ce que la
+      situation change dans un jeu, puis propose 8 jeux pour tout le groupe.
+    familles:
+      - id: vue
+        titre: La vue
+        pour: Un enfant aveugle, ou malvoyant (vision floue, champ de vision réduit, gêne à la lumière).
+        kit: pour-tous-visuel
+      - id: audition
+        titre: L'audition
+        pour: Un enfant sourd ou malentendant, avec ou sans appareils auditifs ou implant, qui parle, signe ou fait les deux.
+        kit: pour-tous-auditif
+      - id: motricite
+        titre: La motricité
+        pour: Un enfant en fauteuil roulant, qui marche difficilement, ou qui a du mal à se servir de ses mains.
+        kit: pour-tous-moteur
+      - id: autisme
+        titre: L'autisme
+        pour: Un enfant autiste, qui a besoin de repères clairs, de prévisibilité et d'un environnement calme.
+        kit: pour-tous-autisme
+      - id: intellectuel
+        titre: La compréhension et les apprentissages
+        pour: Un enfant qui a une déficience intellectuelle, par exemple avec une trisomie 21, et qui apprend à son rythme.
+        kit: pour-tous-intellectuel
+      - id: attention
+        titre: L'attention, la lecture, les gestes
+        pour: "Un enfant qui a un TDAH ou un trouble dys : dyslexie, dyscalculie, dyspraxie, dysphasie."
+        kit: pour-tous-attention-dys
+      - id: tous
+        titre: Toutes les situations
+        pour: Les six kits en une fois, pour être prêt à accueillir chaque enfant, quelle que soit sa situation.
+        kit: pour-tous-complet
     ressources_titre: Pour être accompagné
     ressources_intro: >-
       Ces services publics et ces associations informent, accompagnent les familles et aident les structures à accueillir
@@ -119,36 +152,47 @@ univers:
     ressources:
       - nom: Mon Parcours Handicap
         url: https://www.monparcourshandicap.gouv.fr/
+        icone: mph
         texte: Le site public d'information pour les personnes handicapées et leurs proches.
       - nom: Les Pôles ressources handicap de la Caf
         url: https://www.caf.fr/
+        icone: caf
         texte: "Dans de nombreux départements, ils aident les familles et les accueils de loisirs. Renseignez-vous auprès de votre Caf."
       - nom: Fédération Française Handisport
         url: https://www.handisport.org/
+        icone: handisport
         texte: Le sport pour les personnes ayant un handicap physique ou sensoriel.
       - nom: Fédération Française du Sport Adapté
         url: https://sportadapte.fr/
+        icone: sportadapte
         texte: Le sport pour les personnes ayant un handicap mental ou psychique.
       - nom: Fédération des Aveugles et Amblyopes de France
         url: https://aveuglesdefrance.org/
+        icone: aveugles
         texte: Pour les personnes aveugles et malvoyantes et leurs proches.
       - nom: Fédération Nationale des Sourds de France
         url: https://www.fnsf.org/
+        icone: fnsf
         texte: Pour les personnes sourdes et la langue des signes française.
       - nom: APF France handicap
         url: https://www.apf-francehandicap.org/
+        icone: apf
         texte: Pour les personnes en situation de handicap moteur et leurs familles.
       - nom: Autisme Info Service
         url: https://www.autismeinfoservice.fr/
+        icone: autisme
         texte: Écoute, information et orientation gratuites sur l'autisme.
       - nom: Unapei
         url: https://www.unapei.org/
+        icone: unapei
         texte: Pour les personnes ayant une déficience intellectuelle et leurs familles.
       - nom: HyperSupers TDAH France
         url: https://www.tdah-france.fr/
+        icone: tdah
         texte: Pour les familles d'enfants ayant un TDAH.
       - nom: Fédération Française des DYS
         url: https://www.ffdys.com/
+        icone: ffdys
         texte: Pour les personnes ayant un trouble dys et leurs familles.
 
   - id: professionnels
