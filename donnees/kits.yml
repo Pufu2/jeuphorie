@@ -1100,7 +1100,7 @@ kits:
     paiement: "https://buy.stripe.com/cNibJ17Sd1AX9Ly407bMQ0s"
     accroche: 8 jeux à partager avec un enfant aveugle ou malvoyant, où tout le groupe joue ensemble, au même jeu.
     age: 4 à 12 ans
-    joueurs: 6 à 20
+    joueurs: 6 à 20 enfants
     duree: 10 à 40 min par jeu
     lieu: Salle, gymnase, cour
     preparation: Aucune à 20 minutes
@@ -1143,7 +1143,7 @@ kits:
     paiement: "https://buy.stripe.com/bJe3cv2xT5Rd0aYfIPbMQ0t"
     accroche: 8 jeux à partager avec un enfant sourd ou malentendant, où tout le groupe joue avec les yeux et les gestes.
     age: 3 à 12 ans
-    joueurs: 6 à 24
+    joueurs: 6 à 24 enfants
     duree: 10 à 30 min par jeu
     lieu: Salle, gymnase, cour
     preparation: Aucune à 15 minutes
@@ -1186,7 +1186,7 @@ kits:
     paiement: "https://buy.stripe.com/fZu28r6O9frNf5ScwDbMQ0u"
     accroche: 8 jeux à partager avec un enfant en fauteuil, qui marche difficilement ou qui se sert peu de ses mains.
     age: 4 à 12 ans
-    joueurs: 4 à 20
+    joueurs: 4 à 20 enfants
     duree: 15 à 20 min par jeu
     lieu: Salle, gymnase, cour plane
     preparation: Aucune à 20 minutes
@@ -1229,7 +1229,7 @@ kits:
     paiement: "https://buy.stripe.com/14A7sL5K56VhaPC407bMQ0v"
     accroche: 8 jeux à partager avec un enfant autiste, avec un programme clair, des règles dites simplement et le droit de faire une pause.
     age: 3 à 12 ans
-    joueurs: 4 à 16
+    joueurs: 4 à 16 enfants
     duree: 10 à 30 min par jeu
     lieu: Salle calme, jardin
     preparation: Aucune à 20 minutes
@@ -1273,7 +1273,7 @@ kits:
     paiement: "https://buy.stripe.com/5kQ00jegB1AXbTGgMTbMQ0w"
     accroche: 8 jeux à partager avec un enfant qui a une déficience intellectuelle, qui s'apprennent pas à pas et que tout le groupe aime.
     age: 4 à 12 ans
-    joueurs: 4 à 20
+    joueurs: 4 à 20 enfants
     duree: 10 à 30 min par jeu
     lieu: Salle, cour, jardin
     preparation: Aucune à 20 minutes
@@ -1316,7 +1316,7 @@ kits:
     paiement: "https://buy.stripe.com/8x24gz0pL2F11f2eELbMQ0x"
     accroche: 8 jeux à partager avec un enfant qui a un TDAH ou un trouble dys, avec des règles courtes, de l'action et aucune lecture obligatoire.
     age: 4 à 12 ans
-    joueurs: 6 à 24
+    joueurs: 6 à 24 enfants
     duree: 10 à 30 min par jeu
     lieu: Salle, cour, jardin
     preparation: Aucune à 20 minutes
@@ -1359,7 +1359,7 @@ kits:
     paiement: "https://buy.stripe.com/bJe8wP5K5bbxg9WaovbMQ0y"
     accroche: Les 6 kits Jeux pour tous en une fois, 48 jeux inclusifs pour accueillir chaque enfant, quelle que soit sa situation.
     age: 3 à 12 ans
-    joueurs: 4 à 24
+    joueurs: 4 à 24 enfants
     duree: 10 à 40 min par jeu
     lieu: Salle, gymnase, cour, jardin
     preparation: Aucune à 20 minutes
