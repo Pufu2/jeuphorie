@@ -499,7 +499,7 @@ class Site:
             cle = self.config["indexnow_cle"]
             (SORTIE / f"{cle}.txt").write_text(cle, encoding="utf-8")
         (SORTIE / "robots.txt").write_text(
-            f"User-agent: *\nAllow: /\nDisallow: /telechargement/\nDisallow: /bibliotheque/\n\nSitemap: {base}/sitemap.xml\n", encoding="utf-8")
+            f"User-agent: *\nAllow: /\nDisallow: /telechargement/\nDisallow: /bibliotheque/\nDisallow: /etsy-autorisation/\n\nSitemap: {base}/sitemap.xml\n", encoding="utf-8")
         flux = self.env.get_template("flux.xml").render(
             site=self.config, articles=self.articles[:20],
             maintenant=dt.datetime.now(dt.timezone.utc))

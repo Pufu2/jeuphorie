@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Autorisation Etsy · Jeuphorie</title>
+<style>
+  :root { color-scheme: light dark; --fond: #FBFAF7; --encre: #1A2340; --rouge: #CF3424; --doux: #4B5675; }
+  @media (prefers-color-scheme: dark) { :root { --fond: #1B2629; --encre: #EEF0E8; --rouge: #FF7A67; --doux: #AEBAB8; } }
+  body { margin: 0; background: var(--fond); color: var(--encre); font: 17px/1.5 system-ui, sans-serif; }
+  main { max-width: 560px; margin: 0 auto; padding: 48px 16px; }
+  h1 { font-size: 1.6rem; margin: 0 0 1rem; }
+  .bouton { display: inline-block; background: var(--rouge); color: #fff; text-decoration: none; font-weight: 700; padding: .8rem 1.4rem; border-radius: 999px; margin: 1rem 0; }
+  p.petit { color: var(--doux); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <p><strong><span style="color:var(--rouge)">Jeu</span>phorie</strong></p>
+  <h1 id="titre">Autorisation Etsy</h1>
+  <div id="ok" hidden>
+    <p>Etsy a bien accepté. Dernière étape : cliquez sur le bouton, puis sur <strong>« Create »</strong> (ou « Submit new issue ») dans la page GitHub qui s'ouvre. Claude s'occupe du reste.</p>
+    <a class="bouton" id="envoyer" href="#">Transmettre à Claude</a>
+    <p class="petit">Le code est transmis dans votre dépôt privé jeuphorie-produits, jamais dans la conversation. Il ne sert qu'une fois, dans les minutes qui suivent.</p>
+  </div>
+  <div id="erreur" hidden><p>Etsy n'a pas donné d'autorisation. Revenez à la conversation et redemandez le lien.</p></div>
+</main>
+<script>
+  var q = new URLSearchParams(location.search), code = q.get("code"), etat = q.get("state");
+  if (code && etat) {
+    document.getElementById("ok").hidden = false;
+    document.getElementById("envoyer").href = "https://github.com/Pufu2/jeuphorie-produits/issues/new?title=" +
+      encodeURIComponent("Autorisation Etsy") + "&body=" + encodeURIComponent("code=" + code + "\nstate=" + etat);
+  } else {
+    document.getElementById("erreur").hidden = false;
+  }
+  history.replaceState(null, "", location.pathname);
+</script>
+</body>
+</html>
