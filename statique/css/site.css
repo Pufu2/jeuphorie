@@ -1208,12 +1208,32 @@ a.tampon { text-decoration: none; }
 .ressources img { flex: none; width: 32px; height: 32px; border-radius: 6px; background: #fff; }
 .ressources a { font-family: var(--f-titre); font-weight: 700; overflow-wrap: anywhere; }
 .ressources p { margin: .35rem 0 0; color: var(--encre-douce); font-size: .95rem; }
-.familles__menu { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 1.5rem; }
-.familles__menu a { font-family: var(--f-titre); font-weight: 600; text-decoration: none; padding: .4rem .9rem; border-radius: 999px; border: 2px solid var(--inclusif); color: var(--inclusif-texte); }
-.familles__menu a:hover, .familles__menu a:focus-visible { background: var(--inclusif-clair); }
-.familles { display: grid; gap: 2rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
-.famille { display: flex; flex-direction: column; gap: .75rem; scroll-margin-top: 1rem; }
-.famille__texte { flex: 1; }
-.famille__texte h3 { font-family: var(--f-titre); font-size: 1.3rem; margin: 0 0 .35rem; color: var(--inclusif-texte); }
-.famille__texte p { margin: 0; color: var(--encre-douce); }
-.famille__kit .grille-fiches { grid-template-columns: 1fr; }
+.grille-situations { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.carte-situation { --s-texte: var(--s); display: grid; gap: .35rem; align-content: start; background: var(--fiche); border: 1px solid var(--filet); border-top: 5px solid var(--s); border-radius: var(--rayon); padding: 1.1rem 1.2rem 1.2rem; text-decoration: none; color: var(--encre); transition: transform .15s ease; }
+.carte-situation:hover { transform: translateY(-3px); text-decoration: none; }
+.carte-situation__icone, .situation__icone { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; color: var(--s-texte); background: color-mix(in srgb, var(--s) 14%, var(--fiche)); }
+.carte-situation__icone svg, .situation__icone svg { width: 30px; height: 30px; }
+.carte-situation__nom { font-family: var(--f-titre); font-weight: 800; font-size: 1.35rem; line-height: 1.15; margin-top: .3rem; }
+.carte-situation__pour { color: var(--encre-douce); font-size: .95rem; }
+.carte-situation__lien { font-family: var(--f-titre); font-weight: 600; text-decoration: underline; text-underline-offset: .2em; margin-top: .3rem; font-size: .95rem; color: var(--s-texte); }
+.situations { display: grid; gap: 2.5rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); align-items: start; }
+.situation { --s-texte: var(--s); scroll-margin-top: 1rem; display: flex; flex-direction: column; height: 100%; }
+.situation--large { grid-column: 1 / -1; }
+.situation .grille-fiches { flex: 1; }
+.situation:not(.situation--large) .grille-fiches { grid-template-columns: 1fr; }
+.situation__tete { display: flex; gap: .9rem; align-items: center; padding: .9rem 1rem; margin-bottom: 1rem; min-height: 8.5rem; border-radius: var(--rayon); border-left: 6px solid var(--s); background: color-mix(in srgb, var(--s) 9%, var(--papier)); }
+.situation__tete .situation__icone { flex: none; background: var(--fiche); }
+.situation__titre { font-family: var(--f-titre); font-weight: 800; font-size: 1.35rem; margin: 0; color: var(--s-texte); }
+.situation__pour { margin: .2rem 0 0; color: var(--encre); font-size: .95rem; }
+.situation--large .situation__tete { min-height: 0; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .carte-situation, :root:not([data-theme="light"]) .situation { --s-texte: color-mix(in srgb, var(--s) 45%, white); } }
+:root[data-theme="dark"] .carte-situation, :root[data-theme="dark"] .situation { --s-texte: color-mix(in srgb, var(--s) 45%, white); }
+@media (max-width: 600px) {
+  .grille-situations { grid-template-columns: 1fr 1fr; gap: .7rem; }
+  .carte-situation { padding: .85rem .9rem 1rem; }
+  .carte-situation__icone { width: 42px; height: 42px; }
+  .carte-situation__icone svg { width: 24px; height: 24px; }
+  .carte-situation__nom { font-size: 1.1rem; }
+  .carte-situation__pour { font-size: .88rem; }
+  .situation__tete { min-height: 0; }
+}

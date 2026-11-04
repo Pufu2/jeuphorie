@@ -112,39 +112,54 @@ univers:
           autiste ne conviendra pas forcément tel quel à celui que vous accueillez. N'hésitez pas à changer une règle, la
           durée, le terrain ou le matériel : c'est cette souplesse qui fait un bon jeu inclusif, et chaque kit vous aide à
           trouver les bonnes adaptations avec l'enfant et sa famille.
-    familles_titre: Les kits, par situation
-    familles_intro: >-
-      Choisissez le kit qui correspond à l'enfant que vous accueillez. Chaque kit commence par expliquer ce que la
-      situation change dans un jeu, puis propose 8 jeux pour tout le groupe.
-    familles:
+    # Les kits de cet univers sont rangés par situation : un futur kit n'a besoin que du champ « situation » dans kits.yml.
+    situations_titre: Choisissez la situation de l'enfant
+    situations_intro: >-
+      Chaque kit commence par expliquer ce que la situation change dans un jeu, puis propose 8 jeux que tout le groupe
+      joue ensemble.
+    situations:
       - id: vue
-        titre: La vue
-        pour: Un enfant aveugle, ou malvoyant (vision floue, champ de vision réduit, gêne à la lumière).
-        kit: pour-tous-visuel
+        nom: La vue
+        pour: Un enfant aveugle ou malvoyant.
+        detail: Vision floue, champ de vision réduit, gêne à la lumière, ou aucune vision.
+        couleur: "#6A4C9C"
+        icone: oeil
       - id: audition
-        titre: L'audition
-        pour: Un enfant sourd ou malentendant, avec ou sans appareils auditifs ou implant, qui parle, signe ou fait les deux.
-        kit: pour-tous-auditif
+        nom: L'audition
+        pour: Un enfant sourd ou malentendant.
+        detail: Avec ou sans appareils auditifs ou implant, qui parle, signe ou fait les deux.
+        couleur: "#1F7A8C"
+        icone: oreille
       - id: motricite
-        titre: La motricité
-        pour: Un enfant en fauteuil roulant, qui marche difficilement, ou qui a du mal à se servir de ses mains.
-        kit: pour-tous-moteur
+        nom: La motricité
+        pour: Un enfant en fauteuil, qui marche ou saisit difficilement.
+        detail: Fauteuil roulant, béquilles, déambulateur, difficultés à se servir de ses mains.
+        couleur: "#B5541C"
+        icone: roue
       - id: autisme
-        titre: L'autisme
-        pour: Un enfant autiste, qui a besoin de repères clairs, de prévisibilité et d'un environnement calme.
-        kit: pour-tous-autisme
-      - id: intellectuel
-        titre: La compréhension et les apprentissages
-        pour: Un enfant qui a une déficience intellectuelle, par exemple avec une trisomie 21, et qui apprend à son rythme.
-        kit: pour-tous-intellectuel
+        nom: L'autisme
+        pour: Un enfant autiste.
+        detail: Besoin de repères clairs, de prévisibilité et d'un environnement calme.
+        couleur: "#2E6E4F"
+        icone: repere
+      - id: comprehension
+        nom: La compréhension
+        pour: Un enfant qui a une déficience intellectuelle.
+        detail: Par exemple avec une trisomie 21. Il apprend à son rythme, avec des règles simples.
+        couleur: "#8A3B7A"
+        icone: etoile
       - id: attention
-        titre: L'attention, la lecture, les gestes
-        pour: "Un enfant qui a un TDAH ou un trouble dys : dyslexie, dyscalculie, dyspraxie, dysphasie."
-        kit: pour-tous-attention-dys
-      - id: tous
-        titre: Toutes les situations
-        pour: Les six kits en une fois, pour être prêt à accueillir chaque enfant, quelle que soit sa situation.
-        kit: pour-tous-complet
+        nom: L'attention et les dys
+        pour: Un enfant qui a un TDAH ou un trouble dys.
+        detail: Dyslexie, dyscalculie, dyspraxie, dysphasie, troubles de l'attention.
+        couleur: "#C0392B"
+        icone: cible
+      - id: toutes
+        nom: Toutes les situations
+        pour: Les six kits en une fois.
+        detail: Pour être prêt à accueillir chaque enfant, quelle que soit sa situation.
+        couleur: "#1A2340"
+        icone: coeur
     ressources_titre: Pour être accompagné
     ressources_intro: >-
       Ces services publics et ces associations informent, accompagnent les familles et aident les structures à accueillir

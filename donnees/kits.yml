@@ -1089,6 +1089,7 @@ kits:
     - Accueils de loisirs qui veulent un fil rouge sur deux semaines
   # ---------------------------------------------------------------- Jeux pour tous
   - id: pour-tous-visuel
+    situation: vue
     sortie: "2026-11-04"
     titre: "Jeux pour tous : aveugles et malvoyants"
     titre_seo: "Jeux pour enfants aveugles ou malvoyants, à jouer avec tout le groupe"
@@ -1131,6 +1132,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-auditif
+    situation: audition
     sortie: "2026-11-04"
     titre: "Jeux pour tous : sourds et malentendants"
     titre_seo: "Jeux pour enfants sourds ou malentendants, à jouer avec tout le groupe"
@@ -1173,6 +1175,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-moteur
+    situation: motricite
     sortie: "2026-11-04"
     titre: "Jeux pour tous : handicap moteur"
     titre_seo: "Jeux pour enfants en fauteuil ou en situation de handicap moteur"
@@ -1215,6 +1218,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-autisme
+    situation: autisme
     sortie: "2026-11-04"
     titre: "Jeux pour tous : autisme"
     titre_seo: "Jeux pour enfants autistes, à jouer avec tout le groupe"
@@ -1258,6 +1262,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-intellectuel
+    situation: comprehension
     sortie: "2026-11-04"
     titre: "Jeux pour tous : déficience intellectuelle"
     titre_seo: "Jeux pour enfants avec une déficience intellectuelle ou une trisomie 21"
@@ -1300,6 +1305,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-attention-dys
+    situation: attention
     sortie: "2026-11-04"
     titre: "Jeux pour tous : TDAH et troubles dys"
     titre_seo: "Jeux pour enfants avec un TDAH, une dyslexie ou une dyspraxie"
@@ -1342,6 +1348,7 @@ kits:
       - Inclus dans l'abonnement Pro Structure
 
   - id: pour-tous-complet
+    situation: toutes
     sortie: "2026-11-04"
     titre: "Jeux pour tous : les 6 kits"
     titre_seo: "Jeux inclusifs à imprimer : les 6 kits Jeux pour tous"
