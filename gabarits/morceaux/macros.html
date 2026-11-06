@@ -39,12 +39,13 @@
 
 {# Carte d'un jeu du catalogue #}
 {% macro carte_jeu(j, astuce=none) %}
-<a class="carte-jeu" href="{{ lien('/jeux/' ~ j.id ~ '/') }}">
+{# seuls les jeux offerts ont une page : les règles des autres sont dans les packs #}
+{% if j.offert %}<a class="carte-jeu" href="{{ lien('/jeux/' ~ j.id ~ '/') }}">{% else %}<div class="carte-jeu">{% endif %}
   <span class="carte-jeu__nom">{{ j.nom }}</span>
   <span class="carte-jeu__meta">Dès {{ j.age_min }} ans, {{ j.joueurs[0] }} à {{ j.joueurs[1] }} joueurs, {{ j.duree }} min</span>
   {% if astuce %}<span class="carte-jeu__astuce">{{ astuce }}</span>{% endif %}
   {% if j.offert %}<span class="carte-jeu__offert">Offert</span>{% endif %}
-</a>
+{% if j.offert %}</a>{% else %}</div>{% endif %}
 {% endmacro %}
 
 {# Carte d'un jeu de fête (donnees/jeux-fetes.yml) #}

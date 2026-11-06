@@ -247,7 +247,9 @@ class Site:
         tous = []
         for j in self.jeux():
             x = {**j, **defaut, **rep.get("jeux", {}).get(j["id"], {})}
-            x.update(url=f"/jeux/{j['id']}/", genre="Grand jeu", accroche=j.get("but", ""), offert=bool(j.get("offert")))
+            # les règles des grands jeux sont vendues : seuls les jeux offerts ont leur page, les autres mènent à leur pack
+            url = f"/jeux/{j['id']}/" if j.get("offert") else f"/boutique/pack-{j['packs'][0]}/"
+            x.update(url=url, genre="Grand jeu", accroche=j.get("but", ""), offert=bool(j.get("offert")))
             tous.append(x)
         for j in self.jeux_fetes():
             x = {**j, **rep.get("fetes", {}).get(j["id"], {})}
