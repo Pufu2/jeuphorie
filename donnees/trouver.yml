@@ -1,0 +1,737 @@
+# Les pages « Trouver un jeu » (/trouver-un-jeu/<slug>/) et le bloc à onglets du bas de page.
+# Une page n'est publiée que si au moins « minimum » jeux lui correspondent (build.py) : elle apparaît seule quand
+# de nouveaux jeux offerts arrivent. Chaque page a son texte propre : jamais de texte passe-partout.
+#
+# filtre : age (un âge), ages [min, max] (une tranche), lieu, moment, materiel, joueurs_min (on peut jouer à ce
+# nombre ou moins), energie.
+minimum: 5
+
+onglets:
+  - id: age
+    nom: Par âge
+    texte: Des jeux pensés pour l'âge des enfants, avec les adaptations pour les plus jeunes et les plus grands.
+    guides:
+      - [Jeux collectifs 3-5 ans, /jeux-collectifs-3-5-ans/]
+      - [Anniversaire 6 ans, /jeux-anniversaire-6-ans/]
+      - [Anniversaire 8 ans, /jeux-anniversaire-8-ans/]
+      - [Anniversaire 10 ans, /jeux-anniversaire-10-ans/]
+      - [Grands jeux pour ados, /grands-jeux-ados/]
+  - id: lieu
+    nom: Par lieu
+    texte: "Dans un salon, un gymnase, un jardin, en forêt ou en voiture : des jeux qui tiennent compte de l'espace."
+    guides:
+      - [Jeux d'extérieur, /jeux-exterieur-enfants/]
+      - [Jeux de cour de récréation, /jeux-de-cour-de-recreation/]
+  - id: moment
+    nom: Par moment
+    texte: Pour se dépenser, pour retrouver le calme, pour une veillée ou pour faire connaissance.
+    guides:
+      - [Jeux pour faire connaissance, /jeux-pour-faire-connaissance/]
+      - [Jeux musicaux, /jeux-musicaux-enfants/]
+  - id: materiel
+    nom: Par matériel
+    texte: Avec un ballon, des cerceaux, des foulards, une feuille et un crayon, ou sans rien du tout.
+    guides:
+      - [Jeux sans matériel, /jeux-sans-materiel/]
+  - id: groupe
+    nom: Par nombre d'enfants
+    texte: "À deux, en petit groupe ou à trente : des jeux qui marchent avec le nombre d'enfants que vous avez."
+    guides:
+      - [Jeux pour un grand groupe, /jeux-grand-groupe-enfants/]
+  - id: croisements
+    nom: Âge et lieu
+    texte: Les recherches les plus précises, quand on connaît à la fois l'âge des enfants et l'endroit où l'on joue.
+    guides: []
+
+pages:
+  # ------------------------------------------------------------------ par âge
+  - slug: enfants-3-ans
+    onglet: age
+    puce: 3 ans
+    filtre: {age: 3}
+    titre_page: "Jeux pour enfants de 3 ans : idées de jeux collectifs simples"
+    h1: Jeux pour enfants de 3 ans
+    intro: >-
+      À 3 ans, un enfant joue à côté des autres plus qu'avec eux. Il aime répéter, imiter, courir un peu et revenir vers
+      l'adulte. Les bons jeux de cet âge sont courts, sans perdant, avec une règle qu'on peut montrer au lieu de l'expliquer.
+    conseils:
+      - "Cinq minutes par jeu suffisent : arrêtez avant que l'attention ne retombe."
+      - "Jouez avec eux : à cet âge, l'adulte est le meilleur modèle."
+      - "Pas d'élimination : un enfant de 3 ans qui sort du jeu ne comprend pas pourquoi."
+    faq:
+      - ["Combien d'enfants de 3 ans peut-on faire jouer ensemble ?", "Six à huit avec un adulte, au-delà les jeux de groupe deviennent difficiles à suivre. Pour plus d'enfants, faites deux groupes."]
+      - ["Un enfant de 3 ans comprend-il les règles ?", "Une règle, oui, si on la montre. Deux règles en même temps, rarement. Choisissez des jeux où il suffit d'imiter ou de réagir à un signal."]
+      - ["Que faire si l'enfant ne veut pas jouer ?", "Le laisser regarder. Beaucoup d'enfants de 3 ans observent un tour ou deux avant d'entrer dans le jeu."]
+
+  - slug: enfants-4-ans
+    onglet: age
+    puce: 4 ans
+    filtre: {age: 4}
+    titre_page: "Jeux pour enfants de 4 ans : jeux collectifs à la maison, à l'école, au centre"
+    h1: Jeux pour enfants de 4 ans
+    intro: >-
+      À 4 ans, les enfants commencent à jouer vraiment ensemble : attendre son tour, suivre un signal, faire semblant
+      d'être un animal ou un personnage. Ils adorent les histoires et les jeux qui se répètent, avec une petite surprise
+      à chaque fois.
+    conseils:
+      - "Racontez une petite histoire avant le jeu : elle fait comprendre la règle mieux qu'une explication."
+      - "Un signal clair et toujours le même (une clochette, un mot) aide beaucoup."
+      - "Préférez les jeux où l'on gagne tous ensemble, ou où l'on change souvent de rôle."
+    faq:
+      - ["Quels jeux pour un anniversaire de 4 ans ?", "Des jeux courts et sans perdant : une chasse au trésor en images, des statues musicales, un jeu de rassemblement. Comptez une heure de jeux au plus."]
+      - ["Les enfants de 4 ans peuvent-ils jouer en équipes ?", "Oui, si les équipes sont petites et que l'adulte rappelle souvent qui est avec qui. Des foulards ou des gommettes de couleur aident."]
+      - ["Combien de temps dure un jeu à 4 ans ?", "Dix minutes environ. Le même jeu peut revenir plusieurs fois dans la séance."]
+
+  - slug: enfants-5-ans
+    onglet: age
+    puce: 5 ans
+    filtre: {age: 5}
+    titre_page: "Jeux pour enfants de 5 ans : idées de jeux de groupe dedans et dehors"
+    h1: Jeux pour enfants de 5 ans
+    intro: >-
+      À 5 ans, les enfants aiment les défis, les règles un peu plus longues et les premières courses-poursuites. Ils
+      veulent gagner, mais supportent encore mal de perdre : les jeux où l'on rejoue tout de suite leur conviennent le mieux.
+    conseils:
+      - "Introduisez une deuxième règle seulement quand la première est bien comprise."
+      - "Changez souvent les rôles : chacun veut être le loup ou le meneur."
+      - "Annoncez la fin du jeu à l'avance : « encore deux parties »."
+    faq:
+      - ["Quels jeux de cour pour 5 ans ?", "Le chat perché, les statues, les jeux de rassemblement et les relais simples. Des règles courtes, et l'on revient vite dans le jeu."]
+      - ["Comment gérer un enfant de 5 ans qui ne supporte pas de perdre ?", "Choisir des jeux sans élimination, rejouer tout de suite, et féliciter ce qu'il a bien fait plutôt que le résultat."]
+      - ["Peut-on faire un grand jeu avec des enfants de 5 ans ?", "Un petit, oui : une histoire, deux ou trois épreuves courtes et un trésor final, en restant toujours groupés avec un adulte."]
+
+  - slug: enfants-6-ans
+    onglet: age
+    puce: 6 ans
+    filtre: {age: 6}
+    titre_page: "Jeux pour enfants de 6 ans : jeux collectifs, de cour et d'intérieur"
+    h1: Jeux pour enfants de 6 ans
+    intro: >-
+      À 6 ans, l'enfant entre au CP et découvre les vrais jeux collectifs : des équipes, des camps, des règles qu'on
+      respecte ensemble. Il aime courir, attraper, se cacher, et commence à élaborer des petites stratégies.
+    conseils:
+      - "Faites une partie d'essai au ralenti avant chaque nouveau jeu."
+      - "Gardez des équipes de 4 à 8 : au-delà, certains enfants ne touchent jamais le ballon."
+      - "Prévoyez un arbitre adulte : à 6 ans, les disputes sur les règles sont fréquentes."
+    faq:
+      - ["Quels grands jeux pour des enfants de 6 ans ?", "Gendarmes et voleurs, le béret, les relais, la balle américaine : des règles claires et beaucoup de mouvement."]
+      - ["Combien de temps dure un jeu collectif à 6 ans ?", "Quinze à vingt minutes, en changeant les rôles ou les équipes en cours de partie."]
+      - ["Faut-il éviter les jeux d'élimination à 6 ans ?", "Pas forcément, mais l'éliminé doit revenir vite : une prison qu'on peut délivrer, ou un retour après dix secondes."]
+
+  - slug: enfants-7-ans
+    onglet: age
+    puce: 7 ans
+    filtre: {age: 7}
+    titre_page: "Jeux pour enfants de 7 ans : jeux collectifs, calmes et de plein air"
+    h1: Jeux pour enfants de 7 ans
+    intro: >-
+      À 7 ans, les enfants aiment les règles précises, les défis d'adresse et les jeux où l'on peut s'organiser en
+      équipe. Ils lisent un peu, comptent leurs points et veulent que tout soit juste.
+    conseils:
+      - "Laissez une minute à chaque équipe pour se mettre d'accord sur une stratégie."
+      - "Annoncez clairement comment on gagne : c'est la première question qu'ils posent."
+      - "Alternez jeux qui bougent et jeux calmes, même dans un après-midi en plein air."
+    faq:
+      - ["Quels jeux calmes pour des enfants de 7 ans ?", "Le roi du silence, les vingt questions, l'œil de lynx, les jeux de mémoire : ils aiment réfléchir autant que courir."]
+      - ["Les enfants de 7 ans peuvent-ils faire un jeu de piste ?", "Oui, avec des indices en images ou des mots simples, en équipes de 3 ou 4 avec un adulte pas loin."]
+      - ["Comment éviter les disputes pendant les jeux ?", "Une règle annoncée avant, un arbitre qui tranche vite, et le droit de rejouer une manche contestée."]
+
+  - slug: enfants-8-ans
+    onglet: age
+    puce: 8 ans
+    filtre: {age: 8}
+    titre_page: "Jeux pour enfants de 8 ans : grands jeux, jeux d'équipe et jeux calmes"
+    h1: Jeux pour enfants de 8 ans
+    intro: >-
+      À 8 ans, les enfants maîtrisent les grands classiques et en redemandent des plus complexes : plusieurs camps,
+      des rôles différents, des alliances. Ils aiment aussi les jeux de mots et de réflexion, en voiture comme en veillée.
+    conseils:
+      - "Proposez des variantes : à 8 ans, un jeu connu devient vite trop facile."
+      - "Confiez des responsabilités : arbitre de touche, gardien du temps, capitaine."
+      - "Les jeux de papier et de crayon marchent très bien les jours de pluie."
+    faq:
+      - ["Quels jeux pour un anniversaire de 8 ans ?", "Une enquête, une chasse au trésor avec des énigmes, des défis par équipes. Voir aussi notre guide des jeux d'anniversaire pour 8 ans."]
+      - ["Quels jeux de ballon pour 8 ans ?", "La balle au capitaine, le ballon prisonnier, la passe à 5 : des passes, de la stratégie, pas seulement de la force."]
+      - ["Combien d'enfants faut-il pour un grand jeu à 8 ans ?", "Douze au moins pour les jeux à camps, mais beaucoup de jeux marchent à partir de six."]
+
+  - slug: enfants-9-ans
+    onglet: age
+    puce: 9 ans
+    filtre: {age: 9}
+    titre_page: "Jeux pour enfants de 9 ans : jeux de stratégie, de plein air et de veillée"
+    h1: Jeux pour enfants de 9 ans
+    intro: >-
+      À 9 ans, les enfants aiment les jeux qui demandent de la ruse et de la coopération : préparer un plan, bluffer,
+      se répartir les rôles. Ils ont de l'énergie à dépenser, mais apprécient aussi une veillée bien menée.
+    conseils:
+      - "Laissez-les inventer une règle supplémentaire : ils en sont fiers et la respectent."
+      - "Mélangez les âges dans les équipes pour éviter que les mêmes gagnent toujours."
+      - "Un jeu de veillée calme termine bien une journée chargée."
+    faq:
+      - ["Quels jeux de veillée pour des enfants de 9 ans ?", "Les sardines, le petit bac, les vingt questions, le roi du silence : des jeux qui rassemblent sans exciter avant le coucher."]
+      - ["Quels grands jeux pour 9 ans ?", "Poules renards vipères, le drapeau, les six planètes : des jeux à camps et à stratégie."]
+      - ["Comment motiver un groupe de 9 ans qui trouve tout « nul » ?", "Leur donner un défi chiffré à battre, ou les laisser choisir entre deux jeux."]
+
+  - slug: enfants-10-ans
+    onglet: age
+    puce: 10 ans
+    filtre: {age: 10}
+    titre_page: "Jeux pour enfants de 10 ans : grands jeux, jeux sportifs et jeux de réflexion"
+    h1: Jeux pour enfants de 10 ans
+    intro: >-
+      À 10 ans, les enfants veulent des vrais défis : des règles proches des sports, des jeux de bluff, des épreuves
+      chronométrées. Ils sont capables de se gérer en équipe, à condition que les règles soient claires et justes.
+    conseils:
+      - "Expliquez la règle complète dès le départ : à 10 ans, on n'aime pas les règles qui changent en route."
+      - "Prévoyez des rôles pour ceux qui aiment moins courir : stratège, gardien, messager."
+      - "Un classement par équipe passe mieux qu'un classement individuel."
+    faq:
+      - ["Quels jeux pour un anniversaire de 10 ans ?", "Une enquête, un escape game maison, des défis par équipes. Voir aussi notre guide des jeux d'anniversaire pour 10 ans."]
+      - ["Quels jeux sportifs pour des enfants de 10 ans ?", "La thèque, la balle au capitaine, le drapeau double : des sports adaptés, sans le niveau technique des vrais sports."]
+      - ["Les enfants de 10 ans jouent-ils encore aux jeux de cour ?", "Oui, si on les fait évoluer : le jeu du ninja ou le pierre-feuille-ciseaux des équipes plaisent beaucoup à cet âge."]
+
+  - slug: enfants-11-ans
+    onglet: age
+    puce: 11 ans
+    filtre: {age: 11}
+    titre_page: "Jeux pour enfants de 11 ans : jeux de groupe pour préados"
+    h1: Jeux pour enfants de 11 ans
+    intro: >-
+      À 11 ans, entre CM2 et sixième, les enfants veulent qu'on les traite en grands. Ils aiment la compétition, les
+      jeux sportifs, les défis entre amis, et les jeux de mots où l'on peut briller.
+    conseils:
+      - "Évitez les jeux qu'ils associent aux « petits » : changez le nom ou le thème si besoin."
+      - "Laissez-les arbitrer entre eux, avec un adulte en dernier recours."
+      - "Les jeux de veillée et de réflexion marchent très bien en séjour."
+    faq:
+      - ["Quels jeux pour des préados de 11 ans ?", "Les jeux sportifs adaptés, le jeu du ninja, le petit bac, les vingt questions, et les grands jeux à stratégie."]
+      - ["Comment animer un groupe de 11 ans qui ne veut pas jouer ?", "Proposer un défi plutôt qu'un jeu, laisser choisir, et commencer avec ceux qui ont envie : les autres suivent."]
+      - ["Les 11 ans peuvent-ils jouer avec les plus petits ?", "Oui, en leur donnant un rôle : capitaine d'une équipe de petits, meneur, arbitre."]
+
+  - slug: enfants-12-ans
+    onglet: age
+    puce: 12 ans
+    filtre: {age: 12}
+    titre_page: "Jeux pour enfants de 12 ans : jeux de groupe, de sport et de réflexion"
+    h1: Jeux pour enfants de 12 ans
+    intro: >-
+      À 12 ans, les jeunes aiment les jeux où comptent la stratégie, le bluff et l'esprit d'équipe, et les sports
+      qu'ils connaissent, en version plus libre. Ils apprécient qu'on leur laisse une part d'organisation.
+    conseils:
+      - "Proposez des tournois courts plutôt qu'une longue partie."
+      - "Associez-les au choix des règles et des équipes."
+      - "Pensez aux jeux de veillée et de réflexion pour les moments calmes."
+    faq:
+      - ["Quels grands jeux pour des jeunes de 12 ans ?", "Le drapeau double, l'épervier gradé, les six quilles : des jeux tactiques. Voir aussi nos grands jeux pour ados."]
+      - ["Quels jeux de réflexion pour 12 ans ?", "Le petit bac, les vingt questions, ni oui ni non : simples, rapides, et l'on peut y jouer partout."]
+      - ["Comment garder un groupe de 12 ans motivé ?", "Des défis variés, des équipes qui changent, et un vrai enjeu : un record à battre, un tournoi."]
+
+  # ------------------------------------------------------------------ par lieu
+  - slug: interieur
+    onglet: lieu
+    puce: À l'intérieur
+    filtre: {lieu: interieur}
+    titre_page: "Jeux d'intérieur pour enfants : idées pour la maison, la classe ou le centre"
+    h1: Jeux d'intérieur pour enfants
+    intro: >-
+      Un jour de pluie, une salle trop petite, des voisins à ne pas déranger : les jeux d'intérieur demandent de bouger
+      sans courir, de rire sans crier, et de ranger les obstacles avant de commencer.
+    conseils:
+      - "Poussez les tables, retirez les objets fragiles et repérez les coins de meubles avant de jouer."
+      - "Remplacez la course par la marche rapide, à quatre pattes ou en « pas de géant »."
+      - "Alternez un jeu qui bouge et un jeu assis pour garder le calme dans la salle."
+    faq:
+      - ["Quels jeux d'intérieur pour un groupe d'enfants ?", "Les statues, les sardines, le roi du silence, la patate chaude, les jeux de papier et de crayon : ils marchent dans une salle de classe comme dans un salon."]
+      - ["Comment faire bouger des enfants à l'intérieur sans bruit ?", "En marchant au ralenti, en mimant, en jouant à des jeux de réaction assis. Les jeux de silence sont aussi très appréciés."]
+      - ["Combien de place faut-il pour jouer à l'intérieur ?", "Un espace dégagé de 4 m sur 4 suffit pour la plupart des jeux assis ou en cercle."]
+
+  - slug: gymnase
+    onglet: lieu
+    puce: Au gymnase
+    filtre: {lieu: gymnase}
+    titre_page: "Jeux de gymnase pour enfants : jeux collectifs en salle de sport"
+    h1: Jeux de gymnase pour enfants
+    intro: >-
+      Le gymnase offre de la place, des lignes déjà tracées et du matériel, mais aussi des murs, des poteaux et un écho
+      qui fatigue vite. Les meilleurs jeux de gymnase utilisent les lignes du terrain et gardent les joueurs loin des murs.
+    conseils:
+      - "Servez-vous des lignes déjà tracées pour délimiter les camps : moins de plots, moins d'installation."
+      - "Gardez deux mètres entre le terrain de jeu et les murs."
+      - "Remplacez le sifflet par un geste quand l'écho devient fatigant."
+    faq:
+      - ["Quels jeux collectifs en gymnase ?", "La balle au capitaine, le béret, le ballon prisonnier, les jeux à camps : ils profitent de l'espace et des lignes du terrain."]
+      - ["Comment éviter les accidents au gymnase ?", "Pas de course vers un mur, des espaces de sécurité, des ballons en mousse pour les jeux où l'on vise les joueurs."]
+      - ["Combien d'enfants dans un gymnase ?", "Jusqu'à 30 pour un grand jeu, mais mieux vaut deux terrains de 15 que trente enfants autour d'un seul ballon."]
+
+  - slug: jardin
+    onglet: lieu
+    puce: Dans le jardin
+    filtre: {lieu: jardin}
+    titre_page: "Jeux de jardin pour enfants : idées pour un anniversaire ou un après-midi"
+    h1: Jeux de jardin pour enfants
+    intro: >-
+      Un jardin, c'est un terrain de jeu limité, avec des haies, des massifs et parfois une terrasse : idéal pour les
+      chasses au trésor, les jeux de rassemblement et les petites courses, moins pour les grands jeux qui demandent
+      beaucoup de place.
+    conseils:
+      - "Faites le tour du jardin avant les enfants : piscine fermée, outils rangés, massifs protégés."
+      - "Délimitez clairement la zone de jeu, surtout si le jardin n'est pas clos."
+      - "Prévoyez un repli à l'intérieur en cas de pluie."
+    faq:
+      - ["Quels jeux de jardin pour un anniversaire ?", "Une chasse au trésor, les sardines, le chat perché, une course de relais : des jeux qui tiennent dans un espace limité."]
+      - ["Comment sécuriser un jardin pour un jeu d'enfants ?", "Fermer l'accès à la piscine et à la rue, ranger les outils, désigner un adulte qui garde un œil sur les limites."]
+      - ["Faut-il beaucoup de matériel pour jouer au jardin ?", "Non : des foulards, quelques cerceaux ou plots, et ce que l'on trouve sur place suffisent."]
+
+  - slug: foret
+    onglet: lieu
+    puce: En forêt
+    filtre: {lieu: foret}
+    titre_page: "Jeux en forêt pour enfants : jeux nature, de piste et de cache-cache"
+    h1: Jeux en forêt pour enfants
+    intro: >-
+      La forêt est un formidable terrain de jeu : des cachettes partout, des trésors à ramasser, des bruits à écouter.
+      Elle demande aussi des règles claires, parce qu'on y perd vite de vue un enfant.
+    conseils:
+      - "Délimitez une zone de jeu visible (un chemin, un ruisseau, des rubans) et faites l'appel souvent."
+      - "Un signal sonore de rassemblement, toujours le même, que tout le monde connaît."
+      - "On regarde, on touche, on ne cueille pas : la forêt reste comme on l'a trouvée."
+    faq:
+      - ["Quels jeux faire en forêt avec des enfants ?", "Le bingo de la nature, gendarmes et voleurs, le drapeau, les jeux de piste : la forêt se prête aux jeux de cachette et de recherche."]
+      - ["Comment ne pas perdre un enfant en forêt ?", "Une zone délimitée, des équipes qui restent groupées, un appel régulier et un adulte à chaque limite."]
+      - ["Quelles précautions en forêt ?", "Ne pas toucher les champignons, les baies et les chenilles processionnaires, et vérifier l'absence de tiques au retour."]
+
+  - slug: plage
+    onglet: lieu
+    puce: À la plage
+    filtre: {lieu: plage}
+    titre_page: "Jeux de plage pour enfants : jeux collectifs dans le sable"
+    h1: Jeux de plage pour enfants
+    intro: >-
+      Le sable amortit les chutes et ralentit les courses : c'est le terrain idéal pour les jeux de camps, de ballon et
+      de réaction. Mais le soleil, la mer et les autres familles imposent leurs règles.
+    conseils:
+      - "Jouez loin de l'eau et des serviettes des autres, et jamais aux heures les plus chaudes."
+      - "Casquettes, crème solaire et eau pour tout le monde avant de commencer."
+      - "Les lignes se tracent au pied ou au bâton dans le sable : pas besoin de plots."
+    faq:
+      - ["Quels jeux collectifs à la plage ?", "La thèque, le volley, l'ultimate, poules renards vipères, rivière-rive : le sable rend les jeux de course plus doux."]
+      - ["Peut-on faire jouer un groupe d'enfants près de l'eau ?", "Le terrain de jeu doit rester loin de l'eau, et la baignade est une activité à part, avec sa propre surveillance."]
+      - ["Quels jeux de plage pour les petits ?", "Rivière-rive avec une ligne dans le sable, l'œil de lynx, le bingo des coquillages."]
+
+  - slug: voiture
+    onglet: lieu
+    puce: En voiture
+    filtre: {lieu: voiture}
+    titre_page: "Jeux de voiture pour enfants : jeux sans matériel pour les longs trajets"
+    h1: Jeux de voiture pour enfants
+    intro: >-
+      En voiture, le jeu doit se jouer assis, sans rien dans les mains ou presque, et sans distraire le conducteur. Les
+      meilleurs jeux de trajet reposent sur l'observation, les mots et les devinettes.
+    conseils:
+      - "Le conducteur ne joue pas, et personne ne lui demande de regarder quelque chose."
+      - "Alternez jeux et moments calmes : un enfant fatigué joue mal."
+      - "Les mêmes jeux servent dans une salle d'attente ou une file d'attente."
+    faq:
+      - ["Quels jeux faire en voiture avec des enfants ?", "L'œil de lynx, ni oui ni non, les vingt questions, le jeu des plaques, le petit bac pour les grands."]
+      - ["Quels jeux de voiture pour un enfant de 4 ans ?", "L'œil de lynx avec des couleurs, et des devinettes très simples sur les animaux."]
+      - ["Comment occuper des enfants sur un long trajet ?", "Des jeux de 10 à 15 minutes entrecoupés de pauses, de musique et d'arrêts toutes les deux heures."]
+
+  # ------------------------------------------------------------------ par moment
+  - slug: jeux-calmes
+    onglet: moment
+    puce: Jeux calmes
+    filtre: {moment: calme}
+    titre_page: "Jeux calmes pour enfants : pour retrouver le calme après l'agitation"
+    h1: Jeux calmes pour enfants
+    intro: >-
+      Après la récréation, avant le repas, en fin de journée : il y a des moments où un groupe a besoin de redescendre.
+      Les jeux calmes demandent de l'écoute, de l'observation ou de la réflexion, sans jamais être ennuyeux.
+    conseils:
+      - "Baissez votre voix avant de lancer le jeu : le groupe suit le ton de l'adulte."
+      - "Asseyez tout le monde en cercle, au même niveau."
+      - "Un jeu calme réussi est court : arrêtez quand le calme est là."
+    faq:
+      - ["Quel jeu pour calmer un groupe d'enfants ?", "Le roi du silence marche presque toujours, en deux minutes. Les jeux d'observation et de devinettes prennent ensuite le relais."]
+      - ["Les jeux calmes plaisent-ils aux grands ?", "Oui, si ce sont des défis : tenir le silence, trouver en vingt questions, battre un record au petit bac."]
+      - ["Combien de temps doit durer un jeu calme ?", "Dix à quinze minutes. Au-delà, l'agitation revient."]
+
+  - slug: se-defouler
+    onglet: moment
+    puce: Pour se défouler
+    filtre: {moment: defoulement}
+    titre_page: "Jeux pour se défouler : jeux collectifs qui font courir les enfants"
+    h1: Jeux pour se défouler
+    intro: >-
+      Après une matinée assis ou une longue attente, les enfants ont besoin de courir, de crier un peu et de se dépenser.
+      Les jeux de poursuite et les grands jeux à camps sont faits pour ça, à condition de garder des règles de sécurité claires.
+    conseils:
+      - "Un échauffement de deux minutes avant les jeux qui courent beaucoup."
+      - "Des limites de terrain bien visibles, et rien de dangereux au bout des courses."
+      - "Prévoyez de l'eau et des pauses, surtout quand il fait chaud."
+    faq:
+      - ["Quels jeux pour défouler des enfants ?", "Le chat perché, le pierre-feuille-ciseaux des équipes, la balle américaine, gendarmes et voleurs : beaucoup de course, des règles simples."]
+      - ["Comment éviter que le défoulement tourne à la bagarre ?", "Une règle claire sur le contact (on touche, on ne pousse pas), un arbitre, et un jeu calme juste après."]
+      - ["Combien de temps faut-il pour défouler un groupe ?", "Quinze à vingt minutes de jeu actif suffisent souvent à changer l'ambiance."]
+
+  - slug: veillee
+    onglet: moment
+    puce: Veillée
+    filtre: {moment: veillee}
+    titre_page: "Jeux de veillée pour enfants : idées pour le séjour, la colo ou la soirée"
+    h1: Jeux de veillée pour enfants
+    intro: >-
+      La veillée est le dernier moment de la journée en séjour : elle doit rassembler le groupe sans l'exciter avant le
+      coucher. Les jeux de veillée se jouent assis ou en petit groupe, avec de la réflexion, du suspense et beaucoup de rires.
+    conseils:
+      - "Finissez toujours par un jeu calme, juste avant le coucher."
+      - "Une lumière tamisée, mais assez forte pour voir les visages."
+      - "Prévoyez la durée : 45 minutes à une heure pour les 6-10 ans."
+    faq:
+      - ["Quels jeux de veillée pour des enfants de 8 ans ?", "Les sardines, les vingt questions, le petit bac, le roi du silence : des jeux connus, faciles à lancer."]
+      - ["Comment terminer une veillée en douceur ?", "Par un jeu de silence, une histoire, ou un tour de cercle où chacun dit son moment préféré de la journée."]
+      - ["Peut-on faire une veillée dehors ?", "Oui, en été, avec une zone éclairée et délimitée, et un adulte qui garde un œil sur les limites."]
+
+  # ------------------------------------------------------------------ par matériel
+  - slug: avec-un-ballon
+    onglet: materiel
+    puce: Avec un ballon
+    filtre: {materiel: ballon}
+    titre_page: "Jeux de ballon pour enfants : jeux collectifs avec un ballon"
+    h1: Jeux de ballon pour enfants
+    intro: >-
+      Un ballon suffit à faire jouer tout un groupe : on se le passe, on vise, on attrape, on se le dispute. Le bon ballon
+      change tout : en mousse pour les jeux où l'on vise les joueurs, plus lourd pour les jeux de passes et de tirs.
+    conseils:
+      - "Un ballon en mousse pour tous les jeux où l'on touche un joueur avec le ballon."
+      - "Plusieurs ballons pour un grand groupe : chacun le touche plus souvent."
+      - "Interdisez les tirs à la tête dès la première partie."
+    faq:
+      - ["Quels jeux de ballon pour des enfants de 6 ans ?", "La balle américaine, la patate chaude, le ballon chasseur, en ballon mousse."]
+      - ["Quels jeux de ballon sans but ni panier ?", "Le ballon prisonnier, la balle au capitaine, la passe à 5 : il suffit d'un terrain et de quelques plots."]
+      - ["Comment faire jouer les enfants qui n'aiment pas le ballon ?", "Choisir des jeux de passes où chacun doit toucher le ballon, et éviter ceux où l'on se fait viser."]
+
+  - slug: avec-des-cerceaux
+    onglet: materiel
+    puce: Avec des cerceaux
+    filtre: {materiel: cerceaux}
+    titre_page: "Jeux avec des cerceaux pour enfants : idées de jeux collectifs"
+    h1: Jeux avec des cerceaux
+    intro: >-
+      Le cerceau est le matériel le plus polyvalent de l'animation : une maison, une île, un camp, une cible, une
+      cachette. Posé au sol, il délimite un espace en une seconde, et les plus petits le comprennent tout de suite.
+    conseils:
+      - "Au sol à l'intérieur, les cerceaux glissent : remplacez-les par des tapis sur le carrelage."
+      - "Une couleur de cerceau par équipe simplifie tout."
+      - "Pas de cerceau autour du cou, jamais."
+    faq:
+      - ["Quels jeux avec des cerceaux pour les petits ?", "Les jeux de rassemblement (les hérissons, l'attelage du père Noël), où chacun doit trouver une maison."]
+      - ["Combien de cerceaux faut-il ?", "Un pour deux ou trois enfants pour les jeux de maisons, une dizaine pour les jeux de camps."]
+      - ["Peut-on remplacer les cerceaux ?", "Oui : des tapis, des cartons, des cordes en rond ou un trait de craie font l'affaire."]
+
+  - slug: avec-des-foulards
+    onglet: materiel
+    puce: Avec des foulards
+    filtre: {materiel: foulards}
+    titre_page: "Jeux avec des foulards pour enfants : jeux de poursuite et de drapeau"
+    h1: Jeux avec des foulards
+    intro: >-
+      Un foulard sert de béret, de drapeau, de queue de renard ou de bandeau. C'est un matériel léger, peu cher et sans
+      danger, qui permet de faire des jeux de poursuite sans contact.
+    conseils:
+      - "Glissez les foulards dans la ceinture, jamais noués autour du cou ou de la taille."
+      - "Une couleur par équipe : les foulards servent aussi à faire les équipes."
+      - "Lavez-les régulièrement s'ils servent de bandeaux pour les yeux."
+    faq:
+      - ["Quels jeux avec des foulards ?", "Le béret, le drapeau, les jeux de queue du renard, les jeux de nid et de ramassage."]
+      - ["Les foulards remplacent-ils les chasubles ?", "Oui, pour faire les équipes : glissés à la ceinture ou noués au bras, ils se voient bien."]
+      - ["Quels foulards acheter ?", "Des carrés de tissu léger d'environ 60 cm, de plusieurs couleurs, qui ne déteignent pas."]
+
+  - slug: papier-crayon
+    onglet: materiel
+    puce: Papier et crayon
+    filtre: {materiel: papier}
+    titre_page: "Jeux avec papier et crayon pour enfants : jeux d'écriture, de dessin et de cartes"
+    h1: Jeux avec une feuille et un crayon
+    intro: >-
+      Une feuille, un crayon, et c'est parti : jeux de mots, de dessin, cartes à fabriquer, indices à cacher. Ces jeux
+      se lancent partout, et ils font travailler sans en avoir l'air la lecture, l'écriture et la logique.
+    conseils:
+      - "Prévoyez un support dur (carton, livre) pour écrire sur les genoux."
+      - "Pour les enfants qui n'aiment pas écrire, jouez en équipes avec un secrétaire."
+      - "Des cartes et des indices préparés à l'avance font gagner beaucoup de temps."
+    faq:
+      - ["Quels jeux de papier pour des enfants de 8 ans ?", "Le petit bac, les jeux de piste avec indices, les cartes à reconstituer."]
+      - ["Comment faire jouer un enfant qui a du mal à écrire ?", "En équipe, avec un secrétaire, ou en remplaçant l'écrit par le dessin."]
+      - ["Ces jeux marchent-ils en grand groupe ?", "Oui, en équipes de 3 ou 4 avec une feuille par équipe."]
+
+  # ------------------------------------------------------------------ par nombre d'enfants
+  - slug: a-deux
+    onglet: groupe
+    puce: À deux
+    filtre: {joueurs_min: 2}
+    titre_page: "Jeux pour 2 enfants : jeux à deux, sans matériel ou presque"
+    h1: Jeux pour deux enfants
+    intro: >-
+      Deux frères et sœurs un dimanche, un enfant et un parent, deux copains en voiture : beaucoup de jeux d'enfants
+      supposent un groupe. Ceux-ci se jouent dès deux joueurs, et restent amusants quand on est plus nombreux.
+    conseils:
+      - "À deux, alternez souvent les rôles pour que personne ne s'ennuie."
+      - "L'adulte peut jouer, mais sans laisser gagner : les enfants le sentent."
+      - "Les jeux de mots et d'observation sont les plus faciles à lancer à deux."
+    faq:
+      - ["Quels jeux à deux sans matériel ?", "Ni oui ni non, les vingt questions, l'œil de lynx, le jeu des plaques."]
+      - ["Quels jeux pour un parent et un enfant ?", "Les jeux de devinettes et d'observation, et les chasses au trésor où l'adulte prépare et l'enfant cherche."]
+      - ["Les jeux à deux marchent-ils avec plus d'enfants ?", "Oui : tous les jeux de cette page fonctionnent aussi en petit groupe."]
+
+  - slug: petit-groupe
+    onglet: groupe
+    puce: Petit groupe
+    filtre: {joueurs_min: 4}
+    titre_page: "Jeux pour un petit groupe d'enfants : idées pour 4 à 8 enfants"
+    h1: Jeux pour un petit groupe d'enfants
+    intro: >-
+      Quatre à huit enfants, c'est la taille d'un anniversaire, d'une famille réunie ou d'un petit groupe d'accueil. Trop
+      peu pour les grands jeux à camps, juste assez pour les jeux de cercle, de cachette et les petites équipes.
+    conseils:
+      - "Avec peu d'enfants, chacun joue plus souvent : profitez-en pour faire tourner les rôles."
+      - "Les jeux à deux équipes marchent dès 6 enfants, avec des terrains plus petits."
+      - "Un adulte qui joue fait un joueur de plus, et rééquilibre les équipes."
+    faq:
+      - ["Quels jeux pour 5 enfants ?", "Les sardines, le jeu du ninja, la patate chaude, le roi du silence, les jeux de piste en une seule équipe."]
+      - ["Peut-on faire un grand jeu avec 6 enfants ?", "Oui, en réduisant le terrain et le nombre de camps, ou en jouant tous ensemble contre un adulte."]
+      - ["Quels jeux pour un anniversaire de 6 enfants ?", "Une chasse au trésor, des défis chronométrés, et un ou deux jeux de cercle : voir aussi nos kits d'anniversaire."]
+
+  # ------------------------------------------------------------------ croisements âge et lieu
+  - slug: interieur-3-5-ans
+    onglet: croisements
+    puce: Intérieur, 3-5 ans
+    filtre: {ages: [3, 5], lieu: interieur}
+    titre_page: "Jeux d'intérieur pour les 3-5 ans : jeux de groupe en maternelle et à la maison"
+    h1: Jeux d'intérieur pour les 3-5 ans
+    intro: >-
+      Dans une salle de motricité, une classe de maternelle ou un salon, les petits ont besoin de jeux qui bougent un
+      peu, qui se répètent, et qui se terminent toujours bien. Des jeux de rassemblement, d'imitation et de statues.
+    conseils:
+      - "Remplacez les cerceaux par des tapis sur les sols glissants."
+      - "Une musique douce et un signal toujours le même donnent le rythme."
+      - "Finissez par un temps calme, allongés ou assis en cercle."
+    faq:
+      - ["Quels jeux en salle de motricité pour les 3-5 ans ?", "Les jeux de maisons, les statues, rivière-rive, les jeux coopératifs autour d'un drap."]
+      - ["Comment faire jouer des petits dans un appartement ?", "Avec des jeux d'imitation, de devinettes et de statues, en marchant au lieu de courir."]
+      - ["Combien de temps de jeu pour des 3-5 ans ?", "Trente à quarante minutes en tout, en enchaînant des jeux de cinq à dix minutes."]
+
+  - slug: exterieur-3-5-ans
+    onglet: croisements
+    puce: Dehors, 3-5 ans
+    filtre: {ages: [3, 5], lieu: exterieur}
+    titre_page: "Jeux d'extérieur pour les 3-5 ans : jeux de cour et de jardin pour les petits"
+    h1: Jeux d'extérieur pour les 3-5 ans
+    intro: >-
+      Dehors, les petits courent, se cachent et ramassent tout ce qu'ils trouvent. Les meilleurs jeux de cet âge
+      profitent de cette énergie, dans un espace limité et sous l'œil d'un adulte, avec une histoire pour les guider.
+    conseils:
+      - "Un espace petit et fermé : à cet âge, les enfants partent vite dans tous les sens."
+      - "Un adulte pour quatre à six enfants dans les jeux qui courent."
+      - "De l'ombre, de l'eau et un chapeau dès qu'il fait beau."
+    faq:
+      - ["Quels jeux de cour pour la maternelle ?", "Le chat perché avec des perchoirs bas, rivière-rive, les jeux de rassemblement et les petites chasses au trésor."]
+      - ["Les petits peuvent-ils jouer avec les grands dehors ?", "Oui, dans des jeux coopératifs, ou avec un grand comme guide de chaque petit."]
+      - ["Comment rassembler des petits dehors ?", "Une clochette ou une chanson toujours la même, et un point de rendez-vous facile à repérer."]
+
+  - slug: jardin-3-5-ans
+    onglet: croisements
+    puce: Jardin, 3-5 ans
+    filtre: {ages: [3, 5], lieu: jardin}
+    titre_page: "Jeux de jardin pour les 3-5 ans : idées pour un anniversaire de petits"
+    h1: Jeux de jardin pour les 3-5 ans
+    intro: >-
+      Un anniversaire de petits dans le jardin, c'est une heure de jeux courts : une chasse au trésor, un jeu de
+      rassemblement, des statues, puis le goûter. Le jardin doit être sûr, et chaque jeu doit finir par un succès pour tous.
+    conseils:
+      - "Fermez la piscine et rangez les outils avant l'arrivée des enfants."
+      - "Une chasse au trésor juste : même nombre d'objets par enfant."
+      - "Demandez aux parents de rester : les petits jouent mieux avec un parent pas loin."
+    faq:
+      - ["Quels jeux pour un anniversaire de 3 ans au jardin ?", "Une chasse aux objets de couleur, des statues en musique, un jeu de maisons. Trois jeux suffisent."]
+      - ["Combien d'enfants pour un anniversaire de 4 ans ?", "Six à huit, avec deux ou trois adultes."]
+      - ["Que faire s'il pleut ?", "Prévoir les mêmes jeux en version intérieure : la plupart des jeux de cette page ont une version pour la maison."]
+
+  - slug: interieur-6-8-ans
+    onglet: croisements
+    puce: Intérieur, 6-8 ans
+    filtre: {ages: [6, 8], lieu: interieur}
+    titre_page: "Jeux d'intérieur pour les 6-8 ans : jeux de groupe pour la classe et la maison"
+    h1: Jeux d'intérieur pour les 6-8 ans
+    intro: >-
+      Les 6-8 ans ont beaucoup d'énergie et aiment les règles : à l'intérieur, il faut des jeux qui les occupent vraiment,
+      de cachette, de réaction, de mots ou de stratégie, sans transformer la salle en terrain de sport.
+    conseils:
+      - "Interdisez la course, mais autorisez la marche rapide : la règle est plus facile à tenir."
+      - "Les jeux de cachette marchent très bien dans une maison ou un centre, avec des pièces autorisées."
+      - "Gardez un jeu de silence pour reprendre le groupe en main."
+    faq:
+      - ["Quels jeux d'intérieur pour un anniversaire de 7 ans ?", "Les sardines, une enquête, le jeu du ninja, la patate chaude : voir aussi nos kits d'anniversaire."]
+      - ["Quels jeux pour un jour de pluie au centre de loisirs ?", "Les jeux de cachette, de mots, de mime et de réaction, en alternant avec des jeux calmes."]
+      - ["Comment éviter le bruit dans une salle ?", "Des jeux où l'on chuchote, des signaux visuels, et un jeu de silence toutes les vingt minutes."]
+
+  - slug: exterieur-6-8-ans
+    onglet: croisements
+    puce: Dehors, 6-8 ans
+    filtre: {ages: [6, 8], lieu: exterieur}
+    titre_page: "Jeux d'extérieur pour les 6-8 ans : jeux collectifs et grands jeux"
+    h1: Jeux d'extérieur pour les 6-8 ans
+    intro: >-
+      Dehors, les 6-8 ans découvrent les vrais jeux collectifs : des camps, des prisons, des drapeaux. Ils veulent courir
+      et gagner, mais ont encore besoin d'un adulte pour faire respecter les règles et équilibrer les équipes.
+    conseils:
+      - "Un terrain bien délimité, de taille adaptée : plus petit que pour les grands."
+      - "Des équipes équilibrées en âge et en vitesse, refaites à chaque jeu."
+      - "Des prisons qu'on peut délivrer, pour que personne n'attende longtemps."
+    faq:
+      - ["Quels grands jeux pour les 6-8 ans ?", "Gendarmes et voleurs, le béret, la balle américaine, le relais des épis, le pierre-feuille-ciseaux des équipes."]
+      - ["Combien de temps de grand jeu à 6-8 ans ?", "Vingt à trente minutes, avec une pause pour boire."]
+      - ["Comment faire les équipes sans vexer personne ?", "Par l'adulte, au hasard (cartes, couleurs), jamais par des capitaines qui choisissent un par un."]
+
+  - slug: jardin-6-8-ans
+    onglet: croisements
+    puce: Jardin, 6-8 ans
+    filtre: {ages: [6, 8], lieu: jardin}
+    titre_page: "Jeux de jardin pour les 6-8 ans : idées pour un anniversaire ou un après-midi"
+    h1: Jeux de jardin pour les 6-8 ans
+    intro: >-
+      Dans un jardin, les 6-8 ans adorent les cachettes, les chasses au trésor et les petites courses de relais. L'espace
+      est limité : on choisit des jeux où l'on se cache et où l'on cherche plutôt que des grandes courses.
+    conseils:
+      - "Montrez les limites du jardin et les zones interdites (massifs, potager, rue)."
+      - "Les jeux de recherche occupent longtemps : préparez les cachettes avant l'arrivée des enfants."
+      - "Un adulte reste près de la sortie si le jardin n'est pas fermé."
+    faq:
+      - ["Quels jeux pour un anniversaire de 7 ans au jardin ?", "Une chasse au trésor avec énigmes, les sardines, le chat perché, un relais."]
+      - ["Comment organiser une chasse au trésor au jardin ?", "Cinq ou six indices cachés à hauteur des yeux des enfants, un trésor final à partager, et des équipes de trois."]
+      - ["Quels jeux pour un petit jardin ?", "Les jeux de recherche, de rassemblement et de cercle, plutôt que les jeux de course."]
+
+  - slug: jeux-calmes-6-8-ans
+    onglet: croisements
+    puce: Calmes, 6-8 ans
+    filtre: {ages: [6, 8], energie: calme}
+    titre_page: "Jeux calmes pour les 6-8 ans : jeux de silence, de mots et d'observation"
+    h1: Jeux calmes pour les 6-8 ans
+    intro: >-
+      Les 6-8 ans ont du mal à rester tranquilles, mais adorent les défis : tenir le silence plus longtemps que le
+      copain, trouver le premier, battre un record. Les jeux calmes de cet âge sont des défis à voix basse.
+    conseils:
+      - "Présentez le jeu calme comme un défi, pas comme une punition."
+      - "Un record à battre (de silence, de questions) motive tout le groupe."
+      - "Gardez les jeux calmes courts, et enchaînez-en deux plutôt qu'un long."
+    faq:
+      - ["Quel jeu calme après la récréation ?", "Le roi du silence, puis un jeu de devinettes ou d'observation."]
+      - ["Quels jeux calmes en voiture pour 7 ans ?", "L'œil de lynx, ni oui ni non, les vingt questions."]
+      - ["Comment calmer un enfant de 6 ans agité ?", "Lui donner un rôle dans le jeu calme : roi du silence, gardien du temps, meneur."]
+
+  - slug: ballon-6-8-ans
+    onglet: croisements
+    puce: Ballon, 6-8 ans
+    filtre: {ages: [6, 8], materiel: ballon}
+    titre_page: "Jeux de ballon pour les 6-8 ans : jeux collectifs simples"
+    h1: Jeux de ballon pour les 6-8 ans
+    intro: >-
+      À 6-8 ans, les enfants veulent tous toucher le ballon. Les bons jeux de ballon de cet âge font circuler la balle
+      entre tous les joueurs, avec un ballon en mousse et des règles qui protègent ceux qui attrapent mal.
+    conseils:
+      - "Ballon en mousse obligatoire dès qu'on vise un joueur."
+      - "Deux ballons pour un groupe de plus de douze."
+      - "Une règle « tout le monde touche le ballon avant de marquer » équilibre les équipes."
+    faq:
+      - ["Quels jeux de ballon pour 6 ans ?", "La balle américaine, la patate chaude, le ballon chasseur."]
+      - ["Le ballon prisonnier convient-il aux 6-8 ans ?", "Oui, avec un ballon en mousse et une prison qu'on peut quitter vite."]
+      - ["Comment faire jouer un enfant qui a peur du ballon ?", "Un ballon léger, des passes à la main, et des jeux où l'on ne vise jamais les joueurs."]
+
+  - slug: interieur-9-12-ans
+    onglet: croisements
+    puce: Intérieur, 9-12 ans
+    filtre: {ages: [9, 12], lieu: interieur}
+    titre_page: "Jeux d'intérieur pour les 9-12 ans : jeux de groupe, de réflexion et de veillée"
+    h1: Jeux d'intérieur pour les 9-12 ans
+    intro: >-
+      À l'intérieur, les 9-12 ans s'ennuient vite avec les jeux de petits. Ils veulent du bluff, de la stratégie, des
+      jeux de mots et des défis : de quoi occuper une veillée, un jour de pluie ou une fin de journée au centre.
+    conseils:
+      - "Laissez-les arbitrer et compter les points entre eux."
+      - "Proposez des tournois courts avec un classement par équipe."
+      - "Les jeux de veillée marchent aussi l'après-midi, rideaux tirés."
+    faq:
+      - ["Quels jeux d'intérieur pour des enfants de 10 ans ?", "Le jeu du ninja, le petit bac, les sardines, les vingt questions."]
+      - ["Quels jeux pour une veillée de préados ?", "Les jeux de bluff et de devinettes, les sardines dans le noir avec une lampe, le petit bac en équipes."]
+      - ["Comment occuper des 9-12 ans un jour de pluie ?", "Un tournoi de jeux courts, un grand jeu de piste dans le bâtiment, ou une enquête."]
+
+  - slug: exterieur-9-12-ans
+    onglet: croisements
+    puce: Dehors, 9-12 ans
+    filtre: {ages: [9, 12], lieu: exterieur}
+    titre_page: "Jeux d'extérieur pour les 9-12 ans : grands jeux et jeux sportifs"
+    h1: Jeux d'extérieur pour les 9-12 ans
+    intro: >-
+      Dehors, les 9-12 ans aiment les grands jeux à stratégie et les sports adaptés : de grands terrains, des équipes
+      organisées, des rôles différents. C'est l'âge où un bon grand jeu reste dans les mémoires.
+    conseils:
+      - "Prenez le temps de la stratégie : deux minutes de concertation par équipe."
+      - "Un arbitre par terrain, et des règles écrites si le jeu est complexe."
+      - "Prévoyez des rôles pour ceux qui courent moins : gardien, stratège, messager."
+    faq:
+      - ["Quels grands jeux pour les 9-12 ans ?", "Le drapeau double, poules renards vipères, les six planètes, l'épervier gradé, la thèque."]
+      - ["Combien d'enfants pour un grand jeu à 10 ans ?", "Seize à trente, en deux ou trois équipes."]
+      - ["Quels jeux sportifs pour un centre de loisirs ?", "La balle au capitaine, l'ultimate, le rugby au toucher, la thèque : des sports simplifiés."]
+
+  - slug: jardin-9-12-ans
+    onglet: croisements
+    puce: Jardin, 9-12 ans
+    filtre: {ages: [9, 12], lieu: jardin}
+    titre_page: "Jeux de jardin pour les 9-12 ans : idées pour un anniversaire de grands"
+    h1: Jeux de jardin pour les 9-12 ans
+    intro: >-
+      Un anniversaire de 9 à 12 ans au jardin demande plus qu'une chasse aux bonbons : des énigmes, des cachettes, des
+      défis entre équipes. Le jardin limite les courses, mais se prête parfaitement aux jeux de recherche et de bluff.
+    conseils:
+      - "Des énigmes plutôt que des objets à ramasser : à cet âge, chercher compte plus que trouver."
+      - "Des équipes de trois ou quatre, avec un rôle pour chacun."
+      - "Un jeu de nuit à la lampe, si l'anniversaire se prolonge en soirée."
+    faq:
+      - ["Quels jeux pour un anniversaire de 10 ans au jardin ?", "Une enquête, un jeu de piste avec énigmes, les sardines, le jeu du ninja. Voir aussi nos kits d'anniversaire."]
+      - ["Comment faire un jeu de piste dans un petit jardin ?", "En cachant des indices à résoudre plutôt qu'à chercher loin : codes, rébus, objets à combiner."]
+      - ["Quels jeux de soirée au jardin ?", "Les sardines à la lampe, le petit bac sur la terrasse, les vingt questions autour d'une table."]
+
+  - slug: jeux-calmes-9-12-ans
+    onglet: croisements
+    puce: Calmes, 9-12 ans
+    filtre: {ages: [9, 12], energie: calme}
+    titre_page: "Jeux calmes pour les 9-12 ans : jeux de réflexion, de mots et de bluff"
+    h1: Jeux calmes pour les 9-12 ans
+    intro: >-
+      Les 9-12 ans apprécient les jeux calmes dès qu'il y a un enjeu : un mot à trouver, un piège à éviter, un record.
+      Ce sont les jeux parfaits pour un trajet, une file d'attente ou une fin de veillée.
+    conseils:
+      - "Plus c'est difficile, plus ils aiment : augmentez vite le niveau."
+      - "Laissez-les inventer des catégories ou des thèmes."
+      - "Notez les records du groupe et battez-les d'une séance à l'autre."
+    faq:
+      - ["Quels jeux de mots pour des enfants de 10 ans ?", "Le petit bac, ni oui ni non, les vingt questions, le jeu des plaques."]
+      - ["Quels jeux calmes en colonie ?", "Les jeux de veillée, de devinettes et de silence, en fin de journée."]
+      - ["Comment rendre un jeu calme plus difficile ?", "Moins de temps, plus de catégories, ou des mots interdits supplémentaires."]
+
+  - slug: ballon-9-12-ans
+    onglet: croisements
+    puce: Ballon, 9-12 ans
+    filtre: {ages: [9, 12], materiel: ballon}
+    titre_page: "Jeux de ballon pour les 9-12 ans : jeux collectifs et sports adaptés"
+    h1: Jeux de ballon pour les 9-12 ans
+    intro: >-
+      À 9-12 ans, les jeux de ballon deviennent des vrais jeux d'équipe : passes, démarquage, stratégie. Les sports
+      adaptés (sans contact, avec des règles simplifiées) permettent à tous de jouer, pas seulement aux sportifs du groupe.
+    conseils:
+      - "Une règle de passes obligatoires avant de marquer fait jouer tout le monde."
+      - "Mélangez filles et garçons, sportifs et moins sportifs, dans chaque équipe."
+      - "Changez de jeu avant que le même joueur marque tous les points."
+    faq:
+      - ["Quels jeux de ballon pour 10 ans ?", "La balle au capitaine, la passe à 5, le ballon prisonnier, le rugby au toucher."]
+      - ["Comment éviter qu'un seul joueur garde le ballon ?", "Trois secondes au plus avec le ballon, et une passe obligatoire avant de tirer."]
+      - ["Quels jeux de ballon sans contact ?", "Le rugby au toucher, l'ultimate, la balle au capitaine : on touche, on ne plaque pas."]

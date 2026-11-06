@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block tete %}
+{% set j = page.jeu %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@type": "HowTo", "name": j.nom, "description": j.but, "totalTime": "PT" ~ j.duree ~ "M", "supply": j.materiel, "inLanguage": "fr-FR", "isAccessibleForFree": true} | tojson }}
+</script>
+{% endblock %}
+{% block contenu %}
+{% set j = page.jeu %}
+<article class="cadre jeu jeu-fete">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/jeux-offerts/') }}">Jeux offerts</a> <span aria-hidden="true">/</span> <span>{{ j.nom }}</span></nav>
+  <p class="jeu-fete__surtitre">Un jeu offert</p>
+  <h1 class="titre-page">{{ j.nom }}</h1>
+  <p class="chapo">{{ j.accroche }}</p>
+  <div class="jeu__grille">
+    <div class="jeu__texte">
+      <div class="conseil conseil--but">
+        <p class="conseil__signature">Le but du jeu</p>
+        <p>{{ j.but }}</p>
+      </div>
+      <dl class="jeu__meta">
+        <div><dt>Âge</dt><dd>{% if j.age_max >= 99 %}Dès {{ j.age_min }} ans{% else %}{{ j.age_min }} à {{ j.age_max }} ans{% endif %}</dd></div>
+        <div><dt>Joueurs</dt><dd>{{ j.joueurs[0] }} à {{ j.joueurs[1] }}</dd></div>
+        <div><dt>Durée</dt><dd>{{ j.duree }} min</dd></div>
+      </dl>
+      <div class="texte">
+        {% if j.histoire %}<h2>L'histoire à raconter</h2>
+        <p>{{ j.histoire }}</p>{% endif %}
+        <h2>Matériel</h2>
+        <ul>{% for x in j.materiel %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+    <aside class="jeu__cote">
+      <div class="encart encart--info encart--colonne jeu-fete__imprimer">
+        <p><strong>Ce jeu est offert.</strong> Imprimez cette page telle quelle : le menu et les encarts disparaissent à l'impression.</p>
+        <button class="bouton bouton--petit" type="button" onclick="window.print()">Imprimer la fiche</button>
+      </div>
+    </aside>
+  </div>
+
+  <section class="section section--serree">
+    <h2 class="section__titre">{{ "Deux façons d'y jouer" if j.versions | length > 1 else "Comment y jouer" }}</h2>
+    <div class="versions">
+      {% for v in j.versions %}
+      <section class="version">
+        <h3 class="version__titre">{{ v.lieu }}</h3>
+        <p class="version__espace">{{ v.espace }}</p>
+        <div class="texte">
+          <h4>Mise en place</h4>
+          <p>{{ v.mise_en_place }}</p>
+          <h4>Déroulement</h4>
+          <ol>{% for x in v.deroulement %}<li>{{ x }}</li>{% endfor %}</ol>
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div class="texte jeu-fete__suite">
+    <h2>Les règles{% if j.versions | length > 1 %}, dans les deux versions{% endif %}</h2>
+    <ul>{% for r in j.regles %}<li>{{ r }}</li>{% endfor %}</ul>
+    <h2>Adapter selon l'âge</h2>
+    <ul>{% for r in j.adapter %}<li>{{ r }}</li>{% endfor %}</ul>
+    {% if j.securite %}<h2>Sécurité</h2>
+    <ul>{% for r in j.securite %}<li>{{ r }}</li>{% endfor %}</ul>{% endif %}
+    {% if j.fin %}<h2>Pour bien finir</h2>
+    <p>{{ j.fin }}</p>{% endif %}
+  </div>
+
+  {% set ou = trouver_pages_du_jeu(j.id) %}
+  {% if ou %}
+  <nav class="autres-fetes" aria-label="Ce jeu se trouve aussi dans">
+    <p class="autres-fetes__titre">Ce jeu se trouve aussi dans</p>
+    <ul class="pastilles">{% for x in ou %}<li><a class="pastille" href="{{ lien(x.url) }}">{{ x.h1 }}</a></li>{% endfor %}</ul>
+  </nav>
+  {% endif %}
+  {% set voisins = offerts_cartes | rejectattr('id', 'equalto', j.id) | list %}
+  {% if voisins %}
+  <section class="section section--serree jeu-fete__voisins">
+    <h2 class="section__titre">D'autres jeux offerts</h2>
+    <div class="grille-jeux">{% for x in voisins[:6] %}{{ m.carte_jeu_tout(x) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  <div class="bandeau-cadeau">
+    <div>
+      <h2 class="bandeau-cadeau__titre">3 grands jeux offerts</h2>
+      <p>Gendarmes et voleurs, Poules renards vipères et L'épervier gradé : les règles complètes et le schéma du terrain, {{ 'à recevoir gratuitement par mail' if site.brevo_formulaire else 'à télécharger sans inscription' }}, pour jouer toute l'année.</p>
+    </div>
+    <a class="bouton bouton--encre" href="{{ lien('/jeux-gratuits/') }}">Télécharger les 3 jeux</a>
+  </div>
+</article>
+{% endblock %}

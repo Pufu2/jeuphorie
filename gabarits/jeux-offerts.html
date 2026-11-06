@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block contenu %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>Jeux offerts</span></nav>
+  <header class="tete-univers tete-trouver">
+    <p class="tete-univers__public">Règles complètes, gratuites, à imprimer</p>
+    <h1 class="titre-page">Jeux offerts pour enfants</h1>
+    <p class="chapo">Des jeux de cour, de veillée, de voiture, de jardin et de salle, avec les règles complètes, une version pour chaque lieu et les adaptations selon l'âge. De nouveaux jeux arrivent chaque semaine.</p>
+  </header>
+  {% set liste = offerts_cartes | sort(attribute='age_min') %}
+  <section class="section section--serree">
+    <div class="grille-jeux">{% for j in liste %}{{ m.carte_jeu_tout(j) }}{% endfor %}</div>
+  </section>
+  <p class="chapo">Les jeux des fêtes de l'année sont aussi offerts : <a href="{{ lien('/fetes/') }}">voir les fêtes</a>. Et pour trouver un jeu selon l'âge ou le lieu : <a href="{{ lien('/trouver-un-jeu/') }}">trouver un jeu</a>.</p>
+</div>
+{% endblock %}

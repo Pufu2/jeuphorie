@@ -76,3 +76,15 @@
 <p class="vide">{{ vide }}</p>
 {% endif %}
 {% endmacro %}
+
+
+{# Carte d'un jeu, quel que soit son type (pages « Trouver un jeu ») #}
+{% macro carte_jeu_tout(j) %}
+<a class="carte-jeu carte-jeu--tout" href="{{ lien(j.url) }}">
+  <span class="carte-jeu__genre">{{ j.genre }}</span>
+  <span class="carte-jeu__nom">{{ j.nom }}</span>
+  <span class="carte-jeu__meta">{% if j.age_max >= 99 %}Dès {{ j.age_min }} ans{% else %}{{ j.age_min }} à {{ j.age_max }} ans{% endif %}, {{ j.joueurs[0] }} à {{ j.joueurs[1] }} joueurs, {{ j.duree }} min</span>
+  {% if j.accroche %}<span class="carte-jeu__astuce">{{ j.accroche | truncate(130) }}</span>{% endif %}
+  {% if j.offert %}<span class="carte-jeu__offert">Règles offertes</span>{% else %}<span class="carte-jeu__pack">Dans les packs de grands jeux</span>{% endif %}
+</a>
+{% endmacro %}

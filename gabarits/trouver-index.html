@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block contenu %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <span>Trouver un jeu</span></nav>
+  <header class="tete-univers tete-trouver">
+    <p class="tete-univers__public">Tous les jeux de Jeuphorie, rangés pour vous</p>
+    <h1 class="titre-page">Trouver un jeu pour enfants</h1>
+    <p class="chapo">Choisissez ce que vous savez déjà : l'âge des enfants, l'endroit où vous jouez, le moment de la journée, le matériel que vous avez ou le nombre d'enfants. Chaque page rassemble les jeux qui conviennent, avec des conseils et les réponses aux questions les plus fréquentes.</p>
+  </header>
+  {% for o in trouver_onglets %}
+  <section class="section section--serree" aria-labelledby="t-{{ o.id }}">
+    <h2 id="t-{{ o.id }}" class="section__titre">{{ o.nom }}</h2>
+    <p class="chapo">{{ o.texte }}</p>
+    <ul class="pastilles">
+      {% for p in o.pages %}<li><a class="pastille" href="{{ lien(p.url) }}">{{ p.puce }} <span class="pastille__nb">{{ p.jeux | length }}</span></a></li>{% endfor %}
+      {% for g in o.guides %}<li><a class="pastille pastille--guide" href="{{ lien(g[1]) }}">{{ g[0] }}</a></li>{% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+  <section class="section section--serree">
+    <h2 class="section__titre">Jeux pour tous</h2>
+    <p class="chapo">Des jeux pensés pour jouer ensemble avec un enfant en situation de handicap.</p>
+    <ul class="pastilles">{% for u in d.univers.univers if u.situations %}{% for s in u.situations %}<li><a class="pastille" href="{{ lien(u.url ~ s.id ~ '/') }}">{{ s.nom }}</a></li>{% endfor %}{% endfor %}</ul>
+  </section>
+</div>
+{% endblock %}

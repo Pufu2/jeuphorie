@@ -1,0 +1,548 @@
+# Les jeux offerts de Jeuphorie, hors fêtes : règles complètes, en accès libre, une page chacun (/jeux-offerts/<id>/).
+# Jamais un jeu d'un kit payant (vérifier les noms dans jeuphorie-produits avant d'en ajouter un).
+# « ajoute » (AAAA-MM-JJ) : le jeu reste caché jusqu'à ce jour-là. La tâche automatique en écrit deux par semaine.
+#
+# Repères pour les pages « Trouver un jeu » :
+#   lieux : interieur, exterieur, cour, gymnase, jardin, foret, plage, voiture
+#   moments : calme, defoulement, connaissance, veillee, attente
+#   energie : calme, moyenne, forte
+#   materiel_tags : sans-materiel, ballon, cerceaux, foulards, papier, plots, nature
+jeux:
+  - id: chat-perche
+    nom: Le chat perché
+    accroche: Le grand classique des cours de récréation, où l'on est à l'abri dès que les pieds ne touchent plus le sol.
+    age_min: 4
+    age_max: 10
+    joueurs: [6, 30]
+    duree: 15
+    lieux: [exterieur, cour, jardin]
+    moments: [defoulement]
+    energie: forte
+    materiel_tags: [sans-materiel]
+    but: Ne pas se faire toucher par le chat, en se mettant à l'abri en hauteur au bon moment.
+    materiel:
+      - Rien, à part des perchoirs sûrs (un banc, une marche, un muret bas, un tapis, une souche)
+      - Une chasuble ou un foulard pour reconnaître le chat
+    versions:
+      - lieu: Dehors
+        espace: Une cour ou un jardin avec quelques perchoirs bas et stables
+        mise_en_place: >-
+          Montrez au groupe les perchoirs autorisés : un banc, une marche, un muret de moins de 50 cm. Tout le reste est
+          interdit, même s'il est plus haut.
+        deroulement:
+          - Le chat compte jusqu'à cinq, puis court après les autres joueurs.
+          - Un joueur qui a les deux pieds sur un perchoir est « perché » : le chat ne peut pas le toucher.
+          - "On ne reste pas perché plus de cinq secondes : le chat compte à voix haute, et le joueur doit repartir."
+          - Le joueur touché devient le chat, et prend la chasuble.
+      - lieu: À l'intérieur
+        espace: Une salle de motricité ou un préau, sans meubles au milieu
+        mise_en_place: >-
+          Les perchoirs deviennent des tapis ou des cerceaux posés au sol : être « perché », c'est avoir les deux pieds
+          dedans. Prévoyez un perchoir pour quatre joueurs.
+        deroulement:
+          - Même jeu qu'à l'extérieur, en marchant vite au lieu de courir si la salle est petite.
+          - Toutes les deux minutes, l'animateur retire un tapis.
+    regles:
+      - On est perché seulement sur les perchoirs annoncés au départ.
+      - Cinq secondes au plus sur un perchoir, puis on repart.
+      - Le chat touche avec la main, sur le dos ou le bras, sans pousser.
+    adapter:
+      - "4-5 ans : deux chats qui marchent au lieu de courir, et des perchoirs très nombreux."
+      - "6-8 ans : le chat a le droit de garder un perchoir libre interdit pendant dix secondes."
+      - "9-10 ans : chat perché par équipes, avec deux chats qui se passent la chasuble."
+    securite:
+      - Uniquement des perchoirs bas, stables et non glissants. Jamais de rebord de fenêtre, de muret haut ou de jeu de cour mouillé.
+      - On ne pousse jamais quelqu'un pour prendre son perchoir.
+    fin: Le dernier chat choisit le perchoir sur lequel tout le groupe doit tenir en même temps pour finir la partie.
+
+  - id: roi-du-silence
+    nom: Le roi du silence
+    accroche: Un jeu calme qui marche à tous les coups pour faire redescendre un groupe agité, en deux minutes.
+    age_min: 4
+    age_max: 10
+    joueurs: [4, 30]
+    duree: 10
+    lieux: [interieur]
+    moments: [calme, veillee]
+    energie: calme
+    materiel_tags: [sans-materiel]
+    but: Rester le plus immobile et le plus silencieux possible, pour devenir le roi ou la reine du silence.
+    materiel:
+      - Rien
+      - "Facultatif : une couronne en papier pour le roi ou la reine"
+    versions:
+      - lieu: À l'intérieur
+        espace: N'importe quelle salle, assis par terre ou sur des chaises
+        mise_en_place: >-
+          Les joueurs s'assoient en cercle ou à leur place, les mains sur les genoux. L'animateur est le premier roi
+          du silence, debout au milieu.
+        deroulement:
+          - "Le roi annonce : « Le royaume s'endort. » Plus personne ne parle ni ne bouge."
+          - Le roi se promène doucement entre les joueurs. Il peut faire des grimaces, mais ne touche personne et ne dit rien.
+          - Un joueur qui parle, rit ou bouge se lève et devient un garde du roi. Il aide à repérer ceux qui bougent.
+          - "Au bout d'une à deux minutes, le roi annonce : « Le royaume se réveille. » Le joueur resté le plus immobile devient le nouveau roi."
+      - lieu: Dehors
+        espace: Assis dans l'herbe, à l'ombre, en fin d'après-midi
+        mise_en_place: Le cercle s'assoit sur une pelouse. On écoute d'abord ensemble les bruits autour pendant trente secondes.
+        deroulement:
+          - Même jeu qu'à l'intérieur.
+          - "Au réveil, chacun dit un bruit qu'il a entendu pendant que le royaume dormait."
+    regles:
+      - Le roi ne touche jamais les joueurs.
+      - Les gardes repèrent, mais seul le roi décide qui a bougé.
+      - On ne garde pas les yeux fermés si l'on ne veut pas.
+    adapter:
+      - "4-5 ans : trente secondes de silence suffisent, et l'on compte les secondes ensemble au réveil."
+      - "6-8 ans : le roi a le droit de faire des bruits d'animaux pour piéger le royaume."
+      - "9-10 ans : deux minutes, et le roi choisit un mot interdit : celui qui sourit en l'entendant devient garde."
+    securite:
+      - Si un enfant n'aime pas qu'on s'approche de lui, le roi le salue de loin.
+    fin: Le dernier roi souffle sur le royaume pour le réveiller tout doucement, et tout le monde s'étire comme au réveil.
+
+  - id: sardines
+    nom: Les sardines
+    accroche: Le cache-cache à l'envers, où celui qui trouve la cachette doit s'y serrer avec les autres.
+    age_min: 6
+    age_max: 12
+    joueurs: [5, 15]
+    duree: 20
+    lieux: [interieur, jardin]
+    moments: [veillee]
+    energie: moyenne
+    materiel_tags: [sans-materiel]
+    but: Trouver la cachette du premier joueur et s'y cacher avec lui, sans se faire repérer par ceux qui cherchent encore.
+    materiel:
+      - Rien
+    versions:
+      - lieu: À l'intérieur
+        espace: Une maison, un centre ou un gîte, avec plusieurs pièces autorisées
+        mise_en_place: >-
+          Montrez les pièces où l'on a le droit d'aller, et fermez les autres. Les placards, les machines et les
+          lieux en hauteur sont interdits.
+        deroulement:
+          - Un joueur part se cacher pendant que les autres comptent jusqu'à cinquante, les yeux fermés.
+          - Tout le monde part à sa recherche, chacun de son côté.
+          - Celui qui le trouve ne dit rien et se cache avec lui, le plus discrètement possible.
+          - Peu à peu, la cachette se remplit de sardines serrées les unes contre les autres.
+          - Le dernier joueur qui trouve la cachette part se cacher à la partie suivante.
+      - lieu: Dans un jardin
+        espace: Un jardin fermé, avec des haies, des arbres, une cabane
+        mise_en_place: Montrez les limites du jardin. Les cachettes ne doivent jamais être hors de vue d'un adulte.
+        deroulement:
+          - Même jeu qu'à l'intérieur.
+          - "Pour les grands, une partie au crépuscule, avec une lampe de poche : celui qui cherche n'allume que pour se déplacer."
+    regles:
+      - On cherche en silence.
+      - On ne ressort pas de la cachette quand on l'a trouvée.
+      - Les endroits interdits restent interdits, même s'ils font une super cachette.
+    adapter:
+      - "6-7 ans : on cherche par deux, en se tenant la main."
+      - "8-10 ans : le jeu classique."
+      - "11-12 ans : la cachette doit changer de pièce une fois pendant la partie, en emmenant toutes les sardines sans être vues."
+    securite:
+      - Jamais de cachette dans un placard qui se ferme, un coffre, un réfrigérateur, une voiture ou une machine.
+      - "Un adulte connaît toujours la cachette de départ, et fait l'appel à la fin de chaque partie."
+    fin: Quand la dernière sardine arrive, toute la boîte crie « Sardines ! » et sort en se tortillant.
+
+  - id: ni-oui-ni-non
+    nom: Ni oui ni non
+    accroche: Le jeu de questions où il est interdit de dire oui ou non. Idéal dans la voiture, dans une file d'attente ou à table.
+    age_min: 6
+    age_max: 99
+    joueurs: [2, 15]
+    duree: 10
+    lieux: [voiture, interieur, exterieur]
+    moments: [attente, calme]
+    energie: calme
+    materiel_tags: [sans-materiel]
+    but: Répondre aux questions pendant une minute sans jamais dire « oui » ni « non ».
+    materiel:
+      - Rien
+      - "Facultatif : une montre ou un téléphone pour chronométrer"
+    versions:
+      - lieu: En voiture ou dans une file d'attente
+        espace: Assis, sans bouger
+        mise_en_place: Un joueur est interrogé, un autre pose les questions, un troisième chronomètre une minute.
+        deroulement:
+          - "Le questionneur pose des questions très vite, pour piéger le joueur : « Tu t'appelles bien Lucas ? »"
+          - Le joueur répond sans dire oui ni non, ni hocher la tête. Il peut dire « c'est ça », « pas du tout », « exactement ».
+          - S'il dit oui ou non, c'est au suivant d'être interrogé. S'il tient une minute, il gagne un point et devient questionneur.
+      - lieu: En groupe, dans une salle
+        espace: Assis en cercle
+        mise_en_place: Tout le groupe joue le questionneur, chacun son tour.
+        deroulement:
+          - Le joueur interrogé est au centre. Chaque joueur du cercle pose une question, dans l'ordre.
+          - On compte combien de questions il tient. Le record du groupe est noté.
+    regles:
+      - Interdit de dire oui, non, ou de hocher la tête.
+      - Interdit de se taire plus de trois secondes.
+      - Les questions restent gentilles.
+    adapter:
+      - "6-7 ans : trente secondes suffisent, et l'on interdit seulement « oui »."
+      - "8-12 ans : le jeu classique, une minute."
+      - "Ados et adultes : on interdit aussi « je » et « peut-être »."
+    fin: Le joueur qui a tenu le plus longtemps pose la toute dernière question du jeu, à l'adulte du groupe.
+
+  - id: oeil-de-lynx
+    nom: L'œil de lynx
+    accroche: Je vois quelque chose de rouge… Le jeu d'observation qui occupe les petits partout, sans rien à préparer.
+    age_min: 3
+    age_max: 8
+    joueurs: [2, 12]
+    duree: 10
+    lieux: [voiture, interieur, exterieur, foret, plage]
+    moments: [attente, calme]
+    energie: calme
+    materiel_tags: [sans-materiel]
+    but: Trouver l'objet que le meneur a choisi en secret, grâce à un indice de couleur, de forme ou de son.
+    materiel:
+      - Rien
+    versions:
+      - lieu: En voiture, dans une salle d'attente
+        espace: Assis
+        mise_en_place: Le meneur choisit en secret un objet visible par tout le monde, qui ne va pas disparaître (pas une voiture qui passe).
+        deroulement:
+          - "Il dit : « Mon œil de lynx voit quelque chose de… rouge. »"
+          - Les joueurs proposent chacun leur tour un objet.
+          - "Le meneur répond « chaud » si c'est proche, « froid » si c'est loin."
+          - Celui qui trouve devient le meneur.
+      - lieu: Dehors, en promenade
+        espace: Un parc, une forêt, une plage
+        mise_en_place: On s'arrête ensemble dans un endroit où l'on voit loin.
+        deroulement:
+          - Même jeu, avec des indices de nature (« quelque chose qui a des plumes », « quelque chose de rugueux »).
+          - "Les grands donnent des indices de forme ou de matière plutôt que de couleur."
+    regles:
+      - L'objet doit rester visible pendant toute la manche.
+      - Chacun propose à son tour.
+    adapter:
+      - "3-4 ans : seulement des couleurs, et l'objet est tout proche."
+      - "5-6 ans : couleur et forme (« rond et jaune »)."
+      - "7-8 ans : la première lettre du mot, ou un indice de son (« quelque chose qui fait du bruit »)."
+    fin: Pour finir, chacun choisit un objet en secret et le dessine de mémoire, les autres devinent.
+
+  - id: petit-bac
+    nom: Le petit bac
+    accroche: Le jeu de papier et de crayon qui fait réfléchir et rire tout un groupe, des veillées aux jours de pluie.
+    age_min: 8
+    age_max: 99
+    joueurs: [2, 20]
+    duree: 20
+    lieux: [interieur, voiture]
+    moments: [calme, veillee, attente]
+    energie: calme
+    materiel_tags: [papier]
+    but: Trouver le plus vite possible un mot par catégorie qui commence par la lettre tirée.
+    materiel:
+      - Une feuille et un crayon par joueur ou par équipe
+      - "Des catégories choisies ensemble : prénom, animal, pays, fruit ou légume, métier, objet"
+    versions:
+      - lieu: Autour d'une table
+        espace: Une table, ou les genoux pour écrire
+        mise_en_place: >-
+          Chaque joueur trace un tableau : une colonne par catégorie, une ligne par manche. Choisissez 5 ou 6
+          catégories adaptées à l'âge.
+        deroulement:
+          - Un joueur récite l'alphabet dans sa tête, un autre dit « stop » : la lettre est choisie.
+          - Chacun écrit un mot par catégorie qui commence par cette lettre.
+          - Le premier qui a rempli toutes les cases crie « stop » et tout le monde pose son crayon.
+          - "On compte les points : 2 points pour un mot que personne d'autre n'a trouvé, 1 point pour un mot trouvé par d'autres."
+      - lieu: En équipes, en grand groupe
+        espace: Une salle, avec une grande feuille par équipe
+        mise_en_place: Les équipes de 3 ou 4 ont une seule feuille et un secrétaire.
+        deroulement:
+          - Même jeu, en chuchotant dans l'équipe.
+          - Pour les veillées, on ajoute une catégorie drôle (« une excuse pour ne pas ranger sa chambre »).
+    regles:
+      - Un mot ne compte que si le groupe l'accepte.
+      - Pas de mot inventé.
+      - On ne copie pas sur les autres.
+    adapter:
+      - "8-9 ans : quatre catégories simples, et pas de chrono."
+      - "10-12 ans : six catégories, dont une difficile (capitale, instrument de musique)."
+      - "Ados : des catégories sur un thème (le sport, les films d'animation, les métiers)."
+    fin: On fait le classement, et chacun lit le mot le plus drôle qu'il a vu dans la partie.
+
+  - id: bingo-nature
+    nom: Le bingo de la nature
+    accroche: Une grille de choses à trouver dehors, qui transforme une promenade en chasse au trésor.
+    age_min: 4
+    age_max: 12
+    joueurs: [2, 30]
+    duree: 30
+    lieux: [foret, jardin, plage, exterieur]
+    moments: [calme]
+    energie: moyenne
+    materiel_tags: [papier, nature]
+    but: Trouver, sans les arracher, toutes les choses de sa grille et les cocher avant les autres.
+    materiel:
+      - "Une grille de 9 ou 16 cases par joueur ou par équipe, dessinée à la main : une plume, un caillou blanc, une feuille plus grande que la main, quelque chose de rugueux, une trace d'animal…"
+      - Un crayon par grille
+    versions:
+      - lieu: En forêt ou au parc
+        espace: Un chemin connu, ou un espace délimité et surveillé
+        mise_en_place: >-
+          Préparez des grilles différentes pour chaque équipe, avec des choses que l'on trouve vraiment sur place.
+          Montrez les limites de la zone.
+        deroulement:
+          - Les équipes partent avec leur grille. Quand elles trouvent une chose, elles la montrent à l'adulte et cochent la case.
+          - On regarde, on touche, mais on ne cueille pas et on ne casse rien.
+          - La première équipe qui fait une ligne crie « Bingo ! », mais tout le monde continue jusqu'à la grille entière.
+      - lieu: À la plage ou dans un jardin
+        espace: Une portion de plage ou un jardin
+        mise_en_place: Adaptez la grille au lieu (un coquillage, une algue, un bout de bois flotté ; une fourmi, une fleur jaune).
+        deroulement:
+          - Même jeu.
+          - Les plus petits peuvent ramasser les objets permis (coquillages vides, feuilles mortes) pour faire un tableau à la fin.
+    regles:
+      - On ne cueille pas, on n'arrache pas, on ne dérange pas les animaux.
+      - Toute l'équipe reste ensemble, à portée de voix de l'adulte.
+    adapter:
+      - "4-6 ans : une grille de 9 cases avec des dessins, et un adulte par équipe."
+      - "7-9 ans : 16 cases, dont des sons (un oiseau qui chante) et des sensations (quelque chose de doux)."
+      - "10-12 ans : des cases plus précises (une feuille de chêne, une trace de chevreuil) et un guide des arbres."
+    securite:
+      - On ne touche pas les champignons, les baies et les animaux.
+      - Avant de partir, on vérifie l'absence de chenilles processionnaires et, après la sortie en forêt, on vérifie l'absence de tiques.
+    fin: Chaque équipe présente la chose la plus étonnante qu'elle a trouvée.
+
+  - id: jeu-du-ninja
+    nom: Le jeu du ninja
+    accroche: Un jeu de réflexes et de statues en cercle, sans matériel, que les 8-12 ans réclament à chaque séance.
+    age_min: 7
+    age_max: 14
+    joueurs: [4, 15]
+    duree: 15
+    lieux: [interieur, exterieur, cour, gymnase]
+    moments: [defoulement]
+    energie: moyenne
+    materiel_tags: [sans-materiel]
+    but: Toucher la main d'un adversaire en un seul geste, et garder les siennes, jusqu'à rester le dernier ninja.
+    materiel:
+      - Rien
+    versions:
+      - lieu: Dehors ou en salle
+        espace: Un cercle de 3 à 4 mètres, sur un sol plat
+        mise_en_place: Les joueurs se mettent en cercle, à un bras les uns des autres. Au signal, chacun prend une pose de ninja et se fige.
+        deroulement:
+          - Chacun son tour, dans le sens du cercle, un joueur fait un seul geste pour essayer de toucher la main d'un voisin.
+          - Le joueur visé a le droit de faire un seul geste pour esquiver. Après, tout le monde se fige dans sa nouvelle position.
+          - Une main touchée se met dans le dos. Un joueur qui a perdu ses deux mains sort du cercle et devient juge.
+          - Le cercle se resserre au fil du jeu. Le dernier ninja gagne.
+      - lieu: En grand groupe
+        espace: Plusieurs cercles de 6 à 8 joueurs
+        mise_en_place: Faites plusieurs cercles, et les gagnants de chaque cercle forment un cercle final.
+        deroulement:
+          - Même jeu dans chaque cercle.
+          - Les joueurs sortis font les juges du cercle voisin.
+    regles:
+      - On ne touche que les mains, jamais le visage ni le corps.
+      - Un seul geste par tour, sans faire de pas en plus.
+      - Les juges tranchent en cas de doute.
+    adapter:
+      - "7-8 ans : un geste lent, et l'on se remet en jeu après une manche passée comme juge."
+      - "9-12 ans : le jeu classique."
+      - "Ados : on a le droit de viser n'importe quel joueur du cercle à portée de geste."
+    securite:
+      - Des gestes contrôlés, jamais de coup. Un joueur trop brusque passe un tour comme juge.
+      - Pas de bijoux ni de montres pendant le jeu.
+    fin: Le dernier ninja salue le cercle, et tout le groupe lui rend son salut.
+
+  - id: pierre-feuille-ciseaux-equipes
+    nom: Le pierre-feuille-ciseaux des équipes
+    accroche: Le pierre-feuille-ciseaux devient une course-poursuite géante, où toute l'équipe joue le même signe.
+    age_min: 6
+    age_max: 14
+    joueurs: [10, 40]
+    duree: 15
+    lieux: [exterieur, cour, gymnase]
+    moments: [defoulement]
+    energie: forte
+    materiel_tags: [sans-materiel, plots]
+    but: Gagner le duel de signes avec son équipe, puis attraper les adversaires avant qu'ils rejoignent leur camp.
+    materiel:
+      - 4 plots ou des marques au sol pour tracer une ligne centrale et deux camps
+    versions:
+      - lieu: Dehors ou au gymnase
+        espace: Un terrain de 20 m de long, avec une ligne au milieu et un camp à chaque bout
+        mise_en_place: Deux équipes se placent de part et d'autre de la ligne centrale, à un mètre de la ligne.
+        deroulement:
+          - Chaque équipe se réunit dans son camp et choisit en secret le signe qu'elle va jouer, plus un signe de secours.
+          - "Les équipes reviennent face à face à la ligne. Tout le monde dit « pierre, feuille, ciseaux » et montre le signe de l'équipe."
+          - L'équipe qui gagne poursuit l'autre, qui court se réfugier dans son camp. Chaque joueur touché change d'équipe.
+          - En cas d'égalité, on rejoue tout de suite avec le signe de secours.
+          - On joue jusqu'à ce qu'une équipe ait tous les joueurs, ou pendant le temps fixé.
+      - lieu: En salle
+        espace: Une salle de 10 m au moins
+        mise_en_place: Les camps sont plus proches de la ligne (5 m).
+        deroulement:
+          - Même jeu, en marchant vite.
+    regles:
+      - Toute l'équipe montre le même signe.
+      - Le joueur touché rejoint l'équipe qui l'a touché.
+      - Une fois dans son camp, on est à l'abri.
+    adapter:
+      - "6-7 ans : l'adulte aide chaque équipe à choisir, et les camps sont tout proches."
+      - "8-12 ans : le jeu classique."
+      - "Ados : un quatrième signe (le puits, qui bat la pierre et les ciseaux) pour plus de stratégie."
+    securite:
+      - Rien derrière les camps sur 5 mètres. On ralentit en entrant dans son camp.
+      - On touche avec la main, sans pousser ni retenir.
+    fin: On compte les joueurs de chaque équipe, puis toutes les équipes se réunissent pour un dernier duel tous contre l'animateur.
+
+  - id: vingt-questions
+    nom: Les vingt questions
+    accroche: Un joueur pense à quelque chose, les autres ont vingt questions pour trouver. Parfait en voiture ou en veillée.
+    age_min: 7
+    age_max: 99
+    joueurs: [2, 20]
+    duree: 15
+    lieux: [voiture, interieur]
+    moments: [attente, veillee, calme]
+    energie: calme
+    materiel_tags: [sans-materiel]
+    but: Deviner ce à quoi pense le meneur en posant vingt questions au plus, auxquelles il répond par oui ou par non.
+    materiel:
+      - Rien
+      - "Facultatif : vingt jetons ou des doigts pour compter les questions"
+    versions:
+      - lieu: En voiture ou à table
+        espace: Assis
+        mise_en_place: >-
+          Le meneur pense à un animal, un objet ou un personnage connu de tous. Il annonce seulement la famille
+          (« un animal »).
+        deroulement:
+          - Les joueurs posent chacun leur tour une question fermée (« Est-ce qu'il vit dans l'eau ? »).
+          - Le meneur répond seulement par oui ou par non. On compte les questions à voix haute.
+          - Un joueur qui pense savoir peut proposer une réponse à la place d'une question.
+          - Si personne n'a trouvé après vingt questions, le meneur gagne et donne la réponse.
+      - lieu: En veillée, en grand groupe
+        espace: Assis en cercle
+        mise_en_place: Le groupe se divise en deux équipes, et chaque équipe choisit en secret pour l'autre.
+        deroulement:
+          - Les questions alternent entre les équipes, et chaque équipe se concerte avant de proposer.
+    regles:
+      - Seulement des questions auxquelles on répond par oui ou par non.
+      - Le meneur répond toujours honnêtement.
+    adapter:
+      - "7-8 ans : seulement des animaux, et trente questions."
+      - "9-12 ans : animaux, objets et métiers."
+      - "Ados : des personnages de livres, des lieux, des métiers rares."
+    fin: Celui qui a trouvé le plus de réponses choisit le thème de la dernière manche.
+
+  - id: riviere-rive
+    nom: Rivière, rive
+    accroche: Un jeu d'écoute et de réflexes pour les petits, avec une simple ligne au sol.
+    age_min: 3
+    age_max: 8
+    joueurs: [4, 30]
+    duree: 10
+    lieux: [interieur, exterieur, cour, plage]
+    moments: [defoulement, calme]
+    energie: moyenne
+    materiel_tags: [sans-materiel]
+    but: Sauter du bon côté de la ligne quand le meneur dit « rivière » ou « rive », sans se tromper.
+    materiel:
+      - Une ligne au sol (corde, craie, ruban adhésif, trait dans le sable)
+    versions:
+      - lieu: Dehors ou sur la plage
+        espace: Une ligne de 5 à 10 mètres, avec de la place des deux côtés
+        mise_en_place: Tous les joueurs se placent en ligne, d'un côté du trait. Ce côté est la « rive », l'autre côté est la « rivière ».
+        deroulement:
+          - "Le meneur dit « rivière » : tout le monde saute de l'autre côté de la ligne, pieds joints."
+          - "Il dit « rive » : tout le monde revient sur la rive."
+          - Il accélère, répète deux fois le même mot ou fait semblant de sauter pour piéger les joueurs.
+          - Un joueur qui se trompe ne sort pas du jeu : il fait un tour sur lui-même et continue.
+      - lieu: À l'intérieur
+        espace: Une salle, avec un ruban adhésif au sol
+        mise_en_place: Même installation, avec un trait de ruban adhésif.
+        deroulement:
+          - Même jeu, en sautant doucement pour ne pas déranger les voisins.
+          - Ajoutez « pont » (un pied de chaque côté) pour les plus grands.
+    regles:
+      - On saute pieds joints.
+      - Le meneur peut piéger, mais pas tricher.
+    adapter:
+      - "3-4 ans : on dit le mot lentement, et l'adulte saute avec eux."
+      - "5-6 ans : le meneur accélère et ajoute des pièges."
+      - "7-8 ans : on ajoute « pont » et « île » (on s'accroupit), et un enfant devient meneur."
+    securite:
+      - Assez d'espace entre les joueurs pour ne pas se cogner en sautant.
+    fin: La dernière manche se joue à l'envers, la rivière et la rive changent de côté, et tout le monde finit par rire.
+
+  - id: patate-chaude
+    nom: La patate chaude
+    accroche: Un ballon qui passe de main en main, une musique qui s'arrête, et personne n'est éliminé.
+    age_min: 4
+    age_max: 10
+    joueurs: [5, 25]
+    duree: 10
+    lieux: [interieur, exterieur]
+    moments: [calme, connaissance]
+    energie: moyenne
+    materiel_tags: [ballon]
+    but: Se débarrasser de la patate chaude le plus vite possible, pour ne pas l'avoir dans les mains quand la musique s'arrête.
+    materiel:
+      - Un ballon, une balle en mousse ou une peluche
+      - Une musique et de quoi l'arrêter, ou un tambourin
+    versions:
+      - lieu: En cercle, à l'intérieur
+        espace: Assis en cercle par terre
+        mise_en_place: Les joueurs s'assoient en cercle. Le meneur tourne le dos au cercle pour arrêter la musique au hasard.
+        deroulement:
+          - Quand la musique joue, le ballon passe de main en main, dans le sens du cercle, le plus vite possible.
+          - Quand la musique s'arrête, celui qui tient la patate chaude a un petit gage drôle (dire son prénom avec une voix de robot, faire le cri d'un animal).
+          - Puis la musique repart, et le ballon aussi.
+      - lieu: Dehors, debout
+        espace: Un cercle debout dans l'herbe
+        mise_en_place: Même cercle, debout.
+        deroulement:
+          - On se lance la patate chaude à travers le cercle, en disant le prénom de celui qui la reçoit.
+          - Quand la musique s'arrête, le gage est donné par le groupe.
+    regles:
+      - On ne garde pas la patate plus d'une seconde.
+      - Les gages sont gentils et choisis à l'avance, sur une liste.
+    adapter:
+      - "4-5 ans : on fait rouler le ballon, et le gage est un geste que tout le monde fait avec l'enfant."
+      - "6-8 ans : on change de sens quand le meneur tape dans ses mains."
+      - "9-10 ans : deux patates en même temps, qui tournent dans deux sens."
+    fin: La dernière patate chaude est passée tout doucement, en chuchotant le prénom de chacun.
+
+  - id: jeu-des-plaques
+    nom: Le jeu des plaques
+    accroche: Le jeu de voiture qui transforme les plaques d'immatriculation en mots, en calculs et en histoires.
+    age_min: 6
+    age_max: 99
+    joueurs: [2, 6]
+    duree: 20
+    lieux: [voiture]
+    moments: [attente]
+    energie: calme
+    materiel_tags: [sans-materiel]
+    but: Faire le plus de points avec les lettres et les chiffres des plaques que l'on croise.
+    materiel:
+      - Rien
+      - "Facultatif : un papier pour noter les points"
+    versions:
+      - lieu: En voiture, version lettres
+        espace: Les passagers, jamais le conducteur
+        mise_en_place: On choisit ensemble la plaque suivante que l'on voit bien (une voiture devant, garée, sur un parking).
+        deroulement:
+          - Chacun cherche un mot qui contient les deux premières lettres de la plaque, dans l'ordre (AB → « abeille », « table »).
+          - Le premier qui trouve marque un point. Un mot long rapporte deux points.
+      - lieu: En voiture, version chiffres
+        espace: Les passagers
+        mise_en_place: Même choix de plaque.
+        deroulement:
+          - Les petits additionnent les chiffres de la plaque. Les grands cherchent à faire 10 en les combinant.
+          - Version histoire, sans gagnant, pour les plus jeunes : les lettres deviennent les initiales de personnages, et l'on invente une phrase (AB → « Alice et Bertrand partent en voyage »).
+    regles:
+      - Le conducteur ne joue pas.
+      - On joue à voix normale, sans crier.
+    adapter:
+      - "6-7 ans : on cherche juste un mot qui commence par la première lettre."
+      - "8-10 ans : deux lettres dans l'ordre."
+      - "11 ans et plus : les trois lettres, ou le calcul pour faire 10."
+    securite:
+      - Le conducteur reste concentré sur la route et ne participe pas. On ne demande jamais de ralentir pour lire une plaque.
+    fin: Le gagnant choisit la musique ou le jeu suivant du trajet.

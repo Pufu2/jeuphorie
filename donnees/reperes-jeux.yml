@@ -1,0 +1,58 @@
+# Repères des grands jeux (donnees/jeux.yml) et des jeux de fêtes (donnees/jeux-fetes.yml) pour les pages « Trouver un jeu ».
+# Les jeux offerts (donnees/jeux-offerts.yml) portent leurs repères directement.
+# lieux : interieur, exterieur, cour, gymnase, jardin, foret, plage, voiture
+# moments : calme, defoulement, connaissance, veillee, attente, fete
+# energie : calme, moyenne, forte
+# materiel_tags : sans-materiel, ballon, cerceaux, foulards, papier, plots, nature
+defaut_grands_jeux: {age_max: 17, lieux: [exterieur, cour, gymnase], moments: [defoulement], energie: forte}
+jeux:
+  balle-bouclier: {materiel_tags: [ballon]}
+  ballon-chasseur: {materiel_tags: [ballon]}
+  ballon-prisonnier: {materiel_tags: [ballon]}
+  beret: {materiel_tags: [foulards, plots]}
+  relais-des-epis: {materiel_tags: [plots]}
+  ballon-anglais: {materiel_tags: [ballon]}
+  gendarmes-voleurs: {materiel_tags: [plots, cerceaux], lieux: [exterieur, cour, gymnase, jardin, foret]}
+  six-planetes: {materiel_tags: [ballon, plots]}
+  passe-a-5: {materiel_tags: [ballon, cerceaux]}
+  poules-renards-viperes: {materiel_tags: [plots], lieux: [exterieur, cour, gymnase, foret, plage]}
+  beret-4-equipes: {materiel_tags: [foulards, plots]}
+  rapetou: {materiel_tags: [plots]}
+  foot-quilles: {materiel_tags: [ballon, plots, cerceaux]}
+  six-quilles: {materiel_tags: [plots]}
+  barre: {materiel_tags: [plots], lieux: [exterieur, cour, gymnase, plage]}
+  duel-au-panier: {materiel_tags: [ballon], lieux: [cour, gymnase], energie: moyenne}
+  duel-au-panier-geant: {materiel_tags: [ballon], lieux: [cour, gymnase], energie: moyenne}
+  balle-au-capitaine: {materiel_tags: [ballon, cerceaux]}
+  drapeau-double: {materiel_tags: [foulards, plots], lieux: [exterieur, cour, gymnase, foret]}
+  drapeau-double-ruse: {materiel_tags: [foulards, plots], lieux: [exterieur, cour, gymnase, foret]}
+  epervier-grade: {materiel_tags: [papier], lieux: [exterieur, cour, gymnase, plage]}
+  theque: {materiel_tags: [ballon, cerceaux, plots], lieux: [exterieur, cour, plage]}
+  basket: {materiel_tags: [ballon], lieux: [cour, gymnase]}
+  rugby-au-toucher: {materiel_tags: [ballon], lieux: [exterieur, plage]}
+  tennis-ballon: {materiel_tags: [ballon], lieux: [exterieur, cour, gymnase, plage]}
+  volley: {materiel_tags: [ballon], lieux: [exterieur, gymnase, plage]}
+  balle-brulee: {materiel_tags: [ballon, cerceaux, plots], lieux: [exterieur, cour, plage]}
+  drapeau-simple: {materiel_tags: [foulards, plots], lieux: [exterieur, cour, gymnase, foret]}
+  handball: {materiel_tags: [ballon], lieux: [cour, gymnase]}
+  hockey: {materiel_tags: [ballon], lieux: [cour, gymnase]}
+  ultimate: {materiel_tags: [plots], lieux: [exterieur, gymnase, plage]}
+  balle-americaine: {materiel_tags: [ballon]}
+  balle-assise: {materiel_tags: [ballon], lieux: [exterieur, cour, gymnase, interieur]}
+  carre-touche: {materiel_tags: [ballon, plots]}
+
+fetes:
+  ecureuils-reserve-hiver: {lieux: [exterieur, jardin, foret, interieur], moments: [fete, defoulement], energie: forte, materiel_tags: [nature, cerceaux, foulards]}
+  herissons-et-tas-de-feuilles: {lieux: [exterieur, jardin, interieur], moments: [fete, calme], energie: moyenne, materiel_tags: [cerceaux]}
+  tournee-du-pere-noel: {lieux: [exterieur, interieur, gymnase], moments: [fete, defoulement], energie: forte, materiel_tags: [papier]}
+  rennes-egares: {lieux: [interieur, jardin], moments: [fete], energie: moyenne, materiel_tags: [papier]}
+  grelots-du-pere-noel: {lieux: [interieur], moments: [fete, calme, veillee], energie: calme, materiel_tags: [foulards]}
+  attelage-du-pere-noel: {lieux: [interieur, exterieur], moments: [fete], energie: moyenne, materiel_tags: [cerceaux]}
+  defile-des-statues: {lieux: [interieur, exterieur], moments: [fete], energie: moyenne, materiel_tags: [papier]}
+  mannequin-du-carnaval: {lieux: [interieur, exterieur, gymnase], moments: [fete, defoulement], energie: forte, materiel_tags: [plots, cerceaux]}
+  marche-des-masques: {lieux: [exterieur, gymnase, jardin], moments: [fete, defoulement], energie: forte, materiel_tags: [papier, cerceaux, foulards]}
+  cape-du-roi-carnaval: {lieux: [interieur, exterieur], moments: [fete, calme], energie: moyenne, materiel_tags: [papier]}
+  chasse-aux-oeufs-des-couleurs: {lieux: [jardin, exterieur, interieur], moments: [fete], energie: moyenne, materiel_tags: [papier]}
+  voleurs-de-nids: {lieux: [exterieur, cour, gymnase, jardin], moments: [fete, defoulement], energie: forte, materiel_tags: [cerceaux, foulards]}
+  piste-du-lapin: {lieux: [jardin, foret, exterieur], moments: [fete], energie: moyenne, materiel_tags: [papier, nature]}
+  petanque-des-oeufs: {lieux: [jardin, exterieur, interieur, plage], moments: [fete, calme], energie: calme, materiel_tags: [nature]}

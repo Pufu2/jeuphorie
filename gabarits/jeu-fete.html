@@ -21,7 +21,7 @@
         <p>{{ j.but }}</p>
       </div>
       <dl class="jeu__meta">
-        <div><dt>Âge</dt><dd>{{ j.age_min }} à {{ j.age_max }} ans{% if j.age_max >= 99 %} et +{% endif %}</dd></div>
+        <div><dt>Âge</dt><dd>{% if j.age_max >= 99 %}Dès {{ j.age_min }} ans{% else %}{{ j.age_min }} à {{ j.age_max }} ans{% endif %}</dd></div>
         <div><dt>Joueurs</dt><dd>{{ j.joueurs[0] }} à {{ j.joueurs[1] }}</dd></div>
         <div><dt>Durée</dt><dd>{{ j.duree }} min</dd></div>
       </dl>

@@ -116,19 +116,13 @@
       <a href="{{ lien('/pro/') }}">L'abonnement Jeuphorie Pro</a>
       <a href="{{ lien('/boutique/') }}">Toute la boutique</a>
     </nav>
-    <nav class="pied__liens" aria-label="Guides pratiques">
-      <p class="pied__titre">Guides pratiques</p>
-      <a href="{{ lien('/jeux-de-cour-de-recreation/') }}">Jeux de cour de récréation</a>
-      <a href="{{ lien('/jeux-exterieur-enfants/') }}">Jeux d'extérieur</a>
-      <a href="{{ lien('/jeux-grand-groupe-enfants/') }}">Jeux pour un grand groupe</a>
-      <a href="{{ lien('/grands-jeux-ados/') }}">Grands jeux pour ados</a>
-      <a href="{{ lien('/jeux-anniversaire-6-ans/') }}">Anniversaire 6 ans</a>
-      <a href="{{ lien('/jeux-anniversaire-8-ans/') }}">Anniversaire 8 ans</a>
-      <a href="{{ lien('/jeux-anniversaire-10-ans/') }}">Anniversaire 10 ans</a>
-      <a href="{{ lien('/jeux-sans-materiel/') }}">Jeux sans matériel</a>
-      <a href="{{ lien('/jeux-pour-faire-connaissance/') }}">Jeux pour faire connaissance</a>
-      <a href="{{ lien('/jeux-collectifs-3-5-ans/') }}">Jeux collectifs 3-5 ans</a>
-      <a href="{{ lien('/jeux-musicaux-enfants/') }}">Jeux musicaux</a>
+    <nav class="pied__liens" aria-label="Jeux et idées">
+      <p class="pied__titre">Jeux et idées</p>
+      <a href="{{ lien('/trouver-un-jeu/') }}">Trouver un jeu</a>
+      <a href="{{ lien('/jeux-offerts/') }}">Les jeux offerts</a>
+      <a href="{{ lien('/fetes/') }}">Les jeux des fêtes</a>
+      <a href="{{ lien('/jeux/') }}">Le catalogue des grands jeux</a>
+      <a href="{{ lien('/blog/') }}">Le blog</a>
     </nav>
     <nav class="pied__liens" aria-label="Jeuphorie">
       <p class="pied__titre">Jeuphorie</p>
@@ -146,6 +140,48 @@
       <a class="pied__mail" href="mailto:{{ site.email }}">{{ site.email }}</a>
     </div>
   </div>
+  {% if trouver_onglets %}
+  <section class="cadre explorer" aria-labelledby="explorer-titre">
+    <div class="explorer__tete">
+      <h2 class="explorer__titre" id="explorer-titre"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>Trouver un <em>jeu</em></h2>
+      <div class="explorer__onglets" role="tablist" aria-label="Trouver un jeu">
+        {% for o in trouver_onglets %}<button class="explorer__onglet" type="button" role="tab" id="onglet-{{ o.id }}" aria-controls="panneau-{{ o.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}">{{ o.nom }}</button>{% endfor %}
+        <button class="explorer__onglet" type="button" role="tab" id="onglet-pour-tous" aria-controls="panneau-pour-tous" aria-selected="false">Jeux pour tous</button>
+      </div>
+    </div>
+    {% for o in trouver_onglets %}
+    <div class="explorer__panneau" role="tabpanel" id="panneau-{{ o.id }}" aria-labelledby="onglet-{{ o.id }}"{% if not loop.first %} hidden{% endif %}>
+      <p class="explorer__aide">{{ o.texte }}</p>
+      <div class="explorer__puces">
+        {% for p in o.pages %}<a href="{{ lien(p.url) }}">{{ p.puce }}</a>{% endfor %}
+        {% for g in o.guides %}<a href="{{ lien(g[1]) }}">{{ g[0] }}</a>{% endfor %}
+      </div>
+      <a class="explorer__tout" href="{{ lien('/trouver-un-jeu/') }}">Voir toutes les recherches →</a>
+    </div>
+    {% endfor %}
+    <div class="explorer__panneau" role="tabpanel" id="panneau-pour-tous" aria-labelledby="onglet-pour-tous" hidden>
+      <p class="explorer__aide">Des jeux pensés pour jouer ensemble avec un enfant en situation de handicap, selon sa situation.</p>
+      <div class="explorer__puces">
+        {% for u in d.univers.univers if u.situations %}{% for s in u.situations %}<a href="{{ lien(u.url ~ s.id ~ '/') }}">{{ s.nom }}</a>{% endfor %}{% endfor %}
+      </div>
+      <a class="explorer__tout" href="{{ lien('/jeux-pour-tous/') }}">Voir Jeux pour tous →</a>
+    </div>
+    <script>
+      (function () {
+        var o = document.querySelectorAll('.explorer__onglet');
+        o.forEach(function (b) {
+          b.addEventListener('click', function () {
+            o.forEach(function (x) {
+              var on = x === b;
+              x.setAttribute('aria-selected', on ? 'true' : 'false');
+              document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+            });
+          });
+        });
+      })();
+    </script>
+  </section>
+  {% endif %}
   <p class="cadre pied__bas">© {{ annee }} {{ site.nom }}. Les jeux sont à imprimer pour un usage privé ou au sein de la structure qui les achète.</p>
 </footer>
 {% block scripts %}{% endblock %}

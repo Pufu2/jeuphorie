@@ -1243,3 +1243,36 @@ a.tampon { text-decoration: none; }
 .situation__rappel { margin: 1.5rem 0 0; color: var(--encre-douce); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tete-situation { --s-texte: color-mix(in srgb, var(--s) 45%, white); } }
 :root[data-theme="dark"] .tete-situation { --s-texte: color-mix(in srgb, var(--s) 45%, white); }
+
+/* ------------------------------------------------------------ trouver un jeu */
+.tete-trouver { --c: var(--plein-air); --c-clair: var(--plein-air-clair); --c-texte: var(--plein-air-texte); }
+.carte-jeu--tout { border-left-color: var(--plein-air); }
+.carte-jeu__genre { font-family: var(--f-titre); font-weight: 700; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--encre-douce); }
+.carte-jeu--tout .carte-jeu__nom { padding-right: 0; }
+.carte-jeu--tout .carte-jeu__offert { position: static; justify-self: start; margin-top: .45rem; }
+.carte-jeu__pack { justify-self: start; margin-top: .45rem; font-family: var(--f-titre); font-weight: 700; font-size: .75rem; color: var(--plein-air-texte); border: 2px solid currentColor; border-radius: 5px; padding: 0 .4em; }
+.conseil ul { margin: 0; padding-left: 1.2rem; }
+.conseil li + li { margin-top: .35rem; }
+.faq__item { background: var(--fiche); border: 1px solid var(--filet); border-radius: var(--rayon); padding: .85rem 1.1rem; max-width: 52em; }
+.faq__item + .faq__item { margin-top: .6rem; }
+.faq__item summary { font-family: var(--f-titre); font-weight: 700; cursor: pointer; }
+.faq__item p { margin: .6rem 0 0; }
+.pastille__nb { margin-left: .35rem; font-size: .8em; color: var(--encre-douce); font-variant-numeric: tabular-nums; }
+.pastille--guide { border-style: dashed; }
+
+/* le bloc « Trouver un jeu » du bas de page, à onglets */
+.explorer { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.14); }
+.explorer__tete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 1.1rem; }
+.explorer__titre { display: flex; align-items: center; gap: .55rem; margin: 0; font-family: var(--f-titre); font-weight: 800; font-size: 1.45rem; color: var(--pied-texte); }
+.explorer__titre em { font-style: normal; color: var(--soleil); }
+.explorer__titre svg { color: var(--soleil); }
+.explorer__onglets { display: flex; flex-wrap: wrap; gap: .4rem; }
+.explorer__onglet { font: 600 .92rem var(--f-titre); color: var(--pied-doux); background: transparent; border: 1.5px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: .35rem .9rem; cursor: pointer; }
+.explorer__onglet:hover { color: var(--pied-texte); border-color: rgba(255, 255, 255, 0.5); }
+.explorer__onglet[aria-selected="true"] { background: var(--soleil); border-color: var(--soleil); color: #1A2340; }
+.explorer__aide { color: var(--pied-doux); margin: 0 0 .9rem; font-size: .95rem; }
+.explorer__puces { display: flex; flex-wrap: wrap; gap: .45rem; }
+.explorer__puces a { font-size: .9rem; text-decoration: none; color: var(--pied-texte); background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 999px; padding: .3rem .8rem; }
+.explorer__puces a:hover { background: rgba(255, 255, 255, 0.16); text-decoration: none; }
+.explorer__tout { display: inline-block; margin-top: 1rem; font-family: var(--f-titre); font-weight: 600; font-size: .92rem; color: var(--soleil) !important; }
+@media print { .explorer { display: none; } }

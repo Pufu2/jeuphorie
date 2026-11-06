@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% import "morceaux/macros.html" as m with context %}
+{% block tete %}
+{% set pg = page.trouver %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": pg.faq | map('faq_schema') | list} | tojson }}
+</script>
+{% endblock %}
+{% block contenu %}
+{% set pg = page.trouver %}
+<div class="cadre">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="{{ lien('/') }}">Accueil</a> <span aria-hidden="true">/</span> <a href="{{ lien('/trouver-un-jeu/') }}">Trouver un jeu</a> <span aria-hidden="true">/</span> <span>{{ pg.h1 }}</span></nav>
+  <header class="tete-univers tete-trouver">
+    <p class="tete-univers__public">Trouver un jeu · {{ pg.jeux | length }} jeux</p>
+    <h1 class="titre-page">{{ pg.h1 }}</h1>
+    <p class="chapo">{{ pg.intro }}</p>
+  </header>
+
+  <section class="section section--serree" aria-labelledby="t-jeux">
+    <h2 id="t-jeux" class="section__titre">Les jeux</h2>
+    <div class="grille-jeux">{% for j in pg.jeux %}{{ m.carte_jeu_tout(j) }}{% endfor %}</div>
+  </section>
+
+  <aside class="conseil">
+    <p class="conseil__signature">Les conseils de l'animateur</p>
+    <ul>{% for c in pg.conseils %}<li>{{ c }}</li>{% endfor %}</ul>
+  </aside>
+
+  {% if pg.kits %}
+  <section class="section section--serree" aria-labelledby="t-kits">
+    <h2 id="t-kits" class="section__titre">Pour aller plus loin : un kit complet</h2>
+    {{ m.grille_kits(pg.kits, "") }}
+  </section>
+  {% endif %}
+
+  <section class="section section--serree faq" aria-labelledby="t-faq">
+    <h2 id="t-faq" class="section__titre">Questions fréquentes</h2>
+    {% for q in pg.faq %}<details class="faq__item"><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>{% endfor %}
+  </section>
+
+  {% set voisines = (trouver_onglets | selectattr('id', 'equalto', pg.onglet) | first).pages | rejectattr('slug', 'equalto', pg.slug) | list %}
+  {% if voisines %}
+  <nav class="autres-fetes" aria-label="Pages voisines">
+    <p class="autres-fetes__titre">Voir aussi</p>
+    <ul class="pastilles">{% for x in voisines %}<li><a class="pastille" href="{{ lien(x.url) }}">{{ x.puce }}</a></li>{% endfor %}
+      <li><a class="pastille" href="{{ lien('/trouver-un-jeu/') }}">Toutes les recherches</a></li></ul>
+  </nav>
+  {% endif %}
+</div>
+{% endblock %}

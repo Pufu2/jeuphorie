@@ -174,7 +174,11 @@ class Site:
             for i, (nom, url) in enumerate([("Accueil", "/")] + list(fil), start=1)]
         self.env.globals["schema"] = schema_svg
         self.env.globals["schema_fete"] = schema_fete
+        self.env.filters["faq_schema"] = lambda q: {"@type": "Question", "name": q[0],
+                                                    "acceptedAnswer": {"@type": "Answer", "text": q[1]}}
         self.pages = []  # (url, gabarit, contexte)
+        self._onglets = None
+        self._pages_trouver = []
         self.articles = self.charger_articles()
 
     # -- contenus
@@ -230,6 +234,82 @@ class Site:
         return [j for j in self.donnees.get("jeux-fetes", {}).get("jeux", [])
                 if not j.get("ajoute") or dt.date.fromisoformat(str(j["ajoute"])) <= jour]
 
+    def jeux_offerts(self):
+        """Les jeux offerts hors fêtes déjà parus (champ « ajoute », comme les jeux de fêtes)."""
+        jour = aujourdhui()
+        return [j for j in self.donnees.get("jeux-offerts", {}).get("jeux", []) if str(j.get("ajoute", "")) <= jour]
+
+    def tous_jeux(self):
+        """Tous les jeux du site sous une même forme, pour les pages « Trouver un jeu »."""
+        rep = self.donnees.get("reperes-jeux", {})
+        defaut = rep.get("defaut_grands_jeux", {})
+        fetes = {f["slug"]: f for f in self.donnees["fetes"]["fetes"]}
+        tous = []
+        for j in self.jeux():
+            x = {**j, **defaut, **rep.get("jeux", {}).get(j["id"], {})}
+            x.update(url=f"/jeux/{j['id']}/", genre="Grand jeu", accroche=j.get("but", ""), offert=bool(j.get("offert")))
+            tous.append(x)
+        for j in self.jeux_fetes():
+            x = {**j, **rep.get("fetes", {}).get(j["id"], {})}
+            x.update(url=f"/fetes/{j['fete']}/{j['id']}/", genre=f"Jeu {fetes[j['fete']]['de']}", offert=True)
+            tous.append(x)
+        for j in self.jeux_offerts():
+            tous.append({**j, "url": f"/jeux-offerts/{j['id']}/", "genre": "Jeu offert", "offert": True})
+        for x in tous:
+            x.setdefault("age_max", 17)
+        return tous
+
+    @staticmethod
+    def filtrer(jeux, f):
+        """Les jeux qui correspondent au filtre d'une page « Trouver un jeu » (voir donnees/trouver.yml)."""
+        r = []
+        for j in jeux:
+            amin, amax = j["age_min"], j.get("age_max", 17)
+            if "age" in f and not amin <= f["age"] <= amax:
+                continue
+            if "ages" in f and not (amin <= f["ages"][1] and amax >= f["ages"][0]):
+                continue
+            if "lieu" in f and f["lieu"] not in j.get("lieux", []):
+                continue
+            if "moment" in f and f["moment"] not in j.get("moments", []):
+                continue
+            if "materiel" in f and f["materiel"] not in j.get("materiel_tags", []):
+                continue
+            if "joueurs_min" in f and j["joueurs"][0] > f["joueurs_min"]:
+                continue
+            if "energie" in f and j.get("energie") != f["energie"]:
+                continue
+            r.append(j)
+        # les jeux aux règles complètes et gratuites d'abord, puis les grands jeux, du plus jeune au plus âgé
+        return sorted(r, key=lambda j: (not j["offert"], j["age_min"], j["nom"]))
+
+    def kits_pour(self, f):
+        """Trois kits dont la tranche d'âge correspond à une page par âge (aucun pour les autres pages)."""
+        if "age" in f:
+            lo = hi = f["age"]
+        elif "ages" in f:
+            lo, hi = f["ages"]
+        else:
+            return []
+        r = []
+        for k in self.kits():
+            n = [int(x) for x in re.findall(r"\d+", str(k.get("age", "")))]
+            if k.get("univers") in ("anniversaires", "fetes", "grands-jeux") and len(n) >= 2 and n[0] <= hi and n[1] >= lo:
+                r.append(k)
+        return r[:3]
+
+    def trouver(self):
+        """Les pages « Trouver un jeu » qui ont assez de jeux, et le bloc à onglets du bas de page."""
+        t = self.donnees.get("trouver", {})
+        tous = self.tous_jeux()
+        pages = []
+        for pg in t.get("pages", []):
+            liste = self.filtrer(tous, pg["filtre"])
+            if len(liste) >= t.get("minimum", 5):
+                pages.append({**pg, "url": f"/trouver-un-jeu/{pg['slug']}/", "jeux": liste, "kits": self.kits_pour(pg["filtre"])})
+        onglets = [{**o, "pages": [p for p in pages if p["onglet"] == o["id"]]} for o in t.get("onglets", [])]
+        return pages, [o for o in onglets if o["pages"] or o.get("guides")]
+
     # -- déclaration des pages
     def declarer(self):
         d = self.donnees
@@ -284,6 +364,24 @@ class Site:
                          jeu=j, fete=fetes[j["fete"]],
                          fil=[("Fêtes de l'année", "/fetes/"), (fetes[j["fete"]]["nom"], f"/fetes/{j['fete']}/"),
                               (j["nom"], f"/fetes/{j['fete']}/{j['id']}/")])
+        # jeux offerts hors fêtes, puis les pages « Trouver un jeu »
+        offerts = self.jeux_offerts()
+        self.ajouter("/jeux-offerts/", "jeux-offerts.html", titre="Jeux offerts pour enfants : règles complètes à imprimer",
+                     description=f"{len(offerts)} jeux pour enfants offerts, règles complètes, à jouer dedans ou dehors, en voiture ou en veillée, de 3 à 12 ans et plus.",
+                     fil=[("Jeux offerts", "/jeux-offerts/")])
+        for j in offerts:
+            self.ajouter(f"/jeux-offerts/{j['id']}/", "jeu-offert.html", titre=f"{j['nom']} : règles du jeu pour enfants",
+                         description=f"{j['accroche']} Règles complètes et adaptations, dès {j['age_min']} ans.",
+                         jeu=j, fil=[("Jeux offerts", "/jeux-offerts/"), (j["nom"], f"/jeux-offerts/{j['id']}/")])
+        pages_trouver, self._onglets = self.trouver()
+        self._pages_trouver = pages_trouver
+        self.ajouter("/trouver-un-jeu/", "trouver-index.html", titre="Trouver un jeu pour enfants : par âge, lieu, moment et matériel",
+                     description="Tous les jeux de Jeuphorie rangés par âge, par lieu, par moment, par matériel et par nombre d'enfants, pour trouver vite le bon jeu.",
+                     fil=[("Trouver un jeu", "/trouver-un-jeu/")])
+        for pg in pages_trouver:
+            self.ajouter(pg["url"], "trouver.html", titre=pg["titre_page"],
+                         description=f"{pg['intro'].strip().split('. ')[0]}. {len(pg['jeux'])} jeux expliqués, avec l'âge, le nombre d'enfants et la durée.",
+                         trouver=pg, fil=[("Trouver un jeu", "/trouver-un-jeu/"), (pg["h1"], pg["url"])])
         self.ajouter("/jeux-gratuits/", "jeux-gratuits.html", titre="3 grands jeux gratuits à imprimer pour enfants",
                      description="Recevez 3 grands jeux collectifs à imprimer, avec règles, variantes et schéma du terrain : Gendarmes et voleurs, Poules renards vipères, L'épervier gradé.")
         self.ajouter("/blog/", "blog.html", titre="Le blog : idées de jeux et conseils d'animateur",
@@ -439,6 +537,10 @@ class Site:
             "kits": self.kits(),
             "jeux": self.jeux(),
             "jeux_fetes": self.jeux_fetes(),
+            "jeux_offerts": self.jeux_offerts(),
+            "trouver_onglets": self._onglets,
+            "offerts_cartes": [x for x in self.tous_jeux() if x["genre"] == "Jeu offert"],
+            "trouver_pages_du_jeu": lambda ident: [p for p in self._pages_trouver if any(j["id"] == ident for j in p["jeux"])][:8],
             "produits": lambda u: [k for k in self.kits() if k["univers"] == u or u in k.get("aussi", [])],
             "kit": self.kit,
             "lien": lien,
