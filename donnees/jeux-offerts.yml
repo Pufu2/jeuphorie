@@ -546,3 +546,93 @@ jeux:
     securite:
       - Le conducteur reste concentré sur la route et ne participe pas. On ne demande jamais de ralentir pour lire une plaque.
     fin: Le gagnant choisit la musique ou le jeu suivant du trajet.
+
+  - id: marchand-de-couleurs
+    ajoute: "2026-11-10"
+    nom: Le marchand de couleurs
+    accroche: Un jeu de cour traditionnel pour les petits, où chaque enfant devient une couleur que le client veut acheter.
+    age_min: 4
+    age_max: 8
+    joueurs: [6, 20]
+    duree: 15
+    lieux: [exterieur, cour, jardin, plage, foret]
+    moments: [defoulement]
+    energie: forte
+    materiel_tags: [sans-materiel]
+    but: "Pour les couleurs : rejoindre la boutique sans se faire attraper par le client. Pour le client : attraper la couleur qu'il a achetée."
+    materiel:
+      - Rien
+      - Une ligne ou deux plots pour marquer la boutique, et un arbre, un banc ou un plot pour le tour à faire
+    versions:
+      - lieu: Dehors
+        espace: Une cour, une pelouse, une plage ou une clairière, avec un repère à 10 m de la boutique
+        mise_en_place: >-
+          Les couleurs s'assoient en ligne dans la boutique, à côté du marchand. Le marchand passe derrière chacune et
+          lui chuchote une couleur à l'oreille. Le client attend à quelques pas, dos tourné.
+        deroulement:
+          - "Le client frappe à la porte : « Toc, toc ! » Le marchand : « Qui est là ? » « Le client. » « Que voulez-vous ? » « Une couleur ! » « Laquelle ? »"
+          - "Le client propose une couleur : « Le vert ! » Si personne n'a le vert, le marchand répond « Je n'en ai pas, revenez demain ! » et le client propose une autre couleur."
+          - Si un enfant a cette couleur, il se lève et part en courant faire le tour du repère, puis revient s'asseoir dans la boutique. Le client lui court après.
+          - Si le client attrape la couleur avant son retour, ils échangent les rôles. Sinon, la couleur reste dans la boutique et le client recommence.
+          - Toutes les trois ventes, le marchand redonne une nouvelle couleur à chacun.
+      - lieu: À l'intérieur
+        espace: Une salle de motricité dégagée
+        mise_en_place: Même installation, avec un tour plus court autour d'une chaise.
+        deroulement:
+          - Même jeu, mais la couleur et le client font le tour en marchant à grands pas, sans courir.
+          - Pour les petits, le marchand peut donner la même couleur à deux enfants, qui partent ensemble.
+    regles:
+      - On garde sa couleur secrète.
+      - Le client touche avec la main, sans pousser.
+      - On fait le tour du repère avant de revenir à la boutique.
+    adapter:
+      - "4-5 ans : un adulte est le marchand et aide le client à trouver une couleur qui existe. Le tour est court."
+      - "6-7 ans : un enfant est le marchand, et l'on ajoute les nuances (vert pomme, bleu marine)."
+      - "8 ans : les couleurs deviennent des fruits ou des animaux, et le client n'a que trois essais par visite."
+    securite:
+      - Le tour se fait toujours dans le même sens, pour que le client et la couleur ne se percutent pas.
+      - Sur la plage, on joue loin de l'eau et des serviettes des autres.
+    fin: Pour la dernière vente, le client achète « toutes les couleurs de l'arc-en-ciel » et toute la boutique court faire le tour avant de revenir s'asseoir.
+
+  - id: portrait-chinois
+    ajoute: "2026-11-12"
+    nom: Le portrait chinois
+    accroche: « Si j'étais un animal, je serais… » Un jeu de veillée pour se découvrir autrement, et deviner qui se cache derrière le portrait.
+    age_min: 8
+    age_max: 99
+    joueurs: [4, 20]
+    duree: 20
+    lieux: [interieur, voiture]
+    moments: [connaissance, veillee, calme]
+    energie: calme
+    materiel_tags: [papier]
+    but: Découvrir les autres à travers leurs réponses, puis deviner à qui appartient chaque portrait.
+    materiel:
+      - Une petite feuille et un crayon par joueur
+      - Une boîte ou un chapeau pour mélanger les portraits
+    versions:
+      - lieu: En veillée ou en salle
+        espace: Assis en cercle
+        mise_en_place: >-
+          Choisissez ensemble cinq débuts de phrase, et écrivez-les au tableau ou sur une feuille : « Si j'étais un
+          animal… », « …un plat… », « …un lieu… », « …une couleur… », « …un super-pouvoir… ».
+        deroulement:
+          - Chacun écrit ses cinq réponses sur sa feuille, sans son prénom, puis la plie et la met dans la boîte.
+          - L'animateur mélange, tire un portrait et le lit à voix haute.
+          - Le groupe propose un prénom. Après trois propositions, l'auteur peut se faire connaître, s'il le souhaite, et dire pourquoi il a choisi une réponse.
+          - On continue jusqu'à ce que tous les portraits soient lus.
+      - lieu: En voiture ou à table
+        espace: Assis
+        mise_en_place: Pas de papier. Un joueur pense à une personne de la famille ou du groupe.
+        deroulement:
+          - Les autres lui posent des questions de portrait chinois (« Si c'était un animal, ce serait quoi ? ») et doivent deviner de qui il s'agit.
+          - Celui qui trouve pense à son tour à une personne.
+    regles:
+      - On ne se moque jamais d'une réponse.
+      - Chacun peut garder son portrait secret s'il le préfère.
+      - On ne choisit pas une personne absente pour s'en moquer.
+    adapter:
+      - "8-9 ans : trois débuts de phrase, très concrets (un animal, un plat, un jouet)."
+      - "10-12 ans : cinq débuts de phrase, dont un plus original (un objet de la maison, une saison)."
+      - "Ados et adultes : des débuts de phrase plus abstraits (une musique d'ambiance, un moment de la journée)."
+    fin: Chacun dit la réponse d'un autre qui l'a le plus surpris, et pourquoi.
