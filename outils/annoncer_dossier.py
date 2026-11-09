@@ -28,7 +28,7 @@ def mail(mois, theme, angle, lien, portail):
     e = html.escape
     return f"""<!doctype html><html lang="fr"><body style="margin:0;background:#FBFAF7">
 <div style="max-width:600px;margin:0 auto;padding:24px 20px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#1A2340">
-<p style="font-size:26px;font-weight:bold;margin:0"><span style="color:#CF3424">Jeu</span>phorie</p>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right:10px;vertical-align:middle"><img src="https://jeuphorie.fr/img/logo-mail.png" width="40" height="40" alt="" style="display:block;border:0"></td><td style="vertical-align:middle;font-size:26px;font-weight:bold;font-family:Arial,Helvetica,sans-serif;color:#1A2340"><span style="color:#CF3424">Jeu</span>phorie</td></tr></table>
 <p style="margin:18px 0 0">Bonjour,</p>
 <p>Le dossier de {e(mois)} est arrivé dans votre bibliothèque : <strong>{e(theme)}</strong>.</p>
 <p>{e(angle)}</p>

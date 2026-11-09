@@ -219,7 +219,13 @@ mark.a-completer {
   padding-block: 0.6rem 1.2rem;
 }
 
-.logo { display: grid; text-decoration: none; line-height: 1; }
+.logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; line-height: 1; }
+.logo__texte { display: grid; }
+.logo__texte .logo__signature { white-space: nowrap; }
+.logo__symbole { display: block; flex: none; width: clamp(2.6rem, 2.2rem + 1.2vw, 3.2rem); }
+.logo__symbole svg { display: block; width: 100%; height: auto; }
+.logo__pied { display: flex; align-items: center; gap: 0.6rem; margin: 0; }
+.logo__pied .logo__symbole { width: 2.6rem; }
 .logo__mot {
   font-family: var(--f-titre);
   font-weight: 800;

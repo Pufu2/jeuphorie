@@ -73,11 +73,24 @@ def ecrire(d, ls, f, x, y, pas, couleur, centre=False, largeur=0):
     return y
 
 
+def symbole(taille):
+    """Le symbole de Jeuphorie (le J qui saute de joie), en image carrée de la taille demandée."""
+    from PIL import Image
+    im = Image.open(Path(__file__).resolve().parents[1] / "statique" / "img" / "logo-1024.png").convert("RGBA")
+    return im.resize((int(taille), int(taille)), Image.LANCZOS)
+
+
 def logo(d, x, y, taille, couleur, jeu=ROUGE, centre=False, largeur=0):
+    """Le symbole puis le nom « Jeuphorie », la base du texte calée comme avant."""
     f = police("Bricolage-800.ttf", taille)
-    lw = d.textlength("Jeuphorie", font=f)
+    cote = int(taille * 1.15)
+    ecart = int(taille * 0.3)
+    lw = cote + ecart + d.textlength("Jeuphorie", font=f)
     if centre:
         x = x + (largeur - lw) / 2
+    haut, bas = f.getbbox("Jeuphorie")[1], f.getbbox("Jeuphorie")[3]
+    d._image.paste(symbole(cote), (int(x), int(y + (haut + bas) / 2 - cote / 2)), symbole(cote))
+    x += cote + ecart
     d.text((x, y), "Jeu", font=f, fill=jeu)
     d.text((x + d.textlength("Jeu", font=f), y), "phorie", font=f, fill=couleur)
     return lw

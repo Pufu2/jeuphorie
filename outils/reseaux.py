@@ -442,8 +442,13 @@ def _signature(d, largeur, hauteur, marge, couleur, jeu="#CF3424"):
     bas = hauteur - int(hauteur * 0.1)
     d.line([(marge, bas - 24), (largeur - marge, bas - 24)], fill=couleur, width=2)
     f_marque = _police("Bricolage-800.ttf", int(largeur * 0.06))
-    d.text((marge, bas), "Jeu", font=f_marque, fill=jeu)
-    d.text((marge + d.textlength("Jeu", font=f_marque), bas), "phorie", font=f_marque, fill=couleur)
+    import styles  # le symbole du J
+    cote = int(largeur * 0.069)
+    h0, h1 = f_marque.getbbox("Jeuphorie")[1], f_marque.getbbox("Jeuphorie")[3]
+    d._image.paste(styles.symbole(cote), (marge, int(bas + (h0 + h1) / 2 - cote / 2)), styles.symbole(cote))
+    x = marge + cote + int(largeur * 0.018)
+    d.text((x, bas), "Jeu", font=f_marque, fill=jeu)
+    d.text((x + d.textlength("Jeu", font=f_marque), bas), "phorie", font=f_marque, fill=couleur)
     f_main = _police("Gochi-400.ttf", int(largeur * 0.04))
     d.text((largeur - marge - d.textlength("jeuphorie.fr", font=f_main), bas + int(largeur * 0.012)), "jeuphorie.fr",
            font=f_main, fill=couleur)

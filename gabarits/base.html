@@ -64,8 +64,11 @@
   </svg>
   <div class="entete__barre cadre">
     <a class="logo" href="{{ lien('/') }}" aria-label="{{ site.nom }}, accueil">
-      <span class="logo__mot"><span class="logo__jeu">Jeu</span>phorie</span>
-      <span class="logo__signature">{{ site.signature }}</span>
+      <span class="logo__symbole">{% include "morceaux/logo.svg" %}</span>
+      <span class="logo__texte">
+        <span class="logo__mot"><span class="logo__jeu">Jeu</span>phorie</span>
+        <span class="logo__signature">{{ site.signature }}</span>
+      </span>
     </a>
     {% macro liens_secondaires(classe) %}
       <a href="{{ lien('/blog/') }}" class="{{ classe }}"{% if page.url.startswith('/blog/') %} aria-current="page"{% endif %}>Blog</a>
@@ -102,7 +105,7 @@
 <footer class="pied">
   <div class="cadre pied__grille">
     <div class="pied__marque">
-      <p class="logo__mot logo__mot--pied"><span class="logo__jeu">Jeu</span>phorie</p>
+      <p class="logo__pied"><span class="logo__symbole">{% include "morceaux/logo.svg" %}</span><span class="logo__mot logo__mot--pied"><span class="logo__jeu">Jeu</span>phorie</span></p>
       <p>{{ site.signature }}. Des jeux conçus par un directeur d'animation, à imprimer chez vous.</p>
       {% if not site.boutique.ventes_actives %}
       <p class="pied__etat">Les ventes ouvrent très bientôt.</p>
