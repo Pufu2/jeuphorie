@@ -1,3 +1,4 @@
+import re
 """Schémas de terrain des fiches Jeuphorie, dessinés en SVG.
 
 Repère : terrain de 100 x 60. Équipes : a = rouge, b = bleu, c = vert, d = jaune.
@@ -110,8 +111,13 @@ def dessiner(elements, legende=True):
     if legende and utilises:
         morceaux = [f'<span class="leg"><i style="background:{COUL[c]}"></i>{noms[c]}</span>' for c in sorted(utilises)]
         leg = '<div class="legende">' + "".join(morceaux) + "</div>"
-    return (f'<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" role="img">{defs}'
-            + "".join(out) + "</svg>" + leg)
+    # un nom lisible pour les lecteurs d'écran et les outils d'accessibilité : les étiquettes du schéma
+    corps = "".join(out)
+    etiquettes = list(dict.fromkeys(m.strip() for m in re.findall(r">([^<>]+)</text>", corps) if m.strip()))
+    nom = "Schéma du terrain" + (" : " + ", ".join(etiquettes) if etiquettes else "")
+    nom = nom.replace("&", "et").replace('"', "")
+    return (f'<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{nom}">'
+            f'<title>{nom}</title>{defs}' + corps + "</svg>" + leg)
 
 
 def deux_camps(nb=5, marge=8):
