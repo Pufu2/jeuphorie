@@ -1,0 +1,35 @@
+name: Chercher des clips
+
+# Cherche des clips vidéo gratuits (Pixabay) pour le Reel du dimanche, avec le secret PIXABAY_API_KEY.
+# Les résultats s'affichent dans le journal ; Claude les vérifie image par image avant d'en retenir
+# (donnees/reel-clips.yml). Rien n'est publié par ce workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      requetes:
+        description: "Recherches séparées par des points-virgules (ex. : neige forêt ; bougies noël)"
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  chercher:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Chercher
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          REQUETES: ${{ inputs.requetes }}
+        run: |
+          python3 - <<'EOF'
+          import os, subprocess
+          requetes = [q.strip() for q in os.environ["REQUETES"].split(";") if q.strip()][:8]
+          subprocess.run(["python3", "outils/clips.py", "chercher", *requetes], check=True)
+          EOF
