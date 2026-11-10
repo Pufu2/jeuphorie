@@ -651,6 +651,22 @@ def nom_visuel(p, format_):
     return f"img/reseaux/{p['id']}-{p['variante']}-{format_}.jpg"
 
 
+CANVA = RACINE / "statique" / "img" / "reseaux-canva"  # les visuels faits avec Canva par la tâche du dimanche
+
+
+def _visuel_ou_canva(p, largeur, hauteur, chemin, story=False):
+    """Le visuel Canva de cette publication s'il existe (même nom de fichier), sinon le visuel maison."""
+    import shutil
+    canva = CANVA / Path(chemin).name
+    if canva.exists():
+        Path(chemin).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(canva, chemin)
+    elif story:
+        visuel_story(p, chemin)
+    else:
+        visuel(p, largeur, hauteur, chemin)
+
+
 # ---------------------------------------------------------------- fabrication (appelée par build.py)
 
 def fabriquer(sortie, base, aujourdhui=None):
@@ -662,16 +678,16 @@ def fabriquer(sortie, base, aujourdhui=None):
         for fmt, (w, h) in {"pin": (1000, 1500), "post": (1080, 1350)}.items():
             rel = nom_visuel(p, fmt)
             if rel not in faits:
-                visuel(p, w, h, Path(sortie) / rel)
+                _visuel_ou_canva(p, w, h, Path(sortie) / rel)
                 faits.add(rel)
     for p in pubs[:3]:  # la Story ne sert que le jour même
         if p["jour"].weekday() in JOURS_META:
-            visuel_story(p, Path(sortie) / nom_visuel(p, "story"))
+            _visuel_ou_canva(p, 1080, 1920, Path(sortie) / nom_visuel(p, "story"), story=True)
     for i in range(3):  # le message du samedi : son visuel et sa Story
         m = message_du_jour(aujourdhui - dt.timedelta(days=i))
         if m:
-            visuel(m, 1080, 1350, Path(sortie) / nom_visuel(m, "post"))
-            visuel_story(m, Path(sortie) / nom_visuel(m, "story"))
+            _visuel_ou_canva(m, 1080, 1350, Path(sortie) / nom_visuel(m, "post"))
+            _visuel_ou_canva(m, 1080, 1920, Path(sortie) / nom_visuel(m, "story"), story=True)
     base = base.rstrip("/")
     flux = {"": []}  # le flux général, déjà relié à Pinterest, existe toujours
     for p in pubs:

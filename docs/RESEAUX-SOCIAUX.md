@@ -62,6 +62,33 @@ Chaque thème a son tableau, nourri par son propre flux (réglé le 21 octobre 2
 
 Le premier flux, `https://jeuphorie.fr/flux/pinterest.xml`, reste relié au tableau « Jeux et animations pour enfants » : il reçoit les autres sujets (carnaval, Pâques, kermesse, fêtes de l'année). Les thèmes et les tableaux sont dans `TABLEAUX` (outils/reseaux.py).
 
+## Les visuels Canva (depuis le 10 novembre 2026)
+
+Pour arrêter le défilement, chaque publication Facebook et Instagram a son propre style, créé avec Canva. Six styles
+tournent d'une publication à l'autre : l'affiche choc, l'infographie, la bande dessinée, le quiz, le carnet d'animateur
+et l'avant / après. Le lien entre tous : les couleurs de la marque, le mot « Jeuphorie » en lettres de bande dessinée et
+le symbole du J posé dans un coin.
+
+**Chaque dimanche matin**, la tâche automatique de Claude prépare la semaine suivante :
+
+1. `python3 outils/canva_semaine.py liste --jours 7` : les publications du mardi, du jeudi et du samedi, leur style et
+   la consigne (« brief ») à donner à Canva, pour le post et pour la Story.
+2. Pour chacune, création du post (format « Instagram Post (Portrait) ») puis de la Story (« Instagram Story ») dans
+   Canva, export en PNG de 1080 pixels de large. Quand Canva invente des textes (réponses du quiz, étiquettes), la
+   consigne suivante donne **les textes exacts** à écrire, rédigés à partir du contenu de la publication : c'est ce qui
+   marche le mieux, surtout pour les Stories.
+3. **Relecture de chaque image** : texte en français sans faute, chiffres justes, rien de coupé, pas de réponse du quiz
+   donnée sur l'image, aucun enfant dessiné de façon réaliste, rien d'Halloween. Une image fautive est refaite (trois
+   essais au plus) ; sinon la publication garde son visuel maison.
+4. `python3 outils/canva_semaine.py finir <image> <nom> --logo x,y,côté` : mise au format exact (1080 × 1350 ou
+   1080 × 1920, bords prolongés en flou si Canva a rendu un autre format) et symbole du J posé dans le carré laissé vide.
+   Sans carré vide, `--coin bas-gauche` (ou un autre coin libre).
+5. Commit et push : les images vont dans `statique/img/reseaux-canva/`, sous le même nom que le visuel maison.
+
+Si une image manque, la publication part avec le visuel maison : rien n'est jamais bloqué. Pinterest garde ses
+visuels maison (format et textes différents). Les designs restent dans votre compte Canva : vous pouvez en retoucher un
+avant sa date et le redéposer sous le même nom.
+
 ## 3. Ce qui n'est pas automatisé, volontairement
 
 - **Les groupes Facebook d'animateurs et de parents** : Facebook ne permet plus d'y publier par un programme, et les publicités déguisées y sont mal vues. Partager à la main, de temps en temps, un jeu offert ou un article utile reste le moyen le plus efficace de se faire connaître.
