@@ -17,6 +17,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -26,6 +27,17 @@ import yaml
 RACINE = Path(__file__).resolve().parents[1]
 FICHIER = RACINE / "donnees" / "reel-clips.yml"
 API = "https://pixabay.com/api/videos/"
+AGENT = {"User-Agent": "Mozilla/5.0 (compatible; Jeuphorie/1.0; +https://jeuphorie.fr)"}
+
+
+def _ouvrir(url, timeout=60):
+    return urllib.request.urlopen(urllib.request.Request(url, headers=AGENT), timeout=timeout)
+
+
+def _copier(url, chemin):
+    with _ouvrir(url, 120) as r, open(chemin, "wb") as f:
+        while bloc := r.read(1 << 16):
+            f.write(bloc)
 
 
 def chercher(requete, combien=12):
@@ -34,8 +46,11 @@ def chercher(requete, combien=12):
         sys.exit("Le secret PIXABAY_API_KEY manque.")
     params = {"key": cle, "q": requete, "lang": "fr", "video_type": "film", "safesearch": "true",
               "per_page": max(3, min(combien, 200)), "order": "popular"}
-    with urllib.request.urlopen(API + "?" + urllib.parse.urlencode(params), timeout=30) as r:
-        donnees = json.load(r)
+    try:
+        with _ouvrir(API + "?" + urllib.parse.urlencode(params)) as r:
+            donnees = json.load(r)
+    except urllib.error.HTTPError as e:
+        sys.exit(f"Pixabay a refusé la recherche « {requete} » : {e.code} {e.read()[:200]!r}")
     clips = []
     for h in donnees.get("hits", []):
         v = h.get("videos", {})
@@ -56,7 +71,7 @@ def planche(source, sortie):
         for i, c in enumerate(clips):
             fichier = Path(tmp) / f"{i}.mp4"
             try:
-                urllib.request.urlretrieve(c["apercu"] or c["url"], fichier)
+                _copier(c["apercu"] or c["url"], fichier)
             except Exception as e:  # noqa: BLE001
                 print(f"{c['id']} : téléchargement impossible ({e})")
                 continue
@@ -98,7 +113,7 @@ def telecharger(clips, dossier):
         chemin = Path(dossier) / f"pixabay-{c['id']}.mp4"
         try:
             if not chemin.exists():
-                urllib.request.urlretrieve(c["url"], chemin)
+                _copier(c["url"], chemin)
             chemins.append(chemin)
         except Exception as e:  # noqa: BLE001
             print(f"Clip {c['id']} indisponible ({e}) : on continue sans lui.")
