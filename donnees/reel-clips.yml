@@ -1,0 +1,9 @@
+# Les vraies vidéos de fond du Reel du dimanche (banque gratuite Pixabay, licence Pixabay), vérifiées image par image :
+# jamais d'enfant, de visage reconnaissable, de marque ni de texte. Choisies par la tâche du dimanche (docs/RESEAUX-SOCIAUX.md).
+# date du dimanche : liste de clips (id, adresse de la vidéo, page Pixabay), dans l'ordre d'apparition.
+reels:
+  "2026-11-15":  # Les rennes égarés
+    - {id: 6949, url: "https://cdn.pixabay.com/video/2016/12/30/6949-197509783_medium.mp4", page: "https://pixabay.com/videos/id-6949/"}
+    - {id: 6601, url: "https://cdn.pixabay.com/video/2016/12/01/6601-193980596_medium.mp4", page: "https://pixabay.com/videos/id-6601/"}
+    - {id: 3565, url: "https://cdn.pixabay.com/video/2016/06/27/3565-172488151_medium.mp4", page: "https://pixabay.com/videos/id-3565/"}
+    - {id: 143882, url: "https://cdn.pixabay.com/video/2022/12/22/143882-784164214_medium.mp4", page: "https://pixabay.com/videos/id-143882/"}

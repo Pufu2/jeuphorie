@@ -45,6 +45,9 @@ def main():
             print("Pas de Reel automatique aujourd'hui.")
             return 0
         r = {"url": p["url"], "legende": reseaux.legende(p, "instagram", base)}
+        import clips
+        if clips.clips_du_jour(dt.date.today()):  # les vidéos de fond viennent de Pixabay : on le dit
+            r["legende"] = r["legende"].rstrip() + "\n\nVidéos : Pixabay"
         video = f"{base}/{reseaux.nom_video(p)}"
     else:
         reels = yaml.safe_load((RACINE / "donnees" / "reels.yml").read_text(encoding="utf-8"))["reels"]

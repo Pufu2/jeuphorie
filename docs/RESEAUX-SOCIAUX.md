@@ -89,6 +89,24 @@ Si une image manque, la publication part avec le visuel maison : rien n'est jama
 visuels maison (format et textes différents). Les designs restent dans votre compte Canva : vous pouvez en retoucher un
 avant sa date et le redéposer sous le même nom.
 
+## Les vraies vidéos du Reel (depuis le 10 novembre 2026)
+
+Le Reel du dimanche défile sur de vraies vidéos de la banque gratuite **Pixabay** (licence Pixabay, usage commercial
+permis), avec les cartes de texte par-dessus et un titre qui arrive en grand dans la première seconde. La légende
+précise « Vidéos : Pixabay ». La clé de l'API est le secret GitHub `PIXABAY_API_KEY` (réglé par Rafaël le 10 novembre 2026).
+
+**Chaque dimanche matin**, après les visuels Canva, la tâche automatique de Claude :
+
+1. trouve le Reel du jour (`reseaux.reel_du_jour`) et lance le workflow « Chercher des clips » (`clips.yml`) avec
+   4 à 6 recherches en français liées au sujet (décor, objets, nature, saison : jamais « enfant », « famille », « gens ») ;
+2. lit le journal du workflow, écarte les clips dont les mots-clés parlent de personnes, puis fait la planche des autres :
+   `python3 outils/clips.py planche <lignes JSON> <image>` (trois images par clip : début, milieu, fin) ;
+3. ne garde que des clips **sans enfant, sans visage reconnaissable, sans marque, sans texte, sans rien d'effrayant**,
+   3 ou 4 au total, et les note dans `donnees/reel-clips.yml` à la date du dimanche ;
+4. vérifie le montage (`reel.fabriquer_video` avec les clips), puis commit et push : la vidéo est refaite par le site.
+
+Sans clip noté pour ce dimanche, le Reel garde son fond animé (feuilles, flocons ou confettis) : rien n'est bloqué.
+
 ## 3. Ce qui n'est pas automatisé, volontairement
 
 - **Les groupes Facebook d'animateurs et de parents** : Facebook ne permet plus d'y publier par un programme, et les publicités déguisées y sont mal vues. Partager à la main, de temps en temps, un jeu offert ou un article utile reste le moyen le plus efficace de se faire connaître.

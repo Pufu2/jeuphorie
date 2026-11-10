@@ -134,7 +134,38 @@ def decor_saison(mois):
     return "confettis"
 
 
-def fabriquer_video(r, sortie, decor="feuilles"):
+def cadre(couleur):
+    """Le bandeau à fanions en haut et la signature en bas, posés sur la vidéo (RGBA)."""
+    plein = fond_fixe(couleur).convert("RGBA")
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    im.paste(plein.crop((0, 0, W, 175)), (0, 0))
+    im.paste(plein.crop((0, H - 250, W, H)), (0, H - 250))
+    return im
+
+
+def images_clips(clips, total):
+    """Les images des clips, mis bout à bout, recadrés en vertical, sur « total » images (un clip trop court
+    tourne en boucle)."""
+    part = total // len(clips)
+    taille = W * H * 3
+    for i, clip in enumerate(clips):
+        n = part if i < len(clips) - 1 else total - part * (len(clips) - 1)
+        cmd = ["ffmpeg", "-loglevel", "error", "-stream_loop", "-1", "-i", str(clip), "-an",
+               "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={IPS}",
+               "-frames:v", str(n), "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+        derniere = None
+        for _ in range(n):
+            brut = p.stdout.read(taille)
+            if len(brut) == taille:
+                derniere = Image.frombytes("RGB", (W, H), brut)
+            yield derniere if derniere is not None else Image.new("RGB", (W, H), PAPIER)
+        p.stdout.close()
+        p.wait()
+
+
+def fabriquer_video(r, sortie, decor="feuilles", clips=None):
+    """clips : vidéos à mettre en fond (outils/clips.py) ; sans elles, le fond animé (feuilles, flocons, confettis)."""
     sortie = Path(sortie)
     couleur = r.get("couleur", "#C2571A")
     cartes = [carte(c, couleur) for c in r["cartes"]]
@@ -158,11 +189,20 @@ def fabriquer_video(r, sortie, decor="feuilles"):
            "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-movflags", "+faststart", str(sortie)]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     fondu = int(0.35 * IPS)
+    video = images_clips(clips, total) if clips else None
+    if video:
+        bord = cadre(couleur)
+        voile = Image.new("RGB", (W, H), (20, 25, 45))
+    pop = int(0.45 * IPS)  # la première carte arrive en grand, puis se pose : l'accroche de la première seconde
     for n in range(total):
         t = n / IPS
-        im = fond.copy()
+        if video:
+            im = Image.blend(next(video), voile, 0.18)
+            im.paste(bord, (0, 0), bord)
+        else:
+            im = fond.copy()
         d = ImageDraw.Draw(im)
-        for j, f in enumerate(feuilles):
+        for j, f in enumerate([] if video else feuilles):
             y = (f["y"] + f["v"] * t) % (H + 200) - 100
             x = f["x"] + 40 * math.sin(t * f["o"] + f["a"])
             if decor == "flocons":
@@ -185,6 +225,13 @@ def fabriquer_video(r, sortie, decor="feuilles"):
         if i < len(cartes) - 1 and reste < fondu:
             alpha = min(alpha, reste / fondu)
         calque = cartes[i]
+        if i == 0 and k < pop:
+            e = 1 - (1 - k / pop) ** 3
+            z = 1.35 - 0.35 * e
+            grand = calque.resize((int(W * z), int(H * z)), Image.BILINEAR)
+            calque = grand.crop(((grand.width - W) // 2, (grand.height - H) // 2,
+                                 (grand.width - W) // 2 + W, (grand.height - H) // 2 + H))
+            alpha = max(alpha, e)
         if alpha < 1:
             calque = calque.copy()
             calque.putalpha(calque.getchannel("A").point(lambda v: int(v * alpha)))

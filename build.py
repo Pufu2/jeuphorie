@@ -404,8 +404,10 @@ class Site:
         p = reseaux.reel_du_jour(dt.date.today())
         if p and not self.apercu and shutil.which("ffmpeg"):
             couleur = reseaux.COULEURS.get(p["couleur"], reseaux.COULEURS["pro"])[0]
+            import clips  # les vraies vidéos de fond choisies pour ce dimanche (donnees/reel-clips.yml)
+            fonds = clips.telecharger(clips.clips_du_jour(dt.date.today()), RACINE / "_clips")
             reel.fabriquer_video({"cartes": reseaux.cartes_reel(p), "couleur": couleur},
-                                 SORTIE / reseaux.nom_video(p), reel.decor_saison(dt.date.today().month))
+                                 SORTIE / reseaux.nom_video(p), reel.decor_saison(dt.date.today().month), fonds)
         self.ajouter("/reseaux/", "reseaux.html", titre="Nos dernières publications",
                      description="Les dernières publications de Jeuphorie sur Instagram, Facebook et Pinterest.",
                      indexer=False, publications=reseaux.fabriquer(SORTIE, self.config["url"]))
