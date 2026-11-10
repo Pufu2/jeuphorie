@@ -91,9 +91,13 @@ avant sa date et le redéposer sous le même nom.
 
 ## Les vraies vidéos du Reel (depuis le 10 novembre 2026)
 
-Le Reel du dimanche défile sur de vraies vidéos de la banque gratuite **Pixabay** (licence Pixabay, usage commercial
-permis), avec les cartes de texte par-dessus et un titre qui arrive en grand dans la première seconde. La légende
-précise « Vidéos : Pixabay ». La clé de l'API est le secret GitHub `PIXABAY_API_KEY` (réglé par Rafaël le 10 novembre 2026).
+Le Reel du dimanche défile sur de vraies vidéos de la banque gratuite **Pixabay**. Le texte est réduit au minimum
+(3 ou 4 écrans de quelques mots, `reseaux.cartes_reel_court`), en grandes lettres blanches posées sur la vidéo avec un
+dégradé discret, une guirlande fine en haut et le J avec l'adresse du site ; le titre arrive en grand dans la première
+seconde. La **musique** vient de Kevin MacLeod (incompetech.com, licence Creative Commons Attribution 4.0, crédit
+obligatoire et visible) : `donnees/musiques.yml` en range quatorze, par ambiance (Noël, joyeux pour les jeux, doux
+pour les articles), et le morceau change chaque semaine. La légende précise les crédits (« Vidéos : Pixabay. Musique :
+« titre », Kevin MacLeod… »). La clé de l'API est le secret GitHub `PIXABAY_API_KEY` (réglé par Rafaël le 10 novembre 2026).
 
 **Chaque dimanche matin**, après les visuels Canva, la tâche automatique de Claude :
 

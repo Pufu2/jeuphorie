@@ -1,0 +1,23 @@
+# Les musiques de fond du Reel du dimanche : Kevin MacLeod (incompetech.com), licence Creative Commons Attribution 4.0
+# (https://creativecommons.org/licenses/by/4.0/). Le crédit est obligatoire et visible : il est ajouté à la légende.
+# Le site télécharge le morceau le jour du Reel ; « debut » : seconde où la musique démarre vraiment.
+# Un morceau différent chaque semaine, dans l'ambiance du sujet (noel, joyeux pour les jeux, doux pour les articles).
+source: "https://incompetech.com/music/royalty-free/mp3-royaltyfree/"
+musiques:
+  noel:
+    - {titre: "Nouvelle Noel", debut: 2.5}
+    - {titre: "Adeste Fideles Waltz", debut: 4.5}
+    - {titre: "Crinoline Dreams", debut: 0.5}
+  joyeux:
+    - {titre: "Glitter Blast", debut: 0}
+    - {titre: "Cheery Monday", debut: 0}
+    - {titre: "Flying Kerfuffle", debut: 2.5}
+    - {titre: "Pookatori and Friends", debut: 0}
+    - {titre: "Village Consort", debut: 0}
+    - {titre: "Balloon Game", debut: 0}
+    - {titre: "Onion Capers", debut: 1}
+  doux:
+    - {titre: "Rainbows", debut: 1}
+    - {titre: "Teddy Bear Waltz", debut: 0}
+    - {titre: "Fireflies and Stardust", debut: 0.5}
+    - {titre: "Fuzzball Parade", debut: 0}

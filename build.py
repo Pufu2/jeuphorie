@@ -406,8 +406,14 @@ class Site:
             couleur = reseaux.COULEURS.get(p["couleur"], reseaux.COULEURS["pro"])[0]
             import clips  # les vraies vidéos de fond choisies pour ce dimanche (donnees/reel-clips.yml)
             fonds = clips.telecharger(clips.clips_du_jour(dt.date.today()), RACINE / "_clips")
-            reel.fabriquer_video({"cartes": reseaux.cartes_reel(p), "couleur": couleur},
-                                 SORTIE / reseaux.nom_video(p), reel.decor_saison(dt.date.today().month), fonds)
+            if fonds:  # peu de mots sur de vraies vidéos, et un morceau de Kevin MacLeod qui change chaque semaine
+                m = clips.musique_du_jour(dt.date.today(), p)
+                reel.fabriquer_video_clips(reseaux.cartes_reel_court(p), couleur, SORTIE / reseaux.nom_video(p), fonds,
+                                           clips.telecharger_musique(m, RACINE / "_clips"), m["debut"],
+                                           reel.decor_saison(dt.date.today().month))
+            else:
+                reel.fabriquer_video({"cartes": reseaux.cartes_reel(p), "couleur": couleur},
+                                     SORTIE / reseaux.nom_video(p), reel.decor_saison(dt.date.today().month))
         self.ajouter("/reseaux/", "reseaux.html", titre="Nos dernières publications",
                      description="Les dernières publications de Jeuphorie sur Instagram, Facebook et Pinterest.",
                      indexer=False, publications=reseaux.fabriquer(SORTIE, self.config["url"]))

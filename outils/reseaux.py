@@ -290,6 +290,30 @@ def cartes_reel(p):
     return cartes
 
 
+def _mots(t):
+    return len(t.split())
+
+
+def cartes_reel_court(p):
+    """Les textes du Reel sur vidéo : très peu de mots, une idée par écran (4 écrans au plus)."""
+    j = p.get("brut")
+    if j:
+        cartes = [{"surtitre": NOMS_FETES.get(j.get("fete"), "Un jeu à essayer"), "titre": p["titre"]}]
+        if p.get("detail"):
+            cartes.append({"titre": _propre(p["detail"])})
+        but = re.split(r"[,;:]| et ", _propre(j.get("but") or ""))[0].strip().rstrip(".")
+        if but and _mots(but) <= 9:
+            cartes.append({"titre": but})
+        cartes.append({"titre": "Règles gratuites", "petit": "sur jeuphorie.fr · lien en bio"})
+        return cartes
+    titre, _, suite = p["titre"].partition(" : ")
+    cartes = [{"surtitre": "Sur le blog", "titre": titre}]
+    if suite and _mots(suite) <= 9:
+        cartes.append({"titre": suite[:1].upper() + suite[1:]})
+    cartes.append({"titre": "À lire en entier", "petit": "sur jeuphorie.fr · lien en bio"})
+    return cartes
+
+
 def _historique_reels(jusqua):
     histo, dernier, type_avant = {}, {}, "article"
     jour = DEBUT

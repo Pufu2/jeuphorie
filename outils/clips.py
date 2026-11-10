@@ -97,6 +97,36 @@ def planche(source, sortie):
     print(f"{len(vignettes)} clips sur la planche {sortie}")
 
 
+def musique_du_jour(jour, p):
+    """Le morceau du Reel de ce dimanche (Kevin MacLeod, CC BY 4.0) : l'ambiance suit le sujet, le morceau change
+    chaque semaine. Renvoie {titre, debut, url, credit}."""
+    import urllib.parse
+    d = yaml.safe_load((RACINE / "donnees" / "musiques.yml").read_text(encoding="utf-8"))
+    if p.get("theme") == "noel" or jour.month == 12:
+        ambiance = "noel"
+    else:
+        ambiance = "joyeux" if p.get("type") == "jeu" else "doux"
+    liste = d["musiques"][ambiance]
+    m = dict(liste[jour.isocalendar()[1] % len(liste)])
+    m["url"] = d["source"] + urllib.parse.quote(m["titre"] + ".mp3")
+    m["credit"] = (f"Musique : « {m['titre']} », Kevin MacLeod (incompetech.com), licence Creative Commons "
+                   "Attribution 4.0 (creativecommons.org/licenses/by/4.0)")
+    return m
+
+
+def telecharger_musique(m, dossier):
+    """Le fichier du morceau, ou None s'il est indisponible (le Reel garde alors sa musique composée)."""
+    chemin = Path(dossier) / ("musique-" + m["titre"].replace(" ", "-") + ".mp3")
+    try:
+        Path(dossier).mkdir(parents=True, exist_ok=True)
+        if not chemin.exists():
+            _copier(m["url"], chemin)
+        return chemin
+    except Exception as e:  # noqa: BLE001
+        print(f"Musique « {m['titre']} » indisponible ({e}) : musique composée à la place.")
+        return None
+
+
 def clips_du_jour(jour):
     """Les clips retenus pour le Reel de ce dimanche (liste vide sinon)."""
     if not FICHIER.exists():

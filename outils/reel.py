@@ -243,5 +243,154 @@ def fabriquer_video(r, sortie, decor="feuilles", clips=None):
     print(f"{sortie.name} : {total / IPS:.1f} s, {sortie.stat().st_size // 1024} Ko")
 
 
+# ---------------------------------------------------------------- le Reel sur vraies vidéos (depuis novembre 2026)
+# Très peu de mots, posés directement sur la vidéo (pas de cadre) ; un dégradé discret pour la lisibilité ;
+# une guirlande fine en haut, le J et l'adresse du site sous le texte. Le texte reste dans la zone que l'interface
+# d'Instagram ne recouvre pas (ni le haut, ni le bas, ni la colonne de boutons à droite).
+
+BLANC = (255, 255, 255, 255)
+SYMBOLE = RACINE / "statique" / "img" / "logo-1024.png"
+DUREE_ECRAN = 3.2
+
+
+def _ombre(calque, flou=12, force=235):
+    from PIL import ImageFilter
+    a = calque.getchannel("A").filter(ImageFilter.GaussianBlur(flou)).point(lambda v: min(255, v * force // 255))
+    ombre = Image.new("RGBA", calque.size, (10, 14, 30, 0))
+    ombre.putalpha(a)
+    ombre.alpha_composite(calque)
+    return ombre
+
+
+def ecran(c, couleur):
+    """Un écran de texte (RGBA plein cadre) : surtitre en pastille, titre en grandes lettres blanches, petite ligne."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    marge, largeur = 90, W - 2 * 90 - 60  # 60 de plus à droite : les boutons d'Instagram
+    blocs, h = [], 0
+    if c.get("surtitre"):
+        f = police("Atkinson-700.ttf", 42)
+        blocs.append(("pastille", c["surtitre"].upper(), f))
+        h += 100
+    taille = 112
+    while True:
+        f = police("Bricolage-800.ttf", taille)
+        ls = [l for morceau in c["titre"].split(" · ") for l in lignes(d, morceau, f, largeur)]
+        if len(ls) <= 3 or taille <= 64:
+            break
+        taille -= 6
+    blocs.append(("titre", ls, f))
+    h += int(len(ls) * taille * 1.08) + 46
+    if c.get("petit"):
+        f = police("Gochi-400.ttf", 64)
+        blocs.append(("petit", c["petit"], f))
+        h += 90
+    y = int(H * 0.53 - h / 2)
+    for genre, contenu, f in blocs:
+        if genre == "pastille":
+            lw = d.textlength(contenu, font=f)
+            d.rounded_rectangle([marge, y, marge + lw + 52, y + 72], radius=36, fill=couleur)
+            d.text((marge + 26, y + 13), contenu, font=f, fill=BLANC)
+            y += 100
+        elif genre == "titre":
+            for l in contenu:
+                d.text((marge, y), l, font=f, fill=BLANC)
+                y += int(f.size * 1.08)
+            y += 14
+            d.rounded_rectangle([marge, y, marge + 150, y + 14], radius=7, fill=couleur)
+            y += 32
+        else:
+            d.text((marge, y), contenu, font=f, fill=BLANC)
+            y += 90
+    return _ombre(im)
+
+
+def habillage(couleur):
+    """Le dégradé du bas, la guirlande fine en haut et la signature (symbole + adresse), en RGBA."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    haut = int(H * 0.22)
+    for y in range(haut, H):
+        t = (y - haut) / (H - haut)
+        d.line([(0, y), (W, y)], fill=(16, 20, 40, int(215 * min(1, t * 1.25) ** 1.3)))
+    # la guirlande : une ficelle qui pend, des fanions aux couleurs du site
+    pts = [(x, 34 + 26 * math.sin(math.pi * x / W)) for x in range(0, W + 1, 10)]
+    d.line(pts, fill=(255, 255, 255, 200), width=3)
+    for i in range(11):
+        x0 = 20 + i * (W - 40) / 11
+        x1 = x0 + (W - 40) / 11 - 14
+        y0 = 34 + 26 * math.sin(math.pi * (x0 + x1) / 2 / W)
+        d.polygon([(x0 + 7, y0), (x1 + 7, y0), ((x0 + x1) / 2 + 7, y0 + 54)],
+                  fill=["#CF3424", "#F2B21B", "#2D6A43", "#3D5BB8"][i % 4])
+    # la signature, sous le texte
+    cote = 76
+    sym = Image.open(SYMBOLE).convert("RGBA").resize((cote, cote), Image.LANCZOS)
+    f = police("Bricolage-800.ttf", 50)
+    texte = "jeuphorie.fr"
+    lw = d.textlength(texte, font=f)
+    x = int((W - 60 - (cote + 20 + lw)) / 2)
+    y = int(H * 0.775)
+    im.alpha_composite(sym, (x, y))
+    d.text((x + cote + 20, y + 8), texte, font=f, fill=BLANC)
+    return im
+
+
+def fabriquer_video_clips(cartes, couleur, sortie, clips, musique=None, debut=0.0, decor="feuilles"):
+    """Le Reel sur vraies vidéos. musique : fichier du morceau (sinon la musique composée), debut : seconde de départ."""
+    sortie = Path(sortie)
+    ecrans = [ecran(c, couleur) for c in cartes]
+    par = int(DUREE_ECRAN * IPS)
+    total = par * len(ecrans)
+    habit = habillage(couleur)
+    sortie.parent.mkdir(parents=True, exist_ok=True)
+    if musique:
+        son_entree = ["-ss", f"{debut:.2f}", "-i", str(musique)]
+    else:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import musique as compo
+        son = sortie.with_suffix(".wav")
+        compo.enregistrer(compo.composer(MUSIQUES.get(decor, "confettis"), total / IPS,
+                                         zlib.crc32(sortie.name.encode())), son)
+        son_entree = ["-i", str(son)]
+    duree = total / IPS
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(IPS),
+           "-i", "-", *son_entree, "-map", "0:v", "-map", "1:a", "-t", f"{duree:.2f}",
+           "-af", f"afade=t=in:d=0.3,afade=t=out:st={duree - 1.4:.2f}:d=1.4,loudnorm=I=-16:TP=-1.5",
+           "-c:v", "libx264", "-pix_fmt", "yuv420p", "-profile:v", "high", "-crf", "21", "-preset", "medium",
+           "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-movflags", "+faststart", str(sortie)]
+    p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    video = images_clips(clips, total)
+    entree, sortie_f, pop = int(0.32 * IPS), int(0.22 * IPS), int(0.45 * IPS)
+    for n in range(total):
+        im = next(video).convert("RGBA")
+        im.alpha_composite(habit)
+        i, k = divmod(n, par)
+        calque, dy = ecrans[i], 0
+        if i == 0 and k < pop:  # l'accroche : le titre arrive en grand puis se pose
+            e = 1 - (1 - k / pop) ** 3
+            z = 1.3 - 0.3 * e
+            grand = calque.resize((int(W * z), int(H * z)), Image.BILINEAR)
+            calque = grand.crop(((grand.width - W) // 2, (grand.height - H) // 2,
+                                 (grand.width - W) // 2 + W, (grand.height - H) // 2 + H))
+            alpha = e
+        else:
+            alpha = 1.0
+            if k < entree:  # les écrans suivants montent doucement
+                e = 1 - (1 - k / entree) ** 3
+                alpha, dy = e, int(46 * (1 - e))
+            if i < len(ecrans) - 1 and par - k <= sortie_f:
+                alpha = min(alpha, (par - k) / sortie_f)
+        if alpha < 1:
+            calque = calque.copy()
+            calque.putalpha(calque.getchannel("A").point(lambda v: int(v * alpha)))
+        im.alpha_composite(calque, (0, dy) if dy >= 0 else (0, 0))
+        p.stdin.write(im.convert("RGB").tobytes())
+    p.stdin.close()
+    p.wait()
+    if not musique:
+        son.unlink(missing_ok=True)
+    print(f"{sortie.name} : {duree:.1f} s, {sortie.stat().st_size // 1024} Ko")
+
+
 if __name__ == "__main__":
     fabriquer(sys.argv[1])

@@ -46,8 +46,9 @@ def main():
             return 0
         r = {"url": p["url"], "legende": reseaux.legende(p, "instagram", base)}
         import clips
-        if clips.clips_du_jour(dt.date.today()):  # les vidéos de fond viennent de Pixabay : on le dit
-            r["legende"] = r["legende"].rstrip() + "\n\nVidéos : Pixabay"
+        if clips.clips_du_jour(dt.date.today()):  # les vidéos (Pixabay) et la musique (CC BY 4.0) : les crédits
+            m = clips.musique_du_jour(dt.date.today(), p)
+            r["legende"] = r["legende"].rstrip() + f"\n\nVidéos : Pixabay. {m['credit']}"
         video = f"{base}/{reseaux.nom_video(p)}"
     else:
         reels = yaml.safe_load((RACINE / "donnees" / "reels.yml").read_text(encoding="utf-8"))["reels"]
