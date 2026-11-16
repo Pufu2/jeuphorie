@@ -628,6 +628,25 @@ pages:
       - ["Quels jeux calmes en voiture pour 7 ans ?", "L'œil de lynx, ni oui ni non, les vingt questions."]
       - ["Comment calmer un enfant de 6 ans agité ?", "Lui donner un rôle dans le jeu calme : roi du silence, gardien du temps, meneur."]
 
+  - slug: jeux-calmes-3-5-ans
+    onglet: croisements
+    puce: Calmes, 3-5 ans
+    filtre: {ages: [3, 5], moment: calme}
+    titre_page: "Jeux calmes pour les 3-5 ans : jeux assis, de silence et d'observation pour la maternelle"
+    h1: Jeux calmes pour les 3-5 ans
+    intro: >-
+      Chez les tout-petits, le calme ne se commande pas : il s'installe avec un jeu simple, une voix basse et un
+      rituel qu'on retrouve chaque jour. Ces jeux se jouent assis ou en marchant doucement, avec des règles qu'un
+      enfant de 3 ans comprend en une phrase, et ils aident le groupe à passer du jeu bruyant au repas ou à la sieste.
+    conseils:
+      - "Asseyez-vous avec eux, au sol : à 3 ans, on imite l'adulte bien plus qu'on ne l'écoute."
+      - "Montrez le jeu une fois en jouant vous-même, au lieu de l'expliquer."
+      - "Arrêtez quand le jeu marche encore : il sera attendu la prochaine fois."
+    faq:
+      - ["Quel jeu calme avant la sieste ?", "Un jeu assis et à voix basse, comme le roi du silence ou la balle aux prénoms roulée au sol."]
+      - ["Combien de temps dure un jeu calme à 3 ans ?", "Cinq à dix minutes suffisent. Mieux vaut deux jeux courts qu'un seul trop long."]
+      - ["Comment calmer un groupe de maternelle après la récréation ?", "Baissez la voix, asseyez le groupe en cercle et commencez un jeu d'observation sans attendre le silence complet : il vient avec le jeu."]
+
   - slug: ballon-6-8-ans
     onglet: croisements
     puce: Ballon, 6-8 ans

@@ -636,3 +636,94 @@ jeux:
       - "10-12 ans : cinq débuts de phrase, dont un plus original (un objet de la maison, une saison)."
       - "Ados et adultes : des débuts de phrase plus abstraits (une musique d'ambiance, un moment de la journée)."
     fin: Chacun dit la réponse d'un autre qui l'a le plus surpris, et pourquoi.
+
+  - id: balle-aux-prenoms
+    ajoute: "2026-11-17"
+    nom: La balle aux prénoms
+    accroche: "Le jeu de ballon des premiers jours : on se lance la balle en disant un prénom, et en dix minutes tout le groupe se connaît."
+    age_min: 3
+    age_max: 12
+    joueurs: [6, 25]
+    duree: 10
+    lieux: [interieur, exterieur, cour, gymnase, jardin, plage]
+    moments: [connaissance, calme]
+    energie: calme
+    materiel_tags: [ballon]
+    but: "Retenir le prénom de chacun et faire circuler la balle à tout le groupe, sans qu'elle tombe."
+    materiel:
+      - "Un ballon mou ou une balle en mousse (deux ou trois pour la dernière manche)"
+    versions:
+      - lieu: "Assis, à l'intérieur ou sur la plage (3-5 ans)"
+        espace: "Un tapis, un coin de salle ou le sable, en cercle"
+        mise_en_place: "Tout le monde s'assoit en cercle, jambes écartées, les pieds de chacun touchant ceux de ses voisins : le cercle est fermé et la balle ne s'échappe pas."
+        deroulement:
+          - "L'adulte dit son prénom, puis celui d'un enfant, et lui fait rouler la balle : « Je suis Sophie, j'envoie à Malo. »"
+          - "Malo attrape la balle, dit son prénom à son tour, puis celui d'un camarade, et la fait rouler vers lui."
+          - "Si un enfant ne connaît pas encore les prénoms, il roule la balle à quelqu'un et demande : « Comment tu t'appelles ? »"
+          - "Quand tout le monde a reçu la balle, on recommence en disant seulement le prénom de celui qui la reçoit."
+      - lieu: "Debout, dans la cour, au gymnase ou au jardin (6-12 ans)"
+        espace: "Un cercle de 4 à 6 m de diamètre, loin des murs vitrés"
+        mise_en_place: "Les joueurs se tiennent debout en cercle, à un grand pas les uns des autres, les mains prêtes."
+        deroulement:
+          - "Premier tour : le joueur qui a la balle dit son prénom, puis le prénom de celui à qui il la lance, en la lançant par en dessous."
+          - "Deuxième tour : on ne dit plus que le prénom de celui qui reçoit, en le regardant avant de lancer."
+          - "Troisième tour, la chaîne : chacun lance à quelqu'un qui n'a pas encore eu la balle, puis croise les bras. Quand tout le monde a les bras croisés, on refait exactement la même chaîne, dans le même ordre, de plus en plus vite."
+          - "Quatrième tour : une deuxième balle part dans la même chaîne, puis une troisième. Le groupe essaie de les faire tourner toutes ensemble sans en faire tomber."
+    regles:
+      - "On lance par en dessous, doucement, et on regarde celui qui reçoit avant de lancer."
+      - "On dit le prénom avant de lancer, pas après."
+      - "Une balle qui tombe n'élimine personne : on la ramasse et on continue."
+      - "Pendant la chaîne, on lance toujours à la même personne."
+    adapter:
+      - "3-5 ans : assis, balle roulée, et un adulte dans le cercle qui aide à se souvenir des prénoms. On s'arrête au deuxième tour."
+      - "6-8 ans : debout, avec la chaîne mais une seule balle. On peut ajouter un geste ou un animal préféré après son prénom (« Léo, le lion ! »)."
+      - "9-12 ans : la chaîne avec trois balles, puis chronométrée. Le groupe essaie de battre son propre temps, chacun dit le prénom à voix haute."
+    securite:
+      - "Uniquement un ballon mou ou une balle en mousse, jamais un ballon de football ou de basket."
+      - "Les lancers se font par en dessous, sans viser la tête."
+    fin: "Pour finir, on refait la chaîne une dernière fois, les yeux ouverts mais en silence : on montre du doigt la personne avant de lui lancer la balle, et on termine en disant tous ensemble le prénom du premier lanceur."
+
+  - id: colin-maillard
+    ajoute: "2026-11-19"
+    nom: Colin-maillard
+    accroche: "Le grand classique des fêtes et des veillées : le joueur aux yeux bandés cherche les autres, puis doit deviner qui il a attrapé."
+    age_min: 4
+    age_max: 10
+    joueurs: [6, 15]
+    duree: 15
+    lieux: [interieur, jardin, gymnase]
+    moments: [fete, veillee]
+    energie: moyenne
+    materiel_tags: [foulards]
+    but: "Pour Colin-maillard : attraper un joueur, puis deviner qui il est en touchant doucement ses cheveux, ses épaules ou ses vêtements. Pour les autres : ne pas se faire attraper, sans sortir du cercle."
+    materiel:
+      - "Un foulard pour bander les yeux"
+      - "Quelques plots, une corde ou des chaises pour marquer le cercle de jeu"
+    versions:
+      - lieu: "À l'intérieur"
+        espace: "Une salle dégagée, sans meuble aux coins durs ni objet au sol, ou un salon dont on a poussé la table"
+        mise_en_place: "Les joueurs forment une ronde en se tenant la main, puis la lâchent : c'est la limite du terrain. Colin-maillard est au centre, les yeux bandés par l'adulte, qui vérifie que le foulard ne serre pas."
+        deroulement:
+          - "L'adulte fait tourner doucement Colin-maillard sur lui-même trois fois, puis donne le départ : « Colin-maillard, cherche ! »"
+          - "Colin-maillard avance les mains devant lui, en marchant. Les autres l'évitent en se déplaçant, sans sortir du cercle, et peuvent l'appeler doucement pour le guider ou le taquiner."
+          - "Quand Colin-maillard touche un joueur, tout le monde s'arrête et se tait. Le joueur attrapé reste immobile."
+          - "Colin-maillard touche doucement ses cheveux, ses épaules, ses manches, et propose un prénom. S'il trouve, le joueur attrapé devient Colin-maillard. Sinon, il continue à chercher."
+      - lieu: "Au jardin ou au gymnase"
+        espace: "Une pelouse plate ou un sol de gymnase, un cercle de 6 m de diamètre marqué par des plots"
+        mise_en_place: "Même installation, en gardant le cercle petit pour que le jeu reste rapide et sûr."
+        deroulement:
+          - "Même jeu. Variante : les joueurs restent sur place, les pieds collés au sol, et n'ont le droit que de se baisser ou de se pencher pour éviter les mains de Colin-maillard."
+    regles:
+      - "Colin-maillard marche, il ne court jamais."
+      - "Les autres restent dans le cercle et ne touchent pas Colin-maillard."
+      - "On touche le joueur attrapé doucement, jamais le visage."
+      - "Après trois prénoms faux, on laisse sa place à un autre volontaire."
+    adapter:
+      - "4-5 ans : le joueur attrapé dit « Coucou ! » et Colin-maillard devine à la voix. Ceux qui n'aiment pas avoir les yeux bandés ferment les yeux, ou passent leur tour."
+      - "6-8 ans : le jeu classique, avec un cercle petit et un adulte qui veille aux bords."
+      - "9-10 ans : le joueur attrapé change sa voix ou ne dit rien, et Colin-maillard n'a qu'un seul essai pour deviner."
+    securite:
+      - "Un adulte reste au bord du cercle et arrête Colin-maillard s'il s'approche d'un obstacle : « Stop, Colin-maillard ! »"
+      - "Le foulard couvre les yeux sans serrer et ne passe jamais autour du cou."
+      - "Personne n'est obligé d'avoir les yeux bandés."
+    fin: "Pour la dernière manche, c'est l'adulte qui devient Colin-maillard, et les enfants l'aident à trouver les prénoms en riant."
