@@ -7,3 +7,7 @@ reels:
     - {id: 6601, url: "https://cdn.pixabay.com/video/2016/12/01/6601-193980596_medium.mp4", page: "https://pixabay.com/videos/id-6601/"}
     - {id: 3565, url: "https://cdn.pixabay.com/video/2016/06/27/3565-172488151_medium.mp4", page: "https://pixabay.com/videos/id-3565/"}
     - {id: 143882, url: "https://cdn.pixabay.com/video/2022/12/22/143882-784164214_medium.mp4", page: "https://pixabay.com/videos/id-143882/"}
+  "2026-11-22":  # Organiser l'anniversaire de son enfant à la maison
+    - {id: 145501, url: "https://cdn.pixabay.com/video/2023/01/06/145501-787039580_medium.mp4", page: "https://pixabay.com/videos/id-145501/"}
+    - {id: 77927, url: "https://cdn.pixabay.com/video/2021/06/16/77927-564459450_medium.mp4", page: "https://pixabay.com/videos/id-77927/"}
+    - {id: 131783, url: "https://cdn.pixabay.com/video/2022/09/19/131783-751352828_medium.mp4", page: "https://pixabay.com/videos/id-131783/"}
