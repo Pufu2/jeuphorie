@@ -727,3 +727,92 @@ jeux:
       - "Le foulard couvre les yeux sans serrer et ne passe jamais autour du cou."
       - "Personne n'est obligé d'avoir les yeux bandés."
     fin: "Pour la dernière manche, c'est l'adulte qui devient Colin-maillard, et les enfants l'aident à trouver les prénoms en riant."
+
+  - id: balle-au-mur
+    ajoute: "2026-11-24"
+    nom: La balle au mur
+    accroche: "Le jeu de cour d'autrefois qui revient toujours : on lance la balle contre un mur en enchaînant des gestes de plus en plus difficiles."
+    age_min: 6
+    age_max: 12
+    joueurs: [1, 12]
+    duree: 15
+    lieux: [exterieur, cour, gymnase]
+    moments: [defoulement, attente]
+    energie: moyenne
+    materiel_tags: [ballon]
+    but: "Réussir toute la suite de gestes sans faire tomber la balle, et aller plus loin que la fois d'avant."
+    materiel:
+      - "Une balle qui rebondit bien : balle de tennis, balle en caoutchouc ou petit ballon mou, une par joueur ou par petit groupe"
+      - "Un mur plein, sans fenêtre, avec un sol plat devant"
+    versions:
+      - lieu: "Dans la cour ou dehors"
+        espace: "Un pan de mur sans fenêtre ni porte, avec 3 m de sol dégagé devant. Un trait à la craie à 2 m du mur marque la place du lanceur."
+        mise_en_place: "Chaque joueur ou chaque petit groupe a son pan de mur, à deux grands pas de ses voisins. L'adulte écrit au sol, ou sur une feuille, la suite des gestes à réussir."
+        deroulement:
+          - "Le joueur lance la balle contre le mur et la rattrape sans qu'elle touche le sol. C'est le premier geste : « Sans bouger »."
+          - "Il enchaîne les gestes suivants, chacun deux fois de suite : « Sans rire », « Une main », « Applaudir » (on frappe dans ses mains avant de rattraper), « Un pied » (on lance et on rattrape en équilibre), « Tourner » (on fait un tour sur soi-même avant de rattraper), « Au sol » (la balle a le droit de rebondir une fois)."
+          - "Quand la balle tombe, le joueur retient le geste où il s'est arrêté et passe la balle au suivant de son groupe. Au tour suivant, il repart de ce geste."
+          - "Le premier qui termine toute la suite invente un nouveau geste, que tout le monde ajoute à la fin."
+      - lieu: "Au gymnase"
+        espace: "Le long d'un mur sans espalier ni vitre, avec des balles en mousse"
+        mise_en_place: "Même installation, avec un trait au sol au scotch de couleur pour chaque joueur."
+        deroulement:
+          - "Même jeu, avec une balle en mousse qui rebondit moins : on autorise un rebond au sol pour tous les gestes."
+          - "Pour les plus grands, deux joueurs se partagent un pan de mur et lancent chacun leur tour, sans se gêner."
+    regles:
+      - "On lance de derrière son trait, jamais plus près."
+      - "On fait chaque geste deux fois de suite pour le valider."
+      - "Une balle qui tombe n'élimine personne : on passe simplement la balle au suivant."
+      - "On va chercher sa balle quand elle roule, sans courir dans le couloir du voisin."
+    adapter:
+      - "6-7 ans : trois gestes seulement (« Sans bouger », « Applaudir », « Tourner ») et un rebond au sol permis partout."
+      - "8-9 ans : la suite complète de sept gestes, sans rebond sauf pour « Au sol »."
+      - "10-12 ans : chaque geste se fait trois fois, et l'on ajoute « Dans le dos » (on rattrape après avoir frappé dans ses mains derrière le dos) et « Deux balles »."
+    securite:
+      - "Aucun mur avec fenêtre, gouttière ou objet fragile, et jamais de balle dure."
+      - "Les pans de mur sont assez écartés pour que deux joueurs ne se heurtent pas en courant après leur balle."
+    fin: "Pour finir, chacun montre au groupe le geste qu'il a inventé, et tout le monde essaie de le réussir une fois."
+
+  - id: mikado-de-brindilles
+    ajoute: "2026-11-26"
+    nom: Le mikado de brindilles
+    accroche: "Le mikado, avec ce que l'on ramasse en forêt ou au jardin : un jeu calme d'adresse et de patience, sans rien acheter."
+    age_min: 5
+    age_max: 12
+    joueurs: [2, 6]
+    duree: 20
+    lieux: [foret, jardin, plage, exterieur, interieur]
+    moments: [calme]
+    energie: calme
+    materiel_tags: [nature]
+    but: "Ramasser le plus de brindilles possible, une à une, sans faire bouger les autres."
+    materiel:
+      - "Une trentaine de brindilles sèches, à peu près droites, de la longueur d'un crayon à celle d'une règle"
+      - "Une brindille plus longue ou d'une autre couleur pour le « roi »"
+      - "Une surface plate : souche, sol tassé, planche, sable mouillé ou table"
+    versions:
+      - lieu: "En forêt, au jardin ou à la plage"
+        espace: "Une souche plate, un coin de sol tassé ou un bout de sable humide, à l'abri du vent"
+        mise_en_place: "Les enfants ramassent ensemble les brindilles, en ne prenant que du bois mort tombé au sol (ou du bois flotté à la plage). On casse les plus longues à la bonne taille. Un enfant tient toutes les brindilles debout dans son poing, au-dessus de la surface, puis ouvre la main d'un coup : elles tombent en tas."
+        deroulement:
+          - "Chacun son tour, un joueur essaie de retirer une brindille du tas, avec les doigts, sans faire bouger aucune autre."
+          - "S'il réussit, il la garde et continue. Si une autre brindille bouge, même un peu, son tour s'arrête et il laisse sa brindille dans le tas."
+          - "Celui qui réussit à ramasser le roi peut s'en servir comme outil pour soulever ou faire rouler les autres brindilles."
+          - "Quand il ne reste plus de brindille, chacun compte les siennes : le roi vaut cinq."
+      - lieu: "À l'intérieur"
+        espace: "Une table, avec les brindilles ramassées lors d'une promenade et bien séchées"
+        mise_en_place: "Même jeu sur la table. On peut peindre les bouts de quelques brindilles pendant un atelier, pour leur donner une valeur (rouge : 3 points, jaune : 2 points)."
+        deroulement:
+          - "Même jeu, en comptant les points selon les couleurs à la fin de la partie."
+    regles:
+      - "On ne touche que la brindille que l'on veut prendre."
+      - "Les autres joueurs surveillent : si une brindille bouge, ils le disent calmement."
+      - "On attend son tour sans souffler sur le tas ni taper sur le sol."
+    adapter:
+      - "5-6 ans : de grosses brindilles, moins nombreuses (une quinzaine), et une brindille qui bouge à peine est pardonnée."
+      - "7-9 ans : le jeu classique, avec le roi comme outil."
+      - "10-12 ans : on ne joue qu'avec une main, et chaque brindille ramassée doit être annoncée à l'avance."
+    securite:
+      - "Seulement du bois mort tombé au sol : on ne casse jamais de branche sur un arbre."
+      - "Pas de brindilles épineuses, cassantes en pointe ou moisies ; on se lave les mains après le jeu."
+    fin: "À la fin, le groupe construit ensemble, avec toutes les brindilles, une cabane miniature ou un dessin sur le sol, puis les remet là où il les a trouvées."
